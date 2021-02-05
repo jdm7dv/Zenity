@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/Zentity.Core" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Zentity.Core" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://aditidt486:9090/Services/ResourceTypeService?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:complexType name="ResourceTypeCollection">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ResourceType" nillable="true" type="tns:ResourceType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ResourceTypeCollection" nillable="true" type="tns:ResourceTypeCollection" />
+  <xs:complexType name="ResourceType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BaseType" nillable="true" type="tns:ResourceType" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FullName" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="Id" type="ser:guid" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NavigationProperties" nillable="true" type="tns:NavigationPropertyCollection" />
+      <xs:element minOccurs="0" name="ScalarProperties" nillable="true" type="tns:ScalarPropertyCollection" />
+      <xs:element minOccurs="0" name="Uri" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ResourceType" nillable="true" type="tns:ResourceType" />
+  <xs:complexType name="NavigationPropertyCollection">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="NavigationProperty" nillable="true" type="tns:NavigationProperty" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="NavigationPropertyCollection" nillable="true" type="tns:NavigationPropertyCollection" />
+  <xs:complexType name="NavigationProperty">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Direction" type="tns:AssociationEndType" />
+      <xs:element minOccurs="0" name="FullName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id" type="ser:guid" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Uri" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="NavigationProperty" nillable="true" type="tns:NavigationProperty" />
+  <xs:simpleType name="AssociationEndType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Undefined" />
+      <xs:enumeration value="Subject" />
+      <xs:enumeration value="Object" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="AssociationEndType" nillable="true" type="tns:AssociationEndType" />
+  <xs:complexType name="ScalarPropertyCollection">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ScalarProperty" nillable="true" type="tns:ScalarProperty" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ScalarPropertyCollection" nillable="true" type="tns:ScalarPropertyCollection" />
+  <xs:complexType name="ScalarProperty">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DataType" type="tns:DataTypes" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FullName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id" type="ser:guid" />
+      <xs:element minOccurs="0" name="IsFullTextIndexed" type="xs:boolean" />
+      <xs:element minOccurs="0" name="MaxLength" type="xs:int" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Nullable" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Precision" type="xs:int" />
+      <xs:element minOccurs="0" name="Scale" type="xs:int" />
+      <xs:element minOccurs="0" name="Uri" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ScalarProperty" nillable="true" type="tns:ScalarProperty" />
+  <xs:simpleType name="DataTypes">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Int32" />
+      <xs:enumeration value="Binary" />
+      <xs:enumeration value="Boolean" />
+      <xs:enumeration value="Byte" />
+      <xs:enumeration value="DateTime" />
+      <xs:enumeration value="Decimal" />
+      <xs:enumeration value="Double" />
+      <xs:enumeration value="Guid" />
+      <xs:enumeration value="Single" />
+      <xs:enumeration value="Int16" />
+      <xs:enumeration value="Int64" />
+      <xs:enumeration value="String" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="DataTypes" nillable="true" type="tns:DataTypes" />
+  <xs:simpleType name="AssociationEndMultiplicity">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Many" />
+      <xs:enumeration value="One" />
+      <xs:enumeration value="ZeroOrOne" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="AssociationEndMultiplicity" nillable="true" type="tns:AssociationEndMultiplicity" />
+</xs:schema>

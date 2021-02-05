@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Microsoft.Famulus.Platform.AtomPubConstants">
+    <Position X="0.5" Y="0.5" Width="2" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Enum Name="Microsoft.Famulus.Platform.AtomPubConstants.HttpErrorCodes" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>AtomPub\AtomPubConstants.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>hgCyFsKECiBAA0RAoCBAAEYBCAcAApACQcMCQAgAAIg=</HashCode>
+      <FileName>AtomPub\AtomPubConstants.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Microsoft.Famulus.Platform.AtomPubHelper">
+    <Position X="5.5" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAAAAAAAAAAAQAAAAAIAAAAAAAUBAASgAAAAA=</HashCode>
+      <FileName>AtomPub\AtomPubHelper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Microsoft.Famulus.Platform.AtomPubService">
+    <Position X="2.75" Y="0.5" Width="2.5" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Enum Name="Microsoft.Famulus.Platform.AtomPubService.MemberRequestType">
+        <TypeIdentifier>
+          <NewMemberFileName>AtomPub\AtomPubService.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>BAACJCCARoAABEIAAAAzAQAgCAAAIAAAAAAAEAAgQQA=</HashCode>
+      <FileName>AtomPub\AtomPubService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Microsoft.Famulus.Platform.PropertyMapper">
+    <Position X="8" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAggA=</HashCode>
+      <FileName>AtomPub\PropertyMapper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Tahoma" Size="8.25" />
+</ClassDiagram>

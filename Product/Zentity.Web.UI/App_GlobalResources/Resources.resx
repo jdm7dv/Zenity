@@ -1,0 +1,2013 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AlertAddedSuccessfullyText" xml:space="preserve">
+    <value>added successfully.</value>
+  </data>
+  <data name="AlertAssetIdNotProvided" xml:space="preserve">
+    <value>Asset Id is not provided.</value>
+    <comment>Prompting if asset id is null</comment>
+  </data>
+  <data name="ConfirmDeleteResource" xml:space="preserve">
+    <value>The resource and its respective associations will be deleted. \r\nAre you sure you wish to delete this resource?</value>
+    <comment>Prompting message before deleting a resource.</comment>
+  </data>
+  <data name="AlertInvalidDateText" xml:space="preserve">
+    <value>Invalid Date Entries</value>
+  </data>
+  <data name="AlertNoMatchFound" xml:space="preserve">
+    <value>No match found.</value>
+  </data>
+  <data name="AlertNoRecordFound" xml:space="preserve">
+    <value>No records found.</value>
+    <comment>Prompting message if requested record is not found</comment>
+  </data>
+  <data name="AlertRecordAdded" xml:space="preserve">
+    <value>{0} added successfully.</value>
+    <comment>Added record successfully in DB</comment>
+  </data>
+  <data name="AlertRecordDelerted" xml:space="preserve">
+    <value>Record deleted successfully.</value>
+    <comment>Deletion of record successfully</comment>
+  </data>
+  <data name="AlertRecordUpdated" xml:space="preserve">
+    <value>{0} updated successfully.</value>
+  </data>
+  <data name="AlertResourceAssociationAdded" xml:space="preserve">
+    <value>Resource to Resource Association saved successfully.</value>
+  </data>
+  <data name="AlertResourceDelerted" xml:space="preserve">
+    <value>The Resource has been deleted.</value>
+  </data>
+  <data name="AlertResourceDelertedError" xml:space="preserve">
+    <value>Resource could not be deleted.</value>
+  </data>
+  <data name="AlertResourceTagAssociationAdded" xml:space="preserve">
+    <value>Resource To Tag Association saved successfully.</value>
+  </data>
+  <data name="AlertTagasscocianAdded" xml:space="preserve">
+    <value>Tag To Tag Association saved successfully.</value>
+  </data>
+  <data name="AlertTagAdded" xml:space="preserve">
+    <value>Tag '{0}' added successfully.</value>
+  </data>
+  <data name="AlertTagAddingError" xml:space="preserve">
+    <value>Error in adding new Tag</value>
+  </data>
+  <data name="AlertTagAssociationDeletingError" xml:space="preserve">
+    <value>This tag can not be deleted as it is related to other tag.</value>
+  </data>
+  <data name="AlertTagDeletingError" xml:space="preserve">
+    <value>Error in deleting the tag.</value>
+  </data>
+  <data name="AlertTagEdited" xml:space="preserve">
+    <value>Tag '{0}' updated successfully.</value>
+  </data>
+  <data name="AlertTagEditingError" xml:space="preserve">
+    <value>Error in Editing the Tag.</value>
+  </data>
+  <data name="BaseResourcetype" xml:space="preserve">
+    <value>Resource</value>
+  </data>
+  <data name="BibtexExportError" xml:space="preserve">
+    <value>Error in importing citations. Please try again.</value>
+  </data>
+  <data name="BibtexExportInvalidId" xml:space="preserve">
+    <value>Cannot find specified resource. Please try again.</value>
+  </data>
+  <data name="BibtexExportMissingId" xml:space="preserve">
+    <value>Please specify a resource to export citations.</value>
+  </data>
+  <data name="BibtexImportError" xml:space="preserve">
+    <value>Error in importing citations. Please try again. &lt;br /&gt;</value>
+  </data>
+  <data name="BibtexImportMappingErrorFormat" xml:space="preserve">
+    <value>{0}) {1}</value>
+  </data>
+  <data name="BibtexImportMissinfId" xml:space="preserve">
+    <value>Please specify a resource to export citations or go back to Step 1</value>
+  </data>
+  <data name="BibtexImportNoData" xml:space="preserve">
+    <value>&amp;nbsp;There are no Resources to import as citations. Click Back and upload another BibTeX file.</value>
+  </data>
+  <data name="BibtexImportParserErrorFormat" xml:space="preserve">
+    <value>{0}) Line {1},Column {2}, Found '{3}': {4}</value>
+  </data>
+  <data name="BibtexImportScopeExternal" xml:space="preserve">
+    <value>Microsoft External</value>
+  </data>
+  <data name="BibtexImportScopeInternal" xml:space="preserve">
+    <value>Internal</value>
+  </data>
+  <data name="BibtexImportSuccessful" xml:space="preserve">
+    <value>Successfully updated citations. </value>
+  </data>
+  <data name="BibtexImportUpdateError" xml:space="preserve">
+    <value>Error in updating Resources. Please try again.&lt;br /&gt;</value>
+  </data>
+  <data name="BibtexImportUpdateSuccessful" xml:space="preserve">
+    <value>Successfully updated newly added resources.&lt;br /&gt;&lt;br /&gt;</value>
+  </data>
+  <data name="ButtonBackText" xml:space="preserve">
+    <value>Back</value>
+    <comment>Back button Caption</comment>
+  </data>
+  <data name="ButtonCancelText" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="ButtonEditResourceText" xml:space="preserve">
+    <value>Edit Resource</value>
+  </data>
+  <data name="ButtonEdditText" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="ButtonAssociate" xml:space="preserve">
+    <value>Associate</value>
+  </data>
+  <data name="ButtonGoText" xml:space="preserve">
+    <value>Go</value>
+    <comment>Go  button Caption</comment>
+  </data>
+  <data name="ButtonNextText" xml:space="preserve">
+    <value>Next</value>
+    <comment>Next  button Caption</comment>
+  </data>
+  <data name="ButtonSaveAndAssociate" xml:space="preserve">
+    <value>Save&amp;Associate</value>
+    <comment>Save &amp; Associate  button Caption</comment>
+  </data>
+  <data name="ButtonSaveText" xml:space="preserve">
+    <value>Save</value>
+    <comment>Save  button Caption</comment>
+  </data>
+  <data name="ButtonSearchText" xml:space="preserve">
+    <value>Search</value>
+    <comment>Search  button Caption</comment>
+  </data>
+  <data name="ButtonUpdateText" xml:space="preserve">
+    <value>Update</value>
+  </data>
+  <data name="ButtonViewResource" xml:space="preserve">
+    <value>View Detail</value>
+  </data>
+  <data name="CheckboxSelectAll" xml:space="preserve">
+    <value>Select All</value>
+  </data>
+  <data name="CreateResourceCreateTitle" xml:space="preserve">
+    <value>Create {0} : Scholarly Work</value>
+  </data>
+  <data name="CreateResourceEditTitle" xml:space="preserve">
+    <value>Edit {0} :  Scholarly Work</value>
+  </data>
+  <data name="EntityKeyText" xml:space="preserve">
+    <value>EntityKey</value>
+  </data>
+  <data name="IsscholarlyworkText" xml:space="preserve">
+    <value>&amp;IsScholarlyWorks</value>
+  </data>
+  <data name="ListResources" xml:space="preserve">
+    <value>ListScholarlyWork.aspx</value>
+  </data>
+  <data name="ListScholarlyWorkPageTitle" xml:space="preserve">
+    <value>ListScholarlyWork</value>
+  </data>
+  <data name="PersonTxtEmailText" xml:space="preserve">
+    <value>Please write person email</value>
+  </data>
+  <data name="PersonTxtFirstnameText" xml:space="preserve">
+    <value>Please write Person first name</value>
+  </data>
+  <data name="PersonTxtLastnameText" xml:space="preserve">
+    <value>Please write Person last name</value>
+  </data>
+  <data name="PersonTxtMiddlenameText" xml:space="preserve">
+    <value>Please write Person middle name</value>
+  </data>
+  <data name="QuerystringAmpersandOperator" xml:space="preserve">
+    <value>&amp;</value>
+  </data>
+  <data name="QuerystringAssignOperator" xml:space="preserve">
+    <value>=</value>
+  </data>
+  <data name="QuerystringIndicator" xml:space="preserve">
+    <value>?</value>
+  </data>
+  <data name="QuerystringIsscholarlyworkFlag" xml:space="preserve">
+    <value>IsScholarlyWork</value>
+  </data>
+  <data name="QuerystringResourceId" xml:space="preserve">
+    <value>Id</value>
+  </data>
+  <data name="QuerystringScholarlyworkFlag" xml:space="preserve">
+    <value>IsScholarlyWorks</value>
+  </data>
+  <data name="QuerystringTypename" xml:space="preserve">
+    <value>TypeName</value>
+  </data>
+  <data name="ResourceAssociationsTitle" xml:space="preserve">
+    <value>Resource Associations</value>
+  </data>
+  <data name="ResourceAssociationPage" xml:space="preserve">
+    <value>CreateAssociation.aspx</value>
+  </data>
+  <data name="ResourceCanNot" xml:space="preserve">
+    <value>This resource cannot be deleted.</value>
+  </data>
+  <data name="ResourceEntitysetName" xml:space="preserve">
+    <value>Resources</value>
+  </data>
+  <data name="ResourceNotexistMessage" xml:space="preserve">
+    <value>Selected Resource does not exist.</value>
+  </data>
+  <data name="ResourceTagPageTitle" xml:space="preserve">
+    <value>View Resource By Tag</value>
+  </data>
+  <data name="ResourceTitleErrormessage" xml:space="preserve">
+    <value>Please enter Resource title.</value>
+  </data>
+  <data name="ResourceTypePage" xml:space="preserve">
+    <value>SelectResourceTypePage.aspx</value>
+  </data>
+  <data name="ResourceUri" xml:space="preserve">
+    <value>Invalid Valid From date</value>
+  </data>
+  <data name="ResourceValidtoErrormesage" xml:space="preserve">
+    <value>Invalid Valid To date</value>
+  </data>
+  <data name="ScholarlyworkTypeText" xml:space="preserve">
+    <value>ScholarlyWork</value>
+  </data>
+  <data name="SelectContactTypePageTitle" xml:space="preserve">
+    <value>Create Contact</value>
+  </data>
+  <data name="SelectResourcetypeMessage" xml:space="preserve">
+    <value>Please Select Resource Type.</value>
+  </data>
+  <data name="SelectResourceTypePageTitle" xml:space="preserve">
+    <value>Select Resource Type</value>
+  </data>
+  <data name="TagAssociationPageTitle" xml:space="preserve">
+    <value>TagToTag Association</value>
+  </data>
+  <data name="TagPageCreateTitle" xml:space="preserve">
+    <value>Add Tag</value>
+  </data>
+  <data name="TagPageEditTitle" xml:space="preserve">
+    <value>Edit Tag</value>
+  </data>
+  <data name="TagPredicate" xml:space="preserve">
+    <value>tag</value>
+  </data>
+  <data name="TagTxtTagdiscriptionText" xml:space="preserve">
+    <value>Please write description of Tag</value>
+  </data>
+  <data name="TagTxtTagnameText" xml:space="preserve">
+    <value>Please write your Tag name</value>
+  </data>
+  <data name="ViewPersonPageTitle" xml:space="preserve">
+    <value>List Contacts</value>
+  </data>
+  <data name="ViewTagPageTitle" xml:space="preserve">
+    <value>Tag Detail</value>
+  </data>
+  <data name="ResourceValidfromErrormesage" xml:space="preserve">
+    <value>Invalid Valid From date.</value>
+  </data>
+  <data name="AlertListEmptyText" xml:space="preserve">
+    <value>No item is selected for association.</value>
+  </data>
+  <data name="BibtexImportNothingFound" xml:space="preserve">
+    <value>The uploaded BibTeX file does not contain any valid BibTeX entry.</value>
+  </data>
+  <data name="BibtexImportUpdateNew" xml:space="preserve">
+    <value>You can mark newly added Resources as internal or external.&lt;br /&gt;&lt;br /&gt;</value>
+  </data>
+  <data name="ResourceCreateFailure" xml:space="preserve">
+    <value>Unable to create {0}.</value>
+  </data>
+  <data name="ResourceUpdateFailure" xml:space="preserve">
+    <value>Unable to update {0} details.</value>
+  </data>
+  <data name="Contact" xml:space="preserve">
+    <value>Contact</value>
+  </data>
+  <data name="PredicateAddedBy" xml:space="preserve">
+    <value>added-by</value>
+  </data>
+  <data name="PredicateAuthoredBy" xml:space="preserve">
+    <value>authored-by</value>
+  </data>
+  <data name="PredicateContributionBy" xml:space="preserve">
+    <value>contribution-by</value>
+  </data>
+  <data name="PredicateEditedBy" xml:space="preserve">
+    <value>edited-by</value>
+  </data>
+  <data name="PredicatePresentedBy" xml:space="preserve">
+    <value>presented-by</value>
+  </data>
+  <data name="Resource" xml:space="preserve">
+    <value>Resource</value>
+  </data>
+  <data name="ResourceTypeViewPageTitle" xml:space="preserve">
+    <value>View Resource By Type</value>
+  </data>
+  <data name="AlertCategoryAdded" xml:space="preserve">
+    <value>Category '{0}' added successfully.</value>
+  </data>
+  <data name="CategoryPageCreateTitle" xml:space="preserve">
+    <value>Add Category</value>
+  </data>
+  <data name="CategoryPageEditTitle" xml:space="preserve">
+    <value>Edit Category</value>
+  </data>
+  <data name="CategoryTxtTagnameText" xml:space="preserve">
+    <value>Please enter category name.</value>
+  </data>
+  <data name="AlertResourceCategoryAssociationAdded" xml:space="preserve">
+    <value>Resource To Category Association saved successfully.</value>
+  </data>
+  <data name="PredicateCategories" xml:space="preserve">
+    <value>categories</value>
+  </data>
+  <data name="ResourceToCategoryAssociationLabel" xml:space="preserve">
+    <value>Resource To Category Association</value>
+  </data>
+  <data name="ResourceToTagAssociationLabel" xml:space="preserve">
+    <value>Resource To Tag Association</value>
+  </data>
+  <data name="AlertCategoryAssociationDeletingError" xml:space="preserve">
+    <value>This Category can not be deleted as it is related to other Category</value>
+  </data>
+  <data name="AlertCategoryasscoctianAdded" xml:space="preserve">
+    <value>Category To Category Association saved successfully.</value>
+  </data>
+  <data name="AlertCategoryEdited" xml:space="preserve">
+    <value>Category '{0}' updated successfully.</value>
+  </data>
+  <data name="CategoryAssociationPageTitle" xml:space="preserve">
+    <value>Category-to-Category Association</value>
+  </data>
+  <data name="AlertFilterBoxEmptyText" xml:space="preserve">
+    <value>Please enter a value.</value>
+  </data>
+  <data name="ResourceToContactAssociationLabel" xml:space="preserve">
+    <value>Resource To Contact Association</value>
+  </data>
+  <data name="ResourceToResourceAssociationLabel" xml:space="preserve">
+    <value>Resource To Resource Association</value>
+  </data>
+  <data name="InvalidDownloadFile" xml:space="preserve">
+    <value>Invalid File</value>
+  </data>
+  <data name="NoFileDownload" xml:space="preserve">
+    <value>No file to download. It might have been deleted.</value>
+  </data>
+  <data name="ResourceFileType" xml:space="preserve">
+    <value>File</value>
+  </data>
+  <data name="ResponseContentType" xml:space="preserve">
+    <value>application/octet-stream</value>
+  </data>
+  <data name="ResponseHeaderContentDispositionName" xml:space="preserve">
+    <value>Content-Disposition</value>
+  </data>
+  <data name="ResponseHeaderContentDispositionValue" xml:space="preserve">
+    <value>attachment; filename=</value>
+  </data>
+  <data name="ResponseHeaderContentLengthName" xml:space="preserve">
+    <value>Content-Length</value>
+  </data>
+  <data name="SelectDownloadFile" xml:space="preserve">
+    <value>Please select File to download</value>
+  </data>
+  <data name="UnableDownload" xml:space="preserve">
+    <value>Unable to download file.Try again.</value>
+  </data>
+  <data name="ResourceDetailsPage" xml:space="preserve">
+    <value>ResourceDetails.aspx</value>
+  </data>
+  <data name="SimilarityMatchMissingId" xml:space="preserve">
+    <value>Please specify a resource to match records.</value>
+  </data>
+  <data name="SimilarityMatchResourceFound" xml:space="preserve">
+    <value>&lt;br /&gt;If you want to edit any existing Resource, click on the Title to modify. Click the following button to create new Resource. </value>
+  </data>
+  <data name="SimilarityMatchResourceIsNotWithExisting" xml:space="preserve">
+    <value>Resource does not match any of the existing resources. Click the following button to create new.</value>
+  </data>
+  <data name="SimilarityMatchResourceSaved" xml:space="preserve">
+    <value>It seems that Resource is already saved to repository. Please go to Resource details page to verify.</value>
+  </data>
+  <data name="SimilarityMatchSelectProrperties" xml:space="preserve">
+    <value>Select at least one property to build match criteria.</value>
+  </data>
+  <data name="AlertSearchCriteria" xml:space="preserve">
+    <value>Please select at least one search criteria.</value>
+  </data>
+  <data name="TagDetailPageTitle" xml:space="preserve">
+    <value>Tag Details</value>
+  </data>
+  <data name="CategoryDetailPageTitle" xml:space="preserve">
+    <value>Category Detail</value>
+  </data>
+  <data name="DisplayCategoryPageTitle" xml:space="preserve">
+    <value>DisplayCategory</value>
+  </data>
+  <data name="AlertSearchSelectNavigation" xml:space="preserve">
+    <value>Please select navigation property.</value>
+  </data>
+  <data name="AlertSearchSelectValue" xml:space="preserve">
+    <value>Value field should not be empty.</value>
+  </data>
+  <data name="AlertSearchValue" xml:space="preserve">
+    <value>Value field  is mandatory.</value>
+  </data>
+  <data name="ErrorRecordDelerted" xml:space="preserve">
+    <value>Error in deleting the resource.</value>
+  </data>
+  <data name="AlertBackMessage" xml:space="preserve">
+    <value>Previous page was participating in transaction process, please do not click "Back" button.</value>
+  </data>
+  <data name="AlertCategoryAddFailed" xml:space="preserve">
+    <value>Failed to add new category.</value>
+  </data>
+  <data name="AlertCategoryUpdated" xml:space="preserve">
+    <value>Category updated successfully.</value>
+  </data>
+  <data name="AlertCategoryUpdateFailed" xml:space="preserve">
+    <value>Failed to update category.</value>
+  </data>
+  <data name="CategoryLabelDescriptionText" xml:space="preserve">
+    <value>Category Description</value>
+  </data>
+  <data name="CategoryLabelFilterText" xml:space="preserve">
+    <value>Filter Categories (By Name):</value>
+  </data>
+  <data name="CategoryLabelNameText" xml:space="preserve">
+    <value>Category Name</value>
+  </data>
+  <data name="CategoryLabelTitleText" xml:space="preserve">
+    <value>Category-To-Category Association</value>
+  </data>
+  <data name="CategoryLabelUriText" xml:space="preserve">
+    <value>Category Uri</value>
+  </data>
+  <data name="CategoryNameEmptyMsg" xml:space="preserve">
+    <value>Please enter category name.</value>
+  </data>
+  <data name="CategoryNameErrorMsg" xml:space="preserve">
+    <value>Category name cannot be empty.</value>
+  </data>
+  <data name="TagLabelDescriptionText" xml:space="preserve">
+    <value>Tag Description</value>
+  </data>
+  <data name="TagLabelFilterText" xml:space="preserve">
+    <value>Filter Tags (By Name):</value>
+  </data>
+  <data name="TagLabelNameText" xml:space="preserve">
+    <value>Tag Name</value>
+  </data>
+  <data name="TagLabelUriText" xml:space="preserve">
+    <value>Tag Uri</value>
+  </data>
+  <data name="TagNameEmptyMsg" xml:space="preserve">
+    <value>Please enter Tag Name.</value>
+  </data>
+  <data name="TagNameErrorMsg" xml:space="preserve">
+    <value>Tag Name can't be empty.</value>
+  </data>
+  <data name="TagLabelMatchCondText" xml:space="preserve">
+    <value>Match Condition</value>
+  </data>
+  <data name="TagLabelPagingText" xml:space="preserve">
+    <value>Tags Per Page</value>
+  </data>
+  <data name="PersonLabelConditionText" xml:space="preserve">
+    <value>Match Condition</value>
+  </data>
+  <data name="PersonLabelContacttypeText" xml:space="preserve">
+    <value>Select (Person/Contact/Organization)</value>
+  </data>
+  <data name="PersonLabelContactListHeaderText" xml:space="preserve">
+    <value>List of Contact Type</value>
+  </data>
+  <data name="PersonLabelErrorText" xml:space="preserve">
+    <value>Records Not Found.</value>
+  </data>
+  <data name="PersonLabelPaggingText" xml:space="preserve">
+    <value>Record Per Page</value>
+  </data>
+  <data name="PersonLabelPropertyText" xml:space="preserve">
+    <value>Get Persons By</value>
+  </data>
+  <data name="PersonLabelSearchResultText" xml:space="preserve">
+    <value>Search Result</value>
+  </data>
+  <data name="PersonLabelValueText" xml:space="preserve">
+    <value>Value</value>
+  </data>
+  <data name="PersonValidatorText" xml:space="preserve">
+    <value>Please Enter Value.</value>
+  </data>
+  <data name="CategoryLabelCategoryTreeText" xml:space="preserve">
+    <value>Category Tree</value>
+  </data>
+  <data name="CategoryLabelConditonText" xml:space="preserve">
+    <value>Match Condition</value>
+  </data>
+  <data name="CategoryLabelValueText" xml:space="preserve">
+    <value>Value</value>
+  </data>
+  <data name="CategoryLabelRelatedresourcesText" xml:space="preserve">
+    <value>Related Resources</value>
+  </data>
+  <data name="CategoryLabelRelatedtagsText" xml:space="preserve">
+    <value>Related Categories</value>
+  </data>
+  <data name="CategoryLabelViewcategoryText" xml:space="preserve">
+    <value>Category Details</value>
+  </data>
+  <data name="ResourceButtonExportText" xml:space="preserve">
+    <value>Export citations as BibTeX</value>
+  </data>
+  <data name="ResourceButtonImportText" xml:space="preserve">
+    <value>Import new citations</value>
+  </data>
+  <data name="ResourceLabelDetailsText" xml:space="preserve">
+    <value>{0} Details</value>
+  </data>
+  <data name="ResourceLabelFiltertagsText" xml:space="preserve">
+    <value>Filter Tags (By Name):</value>
+  </data>
+  <data name="ResourceLabelResourcePropertiesText" xml:space="preserve">
+    <value>{0} Properties</value>
+  </data>
+  <data name="ResourceLabelNoteText" xml:space="preserve">
+    <value>Note: Only the supported BibTeX entries will be exported.</value>
+  </data>
+  <data name="ResourceLabelOrText" xml:space="preserve">
+    <value>Or</value>
+  </data>
+  <data name="ResourceLabelRelatedcontactsText" xml:space="preserve">
+    <value>Related Contacts</value>
+  </data>
+  <data name="ResourceLabelRelateddownloadText" xml:space="preserve">
+    <value>Related Downloads</value>
+  </data>
+  <data name="ResourceLabelRelatedfileText" xml:space="preserve">
+    <value>File Download</value>
+  </data>
+  <data name="ResourceLabelRelatedresText" xml:space="preserve">
+    <value>Related Resources</value>
+  </data>
+  <data name="ResourceLabelRelatedtagsText" xml:space="preserve">
+    <value>Related Tags</value>
+  </data>
+  <data name="TagLabelRelatedresourcesText" xml:space="preserve">
+    <value>Related Resources</value>
+  </data>
+  <data name="TagLabelRelatedtagsText" xml:space="preserve">
+    <value>Related tags</value>
+  </data>
+  <data name="TagLabelTitleText" xml:space="preserve">
+    <value>Title</value>
+  </data>
+  <data name="ResourceButtonBackText" xml:space="preserve">
+    <value>Back</value>
+  </data>
+  <data name="ResourceButtonGoText" xml:space="preserve">
+    <value>Go</value>
+  </data>
+  <data name="ResourceButtonNextText" xml:space="preserve">
+    <value>Next</value>
+  </data>
+  <data name="ResourceLabelNavpropertyText" xml:space="preserve">
+    <value>Predicate</value>
+  </data>
+  <data name="ResourceLabelOperatorText" xml:space="preserve">
+    <value>Operator</value>
+  </data>
+  <data name="ResourceLabelPagesizeText" xml:space="preserve">
+    <value>Page Size</value>
+  </data>
+  <data name="ResourceLabelResourcetypeText" xml:space="preserve">
+    <value>Resource Type</value>
+  </data>
+  <data name="ResourceLabelSearchforText" xml:space="preserve">
+    <value>Search For</value>
+  </data>
+  <data name="ResourceLabelSearchresultText" xml:space="preserve">
+    <value>Search Results</value>
+  </data>
+  <data name="ResourceLabelSelectrestypeText" xml:space="preserve">
+    <value> Select Resource Type</value>
+  </data>
+  <data name="ResourceLabelValueText" xml:space="preserve">
+    <value>Value</value>
+  </data>
+  <data name="ResourceLbaelQuerybuilderText" xml:space="preserve">
+    <value>Query Builder</value>
+  </data>
+  <data name="ResourceLabelDateaddedText" xml:space="preserve">
+    <value>Date Added</value>
+  </data>
+  <data name="ResourceLabelFromText" xml:space="preserve">
+    <value>From</value>
+  </data>
+  <data name="ResourceLabelGetresbyresText" xml:space="preserve">
+    <value>Get Resources By Resource Type</value>
+  </data>
+  <data name="ResourceLabelGetresbyText" xml:space="preserve">
+    <value>Get Resource By</value>
+  </data>
+  <data name="ResourceLabelGetrestypeText" xml:space="preserve">
+    <value>Get Resources By Type</value>
+  </data>
+  <data name="ResourceLabelMatchcondText" xml:space="preserve">
+    <value>Match Condition</value>
+  </data>
+  <data name="ResourceLabelRecordperpageText" xml:space="preserve">
+    <value>Records Per Page</value>
+  </data>
+  <data name="ResourceLabelSearchbyText" xml:space="preserve">
+    <value>Search By</value>
+  </data>
+  <data name="ResourceLabelSelectresText" xml:space="preserve">
+    <value>Select Resources</value>
+  </data>
+  <data name="ResourceLabelSelecttypeText" xml:space="preserve">
+    <value>Select (Person/Contact/Organization)</value>
+  </data>
+  <data name="ResourceLabelToText" xml:space="preserve">
+    <value>To</value>
+  </data>
+  <data name="ResourceLabelViewresbypersonText" xml:space="preserve">
+    <value>View Resource By Person</value>
+  </data>
+  <data name="ResourceLabelListofresText" xml:space="preserve">
+    <value>List of Resources</value>
+  </data>
+  <data name="ResourceLabelListscolworkText" xml:space="preserve">
+    <value>Resources</value>
+  </data>
+  <data name="ResourceValidatorRangedateText" xml:space="preserve">
+    <value>Date not valid</value>
+  </data>
+  <data name="ResourceValidatorTodateText" xml:space="preserve">
+    <value>'To' date can't be before 'From' date</value>
+  </data>
+  <data name="CategoryLabelCategroynameText" xml:space="preserve">
+    <value>Category Name</value>
+  </data>
+  <data name="CategoryLabelCatperpageText" xml:space="preserve">
+    <value>Categories Per Page</value>
+  </data>
+  <data name="ContactLabelMostactiveauthorsText" xml:space="preserve">
+    <value>Most active Authors</value>
+  </data>
+  <data name="ErrorMessage" xml:space="preserve">
+    <value>An error occurred while performing previous action. Please try again later or contact the administrator.</value>
+  </data>
+  <data name="ResourceButtonCancelText" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="ResourceButtonSaveText" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="ResourceCheckboxAllText" xml:space="preserve">
+    <value>All</value>
+  </data>
+  <data name="ResourceLabelFilterbyText" xml:space="preserve">
+    <value>Filter By :</value>
+  </data>
+  <data name="ResourceLabelPredicateText" xml:space="preserve">
+    <value>Predicates :</value>
+  </data>
+  <data name="ResourceLabelResourceassText" xml:space="preserve">
+    <value>Resource Association</value>
+  </data>
+  <data name="ResourceLabelRtorassociatoinText" xml:space="preserve">
+    <value>Resource to Resource Association</value>
+  </data>
+  <data name="ResourceLabelRtotassociatoinText" xml:space="preserve">
+    <value>Resource to Tag Association</value>
+  </data>
+  <data name="ResourceLabelTitleText" xml:space="preserve">
+    <value>Resource Title :</value>
+  </data>
+  <data name="TagLabelMostusedtagsText" xml:space="preserve">
+    <value>Most used Tags</value>
+  </data>
+  <data name="LabelManageUsersDescText" xml:space="preserve">
+    <value>Using this feature you can add new user to the repository. you can associate this user to existing groups and update his permissions.</value>
+  </data>
+  <data name="LabelManageUsersText" xml:space="preserve">
+    <value>Manager Users</value>
+  </data>
+  <data name="LabelAddScholWorkDescText" xml:space="preserve">
+    <value>Using this feature you can add a new resource to the repository. Associate this resource to other resources.</value>
+  </data>
+  <data name="LabelAddScholWorkText" xml:space="preserve">
+    <value>Add Resource</value>
+  </data>
+  <data name="LabelAddTagsDescText" xml:space="preserve">
+    <value>Using this feature you can add a new tag to the repository and then associate it with existing tags in the repository as well.</value>
+  </data>
+  <data name="LabelAddTagsText" xml:space="preserve">
+    <value>Add Tag</value>
+  </data>
+  <data name="LabelManagePageManageGroupsDescText" xml:space="preserve">
+    <value>Using this feature you can add new user group to the repository. you can associate this group to existing users and update its permissions.</value>
+  </data>
+  <data name="LabelManagePageManageGroupsText" xml:space="preserve">
+    <value>Manage Groups</value>
+  </data>
+  <data name="LabelListScholWorkDescText" xml:space="preserve">
+    <value>Using this feature you can view existing resources in the repository and edit / delete them as well. While editing, you can change the resources' properties and its association with other resources as well.</value>
+  </data>
+  <data name="LabelListScholWorkText" xml:space="preserve">
+    <value>Edit/ Delete Resources</value>
+  </data>
+  <data name="LabelListTagsDescText" xml:space="preserve">
+    <value>Using this feature you can view the existing tags and edit/delete them as well. While editing you can edit its properties as well as associate it to other existing resources.</value>
+  </data>
+  <data name="LabelListTagsText" xml:space="preserve">
+    <value>Edit/ Delete Tags</value>
+  </data>
+  <data name="LabelManageCategoryText" xml:space="preserve">
+    <value>Manage Categories</value>
+  </data>
+  <data name="LabelManageContactText" xml:space="preserve">
+    <value>Manage Contacts</value>
+  </data>
+  <data name="LabelManageScholWorkLabel" xml:space="preserve">
+    <value>Manage</value>
+  </data>
+  <data name="LabelManageTagsText" xml:space="preserve">
+    <value>Manage Tags</value>
+  </data>
+  <data name="ResourceLabelViewbycatedescText" xml:space="preserve">
+    <value>Using this feature you can add a new category to the repository and also associate it with existing categories in the repository.</value>
+  </data>
+  <data name="ResourceLabelViewbycategoryText" xml:space="preserve">
+    <value>View By Category</value>
+  </data>
+  <data name="ResourceLabelViewbypersondescText" xml:space="preserve">
+    <value>Using this feature you can view existing contacts and edit/delete them as well.</value>
+  </data>
+  <data name="ResourceLabelViewbypersonText" xml:space="preserve">
+    <value>View By Person</value>
+  </data>
+  <data name="ResourceLabelViewbytagdescText" xml:space="preserve">
+    <value>Using this feature you can view the existing tags and edit/delete them as well. While editing you can associate tag to other existing tags with existing set of Predicates.</value>
+  </data>
+  <data name="ResourceLabelViewbytagText" xml:space="preserve">
+    <value>View By Tag</value>
+  </data>
+  <data name="ResourceLabelViewbytypedescText" xml:space="preserve">
+    <value>Using this feature you can view the existing resources in the repository by Type. It means that you can view the resources of specific type (media/audio/video,etc) &amp; further a match condition on Title/Date Added can be given.</value>
+  </data>
+  <data name="ResourceLabelViewbytypeText" xml:space="preserve">
+    <value>View By Type</value>
+  </data>
+  <data name="ResourceBibtextimportError" xml:space="preserve">
+    <value>Label</value>
+  </data>
+  <data name="ResourceBibtextimportFileuploadmessage" xml:space="preserve">
+    <value>Please browse and select a BibTeX file to upload.</value>
+  </data>
+  <data name="ResourceBibtextimportMappingerror" xml:space="preserve">
+    <value>Mapping Errors</value>
+  </data>
+  <data name="ResourceBibtextimportMessage" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ResourceBibtextimportNewresource" xml:space="preserve">
+    <value>New resources</value>
+  </data>
+  <data name="ResourceBibtextimportParseerror" xml:space="preserve">
+    <value>Parse Errors</value>
+  </data>
+  <data name="ResourceBibtextimportResourcewithcitations" xml:space="preserve">
+    <value>Resources exist and already cited</value>
+  </data>
+  <data name="ResourceBibtextimportResourcewithoutcitations" xml:space="preserve">
+    <value>Resources exist but not cited</value>
+  </data>
+  <data name="ResourceBibtextimportStep1button" xml:space="preserve">
+    <value>Next</value>
+  </data>
+  <data name="ResourceBibtextimportStep2backbutton" xml:space="preserve">
+    <value>&lt;&lt; Back</value>
+  </data>
+  <data name="ResourceBibtextimportStep2button" xml:space="preserve">
+    <value>Import</value>
+  </data>
+  <data name="ResourceBibtextimportStep3button" xml:space="preserve">
+    <value>Update &amp; Finish</value>
+  </data>
+  <data name="ResourceBibtextimportSuccesspareseentries" xml:space="preserve">
+    <value>Successfully parsed entries</value>
+  </data>
+  <data name="ResourceLabelSpecificPropertiesText" xml:space="preserve">
+    <value>Object Property</value>
+  </data>
+  <data name="ResourceLabelSpecpropertyText" xml:space="preserve">
+    <value>Specific Property</value>
+  </data>
+  <data name="ResourcesMatchedCount" xml:space="preserve">
+    <value>Matched Resources :</value>
+  </data>
+  <data name="InvalidResource" xml:space="preserve">
+    <value>Invalid resource id.</value>
+  </data>
+  <data name="ResourceNotFound" xml:space="preserve">
+    <value>Resource could not be found. It might have been deleted.</value>
+  </data>
+  <data name="AssociationUpdateFailure" xml:space="preserve">
+    <value>{0} Association update failed</value>
+  </data>
+  <data name="Create" xml:space="preserve">
+    <value>Add</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="ResourceLabelRelatedCategoryText" xml:space="preserve">
+    <value>Related Categories</value>
+  </data>
+  <data name="EmailColumnText" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="TitleColumnText" xml:space="preserve">
+    <value>Title</value>
+  </data>
+  <data name="ResourceCategorizationFailMessage" xml:space="preserve">
+    <value>Resource categorization failed.</value>
+  </data>
+  <data name="ResourceCategorizationSuccesMessage" xml:space="preserve">
+    <value>Resource categorization is saved  successfully.</value>
+  </data>
+  <data name="ScholarlyWorkItemCategorizationTitle" xml:space="preserve">
+    <value>ScholarlyWorkItem Categorization</value>
+  </data>
+  <data name="ResourceTaggingFailMessage" xml:space="preserve">
+    <value>Resource tagging fails.</value>
+  </data>
+  <data name="ResourceTaggingSuccesMessage" xml:space="preserve">
+    <value>Resource tagging is saved  successfully.</value>
+  </data>
+  <data name="ResourceTaggingTitle" xml:space="preserve">
+    <value>Resource Tagging</value>
+  </data>
+  <data name="TitleRecentlyAddedResources" xml:space="preserve">
+    <value>Recently Added Resources</value>
+  </data>
+  <data name="TitleRecentlyModifiedScholarlyWorks" xml:space="preserve">
+    <value>Recently Modified Scholarly Works</value>
+  </data>
+  <data name="LectureImageSize" xml:space="preserve">
+    <value>Uploaded image size should be smaller.</value>
+  </data>
+  <data name="SimilarityMatchButtonCreateNew" xml:space="preserve">
+    <value>Create New</value>
+  </data>
+  <data name="SimilarityMatchButtonSearchText" xml:space="preserve">
+    <value>Find Similar</value>
+  </data>
+  <data name="SimilarityMatchLabelMatchCriteriaText" xml:space="preserve">
+    <value>Find Similar Resources</value>
+  </data>
+  <data name="SimilarityMatchLabelMatchingRecordsText" xml:space="preserve">
+    <value>Matching Records</value>
+  </data>
+  <data name="ResourceLabelSearchByPredicateText" xml:space="preserve">
+    <value>Search by Predicate</value>
+  </data>
+  <data name="ResourceLabelBasicSearchText" xml:space="preserve">
+    <value>Basic Search</value>
+  </data>
+  <data name="PageLoadingText" xml:space="preserve">
+    <value>Loading...</value>
+  </data>
+  <data name="PredicateAssociationTitle" xml:space="preserve">
+    <value>{0} Association</value>
+  </data>
+  <data name="AlertNoAssociationToSave" xml:space="preserve">
+    <value>Association does not exist for save.</value>
+  </data>
+  <data name="InvalidDate" xml:space="preserve">
+    <value>Invalid date</value>
+  </data>
+  <data name="SearchValidationGroup" xml:space="preserve">
+    <value>SearchValidation</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="CategoryDeletionFailed" xml:space="preserve">
+    <value>Category deletion failed.</value>
+  </data>
+  <data name="CategoryDeletionSucceded" xml:space="preserve">
+    <value>Category '{0}' deleted successfully.</value>
+  </data>
+  <data name="ResourceDeletionFailed" xml:space="preserve">
+    <value>Resource deletion failed.</value>
+  </data>
+  <data name="ResourceDeletionSucceded" xml:space="preserve">
+    <value>Resource '{0}' deleted successfully.</value>
+  </data>
+  <data name="TagDeletionFailed" xml:space="preserve">
+    <value>Tag deletion failed.Try Again.</value>
+  </data>
+  <data name="TagDeletionSucceded" xml:space="preserve">
+    <value>Tag '{0}' deleted successfully.</value>
+  </data>
+  <data name="CategoryToCategoryAssociation" xml:space="preserve">
+    <value>Category to Category Association</value>
+  </data>
+  <data name="ResourceToResourceAssociation" xml:space="preserve">
+    <value>Resource to Resource Association</value>
+  </data>
+  <data name="TagToTagAssociation" xml:space="preserve">
+    <value>Tag to Tag Association</value>
+  </data>
+  <data name="InvalidCriteria" xml:space="preserve">
+    <value>Criteria  {0}: Invalid date for {1}. Valid format: {2}</value>
+  </data>
+  <data name="validationSummaryHeader" xml:space="preserve">
+    <value>Please correct the following:</value>
+  </data>
+  <data name="InvalidNumberErrorMessage" xml:space="preserve">
+    <value>Invalid number OR Number out of range</value>
+  </data>
+  <data name="InvalidCriteriaNumber" xml:space="preserve">
+    <value>Criteria  {0}: Invalid number or Number out of range for {1}</value>
+  </data>
+  <data name="EmptyCriteria" xml:space="preserve">
+    <value>Criteria  {0}:  Value field is mandatory for  {1}</value>
+  </data>
+  <data name="TagToCategoryConfirmation" xml:space="preserve">
+    <value>The tag will be converted to a category. Do you want to continue?</value>
+  </data>
+  <data name="ImportCitationLabelTitleText" xml:space="preserve">
+    <value>Import Citations</value>
+  </data>
+  <data name="BibtexImportErrorEntries" xml:space="preserve">
+    <value>Erroneous entries</value>
+  </data>
+  <data name="BibTexImportStep2BackButtonText" xml:space="preserve">
+    <value>Back</value>
+  </data>
+  <data name="BibTexImportStep2ButtonText" xml:space="preserve">
+    <value>Import</value>
+  </data>
+  <data name="BibTexImportStep3ButtonText" xml:space="preserve">
+    <value>"Update &amp; Finish"</value>
+  </data>
+  <data name="TextNavigationLinks" xml:space="preserve">
+    <value>Navigation Links</value>
+  </data>
+  <data name="BibTexImportStep1NextButtonText" xml:space="preserve">
+    <value>Next</value>
+  </data>
+  <data name="BibTexExportCitationsNotAvailble" xml:space="preserve">
+    <value>Citations are not available for export as BibTeX file.</value>
+  </data>
+  <data name="SimilarityMatchLabelPercentageText" xml:space="preserve">
+    <value>Minimum Percentage Match</value>
+  </data>
+  <data name="SimilarityMatchValidatorPercentageRangeText" xml:space="preserve">
+    <value>Minimum percentage should be within range 1 to 100</value>
+  </data>
+  <data name="CategoryNotFound" xml:space="preserve">
+    <value>Category could not be found. It might have been deleted.</value>
+  </data>
+  <data name="InvalidCategory" xml:space="preserve">
+    <value>Invalid category id.</value>
+  </data>
+  <data name="InvalidTag" xml:space="preserve">
+    <value>Invalid tag id.</value>
+  </data>
+  <data name="TagNotFound" xml:space="preserve">
+    <value>Tag could not be found. It might have been deleted.</value>
+  </data>
+  <data name="AlertTagAddFailed" xml:space="preserve">
+    <value>Failed to add new tag</value>
+  </data>
+  <data name="AlertTagUpdateFailed" xml:space="preserve">
+    <value>Failed to update tag</value>
+  </data>
+  <data name="SimilarityMatchLabelSelectProperties" xml:space="preserve">
+    <value>Please select at least one of the below properties to get similar records:</value>
+  </data>
+  <data name="ConfirmDeleteCategory" xml:space="preserve">
+    <value>The category and its respective associations will be deleted. \r\nAre you sure you wish to delete this category?</value>
+    <comment>Prompting message before deleting a category.</comment>
+  </data>
+  <data name="ConfirmDeleteTag" xml:space="preserve">
+    <value>The tag and its respective associations will be deleted. \r\nAre you sure you wish to delete this tag?</value>
+    <comment>Prompting message before deleting a tag.</comment>
+  </data>
+  <data name="AlertResourceAdded" xml:space="preserve">
+    <value>{0}  '{1}' added successfully.</value>
+  </data>
+  <data name="AlertResourceEdited" xml:space="preserve">
+    <value>{0} '{1}' updated successfully.</value>
+  </data>
+  <data name="AssociationInvalidObjectEntity" xml:space="preserve">
+    <value>Invalid Object Entity Type.</value>
+  </data>
+  <data name="AssociationInvalidSubjectEntity" xml:space="preserve">
+    <value>Invalid Subject Entity Type.</value>
+  </data>
+  <data name="AssociationPageTitle" xml:space="preserve">
+    <value>Association</value>
+  </data>
+  <data name="InvalidResourceType" xml:space="preserve">
+    <value>Invalid resource type.</value>
+  </data>
+  <data name="CustomErrorPageHeader" xml:space="preserve">
+    <value>Error Occurred</value>
+  </data>
+  <data name="PageNotFoundMessage" xml:space="preserve">
+    <value>The page you have requested could not be found. Please check the URL for proper spelling and capitalization.</value>
+  </data>
+  <data name="ConcurrentAccess" xml:space="preserve">
+    <value>Data has been updated by another user. It should be refreshed.</value>
+  </data>
+  <data name="TimeoutMessage" xml:space="preserve">
+    <value>Your request took longer than expected and has timed out. Please try again later.</value>
+  </data>
+  <data name="TagToCategoryUpdateConfirmation" xml:space="preserve">
+    <value>The tag will be converted to a category and the tag\'s association with tags will be deleted. Do you want to continue?</value>
+  </data>
+  <data name="ResourceEmptyTitle" xml:space="preserve">
+    <value>&lt;no title&gt;</value>
+  </data>
+  <data name="DefaultFilelName" xml:space="preserve">
+    <value>File</value>
+  </data>
+  <data name="CategoryNodePropertiesTitle" xml:space="preserve">
+    <value>CategoryNode Properties</value>
+  </data>
+  <data name="TagPropertiesTitle" xml:space="preserve">
+    <value>Tag Properties</value>
+  </data>
+  <data name="TagCategoryDisplayErrorMessage" xml:space="preserve">
+    <value>{0} cannot be viewed through this page. Please navigate through List {0}</value>
+  </data>
+  <data name="BrowseAuthorsPageTitle" xml:space="preserve">
+    <value>Browse By Authors</value>
+  </data>
+  <data name="BrowseResourceTypePageTitle" xml:space="preserve">
+    <value>Browse By Resource type</value>
+  </data>
+  <data name="BrowseCategoryPageTitle" xml:space="preserve">
+    <value>Browse By Category Hierarchy</value>
+  </data>
+  <data name="BrowseYearPageTitle" xml:space="preserve">
+    <value>Browse By Year</value>
+  </data>
+  <data name="InvalidBrowsByMode" xml:space="preserve">
+    <value>Invalid Browse by mode.</value>
+  </data>
+  <data name="ChangeHistoryPageTitle" xml:space="preserve">
+    <value>View Change History</value>
+  </data>
+  <data name="FindSimilarResourcesPageTitle" xml:space="preserve">
+    <value>Find Similar Resources</value>
+  </data>
+  <data name="ManagePageTitle" xml:space="preserve">
+    <value>Manage</value>
+  </data>
+  <data name="ManageCategoryTitle" xml:space="preserve">
+    <value>Manage Categories</value>
+  </data>
+  <data name="CategoryNodeAssociationPageTitle" xml:space="preserve">
+    <value>Category Node Association </value>
+  </data>
+  <data name="DisplayDetailsPageTitle" xml:space="preserve">
+    <value>{0} Details</value>
+  </data>
+  <data name="InvalidCategoryNode" xml:space="preserve">
+    <value>Invalid category node id.</value>
+  </data>
+  <data name="AdvSearch_OptionsHeader" xml:space="preserve">
+    <value>Options</value>
+  </data>
+  <data name="AdvSearch_RelationshipHeader" xml:space="preserve">
+    <value>Choose Relationship Properties</value>
+  </data>
+  <data name="AdvSearch_ResourceTypeHeader" xml:space="preserve">
+    <value>Choose Resource Type</value>
+  </data>
+  <data name="AdvSearch_SubjectConditionText" xml:space="preserve">
+    <value>selected subjects with each other.</value>
+  </data>
+  <data name="AdvSearch_SubjectHeader" xml:space="preserve">
+    <value>Choose from Subject</value>
+  </data>
+  <data name="AdvSearch_TagConditionText" xml:space="preserve">
+    <value>selected tags with each other.</value>
+  </data>
+  <data name="AdvSearch_TagsHeader" xml:space="preserve">
+    <value>Choose from Tags</value>
+  </data>
+  <data name="BasicSearch_Example" xml:space="preserve">
+    <value>E.g.: 
+&lt;br/&gt;
+Quantum Universe Author:Tony
+&lt;br/&gt;
+Adventure Author:(FirstName:Mark OR LastName:Twain)
+&lt;br/&gt;
+ResourceType:Tag Name:Adventure</value>
+  </data>
+  <data name="AdvSearch_SearchString" xml:space="preserve">
+    <value>Search String</value>
+  </data>
+  <data name="AdvSearch_PropertyHeader" xml:space="preserve">
+    <value>Choose Resource Properties (as per selected resource type)</value>
+  </data>
+  <data name="Search_AdvSearchDesc" xml:space="preserve">
+    <value>Using this feature, you can search for resources by selecting various search criteria using UI. It provides a subset of the capabilities that basic search provides. Once the search criteria are submitted, a search string is created which can be modified as desired.</value>
+  </data>
+  <data name="Search_BasicSearchDesc" xml:space="preserve">
+    <value>Using this feature, you can search for resources by entering a search string. You can search using values, property values, via relationships and resource types using the search syntax.</value>
+  </data>
+  <data name="BrowseByAuthorDesc" xml:space="preserve">
+    <value>Browse by Author allows browsing of resources by their authors. Select an author to view his/her authored works.</value>
+  </data>
+  <data name="BrowseByResourceTypeDesc" xml:space="preserve">
+    <value>Browse by Resource Type allows browsing of resources by their type.</value>
+  </data>
+  <data name="BrowseByCategoryDesc" xml:space="preserve">
+    <value>Browse by Category Hierarchy allows browsing of resources by the subject areas that they are associated with.</value>
+  </data>
+  <data name="BrowseByYearDesc" xml:space="preserve">
+    <value>Browse by Year allows browsing of resources by the date on which they were added. Select a year to browse resources added in that year. You can select a month in a particular year to be more specific.</value>
+  </data>
+  <data name="LabelCategoryDescText" xml:space="preserve">
+    <value>Using this feature you can manage Category hierarchies in the repository. Operations such as add / edit / delete / cut / paste a new for a category to the repository are available.</value>
+  </data>
+  <data name="LabelCategoryText" xml:space="preserve">
+    <value>Manage Categories</value>
+  </data>
+  <data name="DateAddedColumnText" xml:space="preserve">
+    <value>Date Added</value>
+  </data>
+  <data name="DateModifiedColumnText" xml:space="preserve">
+    <value>Date Modified</value>
+  </data>
+  <data name="DescriptionColumnText" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="BasicSearch_ContentSearch" xml:space="preserve">
+    <value>Content Search</value>
+  </data>
+  <data name="NoFileUploadedMessage" xml:space="preserve">
+    <value>There is no Uploaded file.</value>
+  </data>
+  <data name="NoRelatedCategoriesMessage" xml:space="preserve">
+    <value>There are no Related Categories</value>
+  </data>
+  <data name="NoRelatedContactsMessage" xml:space="preserve">
+    <value>There are no Related Contacts</value>
+  </data>
+  <data name="NoRelatedDownloadsMessage" xml:space="preserve">
+    <value>There are no Related Downloads.</value>
+  </data>
+  <data name="NoRelatedResourcesMessage" xml:space="preserve">
+    <value>There are no Related Resources</value>
+  </data>
+  <data name="NoRelatedTagsMessage" xml:space="preserve">
+    <value>There are no Related Tags</value>
+  </data>
+  <data name="ButtonLogin" xml:space="preserve">
+    <value>Login</value>
+  </data>
+  <data name="ButtonLogout" xml:space="preserve">
+    <value>Logout</value>
+  </data>
+  <data name="LabelUserName" xml:space="preserve">
+    <value>User Name :</value>
+  </data>
+  <data name="MsgLoginFailed" xml:space="preserve">
+    <value>Login failed! Invalid username or password.</value>
+  </data>
+  <data name="MsgWelcomeUser" xml:space="preserve">
+    <value>Welcome {0} | </value>
+  </data>
+  <data name="UnauthorizedAccessException" xml:space="preserve">
+    <value>Access denied.</value>
+  </data>
+  <data name="ZentityHelpAbout" xml:space="preserve">
+    <value>About Zentity</value>
+  </data>
+  <data name="ZentityHelpForums" xml:space="preserve">
+    <value>Zentity Forums</value>
+  </data>
+  <data name="ZentityHelpGuide" xml:space="preserve">
+    <value>How-To Guides</value>
+  </data>
+  <data name="ZentityHelpReference" xml:space="preserve">
+    <value>Developer References</value>
+  </data>
+  <data name="ZentityHelpSummary" xml:space="preserve">
+    <value>Use this help to learn about Zentity's many features and developer samples.</value>
+  </data>
+  <data name="ZentityManagePermissions" xml:space="preserve">
+    <value>Manage Permissions</value>
+  </data>
+  <data name="ZentityManageResources" xml:space="preserve">
+    <value>Edit/ Delete Resources</value>
+  </data>
+  <data name="ZentityManageSummary" xml:space="preserve">
+    <value>Add/Edit/Delete Resources, Users, Groups from the Zentity repository.</value>
+  </data>
+  <data name="ZentityManageUser" xml:space="preserve">
+    <value>Manage Users</value>
+  </data>
+  <data name="ZentitySearchExample" xml:space="preserve">
+    <value>E.g. Quantum Universe Author:Tony</value>
+  </data>
+  <data name="ZentitySearchSummary" xml:space="preserve">
+    <value>Search the resources in the repository. You can search using Structured Query Syntax.</value>
+  </data>
+  <data name="ZentityServicesAtomPub" xml:space="preserve">
+    <value>AtomPub</value>
+  </data>
+  <data name="ZentityServicesOAIORE" xml:space="preserve">
+    <value>OAI-ORE</value>
+  </data>
+  <data name="ZentityServicesOAIPMH" xml:space="preserve">
+    <value>OAI-PMH</value>
+  </data>
+  <data name="ZentityServicesRDFS" xml:space="preserve">
+    <value>RDFS</value>
+  </data>
+  <data name="ZentityServicesSyndication" xml:space="preserve">
+    <value>Syndication</value>
+  </data>
+  <data name="ZentityServicesSummary" xml:space="preserve">
+    <value>Use the Open Standards compliant services provided by Zentity to access data directly in the repository database.</value>
+  </data>
+  <data name="ZentityServicesSWORD" xml:space="preserve">
+    <value>SWORD</value>
+  </data>
+  <data name="ZentityBrowseByAuthor" xml:space="preserve">
+    <value>By Author</value>
+  </data>
+  <data name="ZentityBrowseByResType" xml:space="preserve">
+    <value>By Resource Type</value>
+  </data>
+  <data name="ZentityBrowseByCategory" xml:space="preserve">
+    <value>By Category</value>
+  </data>
+  <data name="ZentityBrowseByYear" xml:space="preserve">
+    <value>By Year</value>
+  </data>
+  <data name="ZentityBrowseRecentlyAddedResource" xml:space="preserve">
+    <value>Recently Added Resources</value>
+  </data>
+  <data name="ZentityBrowseSummary" xml:space="preserve">
+    <value>Browse the repository with predefined views. These views provide basic filter criteria to navigate through resources.</value>
+  </data>
+  <data name="ZentityBrowseTopAuthors" xml:space="preserve">
+    <value>Top Authors</value>
+  </data>
+  <data name="ButtonSubmitText" xml:space="preserve">
+    <value>Submit</value>
+  </data>
+  <data name="LabelAccountStatusText" xml:space="preserve">
+    <value>Account Status</value>
+  </data>
+  <data name="LabelAnswerText" xml:space="preserve">
+    <value>Answer</value>
+  </data>
+  <data name="LabelCityText" xml:space="preserve">
+    <value>City</value>
+  </data>
+  <data name="LabelCountryText" xml:space="preserve">
+    <value>Country</value>
+  </data>
+  <data name="LabelEmailText" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="LabelFirstNameText" xml:space="preserve">
+    <value>First Name</value>
+  </data>
+  <data name="LabelGroupAssignmentText" xml:space="preserve">
+    <value>Group Assignment</value>
+  </data>
+  <data name="LabelLastNameText" xml:space="preserve">
+    <value>Last Name</value>
+  </data>
+  <data name="LabelManageUserText" xml:space="preserve">
+    <value>Users</value>
+  </data>
+  <data name="LabelMiddleNameText" xml:space="preserve">
+    <value>Middle Name</value>
+  </data>
+  <data name="LabelPasswordText" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="LabelReEnterPassword" xml:space="preserve">
+    <value>Re-enter Password</value>
+  </data>
+  <data name="LabelSecurityQuesText" xml:space="preserve">
+    <value>Security Question</value>
+  </data>
+  <data name="LabelStateText" xml:space="preserve">
+    <value>State</value>
+  </data>
+  <data name="LabelLoginNameText" xml:space="preserve">
+    <value>Login Name</value>
+  </data>
+  <data name="ZentityAuthor" xml:space="preserve">
+    <value>Author:</value>
+  </data>
+  <data name="ZentityEmail" xml:space="preserve">
+    <value>Email:</value>
+  </data>
+  <data name="ZentityMostAuthoredWorks" xml:space="preserve">
+    <value>Authored Works:</value>
+  </data>
+  <data name="ZentityMore" xml:space="preserve">
+    <value>more...</value>
+  </data>
+  <data name="ZentityMostActiveAuthor" xml:space="preserve">
+    <value>Top Authors</value>
+  </data>
+  <data name="ZentityNoTitle" xml:space="preserve">
+    <value>&lt;notitle&gt;</value>
+  </data>
+  <data name="UserUnauthorizedAccessException" xml:space="preserve">
+    <value>Access denied to user '{0}'.</value>
+  </data>
+  <data name="MsgUnAuthorizeAccess" xml:space="preserve">
+    <value>You do not have {0} access to the resource.</value>
+  </data>
+  <data name="MsgUnauthorizedAccessOnMultipleResources" xml:space="preserve">
+    <value>You do not have {0} access to one or more resources on the page. Please try again.</value>
+  </data>
+  <data name="MsgUnAuthorizeAccessCreate" xml:space="preserve">
+    <value>You do not have Create access.</value>
+  </data>
+  <data name="MsgResourcesCannotBeCited" xml:space="preserve">
+    <value>Following resources cannot be cited since user is not having enough permissions.</value>
+  </data>
+  <data name="MsgResourcesCannotBeImported" xml:space="preserve">
+    <value>Following resources cannot be imported since user is not having enough permissions.</value>
+  </data>
+  <data name="ZentityBrowse" xml:space="preserve">
+    <value>Browse</value>
+  </data>
+  <data name="ZentityHelp" xml:space="preserve">
+    <value>Help</value>
+  </data>
+  <data name="ZentityHome" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="ZentityManage" xml:space="preserve">
+    <value>Manage</value>
+  </data>
+  <data name="ZentitySearch" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="ZentityServices" xml:space="preserve">
+    <value>Services</value>
+  </data>
+  <data name="ZentityTags" xml:space="preserve">
+    <value>Tags</value>
+  </data>
+  <data name="LabelErrorRegistrationFail" xml:space="preserve">
+    <value>Unable to add user, Please try after some time.</value>
+  </data>
+  <data name="LabelRegistrationCompleted" xml:space="preserve">
+    <value>User '{0}' added successfully.</value>
+  </data>
+  <data name="LabelUserInformationText" xml:space="preserve">
+    <value>User Information</value>
+  </data>
+  <data name="LabelUserInfoUpdated" xml:space="preserve">
+    <value>User '{0}'  updated successfully.</value>
+  </data>
+  <data name="ZentityManageAddResource" xml:space="preserve">
+    <value>Add Resource</value>
+  </data>
+  <data name="ZentityManageAddTag" xml:space="preserve">
+    <value>Add Tag</value>
+  </data>
+  <data name="ZentityManageGroup" xml:space="preserve">
+    <value>Manage Groups</value>
+  </data>
+  <data name="ZentityManageCategory" xml:space="preserve">
+    <value>Manage Categories</value>
+  </data>
+  <data name="ZentityManageTags" xml:space="preserve">
+    <value>Edit/ Delete Tags</value>
+  </data>
+  <data name="LabelAddedGroupText" xml:space="preserve">
+    <value>Group '{0}' added successfully.</value>
+  </data>
+  <data name="LabelErrorGroupAddText" xml:space="preserve">
+    <value>Unable to create new Group {0}</value>
+  </data>
+  <data name="LabelGroupPropertiesText" xml:space="preserve">
+    <value>Group Properties</value>
+  </data>
+  <data name="LabelGroupsText" xml:space="preserve">
+    <value>Group</value>
+  </data>
+  <data name="LabelManageGroupsText" xml:space="preserve">
+    <value>Groups</value>
+  </data>
+  <data name="ViewStateIsUserSearch" xml:space="preserve">
+    <value>IsUserSearch</value>
+  </data>
+  <data name="DefaultUserRights" xml:space="preserve">
+    <value>Read</value>
+  </data>
+  <data name="Owner" xml:space="preserve">
+    <value>Owner</value>
+  </data>
+  <data name="Update" xml:space="preserve">
+    <value>Update</value>
+  </data>
+  <data name="AllowPermission" xml:space="preserve">
+    <value>Allow</value>
+  </data>
+  <data name="DenyPermission" xml:space="preserve">
+    <value>Deny</value>
+  </data>
+  <data name="SearchAll" xml:space="preserve">
+    <value>All</value>
+  </data>
+  <data name="SearchInExistingList" xml:space="preserve">
+    <value>With permissions other than default Read</value>
+  </data>
+  <data name="SearchGroups" xml:space="preserve">
+    <value>Search Groups</value>
+  </data>
+  <data name="SearchUsers" xml:space="preserve">
+    <value>Search Users</value>
+  </data>
+  <data name="NoteUserOrGroupSearch" xml:space="preserve">
+    <value>* Empty search string will return all results.</value>
+  </data>
+  <data name="ZentityHelpChangeHistory" xml:space="preserve">
+    <value>Change History User Guide</value>
+  </data>
+  <data name="ZentityHelpChangeHistorySummary" xml:space="preserve">
+    <value>This document explains Change history logging feature which can be used for capturing/ tracking create/update/delete operations on resources.</value>
+  </data>
+  <data name="ZentityHelpCoreReference" xml:space="preserve">
+    <value>Core API Reference</value>
+  </data>
+  <data name="ZentityHelpCoreReferenceSummary" xml:space="preserve">
+    <value>Contains MSDN style help for the Core API. Also contains the ScholarlyWorks data model and code samples.</value>
+  </data>
+  <data name="ZentityHelpDataModelExtensibility" xml:space="preserve">
+    <value>Extensibility User Guide</value>
+  </data>
+  <data name="ZentityHelpDataModelExtensibilitySummary" xml:space="preserve">
+    <value>This document explains extensibility design for defining new custom entities, properties and associations between them.</value>
+  </data>
+  <data name="ZentityHelpInstallationGuide" xml:space="preserve">
+    <value>Step-by-step Installation Guide</value>
+  </data>
+  <data name="ZentityHelpInstallationGuideSummary" xml:space="preserve">
+    <value>Document explains installation Steps for future installations.</value>
+  </data>
+  <data name="ZentityHelpPlatformReference" xml:space="preserve">
+    <value>Platform API Reference</value>
+  </data>
+  <data name="ZentityHelpPlatformReferenceSummary" xml:space="preserve">
+    <value>Provides help for supported APIs including BibTeX, AtomPub, SWORD and SearchEngine classes.</value>
+  </data>
+  <data name="ZentityHelpQuickGuide" xml:space="preserve">
+    <value>Quick Guide</value>
+  </data>
+  <data name="ZentityHelpQuickGuideSummary" xml:space="preserve">
+    <value>Developers can use this guide to help them build applications on top of Zentity. The Guide contains multiple scenarios, with code examples,  to help developers start customizing the platform.</value>
+  </data>
+  <data name="ZentityHelpSecurityReference" xml:space="preserve">
+    <value>Security API Reference</value>
+  </data>
+  <data name="ZentityHelpSecurityReferenceSummary" xml:space="preserve">
+    <value>This documentation details about Authentication and Authorization API to configure and use the pluggable security model.</value>
+  </data>
+  <data name="ZentityHelpTitle" xml:space="preserve">
+    <value>Help / Documentation</value>
+  </data>
+  <data name="ZentityHelpToolkitReference" xml:space="preserve">
+    <value>UI Toolkit API Reference</value>
+  </data>
+  <data name="ZentityHelpToolkitReferenceSummary" xml:space="preserve">
+    <value>Provides in depth API reference for all the custom controls used to build the default
+                                    UI.</value>
+  </data>
+  <data name="ZentityAboutBlog" xml:space="preserve">
+    <value>Blog</value>
+  </data>
+  <data name="ZentityAboutBlogSummary" xml:space="preserve">
+    <value>Savas Parastatidis blogs about this repository platform at,</value>
+  </data>
+  <data name="ZentityAboutEmailUs" xml:space="preserve">
+    <value> Email us at,</value>
+  </data>
+  <data name="ZentityAboutFeedback" xml:space="preserve">
+    <value>Feedback</value>
+  </data>
+  <data name="ZentityAboutMicrosoftResearch" xml:space="preserve">
+    <value>About Microsoft External Research</value>
+  </data>
+  <data name="ZentityAboutMicrosoftResearchSummary" xml:space="preserve">
+    <value>Microsoft External Research group extends collaboration by building partnerships and empowering researchers and academics with technologies and services. More information at,</value>
+  </data>
+  <data name="ZentityAboutRepositoryForum" xml:space="preserve">
+    <value>Repository Forum</value>
+  </data>
+  <data name="ZentityAboutRepositoryForumSummary" xml:space="preserve">
+    <value>We invite you to post questions, comments, requests, bugs to our forum at,</value>
+  </data>
+  <data name="ZentityAboutZentity" xml:space="preserve">
+    <value>About Zentity</value>
+  </data>
+  <data name="ZentityAboutZentitySummary" xml:space="preserve">
+    <value>Zentity aims to provide the necessary  building blocks, tools, and services for developers who are tasked with creating  and maintaining an organization’s repository ecosystem. Furthermore, it provides  an easy-to-install and maintain experience for those who want to quickly set up a research output repository for their project, team, or organization. The platform
+is based on Microsoft’s technologies (SQL Server 2008 and .NET Framework version 3.5 SP1) hence taking advantage of their robustness, their quality support infrastructure, and the plethora of developer-focused documentation.</value>
+  </data>
+  <data name="ZentityAboutTitle" xml:space="preserve">
+    <value>Zentity</value>
+  </data>
+  <data name="ZentityService" xml:space="preserve">
+    <value>Services</value>
+  </data>
+  <data name="ZentityServiceAtomPub" xml:space="preserve">
+    <value>AtomPub</value>
+  </data>
+  <data name="ZentityServiceAtomPubDescription" xml:space="preserve">
+    <value>Zentity supports the AtomPub (Atom Publishing Protocol)  for deposit scenarios. AtomPub service accepts GET, POST, PUT, DELETE requests for documents of any type. AtomPub service supports 22 collections that can be used to deposit resources of different resource types.</value>
+  </data>
+  <data name="ZentityServiceDescription" xml:space="preserve">
+    <value>Service Description:</value>
+  </data>
+  <data name="ZentityServiceEndPoint" xml:space="preserve">
+    <value>Service Endpoint:</value>
+  </data>
+  <data name="ZentityServiceName" xml:space="preserve">
+    <value>Service Name:</value>
+  </data>
+  <data name="ZentityServiceOaiOre" xml:space="preserve">
+    <value>OAI-ORE</value>
+  </data>
+  <data name="ZentityServiceOaiOreDescription" xml:space="preserve">
+    <value>Zentity provides an OAI – ORE Service that supports Resource Map Implementation in RDF/XML. The service provides Resource Maps which  are network accessible resources that encapsulate a set of RDF statements.</value>
+  </data>
+  <data name="ZentityServiceOaiPmh" xml:space="preserve">
+    <value>OAI-PMH</value>
+  </data>
+  <data name="ZentityServiceOaiPmhDescription" xml:space="preserve">
+    <value>User can make the metadata stored in Zentity searchable by common search engines. Common search engines support metadata harvesting through the OAI – PMH specification.</value>
+  </data>
+  <data name="ZentityServiceSummary" xml:space="preserve">
+    <value>Browse the extensive help on repository usage. This contains general learning material along with developer oriented help files and samples.</value>
+  </data>
+  <data name="ZentityServiceSword" xml:space="preserve">
+    <value>SWORD</value>
+  </data>
+  <data name="ZentityServiceSwordDescription" xml:space="preserve">
+    <value>Zentity supports the SWORD APP Profile 1.2 – Level 0 for interoperable and bulk deposit between repository platforms. The SWORD service accepts GET, POST, PUT and DELETE requests for a document of any type.</value>
+  </data>
+  <data name="ZentityServiceSyndication" xml:space="preserve">
+    <value>Syndication</value>
+  </data>
+  <data name="ZentityServiceSyndicationDescription" xml:space="preserve">
+    <value>Zentity provides both RSS and Atom syndication support for the resources in the database.</value>
+  </data>
+  <data name="AuthorsTitle" xml:space="preserve">
+    <value>Authors</value>
+  </data>
+  <data name="ButtonFiltersText" xml:space="preserve">
+    <value>Submit</value>
+  </data>
+  <data name="ButtonResetFilters" xml:space="preserve">
+    <value>Reset Filters</value>
+  </data>
+  <data name="CategoriesTreeTitle" xml:space="preserve">
+    <value>Categories</value>
+  </data>
+  <data name="ResourceTypesTreeTitle" xml:space="preserve">
+    <value>Resource Types</value>
+  </data>
+  <data name="YearsTreeTitle" xml:space="preserve">
+    <value>Years</value>
+  </data>
+  <data name="AdvancedSearch" xml:space="preserve">
+    <value>Advanced Search</value>
+  </data>
+  <data name="BasicSearch" xml:space="preserve">
+    <value>Basic Search</value>
+  </data>
+  <data name="BrowseFilterLabelText" xml:space="preserve">
+    <value>Enter search string: </value>
+  </data>
+  <data name="NoRecordsFound" xml:space="preserve">
+    <value>No records found.</value>
+  </data>
+  <data name="MsgUnAuthorizeAccessOwner" xml:space="preserve">
+    <value>You do not have Owner Access on Resource.</value>
+  </data>
+  <data name="GlobalPermission" xml:space="preserve">
+    <value>Global Permission</value>
+  </data>
+  <data name="ResourcePermission" xml:space="preserve">
+    <value>Resource Permission</value>
+  </data>
+  <data name="SearchResources" xml:space="preserve">
+    <value>Search Resource</value>
+  </data>
+  <data name="CategoryAssociationChangesText" xml:space="preserve">
+    <value>Category Association Changes</value>
+  </data>
+  <data name="ChangeHistoryTitle" xml:space="preserve">
+    <value>Change History Logging</value>
+  </data>
+  <data name="MsgInvalidTab" xml:space="preserve">
+    <value>Invalid Tab name.</value>
+  </data>
+  <data name="RelationshipChangesText" xml:space="preserve">
+    <value>Relationship Changes</value>
+  </data>
+  <data name="ResourceTaggingChangesText" xml:space="preserve">
+    <value>Resource Tagging Changes</value>
+  </data>
+  <data name="ScalarPropertyChangeText" xml:space="preserve">
+    <value>Scalar Property Changes</value>
+  </data>
+  <data name="TabCategoriesText" xml:space="preserve">
+    <value>Categories</value>
+  </data>
+  <data name="TabChangeHistoryText" xml:space="preserve">
+    <value>Change History</value>
+  </data>
+  <data name="TabMetadataText" xml:space="preserve">
+    <value>Metadata</value>
+  </data>
+  <data name="TabPermissionsText" xml:space="preserve">
+    <value>Permissions</value>
+  </data>
+  <data name="TabRelatedResourcesText" xml:space="preserve">
+    <value>Related Resources</value>
+  </data>
+  <data name="TabResourceTypeText" xml:space="preserve">
+    <value>Resource Type</value>
+  </data>
+  <data name="TabSummaryText" xml:space="preserve">
+    <value>Summary</value>
+  </data>
+  <data name="TabTagsText" xml:space="preserve">
+    <value>Tags</value>
+  </data>
+  <data name="AdditionalFilters" xml:space="preserve">
+    <value>Filters</value>
+  </data>
+  <data name="DefaultAdminGroupName" xml:space="preserve">
+    <value>Administrators</value>
+  </data>
+  <data name="DefaultAllUserGroupName" xml:space="preserve">
+    <value>AllUsers</value>
+  </data>
+  <data name="DescriptionText" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="GroupNameText" xml:space="preserve">
+    <value>Group Name</value>
+  </data>
+  <data name="GroupTitleText" xml:space="preserve">
+    <value>Group Title</value>
+  </data>
+  <data name="PasswordNotmatchMessage" xml:space="preserve">
+    <value>Password and re-type password do not match</value>
+  </data>
+  <data name="UriText" xml:space="preserve">
+    <value>Uri</value>
+  </data>
+  <data name="DefaultIdentityAdministrator" xml:space="preserve">
+    <value>Administrator</value>
+  </data>
+  <data name="DefaultIdentityGuest" xml:space="preserve">
+    <value>Guest</value>
+  </data>
+  <data name="RecentlyAddedReourcesDesc" xml:space="preserve">
+    <value>Browse through top 10 recently added resources.</value>
+  </data>
+  <data name="TopAuthorsDesc" xml:space="preserve">
+    <value>Browse through top 10 authors and their corresponding authored works.</value>
+  </data>
+  <data name="MsgUnauthorizeAccessDeleteCategory" xml:space="preserve">
+    <value>You do not have Delete access to the selected category or its child categories.</value>
+  </data>
+  <data name="MsgEnterPassword" xml:space="preserve">
+    <value>Please enter password.</value>
+  </data>
+  <data name="MsgEnterUserName" xml:space="preserve">
+    <value>Please enter username.</value>
+  </data>
+  <data name="FailToGrantPermission" xml:space="preserve">
+    <value>Unable to grant permission.</value>
+  </data>
+  <data name="PermissionGranted" xml:space="preserve">
+    <value>Permission granted successfully.</value>
+  </data>
+  <data name="ComponentNotInstalled" xml:space="preserve">
+    <value>This component is not installed.</value>
+  </data>
+  <data name="ZentityHelpServicesReference" xml:space="preserve">
+    <value>Services API Reference</value>
+  </data>
+  <data name="ZentityHelpServicesReferenceSummary" xml:space="preserve">
+    <value>Provides help for supported services including AtomPub, SWORD and Syndication.</value>
+  </data>
+  <data name="ZentityHelpSearch" xml:space="preserve">
+    <value>Search User Guide</value>
+  </data>
+  <data name="ZentityHelpSearchSummary" xml:space="preserve">
+    <value>This summary document explains Search design, configurations and examples based on Advanced Query Syntax.</value>
+  </data>
+  <data name="ZentityHelpSecurity" xml:space="preserve">
+    <value>Security User Guide</value>
+  </data>
+  <data name="ZentityHelpSecuritySummary" xml:space="preserve">
+    <value>This summary document explains pluggable Authentication and Authorization Security design, configurations and examples of usage.</value>
+  </data>
+  <data name="NoPermissionText" xml:space="preserve">
+    <value>Permissions of administrators cannot be modified.</value>
+  </data>
+  <data name="LabelUpdatedGrouptext" xml:space="preserve">
+    <value>Group '{0}' updated successfully.</value>
+  </data>
+  <data name="LabelUserInfoAdded" xml:space="preserve">
+    <value>User '{0}'  added successfully.</value>
+  </data>
+  <data name="ErrorDeletingUsers" xml:space="preserve">
+    <value>Unable to delete users: {0}.</value>
+  </data>
+  <data name="ErrorDeletingGroups" xml:space="preserve">
+    <value>Unable to delete groups: {0}.</value>
+  </data>
+  <data name="LabelErrorGroupUpdateText" xml:space="preserve">
+    <value>Unable to update Group {0}</value>
+  </data>
+  <data name="LabelErrorUpdateUserFail" xml:space="preserve">
+    <value>Unable to update user, Please try after some time.</value>
+  </data>
+  <data name="SelectThemeSummary" xml:space="preserve">
+    <value>Select one of the available themes to change the look and feel of the website:</value>
+  </data>
+  <data name="GuestPassword" xml:space="preserve">
+    <value>guest@123</value>
+  </data>
+  <data name="SelectThemeHeader" xml:space="preserve">
+    <value>Change Theme</value>
+  </data>
+  <data name="ZentityHelpUIGuide" xml:space="preserve">
+    <value>Web UI User Guide</value>
+  </data>
+  <data name="ZentityHelpUIGuideSummary" xml:space="preserve">
+    <value>This document explains the features provided in Web UI.</value>
+  </data>
+  <data name="ChangePasswordText" xml:space="preserve">
+    <value>Change Password</value>
+  </data>
+  <data name="CompareNewPasswordError" xml:space="preserve">
+    <value>The Confirm New Password must match the New Password.</value>
+  </data>
+  <data name="LabelConfirmNewPasswordText" xml:space="preserve">
+    <value>Confirm New Password</value>
+  </data>
+  <data name="LabelNewPasswordText" xml:space="preserve">
+    <value>New Password</value>
+  </data>
+  <data name="PasswordChangeError" xml:space="preserve">
+    <value>Your password could not be changed.</value>
+  </data>
+  <data name="PasswordChangeSuccess" xml:space="preserve">
+    <value>Your password has been changed successfully.</value>
+  </data>
+  <data name="RequiredText" xml:space="preserve">
+    <value>Required</value>
+  </data>
+  <data name="InvalidFormatMessage" xml:space="preserve">
+    <value>Unable to process request because an invalid format has been encountered.</value>
+  </data>
+  <data name="ContentSearchDisabledMessage" xml:space="preserve">
+    <value>Please refer to Core documentation for steps to enable Content Search, or contact your administrator.</value>
+  </data>
+  <data name="ContentSearchEnabledMessage" xml:space="preserve">
+    <value>Checking on this option will enable search in uploaded content.</value>
+  </data>
+  <data name="ParameterNode" xml:space="preserve">
+    <value>node</value>
+  </data>
+  <data name="PredicateRelationshipsAsObject" xml:space="preserve">
+    <value>RelationshipsAsObject.Predicate</value>
+  </data>
+  <data name="PredicateRelationshipsAsSubject" xml:space="preserve">
+    <value>RelationshipsAsSubject.Predicate</value>
+  </data>
+  <data name="ZentityCategoryNodes" xml:space="preserve">
+    <value>CategoryNodes</value>
+  </data>
+  <data name="ZentityCites" xml:space="preserve">
+    <value>Cites</value>
+  </data>
+  <data name="AssignmentsGroup" xml:space="preserve">
+    <value>Group Assignments</value>
+  </data>
+  <data name="AssignmentsResource" xml:space="preserve">
+    <value>Resource Assignments</value>
+  </data>
+  <data name="AssignmentsUser" xml:space="preserve">
+    <value>User Assignments</value>
+  </data>
+  <data name="ConnectionStringConnectTimeout" xml:space="preserve">
+    <value>Connect Timeout</value>
+  </data>
+  <data name="ConnectionStringProvider" xml:space="preserve">
+    <value>provider connection string=</value>
+  </data>
+  <data name="ConnectionStringTimeout" xml:space="preserve">
+    <value>Connection Timeout</value>
+  </data>
+  <data name="DropDownItemTitle" xml:space="preserve">
+    <value>title</value>
+  </data>
+  <data name="EndPointAtomPub" xml:space="preserve">
+    <value>AtomPubEndPoint</value>
+  </data>
+  <data name="EndPointOaiOre" xml:space="preserve">
+    <value>OaiOreEndPoint</value>
+  </data>
+  <data name="EndPointOaiPmh" xml:space="preserve">
+    <value>OaiPmhEndPoint</value>
+  </data>
+  <data name="EndPointSWORD" xml:space="preserve">
+    <value>SWORDEndPoint</value>
+  </data>
+  <data name="EndPointSyndication" xml:space="preserve">
+    <value>SyndicationEndPoint</value>
+  </data>
+  <data name="EntityClientProvider" xml:space="preserve">
+    <value>System.Data.EntityClient</value>
+  </data>
+  <data name="GroupsPage" xml:space="preserve">
+    <value>Groups.aspx</value>
+  </data>
+  <data name="IncludeAuthoredWorks" xml:space="preserve">
+    <value>AuthoredWorks</value>
+  </data>
+  <data name="ManageResourceLink" xml:space="preserve">
+    <value>ManageResource.aspx?ActiveTab=Summary&amp;Id=</value>
+  </data>
+  <data name="MsgUserOrGroupInvalid" xml:space="preserve">
+    <value>User or Group Guid is invalid</value>
+  </data>
+  <data name="PageIndexRange" xml:space="preserve">
+    <value>10,15,25,50</value>
+  </data>
+  <data name="SearchTitle" xml:space="preserve">
+    <value>Title:</value>
+  </data>
+  <data name="UsersPage" xml:space="preserve">
+    <value>Users.aspx</value>
+  </data>
+  <data name="ZentityAuthenticationProvider" xml:space="preserve">
+    <value>ZentityAuthenticationProvider</value>
+  </data>
+  <data name="ZentityLocalSqlServer" xml:space="preserve">
+    <value>LocalSqlServer</value>
+  </data>
+  <data name="ZentityNavigationalProperties" xml:space="preserve">
+    <value>NavigationalProperties</value>
+  </data>
+</root>

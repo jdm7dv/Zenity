@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<Include xmlns="http://schemas.microsoft.com/wix/2006/wi">
+
+  <!-- Set the default install level -->
+  <Property Id="INSTALLLEVEL" Value="100" />
+
+  <!-- Icon displayed in Add/Remove Programs -->
+  <Icon Id="InstallerIcon" SourceFile="Resources\Installer.ico" />
+  <Property Id="ARPPRODUCTICON" Value="InstallerIcon" />
+
+  <!-- Help Link -->
+  <Property Id="ARPHELPLINK" Value="!(loc.ARPHELPLINK)" />
+  <!-- Support Link -->
+  <Property Id="ARPURLINFOABOUT" Value="!(loc.ARPURLINFOABOUT)" />
+  <!-- Update Info -->
+  <Property Id="ARPURLUPDATEINFO" Value="!(loc.ARPURLUPDATEINFO)" />
+  <!-- Contact Info -->
+  <Property Id="ARPCONTACT" Value="!(loc.ARPCONTACT)" />
+  <!-- Comments -->
+  <Property Id="ARPCOMMENTS" Value="!(loc.ARPCOMMENTS)" />
+  <!-- Install for all users -->
+  <Property Id="ALLUSERS" Value="1" />
+  <!-- Hide repair option -->
+  <Property Id="ARPNOREPAIR" Value="1" />
+  <!-- Hide change option -->
+  <Property Id="ARPNOMODIFY" Value="1" />
+
+  <!-- Website details -->
+  <!-- Website details -->
+  <Property Id="WEBSITE_DESCRIPTION">
+    <RegistrySearch Id="ZENTITYIISWEBSITENAME" Name="ZentityWebSiteDescription" Root="HKLM" Key="SOFTWARE\$(var.ProductName)\$(var.ProductWebAppName)\Install" Type="raw" />
+  </Property>
+  <Property Id="ZENTITYIISWEBSITEPORT" Value="9090">
+    <RegistrySearch Id="ZentityWebSitePort" Name="ZentityWebSitePort" Root="HKLM" Key="SOFTWARE\$(var.ProductName)\$(var.ProductWebAppName)\Install" Type="raw" />
+  </Property>
+
+  <Property Id="ZENTITYCALLBACKPORT" Value="9091">
+    <RegistrySearch Id="ZentityCallbackPort" Name="ZentityCallbackPort" Root="HKLM" Key="SOFTWARE\$(var.ProductName)\$(var.ProductWebAppName)\Install" Type="raw" />
+  </Property>
+
+  <!--Need to remember the setup mode that was selected-->
+  <Property Id="CUSTOMSETUPTYPESELECTEDSAVE">
+    <RegistrySearch Id="CUSTOMSETUPTYPESELECTEDSAVE" Root="HKLM" Key="SOFTWARE\Zentity" Name="CustomSetupTypeSelected" Type="raw" />
+  </Property>
+
+  <!--Need to remember which dir was used for installation-->
+  <Property Id="INSTALLDIRSAVE">
+    <RegistrySearch Id="INSTALLDIRSAVE" Root="HKLM" Key="SOFTWARE\Zentity" Name="INSTALLDIR" Type="raw" />
+  </Property>
+
+  <!--Database details-->
+  <Property Id="CORESQLSERVERDATABASENAME" Value="Zentity"></Property>
+  <Property Id="FILESTREAMFOLDERNAME" Value="ZentityFiles"></Property>
+  <Property Id="FILESTREAMFOLDER" Value="C:\Zentity\Filestream"></Property>
+  <Property Id="OAIPMHSQLSERVERDATABASENAME" Value="ZentityPlatform"></Property>
+  <Property Id="AUTHENTICATIONSQLSERVERDATABASENAME" Value="ZentityAuthentication"></Property>
+  
+  
+  <!-- IIS Website details-->
+  <Property Id="ZENTITYIISWEBSITENAME" Value="Zentity v2.0"></Property>
+
+  <!--Notification Service details-->
+  <Property Id="TIMEOUT" Value="30000"></Property>
+  <Property Id="BATCHSIZE" Value="500"></Property>
+  
+  <!--Pivot service details -->
+  <Property Id="PIVOTSERVICESSHAREPATH" Value="C:\PublishedCollections"></Property>
+
+</Include>

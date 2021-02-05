@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://aditidt486:9090/Pivot/PublishingService?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:import schemaLocation="http://aditidt486:9090/Pivot/PublishingService?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Zentity.Services.Web.Pivot" />
+  <xs:import schemaLocation="http://aditidt486:9090/Pivot/PublishingService?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/Zentity.Services.Web" />
+  <xs:element name="CreateCollection">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="modelNamespace" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="resourceType" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateCollectionResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="CreateCollectionResult" type="q1:guid" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateCollection">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="resourceChangeMessageFilePath" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="modelNamespace" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="resourceType" nillable="true" type="xs:string" />
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/Zentity.Services.Web.Pivot" minOccurs="0" name="changeMessage" nillable="true" type="q2:ResourceChangeMessage" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateCollectionResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="UpdateCollectionResult" type="q3:guid" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeletePublishedCollection">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="modelNamespace" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="resourceType" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CancelPublishRequestByInstanceID">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="instanceId" type="q4:guid" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CancelPublishRequestByInstanceIDResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CancelPublishRequestByInstanceIDResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CancelPublishRequestByResourceType">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="modelNamespace" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="resourceType" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CancelPublishRequestByResourceTypeResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CancelPublishRequestByResourceTypeResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllPublishingStatus">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllPublishingStatusResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/Zentity.Services.Web" minOccurs="0" name="GetAllPublishingStatusResult" nillable="true" type="q5:ArrayOfPublishStatus" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPublishingStatusByInstanceID">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="instanceId" type="q6:guid" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPublishingStatusByInstanceIDResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/Zentity.Services.Web" minOccurs="0" name="GetPublishingStatusByInstanceIDResult" nillable="true" type="q7:PublishStatus" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPublishingStatusByResourceType">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="modelNamespace" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="resourceType" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPublishingStatusByResourceTypeResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/Zentity.Services.Web" minOccurs="0" name="GetPublishingStatusByResourceTypeResult" nillable="true" type="q8:PublishStatus" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllQueuedRequests">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllQueuedRequestsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/Zentity.Services.Web" minOccurs="0" name="GetAllQueuedRequestsResult" nillable="true" type="q9:ArrayOfPublishStatus" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetQueuedRequestByInstanceID">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q10="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="instanceId" type="q10:guid" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetQueuedRequestByInstanceIDResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/Zentity.Services.Web" minOccurs="0" name="GetQueuedRequestByInstanceIDResult" nillable="true" type="q11:PublishStatus" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetQueuedRequestsByResourceType">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="modelNamespace" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="resourceType" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetQueuedRequestsByResourceTypeResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/Zentity.Services.Web" minOccurs="0" name="GetQueuedRequestsByResourceTypeResult" nillable="true" type="q12:ArrayOfPublishStatus" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetQueuedPositionByInstanceID">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q13="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="instanceId" type="q13:guid" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetQueuedPositionByInstanceIDResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetQueuedPositionByInstanceIDResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

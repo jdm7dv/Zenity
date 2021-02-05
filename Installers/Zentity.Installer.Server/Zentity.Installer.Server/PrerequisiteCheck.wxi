@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<Include xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  
+  <!--Operating System check-->
+  <!-- Check for Windows Server 2003 SP2, all SKUs of Windows Server 2008 R2 -->
+  <!--Windows XP SP3, all SKUs of Windows Vista, all SKUs of Windows 7  -->
+  <!--<Condition Message="!(loc.MsgOSNotSupported)">
+    <![CDATA[(VersionNT = 600 AND MsiNTProductType < 2) OR (VersionNT = 502 AND ServicePackLevel > 1) OR (VersionNT = 601) OR (VersionNT = 501 AND ServicePackLevel > 2) OR (REMOVE)]]>
+  </Condition>-->
+
+  <!--Check if user is Admin-->
+  <Condition Message='!(loc.MsgNotAdmin)'>
+    Privileged
+  </Condition>
+
+  <!-- .NET Framework 4.0 check -->
+  <Property Id="NETFRAMEWORK40" Secure="yes">
+    <RegistrySearch Id="RegistrySearchDotNet40" Root="HKLM" Key="SOFTWARE\Microsoft\NET Framework Setup\NDP\v4\Full" Name="Install" Type="raw" />
+  </Property>
+  <Condition Message="!(loc.MsgDotNet40Error)">
+    <![CDATA[NETFRAMEWORK40]]>
+  </Condition>
+
+  <!-- Check for IIS installation -->
+  <Property Id="IISINSTALLED" Secure="yes">
+    <RegistrySearch Id="RegistrySearchIIS" Root="HKLM" Key="Software\Microsoft\InetStp" Name="MajorVersion" Type="raw" />
+  </Property>
+  <Condition Message="!(loc.IISNotInstalledError)">
+    <![CDATA[(IISINSTALLED = "#6") OR (IISINSTALLED = "#7")]]>
+  </Condition>
+
+  <!-- Check for Silverlight 4 -->
+  <Property Id="SILVERLIGHTVERSION" Secure="yes">
+    <RegistrySearch Id="RegistrySearchSilverlight" Root="HKLM" Key="SOFTWARE\Microsoft\Silverlight" Name="Version" Type="raw" />
+  </Property>
+  <Condition Message="!(loc.SilverlightVersionError)">
+    SILVERLIGHTVERSION >= "4.0.0.0"
+  </Condition>
+
+</Include>

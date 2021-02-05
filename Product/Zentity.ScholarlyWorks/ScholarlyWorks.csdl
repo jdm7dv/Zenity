@@ -1,0 +1,896 @@
+<Schema Namespace="Zentity.ScholarlyWorks" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2006/04/edm">
+  <EntityType Name="Letter" BaseType="Zentity.ScholarlyWorks.PersonalCommunication">
+    <Documentation>
+      <Summary>Represents a letter.</Summary>
+    </Documentation>
+  </EntityType>
+  <EntityType Name="Image" BaseType="Zentity.ScholarlyWorks.Media">
+    <Documentation>
+      <Summary>Represents an image.</Summary>
+    </Documentation>
+  </EntityType>
+  <EntityType Name="Data" BaseType="Zentity.ScholarlyWorks.Download">
+    <Documentation>
+      <Summary>Represents some binary data.</Summary>
+    </Documentation>
+  </EntityType>
+  <EntityType Name="Organization" BaseType="Zentity.ScholarlyWorks.Contact">
+    <Documentation>
+      <Summary>Represents an organization.</Summary>
+    </Documentation>
+  </EntityType>
+  <EntityType Name="Person" BaseType="Zentity.ScholarlyWorks.Contact">
+    <Documentation>
+      <Summary>Represents a person.</Summary>
+    </Documentation>
+    <Property Name="LastName" Type="String" Nullable="true" Unicode="true" MaxLength="256" FixedLength="false">
+      <Documentation>
+        <Summary>Gets or sets the last name of this person.</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="FirstName" Type="String" Nullable="true" Unicode="true" MaxLength="256" FixedLength="false">
+      <Documentation>
+        <Summary>Gets or sets the first name of this person.</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="MiddleName" Type="String" Nullable="true" Unicode="true" MaxLength="256" FixedLength="false">
+      <Documentation>
+        <Summary>Gets or sets the middle name of this person.</Summary>
+      </Documentation>
+    </Property>
+  </EntityType>
+  <EntityType Name="Book" BaseType="Zentity.ScholarlyWorks.Publication">
+    <Documentation>
+      <Summary>Represents a book.</Summary>
+    </Documentation>
+    <Property Name="ChangeHistory" Type="String" Nullable="true" Unicode="true" MaxLength="Max" FixedLength="false">
+      <Documentation>
+        <Summary>Gets or sets the change history of this book. E.g. the datetime information of when this book was created, edited etc.</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="ISBN" Type="String" Nullable="true" Unicode="true" MaxLength="256" FixedLength="false">
+      <Documentation>
+        <Summary>Gets or sets the International Standard Book Number of this book.</Summary>
+      </Documentation>
+    </Property>
+  </EntityType>
+  <EntityType Name="Software" BaseType="Zentity.ScholarlyWorks.Download">
+    <Documentation>
+      <Summary>Represents a software.</Summary>
+    </Documentation>
+  </EntityType>
+  <EntityType Name="ThesisPhD" BaseType="Zentity.ScholarlyWorks.Thesis">
+    <Documentation>
+      <Summary>Represents a PhD thesis.</Summary>
+    </Documentation>
+  </EntityType>
+  <EntityType Name="Tag" BaseType="Zentity.ScholarlyWorks.ScholarlyWorkItem">
+    <Documentation>
+      <Summary>Represents a tag.</Summary>
+    </Documentation>
+    <Property Name="Name" Type="String" Nullable="false" Unicode="true" MaxLength="50" FixedLength="false">
+      <Documentation>
+        <Summary>Gets or sets the name of this tag.</Summary>
+      </Documentation>
+    </Property>
+    <NavigationProperty Name="ScholarlyWorkItems" Relationship="Zentity.ScholarlyWorks.ScholarlyWorkItemHasTag" FromRole="Tag" ToRole="ScholarlyWorkItem">
+      <Documentation>
+        <Summary>Gets a collection of related ScholarlyWorkItem objects.</Summary>
+      </Documentation>
+    </NavigationProperty>
+  </EntityType>
+  <EntityType Name="Email" BaseType="Zentity.ScholarlyWorks.PersonalCommunication">
+    <Documentation>
+      <Summary>Represents an e-mail.</Summary>
+    </Documentation>
+    <Property Name="Subject" Type="String" Nullable="true" Unicode="true" MaxLength="256" FixedLength="false">
+      <Documentation>
+        <Summary>Gets or sets the subject of this e-mail.</Summary>
+      </Documentation>
+    </Property>
+  </EntityType>
+  <EntityType Name="Audio" BaseType="Zentity.ScholarlyWorks.Media">
+    <Documentation>
+      <Summary>Represents an audio resource.</Summary>
+    </Documentation>
+    <Property Name="Codec" Type="String" Nullable="true" Unicode="true" MaxLength="4000" FixedLength="false">
+      <Documentation>
+        <Summary>Gets or sets the codec information for the audio.</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="BitRate" Type="Int32" Nullable="true">
+      <Documentation>
+        <Summary>Gets or sets the number of bits transmitted or received per second. E.g. 1.4 Mbit/s for CD quality.</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Mode" Type="String" Nullable="true" Unicode="true" MaxLength="4000" FixedLength="false">
+      <Documentation>
+        <Summary>Gets or sets the mode of this audio. E.g stereo, 5.1 audio etc.</Summary>
+      </Documentation>
+    </Property>
+  </EntityType>
+  <EntityType Name="Thesis" BaseType="Zentity.ScholarlyWorks.Publication">
+    <Documentation>
+      <Summary>Represents a thesis.</Summary>
+    </Documentation>
+  </EntityType>
+  <EntityType Name="Download" BaseType="Zentity.ScholarlyWorks.ScholarlyWorkItem">
+    <Documentation>
+      <Summary>Represents a download.</Summary>
+    </Documentation>
+    <Property Name="VersionInformation" Type="String" Nullable="true" Unicode="true" MaxLength="256" FixedLength="false">
+      <Documentation>
+        <Summary>Gets or sets the version information of this download.</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Copyright" Type="String" Nullable="true" Unicode="true" MaxLength="4000" FixedLength="false">
+      <Documentation>
+        <Summary>Gets or sets the copyright of this download.</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="HardwareRequirements" Type="String" Nullable="true" Unicode="true" MaxLength="4000" FixedLength="false">
+      <Documentation>
+        <Summary>Gets or sets the hardware requirements of this download.</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="EULA" Type="String" Nullable="true" Unicode="true" MaxLength="1024" FixedLength="false">
+      <Documentation>
+        <Summary>Gets or sets the end user license agreement for this download.</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="OperatingSystem" Type="String" Nullable="true" Unicode="true" MaxLength="4000" FixedLength="false">
+      <Documentation>
+        <Summary>Gets or sets the operating system requirements for this download.</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="DownloadRequirements" Type="String" Nullable="true" Unicode="true" MaxLength="4000" FixedLength="false">
+      <Documentation>
+        <Summary>Gets or sets other requirements for this download.</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="SystemRequirements" Type="String" Nullable="true" Unicode="true" MaxLength="4000" FixedLength="false">
+      <Documentation>
+        <Summary>Gets or sets the environment details for this download.</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Language" Type="String" Nullable="true" Unicode="true" MaxLength="128" FixedLength="false">
+      <Documentation>
+        <Summary>Gets or sets the language of this download.</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="License" Type="String" Nullable="true" Unicode="true" MaxLength="4000" FixedLength="false">
+      <Documentation>
+        <Summary>Gets or sets the license of this download.</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="DateCopyrighted" Type="DateTime" Nullable="true">
+      <Documentation>
+        <Summary>Gets or sets the copyright date for this download.</Summary>
+      </Documentation>
+    </Property>
+    <NavigationProperty Name="ScholarlyWorks" Relationship="Zentity.ScholarlyWorks.ScholarlyWorkIsAssociatedWithDownload" FromRole="Download" ToRole="ScholarlyWork">
+      <Documentation>
+        <Summary>Gets a collection of related ScholarlyWork objects.</Summary>
+      </Documentation>
+    </NavigationProperty>
+  </EntityType>
+  <EntityType Name="Booklet" BaseType="Zentity.ScholarlyWorks.Publication">
+    <Documentation>
+      <Summary>Represents a booklet.</Summary>
+    </Documentation>
+  </EntityType>
+  <EntityType Name="Chapter" BaseType="Zentity.ScholarlyWorks.Publication">
+    <Documentation>
+      <Summary>Represents a chapter.</Summary>
+    </Documentation>
+  </EntityType>
+  <EntityType Name="Code" BaseType="Zentity.ScholarlyWorks.Download">
+    <Documentation>
+      <Summary>Represents a piece of code.</Summary>
+    </Documentation>
+    <Property Name="ProgrammingLanguage" Type="String" Nullable="true" Unicode="true" MaxLength="256" FixedLength="false">
+      <Documentation>
+        <Summary>Gets or sets the programming language for this piece of code.</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Technology" Type="String" Nullable="true" Unicode="true" MaxLength="256" FixedLength="false">
+      <Documentation>
+        <Summary>Gets or sets the technology required for this code.</Summary>
+      </Documentation>
+    </Property>
+  </EntityType>
+  <EntityType Name="Lecture" BaseType="Zentity.ScholarlyWorks.ScholarlyWork">
+    <Documentation>
+      <Summary>Represents a lecture.</Summary>
+    </Documentation>
+    <Property Name="Series" Type="String" Nullable="true" Unicode="true" MaxLength="256" FixedLength="false">
+      <Documentation>
+        <Summary>Gets or sets the lecture series.</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Image" Type="Binary" Nullable="true" MaxLength="Max" FixedLength="false">
+      <Documentation>
+        <Summary>Gets or sets an image associated with the lecture.</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Audience" Type="String" Nullable="true" Unicode="true" MaxLength="4000" FixedLength="false">
+      <Documentation>
+        <Summary>Gets or sets the lecture audience.</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Venue" Type="String" Nullable="true" Unicode="true" MaxLength="1024" FixedLength="false">
+      <Documentation>
+        <Summary>Gets or sets the lecture venue.</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="DateEnd" Type="DateTime" Nullable="true">
+      <Documentation>
+        <Summary>Gets or sets the end datetime of the lecture.</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="DateStart" Type="DateTime" Nullable="true">
+      <Documentation>
+        <Summary>Gets or sets the start datetime of the lecture.</Summary>
+      </Documentation>
+    </Property>
+  </EntityType>
+  <EntityType Name="Video" BaseType="Zentity.ScholarlyWorks.Media">
+    <Documentation>
+      <Summary>Represents a video.</Summary>
+    </Documentation>
+    <Property Name="Stereoscopic" Type="Boolean" Nullable="true">
+      <Documentation>
+        <Summary>Gets or sets the stereoscopic capabilities of this video. It is a technique of recording three-dimensional visual information.</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Resolution" Type="String" Nullable="true" Unicode="true" MaxLength="256" FixedLength="false">
+      <Documentation>
+        <Summary>Gets or sets the resolution of this video generally expressed in pixels, horizontal and vertical scan lines, voxels etc.</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="PSNR" Type="Decimal" Nullable="true" Precision="18" Scale="0">
+      <Documentation>
+        <Summary>Gets or sets the peak signal-to-noise ratio. This is used to judge the video quality.</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Director" Type="String" Nullable="true" Unicode="true" MaxLength="256" FixedLength="false">
+      <Documentation>
+        <Summary>Gets or sets the director of this video.</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Codec" Type="String" Nullable="true" Unicode="true" MaxLength="4000" FixedLength="false">
+      <Documentation>
+        <Summary>Gets or sets the codec information of this video.</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="BitRate" Type="Int32" Nullable="true">
+      <Documentation>
+        <Summary>Gets or sets the rate of information content in a video stream. For example VideoCD, with a bit rate of about 1 Mbit/s, is lower quality than DVD, with a bit rate of about 5 Mbit/s.</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="AspectRatio" Type="String" Nullable="true" Unicode="true" MaxLength="64" FixedLength="false">
+      <Documentation>
+        <Summary>Gets or sets the aspect ratio of this video.</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="FrameWidth" Type="Int32" Nullable="true">
+      <Documentation>
+        <Summary>Gets or sets the frame width of the video stream.</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="FrameHeight" Type="Int32" Nullable="true">
+      <Documentation>
+        <Summary>Gets or sets the frame height of the video stream.</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="FramesPerSecond" Type="Int16" Nullable="true">
+      <Documentation>
+        <Summary>Gets or sets the number of still pictures per second of video.</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="ScanningMethod" Type="String" Nullable="true" Unicode="true" MaxLength="256" FixedLength="false">
+      <Documentation>
+        <Summary>Gets or sets the scanning method of the video stream. E.g. Interlaced or Progressive etc.</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="BitsPerPixel" Type="Int16" Nullable="true">
+      <Documentation>
+        <Summary>Gets or sets the number of bits per pixel.</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="ColorModel" Type="String" Nullable="true" Unicode="true" MaxLength="64" FixedLength="false">
+      <Documentation>
+        <Summary>Gets or sets the video color representation. E.g. YIQ, YUV etc.</Summary>
+      </Documentation>
+    </Property>
+  </EntityType>
+  <EntityType Name="ScholarlyWorkContainer" BaseType="Zentity.ScholarlyWorks.ScholarlyWork">
+    <Documentation>
+      <Summary>Represents a container for scholarly works.</Summary>
+    </Documentation>
+    <Property Name="Count" Type="Int32" Nullable="true">
+      <Documentation>
+        <Summary>Gets or sets the count of contained items.</Summary>
+      </Documentation>
+    </Property>
+    <NavigationProperty Name="ContainedWorks" Relationship="Zentity.ScholarlyWorks.ScholarlyWorkContainerContainsWorks" FromRole="ScholarlyWorkContainer" ToRole="ScholarlyWork">
+      <Documentation>
+        <Summary>Gets a collection of contained ScholarlyWork objects.</Summary>
+      </Documentation>
+    </NavigationProperty>
+  </EntityType>
+  <EntityType Name="Contact" BaseType="Zentity.ScholarlyWorks.ScholarlyWorkItem">
+    <Documentation>
+      <Summary>Represents a contact.</Summary>
+    </Documentation>
+    <Property Name="Email" Type="String" Nullable="true" Unicode="true" MaxLength="2048" FixedLength="false">
+      <Documentation>
+        <Summary>Gets or sets the e-mail of this contact.</Summary>
+      </Documentation>
+    </Property>
+    <NavigationProperty Name="ContributionInWorks" Relationship="Zentity.ScholarlyWorks.ScholarlyWorkHasContributionBy" FromRole="Contact" ToRole="ScholarlyWork">
+      <Documentation>
+        <Summary>Gets a collection of related ScholarlyWork objects.</Summary>
+      </Documentation>
+    </NavigationProperty>
+    <NavigationProperty Name="PresentedWorks" Relationship="Zentity.ScholarlyWorks.ScholarlyWorkIsPresentedBy" FromRole="Contact" ToRole="ScholarlyWork">
+      <Documentation>
+        <Summary>Gets a collection of related ScholarlyWork objects.</Summary>
+      </Documentation>
+    </NavigationProperty>
+    <NavigationProperty Name="EditedWorks" Relationship="Zentity.ScholarlyWorks.ScholarlyWorkIsEditedBy" FromRole="Contact" ToRole="ScholarlyWork">
+      <Documentation>
+        <Summary>Gets a collection of related ScholarlyWork objects.</Summary>
+      </Documentation>
+    </NavigationProperty>
+    <NavigationProperty Name="AddedItems" Relationship="Zentity.ScholarlyWorks.ScholarlyWorkItemIsAddedBy" FromRole="Contact" ToRole="ScholarlyWorkItem">
+      <Documentation>
+        <Summary>Gets a collection of related ScholarlyWorkItem objects.</Summary>
+      </Documentation>
+    </NavigationProperty>
+    <NavigationProperty Name="AuthoredWorks" Relationship="Zentity.ScholarlyWorks.ScholarlyWorkIsAuthoredBy" FromRole="Contact" ToRole="ScholarlyWork">
+      <Documentation>
+        <Summary>Gets a collection of related ScholarlyWork objects.</Summary>
+      </Documentation>
+    </NavigationProperty>
+  </EntityType>
+  <EntityType Name="ProceedingsArticle" BaseType="Zentity.ScholarlyWorks.Proceedings">
+    <Documentation>
+      <Summary>Represents a proceedings article.</Summary>
+    </Documentation>
+  </EntityType>
+  <EntityType Name="ThesisMsc" BaseType="Zentity.ScholarlyWorks.Thesis">
+    <Documentation>
+      <Summary>Represents an Msc thesis.</Summary>
+    </Documentation>
+  </EntityType>
+  <EntityType Name="Journal" BaseType="Zentity.ScholarlyWorks.Publication">
+    <Documentation>
+      <Summary>Represents a journal.</Summary>
+    </Documentation>
+    <Property Name="JournalName" Type="String" Nullable="true" Unicode="true" MaxLength="256" FixedLength="false">
+      <Documentation>
+        <Summary>Gets or sets the journal name of this journal.</Summary>
+      </Documentation>
+    </Property>
+  </EntityType>
+  <EntityType Name="ScholarlyWork" BaseType="Zentity.ScholarlyWorks.ScholarlyWorkItem">
+    <Documentation>
+      <Summary>Represents a scholarly work.</Summary>
+    </Documentation>
+    <Property Name="License" Type="String" Nullable="true" Unicode="true" MaxLength="4000" FixedLength="false">
+      <Documentation>
+        <Summary>Gets or sets the license information of this work.</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="DateValidUntil" Type="DateTime" Nullable="true">
+      <Documentation>
+        <Summary>Gets or sets the date until this work is valid.</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Notes" Type="String" Nullable="true" Unicode="true" MaxLength="Max" FixedLength="false">
+      <Documentation>
+        <Summary>Gets or sets additional notes on the scholarly work.</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Abstract" Type="String" Nullable="true" Unicode="true" MaxLength="Max" FixedLength="false">
+      <Documentation>
+        <Summary>Gets or sets the abstract of this work.</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Copyright" Type="String" Nullable="true" Unicode="true" MaxLength="4000" FixedLength="false">
+      <Documentation>
+        <Summary>Gets or sets the copyright information of this work.</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="DateValidFrom" Type="DateTime" Nullable="true">
+      <Documentation>
+        <Summary>Gets or sets the date from which this work is valid.</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Language" Type="String" Nullable="true" Unicode="true" MaxLength="128" FixedLength="false">
+      <Documentation>
+        <Summary>Gets or sets the language of this work.</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="DateAvailableUntil" Type="DateTime" Nullable="true">
+      <Documentation>
+        <Summary>Gets or sets the date until this resource is available.</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="DateAvailableFrom" Type="DateTime" Nullable="true">
+      <Documentation>
+        <Summary>Gets or sets the date from which this work is available.</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="DateCopyrighted" Type="DateTime" Nullable="true">
+      <Documentation>
+        <Summary>Gets or sets the copyright date of this work.</Summary>
+      </Documentation>
+    </Property>
+    <NavigationProperty Name="ElectronicSources" Relationship="Zentity.ScholarlyWorks.ScholarlyWorkIsAssociatedWithElectronicSource" FromRole="ScholarlyWork" ToRole="ElectronicSource">
+      <Documentation>
+        <Summary>Gets a collection of related ElectronicSource objects.</Summary>
+      </Documentation>
+    </NavigationProperty>
+    <NavigationProperty Name="Medias" Relationship="Zentity.ScholarlyWorks.ScholarlyWorkIsAssociatedWithMedia" FromRole="ScholarlyWork" ToRole="Media">
+      <Documentation>
+        <Summary>Gets a collection of related Media objects.</Summary>
+      </Documentation>
+    </NavigationProperty>
+    <NavigationProperty Name="Container" Relationship="Zentity.ScholarlyWorks.ScholarlyWorkContainerContainsWorks" FromRole="ScholarlyWork" ToRole="ScholarlyWorkContainer">
+      <Documentation>
+        <Summary>Gets or sets the container of this scholarly work.</Summary>
+      </Documentation>
+    </NavigationProperty>
+    <NavigationProperty Name="Editors" Relationship="Zentity.ScholarlyWorks.ScholarlyWorkIsEditedBy" FromRole="ScholarlyWork" ToRole="Contact">
+      <Documentation>
+        <Summary>Gets a collection of related Contact objects.</Summary>
+      </Documentation>
+    </NavigationProperty>
+    <NavigationProperty Name="VersionOf" Relationship="Zentity.ScholarlyWorks.ScholarlyWorkHasVersion" FromRole="ScholarlyWork2" ToRole="ScholarlyWork1">
+      <Documentation>
+        <Summary>Gets a collection of related ScholarlyWork objects.</Summary>
+      </Documentation>
+    </NavigationProperty>
+    <NavigationProperty Name="Contributors" Relationship="Zentity.ScholarlyWorks.ScholarlyWorkHasContributionBy" FromRole="ScholarlyWork" ToRole="Contact">
+      <Documentation>
+        <Summary>Gets a collection of related Contact objects.</Summary>
+      </Documentation>
+    </NavigationProperty>
+    <NavigationProperty Name="Cites" Relationship="Zentity.ScholarlyWorks.ScholarlyWorkIsCitedBy" FromRole="ScholarlyWork2" ToRole="ScholarlyWork1">
+      <Documentation>
+        <Summary>Gets a collection of related ScholarlyWork objects.</Summary>
+      </Documentation>
+    </NavigationProperty>
+    <NavigationProperty Name="CitedBy" Relationship="Zentity.ScholarlyWorks.ScholarlyWorkIsCitedBy" FromRole="ScholarlyWork1" ToRole="ScholarlyWork2">
+      <Documentation>
+        <Summary>Gets a collection of related ScholarlyWork objects.</Summary>
+      </Documentation>
+    </NavigationProperty>
+    <NavigationProperty Name="Versions" Relationship="Zentity.ScholarlyWorks.ScholarlyWorkHasVersion" FromRole="ScholarlyWork1" ToRole="ScholarlyWork2">
+      <Documentation>
+        <Summary>Gets a collection of related ScholarlyWork objects.</Summary>
+      </Documentation>
+    </NavigationProperty>
+    <NavigationProperty Name="Downloads" Relationship="Zentity.ScholarlyWorks.ScholarlyWorkIsAssociatedWithDownload" FromRole="ScholarlyWork" ToRole="Download">
+      <Documentation>
+        <Summary>Gets a collection of related Download objects.</Summary>
+      </Documentation>
+    </NavigationProperty>
+    <NavigationProperty Name="RepresentationOf" Relationship="Zentity.ScholarlyWorks.ScholarlyWorkHasRepresentation" FromRole="ScholarlyWork2" ToRole="ScholarlyWork1">
+      <Documentation>
+        <Summary>Gets a collection of related ScholarlyWork objects.</Summary>
+      </Documentation>
+    </NavigationProperty>
+    <NavigationProperty Name="Authors" Relationship="Zentity.ScholarlyWorks.ScholarlyWorkIsAuthoredBy" FromRole="ScholarlyWork" ToRole="Contact">
+      <Documentation>
+        <Summary>Gets a collection of related Contact objects.</Summary>
+      </Documentation>
+    </NavigationProperty>
+    <NavigationProperty Name="PersonalCommunications" Relationship="Zentity.ScholarlyWorks.ScholarlyWorkIsAssociatedWithPersonalCommunication" FromRole="ScholarlyWork" ToRole="PersonalCommunication">
+      <Documentation>
+        <Summary>Gets a collection of related PersonalCommunication objects.</Summary>
+      </Documentation>
+    </NavigationProperty>
+    <NavigationProperty Name="Representations" Relationship="Zentity.ScholarlyWorks.ScholarlyWorkHasRepresentation" FromRole="ScholarlyWork1" ToRole="ScholarlyWork2">
+      <Documentation>
+        <Summary>Gets a collection of related ScholarlyWork objects.</Summary>
+      </Documentation>
+    </NavigationProperty>
+    <NavigationProperty Name="Presenters" Relationship="Zentity.ScholarlyWorks.ScholarlyWorkIsPresentedBy" FromRole="ScholarlyWork" ToRole="Contact">
+      <Documentation>
+        <Summary>Gets a collection of related Contact objects.</Summary>
+      </Documentation>
+    </NavigationProperty>
+  </EntityType>
+  <EntityType Name="Proceedings" BaseType="Zentity.ScholarlyWorks.Publication">
+    <Documentation>
+      <Summary>Represents a proceedings.</Summary>
+    </Documentation>
+    <Property Name="EventName" Type="String" Nullable="true" Unicode="true" MaxLength="1024" FixedLength="false">
+      <Documentation>
+        <Summary>Gets or sets the event name of this proceedings.</Summary>
+      </Documentation>
+    </Property>
+  </EntityType>
+  <EntityType Name="Patent" BaseType="Zentity.ScholarlyWorks.Publication">
+    <Documentation>
+      <Summary>Represents a patent.</Summary>
+    </Documentation>
+    <Property Name="DateApproved" Type="DateTime" Nullable="true">
+      <Documentation>
+        <Summary>Gets or sets the date on which this patent was approved.</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="DateRejected" Type="DateTime" Nullable="true">
+      <Documentation>
+        <Summary>Gets or sets the date on which this patent was rejected.</Summary>
+      </Documentation>
+    </Property>
+  </EntityType>
+  <EntityType Name="PersonalCommunication" BaseType="Zentity.ScholarlyWorks.ScholarlyWorkItem">
+    <Documentation>
+      <Summary>Represents a personal communication.</Summary>
+    </Documentation>
+    <Property Name="From" Type="String" Nullable="true" Unicode="true" MaxLength="1024" FixedLength="false">
+      <Documentation>
+        <Summary>Gets or sets the source of the communication.</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="DateExchanged" Type="DateTime" Nullable="true">
+      <Documentation>
+        <Summary>Gets or sets the datetime of communication exchange.</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="To" Type="String" Nullable="true" Unicode="true" MaxLength="4000" FixedLength="false">
+      <Documentation>
+        <Summary>Gets or sets the target of the communication.</Summary>
+      </Documentation>
+    </Property>
+    <NavigationProperty Name="ScholarlyWorks" Relationship="Zentity.ScholarlyWorks.ScholarlyWorkIsAssociatedWithPersonalCommunication" FromRole="PersonalCommunication" ToRole="ScholarlyWork">
+      <Documentation>
+        <Summary>Gets a collection of related ScholarlyWork objects.</Summary>
+      </Documentation>
+    </NavigationProperty>
+  </EntityType>
+  <EntityType Name="ScholarlyWorkItem" BaseType="Zentity.Core.Resource">
+    <Documentation>
+      <Summary>Represents the base resource type for all the types in ScholarlyWorks module.</Summary>
+    </Documentation>
+    <Property Name="Scope" Type="String" Nullable="true" Unicode="true" MaxLength="128" FixedLength="false">
+      <Documentation>
+        <Summary>Gets or sets the scope of this item. E.g. internal, external, public etc.</Summary>
+      </Documentation>
+    </Property>
+    <NavigationProperty Name="CategoryNodes" Relationship="Zentity.ScholarlyWorks.CategoryNodeHasScholarlyWorkItem" FromRole="ScholarlyWorkItem" ToRole="CategoryNode">
+      <Documentation>
+        <Summary>Gets a collection of related CategoryNode objects.</Summary>
+      </Documentation>
+    </NavigationProperty>
+    <NavigationProperty Name="Tags" Relationship="Zentity.ScholarlyWorks.ScholarlyWorkItemHasTag" FromRole="ScholarlyWorkItem" ToRole="Tag">
+      <Documentation>
+        <Summary>Gets a collection of related Tag objects.</Summary>
+      </Documentation>
+    </NavigationProperty>
+    <NavigationProperty Name="AddedBy" Relationship="Zentity.ScholarlyWorks.ScholarlyWorkItemIsAddedBy" FromRole="ScholarlyWorkItem" ToRole="Contact">
+      <Documentation>
+        <Summary>Gets a collection of related Contact objects.</Summary>
+      </Documentation>
+    </NavigationProperty>
+  </EntityType>
+  <EntityType Name="Experiment" BaseType="Zentity.ScholarlyWorks.ScholarlyWork">
+    <Documentation>
+      <Summary>Represents an experiment.</Summary>
+    </Documentation>
+    <Property Name="Report" Type="String" Nullable="true" Unicode="true" MaxLength="Max" FixedLength="false">
+      <Documentation>
+        <Summary>Gets or sets the experiment report.</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Status" Type="String" Nullable="true" Unicode="true" MaxLength="4000" FixedLength="false">
+      <Documentation>
+        <Summary>Gets or sets the status of this experiment.</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Plan" Type="String" Nullable="true" Unicode="true" MaxLength="Max" FixedLength="false">
+      <Documentation>
+        <Summary>Gets or sets the experiment plan.</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Name" Type="String" Nullable="true" Unicode="true" MaxLength="1024" FixedLength="false">
+      <Documentation>
+        <Summary>Gets or sets the experiment name.</Summary>
+      </Documentation>
+    </Property>
+  </EntityType>
+  <EntityType Name="ElectronicSource" BaseType="Zentity.ScholarlyWorks.ScholarlyWorkItem">
+    <Documentation>
+      <Summary>Represents an elecronic source external to the repository.</Summary>
+    </Documentation>
+    <Property Name="Reference" Type="String" Nullable="true" Unicode="true" MaxLength="4000" FixedLength="false">
+      <Documentation>
+        <Summary>Gets or sets the reference (e.g. URL) of the electronic source.</Summary>
+      </Documentation>
+    </Property>
+    <NavigationProperty Name="ScholarlyWorks" Relationship="Zentity.ScholarlyWorks.ScholarlyWorkIsAssociatedWithElectronicSource" FromRole="ElectronicSource" ToRole="ScholarlyWork">
+      <Documentation>
+        <Summary>Gets a collection of related ScholarlyWork objects.</Summary>
+      </Documentation>
+    </NavigationProperty>
+  </EntityType>
+  <EntityType Name="Unpublished" BaseType="Zentity.ScholarlyWorks.Publication">
+    <Documentation>
+      <Summary>Represents an unpublished work.</Summary>
+    </Documentation>
+  </EntityType>
+  <EntityType Name="Media" BaseType="Zentity.ScholarlyWorks.ScholarlyWorkItem">
+    <Documentation>
+      <Summary>Represents a media.</Summary>
+    </Documentation>
+    <Property Name="License" Type="String" Nullable="true" Unicode="true" MaxLength="4000" FixedLength="false">
+      <Documentation>
+        <Summary>Gets or sets the license information of the media.</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Copyright" Type="String" Nullable="true" Unicode="true" MaxLength="4000" FixedLength="false">
+      <Documentation>
+        <Summary>Gets or sets the copyright information of this media.</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="DateCopyrighted" Type="DateTime" Nullable="true">
+      <Documentation>
+        <Summary>Gets or sets the copyright datetime of this media.</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Duration" Type="Int32" Nullable="true">
+      <Documentation>
+        <Summary>Gets or sets the duration of this media.</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Language" Type="String" Nullable="true" Unicode="true" MaxLength="128" FixedLength="false">
+      <Documentation>
+        <Summary>Gets or sets the language of this media.</Summary>
+      </Documentation>
+    </Property>
+    <NavigationProperty Name="ScholarlyWorks" Relationship="Zentity.ScholarlyWorks.ScholarlyWorkIsAssociatedWithMedia" FromRole="Media" ToRole="ScholarlyWork">
+      <Documentation>
+        <Summary>Gets a collection of related ScholarlyWork objects.</Summary>
+      </Documentation>
+    </NavigationProperty>
+  </EntityType>
+  <EntityType Name="CategoryNode" BaseType="Zentity.ScholarlyWorks.ScholarlyWorkItem">
+    <Documentation>
+      <Summary>Represents a category node. Nodes can be used to formulate hierarchies based on subject area, departments etc.</Summary>
+    </Documentation>
+    <NavigationProperty Name="ScholarlyWorkItems" Relationship="Zentity.ScholarlyWorks.CategoryNodeHasScholarlyWorkItem" FromRole="CategoryNode" ToRole="ScholarlyWorkItem">
+      <Documentation>
+        <Summary>Gets a collection of related ScholarlyWorkItem objects.</Summary>
+      </Documentation>
+    </NavigationProperty>
+    <NavigationProperty Name="Parent" Relationship="Zentity.ScholarlyWorks.CategoryNodeHasChildren" FromRole="CategoryNode2" ToRole="CategoryNode1">
+      <Documentation>
+        <Summary>Gets a collection of related CategoryNode objects.</Summary>
+      </Documentation>
+    </NavigationProperty>
+    <NavigationProperty Name="Children" Relationship="Zentity.ScholarlyWorks.CategoryNodeHasChildren" FromRole="CategoryNode1" ToRole="CategoryNode2">
+      <Documentation>
+        <Summary>Gets a collection of related CategoryNode objects.</Summary>
+      </Documentation>
+    </NavigationProperty>
+  </EntityType>
+  <EntityType Name="JournalArticle" BaseType="Zentity.ScholarlyWorks.Publication">
+    <Documentation>
+      <Summary>Represents a journal article.</Summary>
+    </Documentation>
+    <Property Name="Journal" Type="String" Nullable="true" Unicode="true" MaxLength="256" FixedLength="false">
+      <Documentation>
+        <Summary>Gets or sets the journal hosting this article.</Summary>
+      </Documentation>
+    </Property>
+  </EntityType>
+  <EntityType Name="Publication" BaseType="Zentity.ScholarlyWorks.ScholarlyWork">
+    <Documentation>
+      <Summary>Represents a publication.</Summary>
+    </Documentation>
+    <Property Name="DatePublished" Type="DateTime" Nullable="true">
+      <Documentation>
+        <Summary>Gets or sets the date on which this resource was published.</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="DOI" Type="String" Nullable="true" Unicode="true" MaxLength="256" FixedLength="false">
+      <Documentation>
+        <Summary>Gets or sets the permanent digital object identifier (e.g. issued by CrossRef) of this publication.</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Pages" Type="String" Nullable="true" Unicode="true" MaxLength="1024" FixedLength="false">
+      <Documentation>
+        <Summary>Gets or sets the page numbers. E.g. 234-400.</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Institution" Type="String" Nullable="true" Unicode="true" MaxLength="1024" FixedLength="false">
+      <Documentation>
+        <Summary>Gets or sets the institution that was involved in publishing, but not necessarily the publisher.</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="DayPublished" Type="Int32" Nullable="true">
+      <Documentation>
+        <Summary>Gets or sets the date part of DatePublished.</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="PublisherAddress" Type="String" Nullable="true" Unicode="true" MaxLength="1024" FixedLength="false">
+      <Documentation>
+        <Summary>Gets or sets the publisher's address.</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Location" Type="String" Nullable="true" Unicode="true" MaxLength="1024" FixedLength="false">
+      <Documentation>
+        <Summary>Gets or sets the location where the resource is published.</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="BookTitle" Type="String" Nullable="true" Unicode="true" MaxLength="256" FixedLength="false">
+      <Documentation>
+        <Summary>Gets or sets the title of this publication.</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Volume" Type="String" Nullable="true" Unicode="true" MaxLength="256" FixedLength="false">
+      <Documentation>
+        <Summary>Gets or sets the volume of a journal or multi-volume book etc.</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="CatalogNumber" Type="String" Nullable="true" Unicode="true" MaxLength="1024" FixedLength="false">
+      <Documentation>
+        <Summary>Gets or sets the library of congress catalog number.</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="PublisherUri" Type="String" Nullable="true" Unicode="true" MaxLength="1024" FixedLength="false">
+      <Documentation>
+        <Summary>Gets or sets an identifier to locate the publisher, generally the web-site URL.</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="DateSubmitted" Type="DateTime" Nullable="true">
+      <Documentation>
+        <Summary>Gets or sets the submission date of this publication.</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Chapter" Type="String" Nullable="true" Unicode="true" MaxLength="256" FixedLength="false">
+      <Documentation>
+        <Summary>Gets or sets the chapter number.</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Number" Type="String" Nullable="true" Unicode="true" MaxLength="256" FixedLength="false">
+      <Documentation>
+        <Summary>Gets or sets the number of a journal, magazine, tech-report etc.</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="DateAccepted" Type="DateTime" Nullable="true">
+      <Documentation>
+        <Summary>Gets or sets the date of acceptance of the publication.</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Publisher" Type="String" Nullable="true" Unicode="true" MaxLength="256" FixedLength="false">
+      <Documentation>
+        <Summary>Gets or sets the publisher’s name.</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Edition" Type="String" Nullable="true" Unicode="true" MaxLength="256" FixedLength="false">
+      <Documentation>
+        <Summary>Gets or sets the edition of this publication.</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="MonthPublished" Type="Int32" Nullable="true">
+      <Documentation>
+        <Summary>Gets or sets the month part of DatePublished.</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="YearPublished" Type="Int32" Nullable="true">
+      <Documentation>
+        <Summary>Gets or sets the year part of DatePublished.</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Organization" Type="String" Nullable="true" Unicode="true" MaxLength="1024" FixedLength="false">
+      <Documentation>
+        <Summary>Gets or sets the publication sponsor information.</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Series" Type="String" Nullable="true" Unicode="true" MaxLength="256" FixedLength="false">
+      <Documentation>
+        <Summary>Gets or sets the publication series.</Summary>
+      </Documentation>
+    </Property>
+  </EntityType>
+  <EntityType Name="TechnicalReport" BaseType="Zentity.ScholarlyWorks.Publication">
+    <Documentation>
+      <Summary>Represents a technical report.</Summary>
+    </Documentation>
+    <Property Name="Category" Type="String" Nullable="true" Unicode="true" MaxLength="256" FixedLength="false">
+      <Documentation>
+        <Summary>Gets or sets the category of this report.</Summary>
+      </Documentation>
+    </Property>
+  </EntityType>
+  <EntityType Name="Manual" BaseType="Zentity.ScholarlyWorks.Publication">
+    <Documentation>
+      <Summary>Represents a manual.</Summary>
+    </Documentation>
+  </EntityType>
+  <EntityType Name="Tutorial" BaseType="Zentity.ScholarlyWorks.ScholarlyWork">
+    <Documentation>
+      <Summary>Represents a tutorial.</Summary>
+    </Documentation>
+    <Property Name="DatePresented" Type="DateTime" Nullable="true">
+      <Documentation>
+        <Summary>Gets or sets the date when this tutorial was presented.</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Length" Type="Int64" Nullable="true">
+      <Documentation>
+        <Summary>Gets or sets the length of the tutorial.</Summary>
+      </Documentation>
+    </Property>
+  </EntityType>
+  <Association Name="ScholarlyWorkItemHasTag">
+    <End Role="ScholarlyWorkItem" Type="Zentity.ScholarlyWorks.ScholarlyWorkItem" Multiplicity="*" />
+    <End Role="Tag" Type="Zentity.ScholarlyWorks.Tag" Multiplicity="*" />
+  </Association>
+  <Association Name="ScholarlyWorkIsAssociatedWithDownload">
+    <End Role="ScholarlyWork" Type="Zentity.ScholarlyWorks.ScholarlyWork" Multiplicity="*" />
+    <End Role="Download" Type="Zentity.ScholarlyWorks.Download" Multiplicity="*" />
+  </Association>
+  <Association Name="ScholarlyWorkContainerContainsWorks">
+    <End Role="ScholarlyWorkContainer" Type="Zentity.ScholarlyWorks.ScholarlyWorkContainer" Multiplicity="0..1" />
+    <End Role="ScholarlyWork" Type="Zentity.ScholarlyWorks.ScholarlyWork" Multiplicity="*" />
+  </Association>
+  <Association Name="ScholarlyWorkHasContributionBy">
+    <End Role="ScholarlyWork" Type="Zentity.ScholarlyWorks.ScholarlyWork" Multiplicity="*" />
+    <End Role="Contact" Type="Zentity.ScholarlyWorks.Contact" Multiplicity="*" />
+  </Association>
+  <Association Name="ScholarlyWorkIsPresentedBy">
+    <End Role="ScholarlyWork" Type="Zentity.ScholarlyWorks.ScholarlyWork" Multiplicity="*" />
+    <End Role="Contact" Type="Zentity.ScholarlyWorks.Contact" Multiplicity="*" />
+  </Association>
+  <Association Name="ScholarlyWorkIsEditedBy">
+    <End Role="ScholarlyWork" Type="Zentity.ScholarlyWorks.ScholarlyWork" Multiplicity="*" />
+    <End Role="Contact" Type="Zentity.ScholarlyWorks.Contact" Multiplicity="*" />
+  </Association>
+  <Association Name="ScholarlyWorkItemIsAddedBy">
+    <End Role="ScholarlyWorkItem" Type="Zentity.ScholarlyWorks.ScholarlyWorkItem" Multiplicity="*" />
+    <End Role="Contact" Type="Zentity.ScholarlyWorks.Contact" Multiplicity="*" />
+  </Association>
+  <Association Name="ScholarlyWorkIsAuthoredBy">
+    <End Role="ScholarlyWork" Type="Zentity.ScholarlyWorks.ScholarlyWork" Multiplicity="*" />
+    <End Role="Contact" Type="Zentity.ScholarlyWorks.Contact" Multiplicity="*" />
+  </Association>
+  <Association Name="ScholarlyWorkIsAssociatedWithElectronicSource">
+    <End Role="ScholarlyWork" Type="Zentity.ScholarlyWorks.ScholarlyWork" Multiplicity="*" />
+    <End Role="ElectronicSource" Type="Zentity.ScholarlyWorks.ElectronicSource" Multiplicity="*" />
+  </Association>
+  <Association Name="ScholarlyWorkIsAssociatedWithMedia">
+    <End Role="ScholarlyWork" Type="Zentity.ScholarlyWorks.ScholarlyWork" Multiplicity="*" />
+    <End Role="Media" Type="Zentity.ScholarlyWorks.Media" Multiplicity="*" />
+  </Association>
+  <Association Name="ScholarlyWorkHasVersion">
+    <End Role="ScholarlyWork1" Type="Zentity.ScholarlyWorks.ScholarlyWork" Multiplicity="*" />
+    <End Role="ScholarlyWork2" Type="Zentity.ScholarlyWorks.ScholarlyWork" Multiplicity="*" />
+  </Association>
+  <Association Name="ScholarlyWorkIsCitedBy">
+    <End Role="ScholarlyWork1" Type="Zentity.ScholarlyWorks.ScholarlyWork" Multiplicity="*" />
+    <End Role="ScholarlyWork2" Type="Zentity.ScholarlyWorks.ScholarlyWork" Multiplicity="*" />
+  </Association>
+  <Association Name="ScholarlyWorkHasRepresentation">
+    <End Role="ScholarlyWork1" Type="Zentity.ScholarlyWorks.ScholarlyWork" Multiplicity="*" />
+    <End Role="ScholarlyWork2" Type="Zentity.ScholarlyWorks.ScholarlyWork" Multiplicity="*" />
+  </Association>
+  <Association Name="ScholarlyWorkIsAssociatedWithPersonalCommunication">
+    <End Role="ScholarlyWork" Type="Zentity.ScholarlyWorks.ScholarlyWork" Multiplicity="*" />
+    <End Role="PersonalCommunication" Type="Zentity.ScholarlyWorks.PersonalCommunication" Multiplicity="*" />
+  </Association>
+  <Association Name="CategoryNodeHasScholarlyWorkItem">
+    <End Role="CategoryNode" Type="Zentity.ScholarlyWorks.CategoryNode" Multiplicity="*" />
+    <End Role="ScholarlyWorkItem" Type="Zentity.ScholarlyWorks.ScholarlyWorkItem" Multiplicity="*" />
+  </Association>
+  <Association Name="CategoryNodeHasChildren">
+    <End Role="CategoryNode1" Type="Zentity.ScholarlyWorks.CategoryNode" Multiplicity="0..1" />
+    <End Role="CategoryNode2" Type="Zentity.ScholarlyWorks.CategoryNode" Multiplicity="*" />
+  </Association>
+</Schema>

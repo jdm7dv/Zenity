@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--ChecksAndProperties.wxi includes the pre-requisite checks and properties that get set in launch conditions-->
+
+<Include xmlns="http://schemas.microsoft.com/wix/2006/wi">
+    
+    <!--Install for all users-->
+    <Property Id="ALLUSERS">1</Property>
+
+    <!-- TO allow all properties to be passed from the UI phase to execution phase in the installer-->
+    <Property Id="EnableUserControl">1</Property>
+
+    <!--LAUNCH CONDITIONS -->
+    <!--Admin required-->
+    <Condition Message="!(loc.MsgMustRunPrivileged)">
+      Privileged
+    </Condition>    
+    
+    <!-- .NET Framework check -->
+     <!-- Framework 4.0-->   
+    <Property Id="NETFRAMEWORK40FULL">
+      <RegistrySearch Id="RegistrySearchNET40" Root="HKLM" Key="$(var.RootRegistryKey)\NET Framework Setup\NDP\v4\Full" Name="Install" Type="raw"></RegistrySearch>
+    </Property>
+
+    <Condition Message="!(loc.MsgDotNetError)">
+      <![CDATA[Installed OR NETFRAMEWORK40FULL="#1"]]>
+    </Condition>   
+  
+    <!-- Check for Powershell -->
+    <Property Id="POWESHELL20DETECTED">
+      <RegistrySearch Id="RegistrySearchPowerShell" Root="HKLM" Key="$(var.RootRegistryKey)\PowerShell\1\PowerShellEngine" Name="PowerShellVersion" Type="raw"></RegistrySearch>
+    </Property>
+
+    <Condition Message="!(loc.MsgPowerShellError)">
+     <![CDATA[Installed OR POWESHELL20DETECTED = "2.0"]]>
+    </Condition>   
+  
+    <!--ADD\REMOVE PROGRAMS ENTRY PROPERTIES-->
+    <Property Id="ARPCOMMENTS">!(loc.ARPCOMMENTS)</Property>
+    <!--<Property Id="ARPHELPLINK">!(loc.ARPHELPLINK)</Property>
+    <Property Id="ARPURLINFOABOUT">!(loc.ARPURLINFOABOUT)</Property>
+    <Property Id="ARPPRODUCTICON">!(loc.ARPPRODUCTICON)</Property>-->
+    <Property Id="ARPNOMODIFY">1</Property>
+  
+    <!-- Default Properties to machine name, port number and Web site name -->
+    <Property Id="MACHINENAME">localhost</Property>
+    <Property Id="PORTNUMBER">9090</Property>
+    <Property Id="ZENTITYWEBSITEDESC">Zentity v2.0</Property>
+    <!-- Property for retriving the machine name, port number and website desc during repair -->
+    <Property Id="INSTALLEDMACHINENAME">
+      <RegistrySearch Id="RegistrySearchMachineName" Root="HKLM" Key="$(var.RootRegistryKey)\[ProductName]" Name="MachineName" Type="raw"></RegistrySearch>
+    </Property>
+    <Property Id="INSTALLEDPORTNUMBER">
+      <RegistrySearch Id="RegistrySearchPortNumber" Root="HKLM" Key="$(var.RootRegistryKey)\[ProductName]" Name="PortNumber" Type="raw"></RegistrySearch>
+    </Property>
+    <Property Id="INSTALLEDWEBSITEDESC">
+      <RegistrySearch Id="RegistrySearchWebsiteName" Root="HKLM" Key="$(var.RootRegistryKey)\[ProductName]" Name="WebsiteName" Type="raw"></RegistrySearch>
+    </Property>
+
+  
+    <?define bannerBmpLong="Resources\bannrbmpLong.bmp"?>
+  
+</Include>

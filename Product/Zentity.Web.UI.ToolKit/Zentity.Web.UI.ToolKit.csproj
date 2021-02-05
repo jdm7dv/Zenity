@@ -1,0 +1,268 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{E13A7E15-6F5E-4BD8-8677-74BA51F02990}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Zentity.Web.UI.ToolKit</RootNamespace>
+    <AssemblyName>Zentity.Web.UI.ToolKit</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <SignAssembly>false</SignAssembly>
+    <DelaySign>true</DelaySign>
+    <AssemblyOriginatorKeyFile>..\..\StrongNameKey\35MSSharedLib1024.snk</AssemblyOriginatorKeyFile>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+    <DocumentationFile>bin\Debug\Zentity.Web.UI.ToolKit.xml</DocumentationFile>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Release\Zentity.Web.UI.ToolKit.xml</DocumentationFile>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Product Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Product Debug\</OutputPath>
+    <DefineConstants>CODE_ANALYSIS;DEBUG;TRACE</DefineConstants>
+    <DocumentationFile>bin\Debug\Zentity.Web.UI.ToolKit.xml</DocumentationFile>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.Entity">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AssociationControls\Association.cs" />
+    <Compile Include="AssociationControls\AssociationDesigner.cs" />
+    <Compile Include="AssociationControls\CategoryNodeAssociation.cs" />
+    <Compile Include="AssociationControls\PredicateAssociation.cs" />
+    <Compile Include="AssociationControls\ScholarlyWorkItemTagging.cs" />
+    <Compile Include="BaseTreeView.cs" />
+    <Compile Include="BrowsableViews\AuthorsListView.cs" />
+    <Compile Include="BrowsableViews\AuthorsListViewDesigner.cs" />
+    <Compile Include="BrowsableViews\BrowsableNodeInfo.cs" />
+    <Compile Include="BrowsableViews\BrowseTreeView.cs" />
+    <Compile Include="ChangeHistoryControls\ChangeHistory.cs" />
+    <Compile Include="ChangeHistoryControls\CommonChangeHistoryObject.cs" />
+    <Compile Include="ChangeHistoryControls\CommonProperties.cs" />
+    <Compile Include="CloudControls\TagCloud.cs" />
+    <Compile Include="CloudControls\TagCloudEntry.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="Handler\ImageHandler.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReportingControls\MostActiveAuthors.cs" />
+    <Compile Include="ReportingControls\ReportingView.cs" />
+    <Compile Include="ReportingControls\ZentityTable.cs" />
+    <Compile Include="ReportingControls\ZentityTableDesigner.cs" />
+    <Compile Include="ResourceControls\CategoryHierarchy.cs" />
+    <Compile Include="ResourceControls\Configuration\DateRangePropertiesCollection.cs" />
+    <Compile Include="ResourceControls\Configuration\DateRangePropertiesElement.cs" />
+    <Compile Include="ResourceControls\Configuration\EmailPropertyCollection.cs" />
+    <Compile Include="ResourceControls\Configuration\ImagePropertyCollection.cs" />
+    <Compile Include="ResourceControls\Configuration\OrderPropertyConfigElement.cs" />
+    <Compile Include="ResourceControls\Configuration\OrderPropertyConfigElementCollection.cs" />
+    <Compile Include="ResourceControls\Configuration\ResourcePropertiesConfigElement.cs" />
+    <Compile Include="ResourceControls\Configuration\ResourcePropertiesConfigElementCollection.cs" />
+    <Compile Include="ResourceControls\Configuration\ResourcePropertiesConfigSection.cs" />
+    <Compile Include="ResourceControls\LengthValidator.cs" />
+    <Compile Include="ResourceControls\ResourceProperties.cs" />
+    <Compile Include="ResourceControls\ResourcePropertyConstants.cs" />
+    <Compile Include="Resources\GlobalResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GlobalResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\ZentityAttributeResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ZentityAttributeResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="ResourceViewControls\DeleteEventArgs.cs" />
+    <Compile Include="ResourceViewControls\Pager.cs" />
+    <Compile Include="ResourceViewControls\RelatedDownloads.cs" />
+    <Compile Include="ResourceViewControls\RelatedResourcesCloud.cs" />
+    <Compile Include="ResourceViewControls\ResourceDetailView.cs" />
+    <Compile Include="ResourceViewControls\ResourceDetailViewDesigner.cs" />
+    <Compile Include="ResourceViewControls\ResourceListView.cs" />
+    <Compile Include="ResourceViewControls\ResourceView.cs" />
+    <Compile Include="ResourceViewControls\SelectType.cs" />
+    <Compile Include="SearchControls\EntitySearch.cs" />
+    <Compile Include="SearchControls\EntitySearchDesigner.cs" />
+    <Compile Include="SearchControls\EntityTypeEventArgs.cs" />
+    <Compile Include="SearchControls\PropertyFilterCriteria.cs" />
+    <Compile Include="SearchControls\ResourceDataGridView.cs" />
+    <Compile Include="SearchControls\ZentityDataGridView.cs" />
+    <Compile Include="SearchControls\ZentityGridEventArgs.cs" />
+    <Compile Include="SearchControls\ZentityGridViewColumn.cs" />
+    <Compile Include="TreeViewDesigner.cs" />
+    <Compile Include="Utilities\Constants.cs" />
+    <Compile Include="Utilities\CoreHelper.cs" />
+    <Compile Include="Utilities\ExceptionClasses\AssociationException.cs" />
+    <Compile Include="Utilities\ExceptionClasses\ConcurrentAccessException.cs" />
+    <Compile Include="Utilities\ExceptionClasses\EntityNotFoundException.cs" />
+    <Compile Include="Utilities\ExceptionClasses\Enums.cs" />
+    <Compile Include="Utilities\PredicateDataAccess.cs" />
+    <Compile Include="Utilities\ResourceDataAccess.cs" />
+    <Compile Include="Utilities\ToolKitEnum.cs" />
+    <Compile Include="Utilities\ZentityCategoryAttribute.cs" />
+    <Compile Include="Utilities\ZentityDescriptionAttribute.cs" />
+    <Compile Include="ZentityBase.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Image\Arrow.GIF" />
+    <EmbeddedResource Include="Image\Calendar_scheduleHS.png" />
+    <EmbeddedResource Include="Image\Minus.GIF" />
+    <EmbeddedResource Include="Image\NoImage.JPG" />
+    <EmbeddedResource Include="Image\Plus.GIF" />
+    <EmbeddedResource Include="Image\SmallMinus.gif" />
+    <EmbeddedResource Include="ResourceControls\CaregoryHierarchyScript.js" />
+    <EmbeddedResource Include="ResourceControls\ResourcePropertyScript.js" />
+    <EmbeddedResource Include="ResourceViewControls\ResourceViewScript.js" />
+    <EmbeddedResource Include="Scripts\CommonScript.js" />
+    <EmbeddedResource Include="SearchControls\SearchControlScript.js" />
+    <EmbeddedResource Include="StyleSheet\DefaultToolKit.css" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\GlobalResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>GlobalResource.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\ZentityAttributeResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ZentityAttributeResource.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Image\SmallPlus.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Image\Atom.png" />
+    <EmbeddedResource Include="Image\AtomDisabled.png" />
+    <EmbeddedResource Include="Image\RSS.png" />
+    <EmbeddedResource Include="Image\RSSDisabled.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Zentity.Core\Zentity.csproj">
+      <Project>{E141CAE2-FBAC-452A-81A9-C027CA9182BE}</Project>
+      <Name>Zentity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Zentity.ScholarlyWorks\Zentity.ScholarlyWorks.csproj">
+      <Project>{1EA9F927-E9CA-417D-946C-83A957A18B99}</Project>
+      <Name>Zentity.ScholarlyWorks</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Zentity.Security\Zentity.Security.AuthenticationProvider\Zentity.Security.AuthenticationProvider.csproj">
+      <Project>{5E14B8B7-C9AB-4B02-840B-D2C4829079FA}</Project>
+      <Name>Zentity.Security.AuthenticationProvider</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Zentity.Security\Zentity.Security.Authentication\Zentity.Security.Authentication.csproj">
+      <Project>{3822E9FB-5E57-4099-8CFD-0C78CDC3EDCF}</Project>
+      <Name>Zentity.Security.Authentication</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Zentity.Security\Zentity.Security.AuthorizationHelper\Zentity.Security.AuthorizationHelper.csproj">
+      <Project>{C8600CA3-C0FD-41BA-A710-5A05571C5DAF}</Project>
+      <Name>Zentity.Security.AuthorizationHelper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Zentity.Security\Zentity.Security.Authorization\Zentity.Security.Authorization.csproj">
+      <Project>{D344B44A-C269-4E91-AEDC-740ED095C1C3}</Project>
+      <Name>Zentity.Security.Authorization</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Zentity.Services\Zentity.Platform\Zentity.Platform.csproj">
+      <Project>{6E6F2C21-4CD4-46C5-BD94-FA3C5FC17DB9}</Project>
+      <Name>Zentity.Platform</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

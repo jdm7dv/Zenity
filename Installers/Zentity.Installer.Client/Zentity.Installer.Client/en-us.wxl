@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WixLocalization Culture="en-us" xmlns="http://schemas.microsoft.com/wix/2006/localization">
+  <String Id="LCID">1033</String>
+  <String Id="ZentityClientFeatureTitle">Zentity</String>
+  <String Id="ZentityClientFeatureDesc">Zentity Client Files</String>
+  <String Id="ZentityDocFeatureTitle">Documentation</String>
+  <String Id="ZentityDocFeatureDesc">Documentation</String>
+  <String Id="ZentityScriptFeatureTitle">PowerShell scripts</String>
+  <String Id="ZentityScriptFeatureDesc">PowerShell scripts</String>
+  <String Id="ZentitySampleFeatureTitle">Samples</String>
+  <String Id="ZentitySampleFeatureDesc">Samples</String>
+
+  <String Id="MsgOSNotSupported">[ProductName] can only be installed on computers running Windows7 , Windows Vista, or WindowsXP SP3.</String>
+  <String Id="MsgDotNetError">[ProductName] can only be installed on computers running Microsoft .NET Framework 4.0. If you have Internet access, download and  install .NET Framework 4.0 from the Microsoft Download Center at http://www.microsoft.com/downloads.</String>
+  <String Id="MsgMustRunPrivileged">Only members of the Administrator or Power User groups can install, repair, or remove [ProductName] from this computer.</String>
+  <String Id="MsgPowerShellError">[ProductName] can only be installed on computers running PowerShell version 2.0 [POWESHELL20DETECTED].</String>
+
+  <!-- Help links (gets displayed in add/remove programs)-->
+  <String Id="ARPCOMMENTS">Zentity</String>
+  <String Id="ARPHELPLINK"></String>
+  <String Id="ARPURLINFOABOUT"></String>
+  <String Id="ARPPRODUCTICON">InstallerIcon</String>
+
+  <String Id="InputDlg_Title" Overridable="yes">[ProductName] Setup</String>
+  <String Id="InputDlgTitle">{\WixUI_Font_Title}Website Details</String>
+  <String Id="InputDlgDescription">Please enter Zentity Website details</String>
+  <String Id="InputDlgBannerBitmap" Overridable="yes">WixUI_Bmp_Banner</String>
+  <String Id="InputDlgMachineName">Server name</String>
+  <String Id="InputDlgPortNumber">Port number</String>
+  <String Id="InputDlgWebSiteName">Website Name</String>
+
+  <String Id="CustomizeDlgBannerBitmapLong" Overridable="yes">WixUI_Bmp_Banner_Long</String>
+
+  <!--Tooltips of the Website details dialog-->
+  <String Id="InputDlgWebSiteNameToolTip">The Zentity Website name specified at the server.</String>
+  <String Id="InputDlgMachineNameToolTip">The name of the machine where Zentity Server has been installed.</String>
+  <String Id="InputDlgPortNumberToolTip">The port number at which Zentity Server has been installed.</String>
+  
+</WixLocalization>

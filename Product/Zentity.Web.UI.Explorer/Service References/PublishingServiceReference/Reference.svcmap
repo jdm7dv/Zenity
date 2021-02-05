@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="da914a34-8037-4683-8ef6-780d7e214f42" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>false</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:9090/Pivot/PublishingService" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="PublishingService1.disco" MetadataType="Disco" ID="30da58d3-242f-4d1c-81df-7e02a1136131" SourceId="1" SourceUrl="http://aditidt486:9090/Pivot/PublishingService?disco" />
+    <MetadataFile FileName="PublishingService5.xsd" MetadataType="Schema" ID="6763dc02-904c-421c-98a2-5813ef8e5555" SourceId="1" SourceUrl="http://aditidt486:9090/Pivot/PublishingService?xsd=xsd1" />
+    <MetadataFile FileName="PublishingService51.xsd" MetadataType="Schema" ID="c5ecfab3-d28f-48df-8a85-e5e4e37e18b5" SourceId="1" SourceUrl="http://aditidt486:9090/Pivot/PublishingService?xsd=xsd0" />
+    <MetadataFile FileName="PublishingService52.xsd" MetadataType="Schema" ID="6559bb92-176e-4bd2-805d-d45f0faa667c" SourceId="1" SourceUrl="http://aditidt486:9090/Pivot/PublishingService?xsd=xsd3" />
+    <MetadataFile FileName="PublishingService1.wsdl" MetadataType="Wsdl" ID="d8b67736-be1a-46ee-8966-456c5c3014a4" SourceId="1" SourceUrl="http://aditidt486:9090/Pivot/PublishingService?wsdl" />
+    <MetadataFile FileName="PublishingService53.xsd" MetadataType="Schema" ID="918abd90-fc73-4cc0-9974-61986153538f" SourceId="1" SourceUrl="http://aditidt486:9090/Pivot/PublishingService?xsd=xsd4" />
+    <MetadataFile FileName="PublishingService54.xsd" MetadataType="Schema" ID="721a29c0-2b7a-4dec-9c16-2bc71c87940d" SourceId="1" SourceUrl="http://aditidt486:9090/Pivot/PublishingService?xsd=xsd2" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

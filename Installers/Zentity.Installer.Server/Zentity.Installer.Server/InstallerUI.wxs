@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--InstallerUI contains the Installer UI sequence and dialog references-->
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Fragment>
+    
+    <!-- Set default property to Repair in Maintenance mode dialog -->
+    <Property Id="MaintenanceMode" Value="1" />
+    <Property Id="WixUIRMOption" Value="UseRM" />
+
+    <?define bannerBmp="Resources\bannrbmp.bmp"?>
+    <?define bannerBmpLong="Resources\bannrbmpLong.bmp"?>
+    <?define dialogBmp="Resources\dlgbmp.bmp"?>
+    <?define exclamationIco="Resources\exclamic.ico"?>
+    <?define infoIco="Resources\info.ico"?>
+    <?define newIco="Resources\New.ico"?>
+    <?define upIco="Resources\Up.ico"?>
+    <?define licenseRtf="License\!(loc.LicenseFile)"?>
+
+    <?include Common.wxi?>
+    <UIRef Id="ZentityUI_Common" />
+    
+    <!-- Include Install Dialogs -->
+    <?include Dialogs\AuthenticationSqlServerDlg.wxi?>
+    <?include Dialogs\CustomizeDlg.wxi?>
+    <?include Dialogs\DuplicateAuthenticationSqlServerDlg.wxi?>
+    <?include Dialogs\DuplicateOaiPmhSqlServerDlg.wxi?>
+    <?include Dialogs\DuplicateSqlServerDlg.wxi?>
+    <?include Dialogs\ExitDialog.wxi?>
+    <?include Dialogs\IISAppPoolDlg.wxi?>
+    <?include Dialogs\IISDlg.wxi?>
+    <?include Dialogs\LicenseAgreementDlg.wxi?>
+    <?include Dialogs\MaintenanceTypeDlg.wxi?>
+    <?include Dialogs\MaintenanceWelcomeDlg.wxi?>
+    <?include Dialogs\NotificationServiceDlg.wxi?>
+    <?include Dialogs\OaiPmhSqlServerDlg.wxi?>
+    <?include Dialogs\PivotServicesDlg.wxi?>
+    <?include Dialogs\SqlServerDlg.wxi?>
+    <?include Dialogs\SqlServerFileStreamDlg.wxi?>
+    <?include Dialogs\VerifyReadyDlg.wxi?>
+    <?include Dialogs\WelcomeDlg.wxi?>
+
+    <!--UI Flow-->
+    <UI Id="WixInstallerUI">
+
+      <DialogRef Id="ErrorDlg" />
+      <DialogRef Id="FilesInUse" />
+      <DialogRef Id="FatalError" />
+      <DialogRef Id="UserExit" />
+      <DialogRef Id="OutOfDiskDlg" />
+      <DialogRef Id="OutOfRbDiskDlg" />
+      <DialogRef Id="ProgressDlg" />
+      
+      <!-- Text Style -->
+      <TextStyle Id="WixUI_Font_Normal" FaceName="Microsoft Sans Serif" Size="8" />
+      <TextStyle Id="WixUI_Font_Bigger" FaceName="Microsoft Sans Serif" Size="12" Bold="yes" />
+      <TextStyle Id="WixUI_Font_Title" FaceName="Microsoft Sans Serif" Size="9" Bold="yes" />
+      <TextStyle Id="WixUI_Font_Bold" FaceName="Microsoft Sans Serif" Size="8" Bold="yes" />
+      <TextStyle Id="WixUI_Font_Link" FaceName="Microsoft Sans Serif" Size="8" Underline="yes" Red="81" Green="54" Blue="244" />
+
+      <Property Id="DefaultUIFont" Value="WixUI_Font_Normal" />
+            
+      <!--Welcome Dialog -->
+      <Property Id="WixUI_WelcomeDlg_Next" Value="LicenseAgreementDlg" />
+      
+      <!--EULA Dialog -->
+      <Property Id="WixUI_LicenseAgreementDlg_Next" Value="CustomizeDlg" />
+      <Property Id="WixUI_LicenseAgreementDlg_Back" Value="WelcomeDlg_Custom" />
+      
+      <!--Customize Dialog -->
+      <Property Id="WixUI_CustomizeDlg_Next" Value="SqlServerDlg" />
+      <Property Id="WixUI_CustomizeDlg_BackInstall" Value="LicenseAgreementDlg" />
+      <Property Id="WixUI_CustomizeDlg_BackChange" Value="MaintenanceTypeDlg" />
+      
+      <!-- Select Website Dialog -->
+      <Property Id="WixUI_SqlServerDlg_Next" Value="SqlServerFileStreamDlg" />
+      <Property Id="WixUI_SqlServerDlg_Back" Value="CustomizeDlg" />
+      <Property Id="WixUI_SqlServerFileStreamDlg_Next" Value="OaiPmhSqlServerDlg" />
+      <Property Id="WixUI_SqlServerFileStreamDlg_Back" Value="SqlServerDlg" />
+      <Property Id="WixUI_OaiPmhSqlServerDlg_Next" Value="AuthenticationSqlServerDlg" />
+      <Property Id="WixUI_OaiPmhSqlServerDlg_Back" Value="SqlServerFileStreamDlg" />
+      <Property Id="WixUI_AuthenticationSqlServerDlg_Next" Value="IISDlg" />
+      <Property Id="WixUI_AuthenticationSqlServerDlg_Back" Value="OaiPmhSqlServerDlg" />
+
+      <!-- IIS Dialog -->
+      <Property Id="WixUI_IISDlg_Next" Value="IISAppPoolDlg" />
+      <Property Id="WixUI_IISDlg_Back" Value="AuthenticationSqlServerDlg" />
+
+      <!-- IIS App Pool Dialog -->
+      <Property Id="WixUI_IISAppPoolDlg_Next" Value="NotificationServiceDlg" />
+      <Property Id="WixUI_IISAppPoolDlg_Back" Value="IISDlg" />
+
+      <Property Id="WixUI_NotificationServiceDlg_Next" Value="PivotServicesDlg" />
+      <Property Id="WixUI_NotificationServiceDlg_Back" Value="IISAppPoolDlg" />
+
+      <Property Id="WixUI_PivotServicesDlg_Next" Value="VerifyReadyDlg" />
+      <Property Id="WixUI_PivotServicesDlg_Back" Value="NotificationServiceDlg" />
+
+      <!-- Verify Ready Dialog -->
+      <Property Id="WixUI_VerifyReadyDlg_BackInstall" Value="PivotServicesDlg" />
+      <Property Id="WixUI_VerifyReadyDlg_BackChange" Value="MaintenanceTypeDlg" />
+      <Property Id="WixUI_VerifyReadyDlg_BackRepair" Value="MaintenanceTypeDlg" />
+      <Property Id="WixUI_VerifyReadyDlg_BackRemove" Value="MaintenanceTypeDlg" />
+
+      <!-- Maintenance Welcome Dialog -->
+      <Property Id="WixUI_MaintenanceWelcomeDlg_Next" Value="MaintenanceTypeDlg" />
+
+      <!-- Maintenance Type Dialog -->
+      <Property Id="WixUI_MaintenanceTypeDlg_Change" Value="CustomizeDlg" />
+      <Property Id="WixUI_MaintenanceTypeDlg_Repair" Value="VerifyReadyDlg" />
+      <Property Id="WixUI_MaintenanceTypeDlg_Remove" Value="VerifyReadyDlg" />
+      <Property Id="WixUI_MaintenanceTypeDlg_Back" Value="ZentityMaintenanceWelcomeDlg" />
+
+    </UI>
+  </Fragment>
+</Wix>

@@ -1,0 +1,176 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{F974EA31-EF5C-4806-AC14-A099A21236C0}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Zentity.Services.ServiceHost</RootNamespace>
+    <AssemblyName>Zentity.Services.ServiceHost</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <CodeAnalysisLogFile>bin\Debug\Zentity.Services.ServiceHost.exe.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;C:\Program Files\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisRuleDirectories>;C:\Program Files\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <CodeAnalysisLogFile>bin\Release\Zentity.Services.ServiceHost.exe.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;C:\Program Files\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisRuleDirectories>;C:\Program Files\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DeepZoomTools">
+      <HintPath>..\External Libraries\DeepZoomTools.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Configuration.Install" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="WebServiceHostInstaller.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="WebServiceHostInstaller.Designer.cs">
+      <DependentUpon>WebServiceHostInstaller.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WebServiceHost.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="WebServiceHost.Designer.cs">
+      <DependentUpon>WebServiceHost.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DefaultDeepZoom\Default.dzi" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Zentity.Services.External\Zentity.Services.External.csproj">
+      <Project>{F65FDA0B-D8A0-4345-8885-55E8B58E5DBD}</Project>
+      <Name>Zentity.Services.External</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Zentity.Services.Web\Zentity.Services.Web.csproj">
+      <Project>{AC581A4A-5071-4631-8BB6-2E8E0AA29377}</Project>
+      <Name>Zentity.Services.Web</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="DefaultDeepZoom\Default_files\0\0_0.jpg" />
+    <Content Include="DefaultDeepZoom\Default_files\10\0_0.jpg" />
+    <Content Include="DefaultDeepZoom\Default_files\10\0_1.jpg" />
+    <Content Include="DefaultDeepZoom\Default_files\10\1_0.jpg" />
+    <Content Include="DefaultDeepZoom\Default_files\10\1_1.jpg" />
+    <Content Include="DefaultDeepZoom\Default_files\10\2_0.jpg" />
+    <Content Include="DefaultDeepZoom\Default_files\10\2_1.jpg" />
+    <Content Include="DefaultDeepZoom\Default_files\11\0_0.jpg" />
+    <Content Include="DefaultDeepZoom\Default_files\11\0_1.jpg" />
+    <Content Include="DefaultDeepZoom\Default_files\11\0_2.jpg" />
+    <Content Include="DefaultDeepZoom\Default_files\11\0_3.jpg" />
+    <Content Include="DefaultDeepZoom\Default_files\11\1_0.jpg" />
+    <Content Include="DefaultDeepZoom\Default_files\11\1_1.jpg" />
+    <Content Include="DefaultDeepZoom\Default_files\11\1_2.jpg" />
+    <Content Include="DefaultDeepZoom\Default_files\11\1_3.jpg" />
+    <Content Include="DefaultDeepZoom\Default_files\11\2_0.jpg" />
+    <Content Include="DefaultDeepZoom\Default_files\11\2_1.jpg" />
+    <Content Include="DefaultDeepZoom\Default_files\11\2_2.jpg" />
+    <Content Include="DefaultDeepZoom\Default_files\11\2_3.jpg" />
+    <Content Include="DefaultDeepZoom\Default_files\11\3_0.jpg" />
+    <Content Include="DefaultDeepZoom\Default_files\11\3_1.jpg" />
+    <Content Include="DefaultDeepZoom\Default_files\11\3_2.jpg" />
+    <Content Include="DefaultDeepZoom\Default_files\11\3_3.jpg" />
+    <Content Include="DefaultDeepZoom\Default_files\11\4_0.jpg" />
+    <Content Include="DefaultDeepZoom\Default_files\11\4_1.jpg" />
+    <Content Include="DefaultDeepZoom\Default_files\11\4_2.jpg" />
+    <Content Include="DefaultDeepZoom\Default_files\11\4_3.jpg" />
+    <Content Include="DefaultDeepZoom\Default_files\1\0_0.jpg" />
+    <Content Include="DefaultDeepZoom\Default_files\2\0_0.jpg" />
+    <Content Include="DefaultDeepZoom\Default_files\3\0_0.jpg" />
+    <Content Include="DefaultDeepZoom\Default_files\4\0_0.jpg" />
+    <Content Include="DefaultDeepZoom\Default_files\5\0_0.jpg" />
+    <Content Include="DefaultDeepZoom\Default_files\6\0_0.jpg" />
+    <Content Include="DefaultDeepZoom\Default_files\7\0_0.jpg" />
+    <Content Include="DefaultDeepZoom\Default_files\8\0_0.jpg" />
+    <Content Include="DefaultDeepZoom\Default_files\9\0_0.jpg" />
+    <Content Include="DefaultDeepZoom\Default_files\9\1_0.jpg" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>xcopy /S /I /Y "$(ProjectDir)DefaultDeepZoom" "$(TargetDir)DefaultDeepZoom"</PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

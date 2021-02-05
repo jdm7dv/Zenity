@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="ZentityAdministration">
+  <DataContextMoniker Name="/ZentityAdministrationDataContext" />
+  <nestedChildShapes>
+    <classShape Id="b344290c-af96-4d96-b8f8-757648e056fe" absoluteBounds="1, 0.625, 2.75, 1.9631982421875">
+      <DataClassMoniker Name="/ZentityAdministrationDataContext/PublishRequestRecovery" />
+      <nestedChildShapes>
+        <elementListCompartment Id="15159a02-ec69-4a77-b98b-8b8c2606a166" absoluteBounds="1.015, 1.085, 2.7199999999999998, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

@@ -1,0 +1,169 @@
+﻿.rStyle
+{	
+	font-size: 12px;
+	padding-left:2px;
+	padding-right:5px;
+	padding-bottom:2px;
+	padding-top:2px;
+	border-style:solid;
+	border-color:#bbbbbb;
+	border-width:1px;
+	vertical-align: top;
+}
+
+.rStyle td
+{
+	padding-left:2px;
+	padding-right:5px;
+	padding-bottom:2px;
+	padding-top:2px;
+	border-style:solid;
+	border-color:#bbbbbb;
+	border-width:1px;
+	vertical-align: top;
+}
+
+.rStyle a:visited
+{
+    text-decoration:underline;
+}
+
+.rStyle a:hover
+{
+    text-decoration:none;
+}
+
+.alternateRowStyle
+{
+	background-color:#EDF3FE;
+	padding-left:2px;
+	padding-right:5px;
+	padding-bottom:1px;
+	padding-top:1px;
+	vertical-align: top;
+}
+
+.arStyle
+{
+	background-color:#EDF3FE;
+	font-size: 12px;
+	padding-left:2px;
+	padding-right:5px;
+	padding-bottom:1px;
+	padding-top:1px;
+	border-style:solid;
+	border-color:#bbbbbb;
+	vertical-align: top;
+}
+
+.arStyle td
+{	
+	padding-left:2px;
+	padding-right:5px;
+	padding-bottom:2px;
+	padding-top:2px;
+	border-style:solid;
+	border-color:#bbbbbb;
+	border-width:1px;
+	vertical-align: top;
+}
+
+.arStyle a:visited
+{
+    text-decoration:underline;
+}
+
+.arStyle a:hover
+{
+    text-decoration:none;
+}
+
+.titleStyle
+{
+	background-color:#8d8d8d;
+	font-weight:bold;
+	font-size:14px;
+	color:#FFFFFF;
+	text-align:left;
+	padding-top:5px;
+	padding-bottom:5px;
+}
+
+.hStyle
+{
+	background-color:#d0d0d0;
+	font-weight:bold;
+	font-size:13px;
+	color:#444444;
+	text-align: center;
+	padding-left:2px;
+	padding-right:5px;
+	padding-bottom:2px;
+	padding-top:2px;
+	border-style:solid;
+	border-color:#aaaaaa;
+	border-width:1px;	
+}
+
+.hStyle th
+{	
+	padding-left:2px;
+	padding-right:5px;
+	padding-bottom:2px;
+	padding-top:2px;
+	border-style:solid;
+	border-color:#aaaaaa;
+	border-width:1px;
+}
+
+.hStyle a
+{	
+	color:#444444;	
+}
+
+.button 
+{
+	border:1px solid #FFFFFF;
+	background-color:#6B6259;
+	color:#FFFFFF;
+	font-size:1em;
+	height: 24px;
+}
+
+.lStyle
+{
+	
+}
+
+.ContextStyle
+{
+    display: none;
+    position: absolute;
+    padding: 0px;
+    width: 90px;
+    height: 80px;
+    background-color: White;
+    border: solid 1px black;
+}
+.Invisible
+{
+    display: none;
+}
+
+.Visible
+{
+    display: inline;
+}
+
+.HighLightButton
+{
+    background-color: #AAC7E5;
+}
+.DefaultButton
+{
+    background-color: #FFFFFF;
+}
+.TreeViewStyle
+{
+    overflow: auto;
+}

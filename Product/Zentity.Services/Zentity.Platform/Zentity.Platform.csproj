@@ -1,0 +1,327 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{6E6F2C21-4CD4-46C5-BD94-FA3C5FC17DB9}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Zentity.Platform</RootNamespace>
+    <AssemblyName>Zentity.Platform</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <SignAssembly>false</SignAssembly>
+    <DelaySign>false</DelaySign>
+    <AssemblyOriginatorKeyFile>..\..\StrongNameKey\35MSSharedLib1024.snk</AssemblyOriginatorKeyFile>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\Zentity.Platform.xml</DocumentationFile>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DebugSymbols>true</DebugSymbols>
+    <DocumentationFile>bin\Release\Zentity.Platform.xml</DocumentationFile>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Caching, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ExternalLibraries\Microsoft.Practices.EnterpriseLibrary.Caching.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ExternalLibraries\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Data, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ExternalLibraries\Microsoft.Practices.EnterpriseLibrary.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.Entity">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.ServiceModel">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.ServiceModel.Web">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AtomPub\AtomEntryDocument.cs" />
+    <Compile Include="AtomPub\AtomPubConstants.cs" />
+    <Compile Include="AtomPub\AtomPubDeleteProcessor.cs" />
+    <Compile Include="AtomPub\ResourceNotFoundException.cs" />
+    <Compile Include="AtomPub\AtomPubGetProcessor.cs" />
+    <Compile Include="AtomPub\AtomPubHelper.cs" />
+    <Compile Include="AtomPub\AtomPubParameterType.cs" />
+    <Compile Include="AtomPub\AtomPubPostProcessor.cs" />
+    <Compile Include="AtomPub\AtomPubPutProcessor.cs" />
+    <Compile Include="AtomPub\AtomPubRequestType.cs" />
+    <Compile Include="AtomPub\AtomPubService.cs" />
+    <Compile Include="AtomPub\DAL\AtomPubStoreFactory.cs" />
+    <Compile Include="AtomPub\DAL\ZentityAtomPubStoreReader.cs" />
+    <Compile Include="AtomPub\DAL\ZentityAtomPubStoreWriter.cs" />
+    <Compile Include="AtomPub\DAL\IAtomPubStoreReader.cs" />
+    <Compile Include="AtomPub\DAL\IAtomPubStoreWriter.cs" />
+    <Compile Include="AtomPub\ResourceUnauthorized.cs" />
+    <Compile Include="BibTeX\AuthorNameParser.cs" />
+    <Compile Include="BibTeX\BibTeXConverter.cs" />
+    <Compile Include="BibTeX\BibTeXDocument.cs" />
+    <Compile Include="BibTeX\BibTexEntry.cs" />
+    <Compile Include="BibTeX\BibTeXHelper.cs" />
+    <Compile Include="BibTeX\BibTeXMappingException.cs" />
+    <Compile Include="BibTeX\BibTexParser.cs" />
+    <Compile Include="BibTeX\BibTeXParserException.cs" />
+    <Compile Include="BibTeX\BibTeXToken.cs" />
+    <Compile Include="BibTeX\BibTexTokenizer.cs" />
+    <Compile Include="SearchEngine\Interpreter\AllResources.cs" />
+    <Compile Include="SearchEngine\Interpreter\AndOperator.cs" />
+    <Compile Include="SearchEngine\ExpressionTokenType.cs" />
+    <Compile Include="SearchEngine\NodeType.cs" />
+    <Compile Include="SearchEngine\Parser\CloseRoundBracket.cs" />
+    <Compile Include="SearchEngine\Interpreter\ComparisonExpression.cs" />
+    <Compile Include="SearchEngine\Interpreter\CompoundOperator.cs" />
+    <Compile Include="SearchEngine\Interpreter\ContainsExpression.cs" />
+    <Compile Include="SearchEngine\SortDirection.cs" />
+    <Compile Include="SearchEngine\Interpreter\DateValue.cs" />
+    <Compile Include="SearchEngine\Interpreter\Expression.cs" />
+    <Compile Include="SearchEngine\Interpreter\Interpreter.cs" />
+    <Compile Include="SearchEngine\Interpreter\NotOperator.cs" />
+    <Compile Include="SearchEngine\Parser\OpenRoundBracket.cs" />
+    <Compile Include="SearchEngine\Interpreter\OrOperator.cs" />
+    <Compile Include="SearchEngine\Parser\Parser.cs" />
+    <Compile Include="SearchEngine\Interpreter\PredicateOperator.cs" />
+    <Compile Include="SearchEngine\Interpreter\PredicateNode.cs" />
+    <Compile Include="SearchEngine\PropertyValuePair.cs" />
+    <Compile Include="SearchEngine\SortProperty.cs" />
+    <Compile Include="SearchEngine\Tokens\ImplicitProperties.cs" />
+    <Compile Include="SearchEngine\Tokens\PredicateToken.cs" />
+    <Compile Include="SearchEngine\Parser\SearchOperators.cs" />
+    <Compile Include="SearchEngine\Tokens\PropertyTokens.cs" />
+    <Compile Include="SearchEngine\Tokens\ResourceTypeHelper.cs" />
+    <Compile Include="SearchEngine\Tokens\SearchTokens.cs" />
+    <Compile Include="SearchEngine\Parser\Tokenizer.cs" />
+    <Compile Include="SearchEngine\SearchEngine.cs" />
+    <Compile Include="SearchEngine\SearchConstants.cs" />
+    <Compile Include="SearchEngine\SearchException.cs" />
+    <Compile Include="SearchEngine\Interpreter\TreeNode.cs" />
+    <Compile Include="SearchEngine\Interpreter\WordEqualExpression.cs" />
+    <Compile Include="SearchEngine\Interpreter\WordStartsWithExpression.cs" />
+    <Compile Include="SearchEngine\Tokens\SpecialToken.cs" />
+    <Compile Include="SearchEngine\Utility.cs" />
+    <Compile Include="SearchEngine\SimilarRecord.cs" />
+    <Compile Include="Syndication\SyndicationHelper.cs" />
+    <Compile Include="Syndication\SyndicationParameterType.cs" />
+    <Compile Include="Syndication\SyndicationRequestType.cs" />
+    <Compile Include="Syndication\SyndicationService.cs" />
+    <Compile Include="Zentity Service\IZentityService.cs" />
+    <Compile Include="Zentity Service\HttpDeleteProcessor.cs" />
+    <Compile Include="Zentity Service\HttpGetProcessor.cs" />
+    <Compile Include="Zentity Service\HttpPostProcessor.cs" />
+    <Compile Include="Zentity Service\HttpPutProcessor.cs" />
+    <Compile Include="Zentity Service\HttpRequestProcessor.cs" />
+    <Compile Include="Zentity Service\ServiceFactory.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="Helper\CoreHelper.cs" />
+    <Compile Include="Helper\PlatformConstants.cs" />
+    <Compile Include="Helper\PlatformSettings.cs" />
+    <Compile Include="OAI-PMH\BadArgumentException.cs" />
+    <Compile Include="OAI-PMH\BadVerbException.cs" />
+    <Compile Include="OAI-PMH\CannotDisseminateFormatException.cs" />
+    <Compile Include="OAI-PMH\MetadataProvider.cs" />
+    <Compile Include="OAI-PMH\MetadataProviderHelper.cs" />
+    <Compile Include="OAI-PMH\OaiPmhService.cs" />
+    <Compile Include="ORE\AbstractAggregatedResource.cs" />
+    <Compile Include="ORE\ZentityAggregatedResource.cs" />
+    <Compile Include="ORE\Aggregation.cs" />
+    <Compile Include="ORE\AggResourceCreator.cs" />
+    <Compile Include="ORE\IOriginator.cs" />
+    <Compile Include="ORE\ISerializeORE.cs" />
+    <Compile Include="ORE\Memento.cs" />
+    <Compile Include="ORE\OreHelper.cs" />
+    <Compile Include="ORE\OreService.cs" />
+    <Compile Include="ORE\PropertyInformation.cs" />
+    <Compile Include="ORE\ResourceMap.cs" />
+    <Compile Include="ORE\SerializeRDFXML.cs" />
+    <Compile Include="ORE\StringWriterWithEncoding.cs" />
+    <Compile Include="ORE\TermsMgr.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="METS\DublinCoreMetadataExtractor.cs" />
+    <Compile Include="METS\ExtractorException.cs" />
+    <Compile Include="METS\FileMetadataPointer.cs" />
+    <Compile Include="METS\IMetadataExtractor.cs" />
+    <Compile Include="METS\Metadata.cs" />
+    <Compile Include="METS\MetadataSection.cs" />
+    <Compile Include="METS\MetadataSectionCollection.cs" />
+    <Compile Include="METS\MetsConstants.cs" />
+    <Compile Include="METS\MetsDocument.cs" />
+    <Compile Include="METS\MetsException.cs" />
+    <Compile Include="METS\XmlMetadata.cs" />
+    <Compile Include="Sword\DAL\ZentitySwordStoreWriter.cs" />
+    <Compile Include="Sword\PropertyMapper.cs" />
+    <Compile Include="Sword\SwordConstants.cs" />
+    <Compile Include="Sword\SwordException.cs" />
+    <Compile Include="Sword\SwordGetProcessor.cs" />
+    <Compile Include="Sword\SwordHelper.cs" />
+    <Compile Include="Sword\SwordPostProcessor.cs" />
+    <Compile Include="Sword\SwordService.cs" />
+    <Compile Include="ZipExtractor\ZipExtractor.cs" />
+    <Compile Include="Syndication\Feed.cs" />
+    <Compile Include="Syndication\FeedHelper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dc.xsd" />
+    <None Include="Resources\mets_v1-7.xsd" />
+    <None Include="Resources\simpledc.xsd" />
+    <None Include="Resources\xlink.xsd" />
+    <None Include="Resources\xml.xsd" />
+    <None Include="Scripts\Zentity.Platform.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ResourcePropertyMapping.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ExcludedPredicatesSchema.xsd" />
+    <None Include="Resources\ExcludedResourceTypesSchema.xsd" />
+    <None Include="Resources\Help.html" />
+    <Content Include="Resources\MimeTypeMapping.xml" />
+    <None Include="Resources\ImplicitPropertiesSchema.xsd" />
+    <None Include="Resources\PredicateTokensSchema.xsd" />
+    <None Include="Resources\SpecialTokensSchema.xsd" />
+    <None Include="SearchEngine\Tokens\ExcludedPredicates.config" />
+    <None Include="SearchEngine\Tokens\ExcludedResourceTypes.config" />
+    <None Include="SearchEngine\Tokens\SpecialTokens.config" />
+    <None Include="SearchEngine\Tokens\ImplicitProperties.config" />
+    <None Include="SearchEngine\Tokens\PredicateTokens.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Zentity.Core\Zentity.csproj">
+      <Project>{E141CAE2-FBAC-452A-81A9-C027CA9182BE}</Project>
+      <Name>Zentity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Zentity.ScholarlyWorksAndAuthorization\Zentity.ScholarlyWorksAndAuthorization\Zentity.ScholarlyWorksAndAuthorization.csproj">
+      <Project>{4012CC1B-5200-4FBA-865A-7A5FD5AB5FB5}</Project>
+      <Name>Zentity.ScholarlyWorksAndAuthorization</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Zentity.ScholarlyWorks\Zentity.ScholarlyWorks.csproj">
+      <Project>{1EA9F927-E9CA-417D-946C-83A957A18B99}</Project>
+      <Name>Zentity.ScholarlyWorks</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Zentity.Security\Zentity.Security.Authentication\Zentity.Security.Authentication.csproj">
+      <Project>{3822E9FB-5E57-4099-8CFD-0C78CDC3EDCF}</Project>
+      <Name>Zentity.Security.Authentication</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Zentity.Security\Zentity.Security.AuthorizationHelper\Zentity.Security.AuthorizationHelper.csproj">
+      <Project>{C8600CA3-C0FD-41BA-A710-5A05571C5DAF}</Project>
+      <Name>Zentity.Security.AuthorizationHelper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Zentity.Security\Zentity.Security.Authorization\Zentity.Security.Authorization.csproj">
+      <Project>{D344B44A-C269-4E91-AEDC-740ED095C1C3}</Project>
+      <Name>Zentity.Security.Authorization</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Zentity.Zip\Zentity.Zip.csproj">
+      <Project>{F55AFE73-EBF6-48A6-B6A3-9159C2621BE5}</Project>
+      <Name>Zentity.Zip</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+</Project>

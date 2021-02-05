@@ -1,0 +1,210 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AssemblyExtension" xml:space="preserve">
+    <value>*.dll</value>
+  </data>
+  <data name="CxmlExtension" xml:space="preserve">
+    <value>*.cxml</value>
+  </data>
+  <data name="DeepZoomImageFileExtension" xml:space="preserve">
+    <value>.dzi</value>
+  </data>
+  <data name="DeepZoomImageFolderName" xml:space="preserve">
+    <value>DeepZoomImages</value>
+  </data>
+  <data name="Default" xml:space="preserve">
+    <value>Default</value>
+  </data>
+  <data name="DziExtension" xml:space="preserve">
+    <value>.dzi</value>
+  </data>
+  <data name="ExcludedProperties" xml:space="preserve">
+    <value>Description,Tags,Name,Href,Files</value>
+  </data>
+  <data name="FilesExtension" xml:space="preserve">
+    <value>_files</value>
+  </data>
+  <data name="MethodName_Load" xml:space="preserve">
+    <value>Load</value>
+  </data>
+  <data name="MethodName_OfType" xml:space="preserve">
+    <value>OfType</value>
+  </data>
+  <data name="MethodName_Where" xml:space="preserve">
+    <value>Where</value>
+  </data>
+  <data name="PivotCollectionFileExtension" xml:space="preserve">
+    <value>.cxml</value>
+  </data>
+  <data name="PivotCollectionSchemaNamespace" xml:space="preserve">
+    <value>http://schemas.microsoft.com/livelabs/pivot/collection/2009</value>
+  </data>
+  <data name="ResourcesName" xml:space="preserve">
+    <value>Resources</value>
+  </data>
+  <data name="ResourceTypeFullNameFormat" xml:space="preserve">
+    <value>{0}.{1}</value>
+  </data>
+  <data name="ZipExtension" xml:space="preserve">
+    <value>.zip</value>
+  </data>
+  <data name="IdQueryString" xml:space="preserve">
+    <value>.cxml?Id=EQ.</value>
+  </data>
+  <data name="ParentDirectory" xml:space="preserve">
+    <value>../</value>
+  </data>
+  <data name="DefaultDzi" xml:space="preserve">
+    <value>DeepZoomImages/Default.dzi</value>
+  </data>
+  <data name="DataModelName" xml:space="preserve">
+    <value>DataModel</value>
+  </data>
+  <data name="DllExtension" xml:space="preserve">
+    <value>.dll</value>
+  </data>
+  <data name="ResourceName" xml:space="preserve">
+    <value>Resource</value>
+  </data>
+  <data name="ResourceTypeName" xml:space="preserve">
+    <value>Resource Type</value>
+  </data>
+  <data name="ZentityCore" xml:space="preserve">
+    <value>Zentity.Core</value>
+  </data>
+  <data name="MetadataDllName" xml:space="preserve">
+    <value>Zentity.Metadata</value>
+  </data>
+  <data name="ImageMimeTypes" xml:space="preserve">
+    <value>image/bmp,image/gif,image/jpeg,image/png,image/tiff</value>
+  </data>
+  <data name="ImageFileNameFormat" xml:space="preserve">
+    <value>Image_{0}.{1}</value>
+  </data>
+  <data name="MimeTypeSplitChar" xml:space="preserve">
+    <value>/</value>
+  </data>
+  <data name="DzcExtension" xml:space="preserve">
+    <value>.dzc</value>
+  </data>
+  <data name="DefaultHtmlTemplate" xml:space="preserve">
+    <value>&lt;html&gt;&lt;head&gt;&lt;style&gt;body { margin: 0px; font-family:Segoe UI, Arial Unicode MS, Arial, Sans-Serif; } p.header { font-size: 80px; color: white; background: #454545; width: 100%; filter: alpha(opacity=50); padding: 5px 20px; } p.footer { position:absolute; bottom:0; font-size: 30px; color: white; background: #AAA; width: 100%; padding: 10px 20px; } div { position:absolute; top:0; left:0; width:100%; height:100%; border:5px inset #aaaaaa; }&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;div&gt;&lt;p class="header"&gt;{name}&lt;/p&gt;&lt;p class="footer"&gt;{type}&lt;/p&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;</value>
+  </data>
+</root>

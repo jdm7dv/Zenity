@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Include xmlns:util="http://schemas.microsoft.com/wix/UtilExtension">
+  <!-- Documentation -->
+  <DirectoryRef Id="DocumentationFolder">
+    <Component Id="DocumentationComponent" Guid="{546C4EFD-5C44-433d-9DA9-610F928187E6}" KeyPath="yes">
+      <!-- Help files doc format -->
+      <File Id="ZentityDoc1" Source="$(var.DocumentsPath)\Zentity Version 2 - Change History Logging User Guide.docx" DiskId="1" />
+      <File Id="ZentityDoc2" Source="$(var.DocumentsPath)\Zentity Version 2 - Data Model Extensibility User Guide.docx" DiskId="1" />
+      <File Id="ZentityDoc3" Source="$(var.DocumentsPath)\Zentity Version 2 - Quick Guide.docx" DiskId="1" />
+      <File Id="ZentityDoc4" Source="$(var.DocumentsPath)\Zentity Version 2 - Search User Guide.docx" DiskId="1" />
+      <File Id="ZentityDoc5" Source="$(var.DocumentsPath)\Zentity Version 2 - Security User Guide.docx" DiskId="1" />
+      <File Id="ZentityDoc6" Source="$(var.DocumentsPath)\Zentity Version 2 - Web UI User Guide.docx" DiskId="1" />
+      <File Id="ZentityDoc7" Source="$(var.DocumentsPath)\Zentity Version 2 - Getting Started Guide.docx" DiskId="1" />
+      <File Id="ZentityDoc8" Source="$(var.DocumentsPath)\Zentity Version 2 - Installation Instructions.docx" DiskId="1" />
+      
+      <!-- Help files chm format -->
+      <File Id="ZentityCHM" Source="$(var.DocumentsPath)\Zentity.chm" DiskId="1" />
+
+      <!-- Registry Entries to store the values: Website name, machine name and port number -->
+      <RegistryKey Root="HKLM" Key="$(var.RootRegistryKey)\[ProductName]" Action="createAndRemoveOnUninstall">
+        <RegistryValue Type="string" Name="MachineName" Value="[MACHINENAME]"/>
+        <RegistryValue Type="string" Name="PortNumber" Value="[PORTNUMBER]"/>
+        <RegistryValue Type="string" Name="WebsiteName" Value="[ZENTITYWEBSITEDESC]"/>
+      </RegistryKey>
+    </Component>
+  </DirectoryRef>
+  
+  <!-- Scripts -->
+  <DirectoryRef Id="ScriptsFolder">
+    <Component Id="ScriptComponent" Guid="{83C81CD2-4A21-4a2c-BAE6-15E703AC5FC7}" KeyPath="yes">    
+      
+      <File Id="AdminConfigService" Source="$(var.PSScriptsPath)\AdminConfigService.ps1" DiskId="1" />
+      <File Id="Common" Source="$(var.PSScriptsPath)\Common.ps1" DiskId="1" />
+      <File Id="DataModelService" Source="$(var.PSScriptsPath)\DataModelService.ps1" DiskId="1" />
+      <File Id="DataServices" Source="$(var.PSScriptsPath)\DataServices.ps1" DiskId="1" />
+      <File Id="PublishingConfigService" Source="$(var.PSScriptsPath)\PublishingConfigService.ps1" DiskId="1" />
+      <File Id="PublishingService" Source="$(var.PSScriptsPath)\PublishingService.ps1" DiskId="1" />
+      <File Id="ResourceTypeService" Source="$(var.PSScriptsPath)\ResourceTypeService.ps1" DiskId="1" />
+      <File Id="ZentityConfigureDataModel" Source="$(var.PSScriptsPath)\Zentity-ConfigureDataModel.ps1" DiskId="1" />
+      <File Id="PublishStatusFormatData" Source="$(var.PSScriptsPath)\PublishStatus.Format.ps1xml" DiskId="1" />
+      <File Id="ZentityConsole" Source="$(var.PSScriptsPath)\ZentityConsole.config" DiskId="1" />     
+
+      <!-- Give full control to everyone using this directory -->
+      <CreateFolder Directory="ScriptsFolder">
+        <Permission User="Everyone" GenericAll="yes"/>
+      </CreateFolder>
+    </Component>
+  </DirectoryRef>
+
+  <DirectoryRef Id="RDFFolder">
+    <Component Id="RDFComponent" Guid="{78817763-6D74-4b2e-927B-9C98BF717ACA}" KeyPath="yes">
+      <File Id="ScholarlySampleModel" Source="$(var.PSScriptsPath)\RDF\ScholarlySampleModel.xml" DiskId="1" />
+      <File Id="ScholarlySampleModelSchema" Source="$(var.PSScriptsPath)\RDF\ScholarlySampleModel.xsd" DiskId="1" />
+      <File Id="TestModel" Source="$(var.PSScriptsPath)\RDF\TestModel.xml" DiskId="1" />
+      <File Id="TestModelSchema" Source="$(var.PSScriptsPath)\RDF\TestModel.xsd" DiskId="1" />      
+    </Component>
+  </DirectoryRef>
+  
+  <!-- Samples -->
+  <DirectoryRef Id="SamplesFolder">
+    <Component Id="SamplesComponent" Guid="{ABDE97ED-A537-4674-9908-8411748464E0}" KeyPath="yes">
+      <File Id="Readme1" Source="$(var.SamplesPath)\Readme.txt" DiskId="1" />      
+      <File Id="PubMedSample" Source="$(var.SamplesPath)\ZentityDataImport.zip" DiskId="1" />
+      <File Id="USPresidentsSample" Source="$(var.SamplesPath)\US Presidents Sample.zip" DiskId="1" />
+      <File Id="Zentity.CustomSecurity" Source="$(var.SamplesPath)\Zentity.CustomSecurity.zip" DiskId="1" />
+    </Component>
+  </DirectoryRef>
+  
+	<!-- License -->
+  <DirectoryRef Id="LicenseFolder">
+    <Component Id="LicenseStore" Guid="{EC07D9C5-6EB7-4f92-B0BE-6D08D5B3EA64}" KeyPath="yes">
+      <File Id="LicenseDoc" Source="Eula.rtf" DiskId="1" />      
+    </Component>
+  </DirectoryRef>
+  
+  <!-- Powershell Config file -->
+  <DirectoryRef Id="WPVersion">
+    <Component Id="PowerShellConfig" Guid="{570BDB30-C9F5-4d57-B581-6F0B6880D6DB}" KeyPath="yes" Win64="$(var.Win64)">
+      <File Id="powershell.exe.config" Source="$(var.PSScriptsPath)\powershell.exe.config" DiskId="1" Vital="yes"/>
+    </Component>
+  </DirectoryRef>  
+  
+  <!-- Application short cut -->
+  <DirectoryRef Id="ApplicationProgramsFolder">
+    <Component Id="ApplicationShortcut" Guid="{FDED0020-39AB-43dd-8AE0-8ABAEAB6B8C0}">
+      <!-- Document folder doc shortcut -->
+      <Shortcut Id="Doc1StartMenuShortcut"
+                Name="Zentity Version 2 - Quick Guide"                  
+                Target="[INSTALLDIR]\Documentation\Zentity Version 2 - Quick Guide.docx" 
+                Directory="DocumentationShortCutFolder"/>
+      <Shortcut Id="Doc2StartMenuShortcut"
+                Name="Zentity Version 2 - Change History Logging User Guide"
+                Target="[INSTALLDIR]\Documentation\Zentity Version 2 - Change History Logging User Guide.docx"
+                Directory="DocumentationShortCutFolder"/>
+      <Shortcut Id="Doc3StartMenuShortcut"
+                Name="Zentity Version 2 - Data Model Extensibility User Guide"
+                Target="[INSTALLDIR]\Documentation\Zentity Version 2 - Data Model Extensibility User Guide.docx"
+                Directory="DocumentationShortCutFolder"/>
+      <Shortcut Id="Doc4StartMenuShortcut"
+                Name="Zentity Version 2 - Search User Guide"
+                Target="[INSTALLDIR]\Documentation\Zentity Version 2 - Search User Guide.docx"
+                Directory="DocumentationShortCutFolder"/>
+      <Shortcut Id="Doc5StartMenuShortcut"
+                Name="Zentity Version 2 - Security User Guide"
+                Target="[INSTALLDIR]\Documentation\Zentity Version 2 - Security User Guide.docx"
+                Directory="DocumentationShortCutFolder"/>
+      <Shortcut Id="Doc6StartMenuShortcut"
+                Name="Zentity Version 2 - Web UI User Guide"
+                Target="[INSTALLDIR]\Documentation\Zentity Version 2 - Web UI User Guide.docx"
+                Directory="DocumentationShortCutFolder"/>
+      <Shortcut Id="Doc7StartMenuShortcut"
+                Name="Zentity Version 2 - Getting Started Guide"
+                Target="[INSTALLDIR]\Documentation\Zentity Version 2 - Getting Started Guide.docx"
+                Directory="DocumentationShortCutFolder"/>
+      <Shortcut Id="Doc8StartMenuShortcut"
+                Name="Zentity Version 2 - Installation Instructions"
+                Target="[INSTALLDIR]\Documentation\Zentity Version 2 - Installation Instructions.docx"
+                Directory="DocumentationShortCutFolder"/>
+
+
+      <!-- Document folder chm shortcut -->
+      <Shortcut Id="Chm1StartMenuShortcut"
+                Name="Zentity"
+                Target="[INSTALLDIR]\Documentation\Zentity.chm"
+                Directory="DocumentationShortCutFolder"/>      
+      
+      <!-- Samples shortcut -->
+      <Shortcut Id="SampleStartMenuShortcut"
+                Name="Readme.txt"                
+                Target="[INSTALLDIR]\Samples\Readme.txt"
+                Directory="SamplesShortCutFolder"/>
+      <Shortcut Id="PubMedSampleStartMenuShortcut"
+                Name="Pub-Med Sample.zip"
+                Target="[INSTALLDIR]\Samples\ZentityDataImport.zip"
+                Directory="SamplesShortCutFolder"/>
+      <Shortcut Id="USPresidentSampleStartMenuShortcut"
+                Name="US Presidents Sample.zip"
+                Target="[INSTALLDIR]\Samples\US Presidents Sample.zip"
+                Directory="SamplesShortCutFolder"/>
+      <Shortcut Id="Zentity.CustomSecurityStartMenuShortcut"
+                Name="Zentity.CustomSecurity.zip"
+                Target="[INSTALLDIR]\Samples\Zentity.CustomSecurity.zip"
+                Directory="SamplesShortCutFolder"/>
+      
+      <!-- WebUI and Visual Explorer shortcuts -->
+      <util:InternetShortcut Id="WebUIWebSiteShortcut"
+                             Name="Zentity WebUI"
+                             Target="http://[MACHINENAME]:[PORTNUMBER]/WebUI"                             
+                             Type="url"/>
+      <util:InternetShortcut Id="VisualExplorerWebSiteShortcut"
+                             Name="Zentity Visual Explorer"
+                             Target="http://[MACHINENAME]:[PORTNUMBER]/VisualExplorer"                             
+                             Type="url"/>
+      <util:InternetShortcut Id="CollectionGalleryWebSiteShortcut"
+                             Name="Zentity Dashboard"
+                             Target="http://[MACHINENAME]:[PORTNUMBER]/VisualExplorer/Pivot/Gallery.aspx"
+                             Type="url"/>
+
+      <util:InternetShortcut Id="ODataViewerWebSiteShortcut"
+                             Name="Zentity ODataViewer"
+                             Target="http://[MACHINENAME]:[PORTNUMBER]/VisualExplorer/Pivot/ODataViewer.aspx"
+                             Type="url"/>
+
+      <RemoveFolder Id="RemoveDocumentationShortCutFolder" Directory="DocumentationShortCutFolder" On="uninstall" />
+      <RemoveFolder Id="RemoveScriptsShortCutFolder" Directory="ScriptsShortCutFolder" On="uninstall" />
+      <RemoveFolder Id="RemoveSamplesShortCutFolder" Directory="SamplesShortCutFolder" On="uninstall" />
+      <RemoveFolder Id="ApplicationProgramsFolder" On="uninstall"/>
+      <RegistryValue Root="HKCU" Key="Software\Microsoft\[ProductName]" Name="installed" Type="integer" Value="1" KeyPath="yes"/>
+    </Component>    
+  </DirectoryRef>
+</Include>

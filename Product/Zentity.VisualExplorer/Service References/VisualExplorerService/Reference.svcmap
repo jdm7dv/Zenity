@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="5f3149be-5882-4f57-8de1-f1fef0844b99" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>true</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.ObjectModel.ObservableCollection`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>false</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:9090/visualexplorer/services/VisualExplorer.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="VisualExplorer.xsd" MetadataType="Schema" ID="fb9f9719-97d7-4e49-835a-b7ff2e4f4ed2" SourceId="1" SourceUrl="http://localhost:9090/VisualExplorer/services/VisualExplorer.svc?xsd=xsd4" />
+    <MetadataFile FileName="VisualExplorer1.xsd" MetadataType="Schema" ID="0e60e7df-5fc0-4c6e-aec0-862c29c390ca" SourceId="1" SourceUrl="http://localhost:9090/VisualExplorer/services/VisualExplorer.svc?xsd=xsd0" />
+    <MetadataFile FileName="VisualExplorer2.xsd" MetadataType="Schema" ID="297a8919-5784-4198-91a9-4100fdfde0e7" SourceId="1" SourceUrl="http://localhost:9090/VisualExplorer/services/VisualExplorer.svc?xsd=xsd1" />
+    <MetadataFile FileName="VisualExplorer3.xsd" MetadataType="Schema" ID="f0cd0352-cd7f-4425-96bf-0cb2845a1f76" SourceId="1" SourceUrl="http://localhost:9090/VisualExplorer/services/VisualExplorer.svc?xsd=xsd2" />
+    <MetadataFile FileName="VisualExplorer4.xsd" MetadataType="Schema" ID="1dd6414a-f1df-40b2-9558-cc623c990539" SourceId="1" SourceUrl="http://localhost:9090/VisualExplorer/services/VisualExplorer.svc?xsd=xsd3" />
+    <MetadataFile FileName="VisualExplorer.wsdl" MetadataType="Wsdl" ID="c3144d73-fdc9-4d33-ab59-352f1b1523ad" SourceId="1" SourceUrl="http://localhost:9090/VisualExplorer/services/VisualExplorer.svc?wsdl" />
+    <MetadataFile FileName="VisualExplorer.disco" MetadataType="Disco" ID="627683bd-9dd3-45b4-a4e4-b208cb4cd6bf" SourceId="1" SourceUrl="http://localhost:9090/VisualExplorer/services/VisualExplorer.svc?disco" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

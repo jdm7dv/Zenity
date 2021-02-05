@@ -1,0 +1,2796 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Zentity.Core" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2006/04/edm">
+  <EntityContainer Name="ZentityContext">
+    <Documentation>
+      <Summary>Represents the context to interact with the repository.</Summary>
+    </Documentation>
+    <EntitySet Name="Predicates" EntityType="Zentity.Core.Predicate">
+      <Documentation>
+        <Summary>A set of all the Predicate objects in the repository.</Summary>
+      </Documentation>
+    </EntitySet>
+    <EntitySet Name="PredicateProperties" EntityType="Zentity.Core.PredicateProperty">
+      <Documentation>
+        <Summary>A set of all the PredicateProperty objects in the repository.</Summary>
+      </Documentation>
+    </EntitySet>
+    <EntitySet Name="Properties" EntityType="Zentity.Core.Property">
+      <Documentation>
+        <Summary>A set of all the Property objects in the repository.</Summary>
+      </Documentation>
+    </EntitySet>
+    <EntitySet Name="Relationships" EntityType="Zentity.Core.Relationship">
+      <Documentation>
+        <Summary>A set of all the Relationship objects in the repository.</Summary>
+      </Documentation>
+    </EntitySet>
+    <EntitySet Name="RelationshipProperties" EntityType="Zentity.Core.RelationshipProperty">
+      <Documentation>
+        <Summary>A set of all the RelationshipProperty objects in the repository.</Summary>
+      </Documentation>
+    </EntitySet>
+    <EntitySet Name="Resources" EntityType="Zentity.Core.Resource">
+      <Documentation>
+        <Summary>A set of all the Resources in the repository.</Summary>
+      </Documentation>
+    </EntitySet>
+    <EntitySet Name="ResourceProperties" EntityType="Zentity.Core.ResourceProperty">
+      <Documentation>
+        <Summary>A set of all the ResourceProperty objects in the repository.</Summary>
+      </Documentation>
+    </EntitySet>
+    <AssociationSet Name="RelationshipPredicateIs" Association="Zentity.Core.RelationshipPredicateIs">
+      <End Role="Predicate" EntitySet="Predicates" />
+      <End Role="Relationship" EntitySet="Relationships" />
+    </AssociationSet>
+    <AssociationSet Name="ResourcePropertyIs" Association="Zentity.Core.ResourcePropertyIs">
+      <End Role="Property" EntitySet="Properties" />
+      <End Role="ResourceProperty" EntitySet="ResourceProperties" />
+    </AssociationSet>
+    <AssociationSet Name="PredicatePropertyIs" Association="Zentity.Core.PredicatePropertyIs">
+      <End Role="Property" EntitySet="Properties" />
+      <End Role="PredicateProperty" EntitySet="PredicateProperties" />
+    </AssociationSet>
+    <AssociationSet Name="TripletPropertyIs" Association="Zentity.Core.TripletPropertyIs">
+      <End Role="Property" EntitySet="Properties" />
+      <End Role="RelationshipProperty" EntitySet="RelationshipProperties" />
+    </AssociationSet>
+    <AssociationSet Name="RelationshipHasProperty" Association="Zentity.Core.RelationshipHasProperty">
+      <End Role="Relationship" EntitySet="Relationships" />
+      <End Role="RelationshipProperty" EntitySet="RelationshipProperties" />
+    </AssociationSet>
+    <AssociationSet Name="RelationshipIsAboutResource" Association="Zentity.Core.RelationshipIsAboutResource">
+      <End Role="Resource" EntitySet="Resources" />
+      <End Role="Relationship" EntitySet="Relationships" />
+    </AssociationSet>
+    <AssociationSet Name="ResourceHasRelationship" Association="Zentity.Core.ResourceHasRelationship">
+      <End Role="Resource" EntitySet="Resources" />
+      <End Role="Relationship" EntitySet="Relationships" />
+    </AssociationSet>
+    <AssociationSet Name="ResourceHasProperty" Association="Zentity.Core.ResourceHasProperty">
+      <End Role="Resource" EntitySet="Resources" />
+      <End Role="ResourceProperty" EntitySet="ResourceProperties" />
+    </AssociationSet>
+    <AssociationSet Name="PredicateHasProperty" Association="Zentity.Core.PredicateHasProperty">
+      <End Role="Predicate" EntitySet="Predicates" />
+      <End Role="PredicateProperty" EntitySet="PredicateProperties" />
+    </AssociationSet>
+    <AssociationSet Name="ResourceHasFile" Association="Zentity.Core.ResourceHasFile">
+      <End Role="Resource" EntitySet="Resources" />
+      <End Role="File" EntitySet="Resources" />
+    </AssociationSet>
+    <FunctionImport Name="DeleteFile">
+      <Parameter Name="Id" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="DeleteRelationship">
+      <Parameter Name="Id" Mode="In" Type="Guid" />
+      <Parameter Name="SubjectResourceId" Mode="In" Type="Guid" />
+      <Parameter Name="ObjectResourceId" Mode="In" Type="Guid" />
+      <Parameter Name="PredicateId" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="DeleteResource">
+      <Parameter Name="Id" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="InsertFile">
+      <Parameter Name="Id" Mode="In" Type="Guid" />
+      <Parameter Name="DateAdded" Mode="In" Type="DateTime" />
+      <Parameter Name="DateModified" Mode="In" Type="DateTime" />
+      <Parameter Name="Description" Mode="In" Type="String" />
+      <Parameter Name="Title" Mode="In" Type="String" />
+      <Parameter Name="Uri" Mode="In" Type="String" />
+      <Parameter Name="Checksum" Mode="In" Type="String" />
+      <Parameter Name="FileExtension" Mode="In" Type="String" />
+      <Parameter Name="MimeType" Mode="In" Type="String" />
+      <Parameter Name="Size" Mode="In" Type="Int64" />
+    </FunctionImport>
+    <FunctionImport Name="InsertRelationship">
+      <Parameter Name="Id" Mode="In" Type="Guid" />
+      <Parameter Name="SubjectResourceId" Mode="In" Type="Guid" />
+      <Parameter Name="ObjectResourceId" Mode="In" Type="Guid" />
+      <Parameter Name="PredicateId" Mode="In" Type="Guid" />
+      <Parameter Name="OrdinalPosition" Mode="In" Type="Int32" />
+      <Parameter Name="DateAdded" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="InsertResource">
+      <Parameter Name="Id" Mode="In" Type="Guid" />
+      <Parameter Name="DateAdded" Mode="In" Type="DateTime" />
+      <Parameter Name="DateModified" Mode="In" Type="DateTime" />
+      <Parameter Name="Description" Mode="In" Type="String" />
+      <Parameter Name="Title" Mode="In" Type="String" />
+      <Parameter Name="Uri" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="UpdateFile">
+      <Parameter Name="Id" Mode="In" Type="Guid" />
+      <Parameter Name="DateAdded" Mode="In" Type="DateTime" />
+      <Parameter Name="DateModified" Mode="In" Type="DateTime" />
+      <Parameter Name="Description" Mode="In" Type="String" />
+      <Parameter Name="Title" Mode="In" Type="String" />
+      <Parameter Name="Uri" Mode="In" Type="String" />
+      <Parameter Name="Checksum" Mode="In" Type="String" />
+      <Parameter Name="FileExtension" Mode="In" Type="String" />
+      <Parameter Name="MimeType" Mode="In" Type="String" />
+      <Parameter Name="Size" Mode="In" Type="Int64" />
+    </FunctionImport>
+    <FunctionImport Name="UpdateRelationship">
+      <Parameter Name="Id" Mode="In" Type="Guid" />
+      <Parameter Name="SubjectResourceId" Mode="In" Type="Guid" />
+      <Parameter Name="ObjectResourceId" Mode="In" Type="Guid" />
+      <Parameter Name="PredicateId" Mode="In" Type="Guid" />
+      <Parameter Name="OrdinalPosition" Mode="In" Type="Int32" />
+      <Parameter Name="DateAdded" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="UpdateResource">
+      <Parameter Name="Id" Mode="In" Type="Guid" />
+      <Parameter Name="DateAdded" Mode="In" Type="DateTime" />
+      <Parameter Name="DateModified" Mode="In" Type="DateTime" />
+      <Parameter Name="Description" Mode="In" Type="String" />
+      <Parameter Name="Title" Mode="In" Type="String" />
+      <Parameter Name="Uri" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="DeleteResourceHasFile">
+      <Parameter Name="SubjectResourceId" Mode="In" Type="Guid" />
+      <Parameter Name="ObjectResourceId" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="InsertResourceHasFile">
+      <Parameter Name="SubjectResourceId" Mode="In" Type="Guid" />
+      <Parameter Name="ObjectResourceId" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="Insertf1dc8dd59b444fccb95413bf6304c24d">
+      <Parameter Name="GroupName" Type="String" Mode="In" />
+      <Parameter Name="Title" Type="String" Mode="In" />
+      <Parameter Name="DateModified" Type="DateTime" Mode="In" />
+      <Parameter Name="Id" Type="Guid" Mode="In" />
+      <Parameter Name="DateAdded" Type="DateTime" Mode="In" />
+      <Parameter Name="Uri" Type="String" Mode="In" />
+      <Parameter Name="Description" Type="String" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="Updatef1dc8dd59b444fccb95413bf6304c24d">
+      <Parameter Name="GroupName" Type="String" Mode="In" />
+      <Parameter Name="Title" Type="String" Mode="In" />
+      <Parameter Name="DateModified" Type="DateTime" Mode="In" />
+      <Parameter Name="Id" Type="Guid" Mode="In" />
+      <Parameter Name="DateAdded" Type="DateTime" Mode="In" />
+      <Parameter Name="Uri" Type="String" Mode="In" />
+      <Parameter Name="Description" Type="String" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="Deletef1dc8dd59b444fccb95413bf6304c24d">
+      <Parameter Name="Id" Type="Guid" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="Insert48db03e2f07e434a92563177a56e1059">
+      <Parameter Name="IdentityName" Type="String" Mode="In" />
+      <Parameter Name="Title" Type="String" Mode="In" />
+      <Parameter Name="DateModified" Type="DateTime" Mode="In" />
+      <Parameter Name="Id" Type="Guid" Mode="In" />
+      <Parameter Name="DateAdded" Type="DateTime" Mode="In" />
+      <Parameter Name="Uri" Type="String" Mode="In" />
+      <Parameter Name="Description" Type="String" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="Update48db03e2f07e434a92563177a56e1059">
+      <Parameter Name="IdentityName" Type="String" Mode="In" />
+      <Parameter Name="Title" Type="String" Mode="In" />
+      <Parameter Name="DateModified" Type="DateTime" Mode="In" />
+      <Parameter Name="Id" Type="Guid" Mode="In" />
+      <Parameter Name="DateAdded" Type="DateTime" Mode="In" />
+      <Parameter Name="Uri" Type="String" Mode="In" />
+      <Parameter Name="Description" Type="String" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="Delete48db03e2f07e434a92563177a56e1059">
+      <Parameter Name="Id" Type="Guid" Mode="In" />
+    </FunctionImport>
+    <AssociationSet Name="IdentityBelongsToGroups" Association="Zentity.Security.Authorization.IdentityBelongsToGroups">
+      <End Role="Identity" EntitySet="Resources" />
+      <End Role="Group" EntitySet="Resources" />
+    </AssociationSet>
+    <FunctionImport Name="Insert72eb3abe871b4137958404c3d5c93826">
+      <Parameter Name="SubjectResourceId" Type="Guid" Mode="In" />
+      <Parameter Name="ObjectResourceId" Type="Guid" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="Delete72eb3abe871b4137958404c3d5c93826">
+      <Parameter Name="SubjectResourceId" Type="Guid" Mode="In" />
+      <Parameter Name="ObjectResourceId" Type="Guid" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="Insert3916037e40ee4eefa4ee0b071217c266">
+      <Parameter Name="From" Type="String" Mode="In" />
+      <Parameter Name="DateExchanged" Type="DateTime" Mode="In" />
+      <Parameter Name="To" Type="String" Mode="In" />
+      <Parameter Name="Scope" Type="String" Mode="In" />
+      <Parameter Name="Title" Type="String" Mode="In" />
+      <Parameter Name="DateModified" Type="DateTime" Mode="In" />
+      <Parameter Name="Id" Type="Guid" Mode="In" />
+      <Parameter Name="DateAdded" Type="DateTime" Mode="In" />
+      <Parameter Name="Uri" Type="String" Mode="In" />
+      <Parameter Name="Description" Type="String" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="Update3916037e40ee4eefa4ee0b071217c266">
+      <Parameter Name="From" Type="String" Mode="In" />
+      <Parameter Name="DateExchanged" Type="DateTime" Mode="In" />
+      <Parameter Name="To" Type="String" Mode="In" />
+      <Parameter Name="Scope" Type="String" Mode="In" />
+      <Parameter Name="Title" Type="String" Mode="In" />
+      <Parameter Name="DateModified" Type="DateTime" Mode="In" />
+      <Parameter Name="Id" Type="Guid" Mode="In" />
+      <Parameter Name="DateAdded" Type="DateTime" Mode="In" />
+      <Parameter Name="Uri" Type="String" Mode="In" />
+      <Parameter Name="Description" Type="String" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="Delete3916037e40ee4eefa4ee0b071217c266">
+      <Parameter Name="Id" Type="Guid" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="Inserte82b8970583f42b583c40ff7135bb0e7">
+      <Parameter Name="License" Type="String" Mode="In" />
+      <Parameter Name="Copyright" Type="String" Mode="In" />
+      <Parameter Name="DateCopyrighted" Type="DateTime" Mode="In" />
+      <Parameter Name="Duration" Type="Int32" Mode="In" />
+      <Parameter Name="Language" Type="String" Mode="In" />
+      <Parameter Name="Scope" Type="String" Mode="In" />
+      <Parameter Name="Title" Type="String" Mode="In" />
+      <Parameter Name="DateModified" Type="DateTime" Mode="In" />
+      <Parameter Name="Id" Type="Guid" Mode="In" />
+      <Parameter Name="DateAdded" Type="DateTime" Mode="In" />
+      <Parameter Name="Uri" Type="String" Mode="In" />
+      <Parameter Name="Description" Type="String" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="Updatee82b8970583f42b583c40ff7135bb0e7">
+      <Parameter Name="License" Type="String" Mode="In" />
+      <Parameter Name="Copyright" Type="String" Mode="In" />
+      <Parameter Name="DateCopyrighted" Type="DateTime" Mode="In" />
+      <Parameter Name="Duration" Type="Int32" Mode="In" />
+      <Parameter Name="Language" Type="String" Mode="In" />
+      <Parameter Name="Scope" Type="String" Mode="In" />
+      <Parameter Name="Title" Type="String" Mode="In" />
+      <Parameter Name="DateModified" Type="DateTime" Mode="In" />
+      <Parameter Name="Id" Type="Guid" Mode="In" />
+      <Parameter Name="DateAdded" Type="DateTime" Mode="In" />
+      <Parameter Name="Uri" Type="String" Mode="In" />
+      <Parameter Name="Description" Type="String" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="Deletee82b8970583f42b583c40ff7135bb0e7">
+      <Parameter Name="Id" Type="Guid" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="Insert346958a32ccb4bdda8101085c2ce3e65">
+      <Parameter Name="VersionInformation" Type="String" Mode="In" />
+      <Parameter Name="Copyright" Type="String" Mode="In" />
+      <Parameter Name="HardwareRequirements" Type="String" Mode="In" />
+      <Parameter Name="EULA" Type="String" Mode="In" />
+      <Parameter Name="OperatingSystem" Type="String" Mode="In" />
+      <Parameter Name="DownloadRequirements" Type="String" Mode="In" />
+      <Parameter Name="SystemRequirements" Type="String" Mode="In" />
+      <Parameter Name="Language" Type="String" Mode="In" />
+      <Parameter Name="License" Type="String" Mode="In" />
+      <Parameter Name="DateCopyrighted" Type="DateTime" Mode="In" />
+      <Parameter Name="Scope" Type="String" Mode="In" />
+      <Parameter Name="Title" Type="String" Mode="In" />
+      <Parameter Name="DateModified" Type="DateTime" Mode="In" />
+      <Parameter Name="Id" Type="Guid" Mode="In" />
+      <Parameter Name="DateAdded" Type="DateTime" Mode="In" />
+      <Parameter Name="Uri" Type="String" Mode="In" />
+      <Parameter Name="Description" Type="String" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="Update346958a32ccb4bdda8101085c2ce3e65">
+      <Parameter Name="VersionInformation" Type="String" Mode="In" />
+      <Parameter Name="Copyright" Type="String" Mode="In" />
+      <Parameter Name="HardwareRequirements" Type="String" Mode="In" />
+      <Parameter Name="EULA" Type="String" Mode="In" />
+      <Parameter Name="OperatingSystem" Type="String" Mode="In" />
+      <Parameter Name="DownloadRequirements" Type="String" Mode="In" />
+      <Parameter Name="SystemRequirements" Type="String" Mode="In" />
+      <Parameter Name="Language" Type="String" Mode="In" />
+      <Parameter Name="License" Type="String" Mode="In" />
+      <Parameter Name="DateCopyrighted" Type="DateTime" Mode="In" />
+      <Parameter Name="Scope" Type="String" Mode="In" />
+      <Parameter Name="Title" Type="String" Mode="In" />
+      <Parameter Name="DateModified" Type="DateTime" Mode="In" />
+      <Parameter Name="Id" Type="Guid" Mode="In" />
+      <Parameter Name="DateAdded" Type="DateTime" Mode="In" />
+      <Parameter Name="Uri" Type="String" Mode="In" />
+      <Parameter Name="Description" Type="String" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="Delete346958a32ccb4bdda8101085c2ce3e65">
+      <Parameter Name="Id" Type="Guid" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="Insert479452ef4aac4f1f8e0012bf54cce9a9">
+      <Parameter Name="Email" Type="String" Mode="In" />
+      <Parameter Name="Scope" Type="String" Mode="In" />
+      <Parameter Name="Title" Type="String" Mode="In" />
+      <Parameter Name="DateModified" Type="DateTime" Mode="In" />
+      <Parameter Name="Id" Type="Guid" Mode="In" />
+      <Parameter Name="DateAdded" Type="DateTime" Mode="In" />
+      <Parameter Name="Uri" Type="String" Mode="In" />
+      <Parameter Name="Description" Type="String" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="Update479452ef4aac4f1f8e0012bf54cce9a9">
+      <Parameter Name="Email" Type="String" Mode="In" />
+      <Parameter Name="Scope" Type="String" Mode="In" />
+      <Parameter Name="Title" Type="String" Mode="In" />
+      <Parameter Name="DateModified" Type="DateTime" Mode="In" />
+      <Parameter Name="Id" Type="Guid" Mode="In" />
+      <Parameter Name="DateAdded" Type="DateTime" Mode="In" />
+      <Parameter Name="Uri" Type="String" Mode="In" />
+      <Parameter Name="Description" Type="String" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="Delete479452ef4aac4f1f8e0012bf54cce9a9">
+      <Parameter Name="Id" Type="Guid" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="Insert0e3efa4a7bfa471cb7bd17685cdef487">
+      <Parameter Name="LastName" Type="String" Mode="In" />
+      <Parameter Name="FirstName" Type="String" Mode="In" />
+      <Parameter Name="MiddleName" Type="String" Mode="In" />
+      <Parameter Name="Email" Type="String" Mode="In" />
+      <Parameter Name="Scope" Type="String" Mode="In" />
+      <Parameter Name="Title" Type="String" Mode="In" />
+      <Parameter Name="DateModified" Type="DateTime" Mode="In" />
+      <Parameter Name="Id" Type="Guid" Mode="In" />
+      <Parameter Name="DateAdded" Type="DateTime" Mode="In" />
+      <Parameter Name="Uri" Type="String" Mode="In" />
+      <Parameter Name="Description" Type="String" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="Update0e3efa4a7bfa471cb7bd17685cdef487">
+      <Parameter Name="LastName" Type="String" Mode="In" />
+      <Parameter Name="FirstName" Type="String" Mode="In" />
+      <Parameter Name="MiddleName" Type="String" Mode="In" />
+      <Parameter Name="Email" Type="String" Mode="In" />
+      <Parameter Name="Scope" Type="String" Mode="In" />
+      <Parameter Name="Title" Type="String" Mode="In" />
+      <Parameter Name="DateModified" Type="DateTime" Mode="In" />
+      <Parameter Name="Id" Type="Guid" Mode="In" />
+      <Parameter Name="DateAdded" Type="DateTime" Mode="In" />
+      <Parameter Name="Uri" Type="String" Mode="In" />
+      <Parameter Name="Description" Type="String" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="Delete0e3efa4a7bfa471cb7bd17685cdef487">
+      <Parameter Name="Id" Type="Guid" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="Insert23d6f2a9381944de9cf01eb683141dfe">
+      <Parameter Name="ChangeHistory" Type="String" Mode="In" />
+      <Parameter Name="ISBN" Type="String" Mode="In" />
+      <Parameter Name="DatePublished" Type="DateTime" Mode="In" />
+      <Parameter Name="DOI" Type="String" Mode="In" />
+      <Parameter Name="Pages" Type="String" Mode="In" />
+      <Parameter Name="Institution" Type="String" Mode="In" />
+      <Parameter Name="DayPublished" Type="Int32" Mode="In" />
+      <Parameter Name="PublisherAddress" Type="String" Mode="In" />
+      <Parameter Name="Location" Type="String" Mode="In" />
+      <Parameter Name="BookTitle" Type="String" Mode="In" />
+      <Parameter Name="Volume" Type="String" Mode="In" />
+      <Parameter Name="CatalogNumber" Type="String" Mode="In" />
+      <Parameter Name="PublisherUri" Type="String" Mode="In" />
+      <Parameter Name="DateSubmitted" Type="DateTime" Mode="In" />
+      <Parameter Name="Chapter" Type="String" Mode="In" />
+      <Parameter Name="Number" Type="String" Mode="In" />
+      <Parameter Name="DateAccepted" Type="DateTime" Mode="In" />
+      <Parameter Name="Publisher" Type="String" Mode="In" />
+      <Parameter Name="Edition" Type="String" Mode="In" />
+      <Parameter Name="MonthPublished" Type="Int32" Mode="In" />
+      <Parameter Name="YearPublished" Type="Int32" Mode="In" />
+      <Parameter Name="Organization" Type="String" Mode="In" />
+      <Parameter Name="Series" Type="String" Mode="In" />
+      <Parameter Name="License" Type="String" Mode="In" />
+      <Parameter Name="DateValidUntil" Type="DateTime" Mode="In" />
+      <Parameter Name="Notes" Type="String" Mode="In" />
+      <Parameter Name="Abstract" Type="String" Mode="In" />
+      <Parameter Name="Copyright" Type="String" Mode="In" />
+      <Parameter Name="DateValidFrom" Type="DateTime" Mode="In" />
+      <Parameter Name="Language" Type="String" Mode="In" />
+      <Parameter Name="DateAvailableUntil" Type="DateTime" Mode="In" />
+      <Parameter Name="DateAvailableFrom" Type="DateTime" Mode="In" />
+      <Parameter Name="DateCopyrighted" Type="DateTime" Mode="In" />
+      <Parameter Name="Scope" Type="String" Mode="In" />
+      <Parameter Name="Title" Type="String" Mode="In" />
+      <Parameter Name="DateModified" Type="DateTime" Mode="In" />
+      <Parameter Name="Id" Type="Guid" Mode="In" />
+      <Parameter Name="DateAdded" Type="DateTime" Mode="In" />
+      <Parameter Name="Uri" Type="String" Mode="In" />
+      <Parameter Name="Description" Type="String" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="Update23d6f2a9381944de9cf01eb683141dfe">
+      <Parameter Name="ChangeHistory" Type="String" Mode="In" />
+      <Parameter Name="ISBN" Type="String" Mode="In" />
+      <Parameter Name="DatePublished" Type="DateTime" Mode="In" />
+      <Parameter Name="DOI" Type="String" Mode="In" />
+      <Parameter Name="Pages" Type="String" Mode="In" />
+      <Parameter Name="Institution" Type="String" Mode="In" />
+      <Parameter Name="DayPublished" Type="Int32" Mode="In" />
+      <Parameter Name="PublisherAddress" Type="String" Mode="In" />
+      <Parameter Name="Location" Type="String" Mode="In" />
+      <Parameter Name="BookTitle" Type="String" Mode="In" />
+      <Parameter Name="Volume" Type="String" Mode="In" />
+      <Parameter Name="CatalogNumber" Type="String" Mode="In" />
+      <Parameter Name="PublisherUri" Type="String" Mode="In" />
+      <Parameter Name="DateSubmitted" Type="DateTime" Mode="In" />
+      <Parameter Name="Chapter" Type="String" Mode="In" />
+      <Parameter Name="Number" Type="String" Mode="In" />
+      <Parameter Name="DateAccepted" Type="DateTime" Mode="In" />
+      <Parameter Name="Publisher" Type="String" Mode="In" />
+      <Parameter Name="Edition" Type="String" Mode="In" />
+      <Parameter Name="MonthPublished" Type="Int32" Mode="In" />
+      <Parameter Name="YearPublished" Type="Int32" Mode="In" />
+      <Parameter Name="Organization" Type="String" Mode="In" />
+      <Parameter Name="Series" Type="String" Mode="In" />
+      <Parameter Name="License" Type="String" Mode="In" />
+      <Parameter Name="DateValidUntil" Type="DateTime" Mode="In" />
+      <Parameter Name="Notes" Type="String" Mode="In" />
+      <Parameter Name="Abstract" Type="String" Mode="In" />
+      <Parameter Name="Copyright" Type="String" Mode="In" />
+      <Parameter Name="DateValidFrom" Type="DateTime" Mode="In" />
+      <Parameter Name="Language" Type="String" Mode="In" />
+      <Parameter Name="DateAvailableUntil" Type="DateTime" Mode="In" />
+      <Parameter Name="DateAvailableFrom" Type="DateTime" Mode="In" />
+      <Parameter Name="DateCopyrighted" Type="DateTime" Mode="In" />
+      <Parameter Name="Scope" Type="String" Mode="In" />
+      <Parameter Name="Title" Type="String" Mode="In" />
+      <Parameter Name="DateModified" Type="DateTime" Mode="In" />
+      <Parameter Name="Id" Type="Guid" Mode="In" />
+      <Parameter Name="DateAdded" Type="DateTime" Mode="In" />
+      <Parameter Name="Uri" Type="String" Mode="In" />
+      <Parameter Name="Description" Type="String" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="Delete23d6f2a9381944de9cf01eb683141dfe">
+      <Parameter Name="Id" Type="Guid" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="Insertc73f8d6f03044575a614219dbf52fc89">
+      <Parameter Name="VersionInformation" Type="String" Mode="In" />
+      <Parameter Name="Copyright" Type="String" Mode="In" />
+      <Parameter Name="HardwareRequirements" Type="String" Mode="In" />
+      <Parameter Name="EULA" Type="String" Mode="In" />
+      <Parameter Name="OperatingSystem" Type="String" Mode="In" />
+      <Parameter Name="DownloadRequirements" Type="String" Mode="In" />
+      <Parameter Name="SystemRequirements" Type="String" Mode="In" />
+      <Parameter Name="Language" Type="String" Mode="In" />
+      <Parameter Name="License" Type="String" Mode="In" />
+      <Parameter Name="DateCopyrighted" Type="DateTime" Mode="In" />
+      <Parameter Name="Scope" Type="String" Mode="In" />
+      <Parameter Name="Title" Type="String" Mode="In" />
+      <Parameter Name="DateModified" Type="DateTime" Mode="In" />
+      <Parameter Name="Id" Type="Guid" Mode="In" />
+      <Parameter Name="DateAdded" Type="DateTime" Mode="In" />
+      <Parameter Name="Uri" Type="String" Mode="In" />
+      <Parameter Name="Description" Type="String" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="Updatec73f8d6f03044575a614219dbf52fc89">
+      <Parameter Name="VersionInformation" Type="String" Mode="In" />
+      <Parameter Name="Copyright" Type="String" Mode="In" />
+      <Parameter Name="HardwareRequirements" Type="String" Mode="In" />
+      <Parameter Name="EULA" Type="String" Mode="In" />
+      <Parameter Name="OperatingSystem" Type="String" Mode="In" />
+      <Parameter Name="DownloadRequirements" Type="String" Mode="In" />
+      <Parameter Name="SystemRequirements" Type="String" Mode="In" />
+      <Parameter Name="Language" Type="String" Mode="In" />
+      <Parameter Name="License" Type="String" Mode="In" />
+      <Parameter Name="DateCopyrighted" Type="DateTime" Mode="In" />
+      <Parameter Name="Scope" Type="String" Mode="In" />
+      <Parameter Name="Title" Type="String" Mode="In" />
+      <Parameter Name="DateModified" Type="DateTime" Mode="In" />
+      <Parameter Name="Id" Type="Guid" Mode="In" />
+      <Parameter Name="DateAdded" Type="DateTime" Mode="In" />
+      <Parameter Name="Uri" Type="String" Mode="In" />
+      <Parameter Name="Description" Type="String" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="Deletec73f8d6f03044575a614219dbf52fc89">
+      <Parameter Name="Id" Type="Guid" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="Insertb21eec569b7a4f199c6123520fd674b0">
+      <Parameter Name="DatePublished" Type="DateTime" Mode="In" />
+      <Parameter Name="DOI" Type="String" Mode="In" />
+      <Parameter Name="Pages" Type="String" Mode="In" />
+      <Parameter Name="Institution" Type="String" Mode="In" />
+      <Parameter Name="DayPublished" Type="Int32" Mode="In" />
+      <Parameter Name="PublisherAddress" Type="String" Mode="In" />
+      <Parameter Name="Location" Type="String" Mode="In" />
+      <Parameter Name="BookTitle" Type="String" Mode="In" />
+      <Parameter Name="Volume" Type="String" Mode="In" />
+      <Parameter Name="CatalogNumber" Type="String" Mode="In" />
+      <Parameter Name="PublisherUri" Type="String" Mode="In" />
+      <Parameter Name="DateSubmitted" Type="DateTime" Mode="In" />
+      <Parameter Name="Chapter" Type="String" Mode="In" />
+      <Parameter Name="Number" Type="String" Mode="In" />
+      <Parameter Name="DateAccepted" Type="DateTime" Mode="In" />
+      <Parameter Name="Publisher" Type="String" Mode="In" />
+      <Parameter Name="Edition" Type="String" Mode="In" />
+      <Parameter Name="MonthPublished" Type="Int32" Mode="In" />
+      <Parameter Name="YearPublished" Type="Int32" Mode="In" />
+      <Parameter Name="Organization" Type="String" Mode="In" />
+      <Parameter Name="Series" Type="String" Mode="In" />
+      <Parameter Name="License" Type="String" Mode="In" />
+      <Parameter Name="DateValidUntil" Type="DateTime" Mode="In" />
+      <Parameter Name="Notes" Type="String" Mode="In" />
+      <Parameter Name="Abstract" Type="String" Mode="In" />
+      <Parameter Name="Copyright" Type="String" Mode="In" />
+      <Parameter Name="DateValidFrom" Type="DateTime" Mode="In" />
+      <Parameter Name="Language" Type="String" Mode="In" />
+      <Parameter Name="DateAvailableUntil" Type="DateTime" Mode="In" />
+      <Parameter Name="DateAvailableFrom" Type="DateTime" Mode="In" />
+      <Parameter Name="DateCopyrighted" Type="DateTime" Mode="In" />
+      <Parameter Name="Scope" Type="String" Mode="In" />
+      <Parameter Name="Title" Type="String" Mode="In" />
+      <Parameter Name="DateModified" Type="DateTime" Mode="In" />
+      <Parameter Name="Id" Type="Guid" Mode="In" />
+      <Parameter Name="DateAdded" Type="DateTime" Mode="In" />
+      <Parameter Name="Uri" Type="String" Mode="In" />
+      <Parameter Name="Description" Type="String" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="Updateb21eec569b7a4f199c6123520fd674b0">
+      <Parameter Name="DatePublished" Type="DateTime" Mode="In" />
+      <Parameter Name="DOI" Type="String" Mode="In" />
+      <Parameter Name="Pages" Type="String" Mode="In" />
+      <Parameter Name="Institution" Type="String" Mode="In" />
+      <Parameter Name="DayPublished" Type="Int32" Mode="In" />
+      <Parameter Name="PublisherAddress" Type="String" Mode="In" />
+      <Parameter Name="Location" Type="String" Mode="In" />
+      <Parameter Name="BookTitle" Type="String" Mode="In" />
+      <Parameter Name="Volume" Type="String" Mode="In" />
+      <Parameter Name="CatalogNumber" Type="String" Mode="In" />
+      <Parameter Name="PublisherUri" Type="String" Mode="In" />
+      <Parameter Name="DateSubmitted" Type="DateTime" Mode="In" />
+      <Parameter Name="Chapter" Type="String" Mode="In" />
+      <Parameter Name="Number" Type="String" Mode="In" />
+      <Parameter Name="DateAccepted" Type="DateTime" Mode="In" />
+      <Parameter Name="Publisher" Type="String" Mode="In" />
+      <Parameter Name="Edition" Type="String" Mode="In" />
+      <Parameter Name="MonthPublished" Type="Int32" Mode="In" />
+      <Parameter Name="YearPublished" Type="Int32" Mode="In" />
+      <Parameter Name="Organization" Type="String" Mode="In" />
+      <Parameter Name="Series" Type="String" Mode="In" />
+      <Parameter Name="License" Type="String" Mode="In" />
+      <Parameter Name="DateValidUntil" Type="DateTime" Mode="In" />
+      <Parameter Name="Notes" Type="String" Mode="In" />
+      <Parameter Name="Abstract" Type="String" Mode="In" />
+      <Parameter Name="Copyright" Type="String" Mode="In" />
+      <Parameter Name="DateValidFrom" Type="DateTime" Mode="In" />
+      <Parameter Name="Language" Type="String" Mode="In" />
+      <Parameter Name="DateAvailableUntil" Type="DateTime" Mode="In" />
+      <Parameter Name="DateAvailableFrom" Type="DateTime" Mode="In" />
+      <Parameter Name="DateCopyrighted" Type="DateTime" Mode="In" />
+      <Parameter Name="Scope" Type="String" Mode="In" />
+      <Parameter Name="Title" Type="String" Mode="In" />
+      <Parameter Name="DateModified" Type="DateTime" Mode="In" />
+      <Parameter Name="Id" Type="Guid" Mode="In" />
+      <Parameter Name="DateAdded" Type="DateTime" Mode="In" />
+      <Parameter Name="Uri" Type="String" Mode="In" />
+      <Parameter Name="Description" Type="String" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="Deleteb21eec569b7a4f199c6123520fd674b0">
+      <Parameter Name="Id" Type="Guid" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="Insert3064535f9989489ca7d024a40674494a">
+      <Parameter Name="Name" Type="String" Mode="In" />
+      <Parameter Name="Scope" Type="String" Mode="In" />
+      <Parameter Name="Title" Type="String" Mode="In" />
+      <Parameter Name="DateModified" Type="DateTime" Mode="In" />
+      <Parameter Name="Id" Type="Guid" Mode="In" />
+      <Parameter Name="DateAdded" Type="DateTime" Mode="In" />
+      <Parameter Name="Uri" Type="String" Mode="In" />
+      <Parameter Name="Description" Type="String" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="Update3064535f9989489ca7d024a40674494a">
+      <Parameter Name="Name" Type="String" Mode="In" />
+      <Parameter Name="Scope" Type="String" Mode="In" />
+      <Parameter Name="Title" Type="String" Mode="In" />
+      <Parameter Name="DateModified" Type="DateTime" Mode="In" />
+      <Parameter Name="Id" Type="Guid" Mode="In" />
+      <Parameter Name="DateAdded" Type="DateTime" Mode="In" />
+      <Parameter Name="Uri" Type="String" Mode="In" />
+      <Parameter Name="Description" Type="String" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="Delete3064535f9989489ca7d024a40674494a">
+      <Parameter Name="Id" Type="Guid" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="Insertfbad8cd768d0465fb6162d4f2f1964b5">
+      <Parameter Name="Subject" Type="String" Mode="In" />
+      <Parameter Name="From" Type="String" Mode="In" />
+      <Parameter Name="DateExchanged" Type="DateTime" Mode="In" />
+      <Parameter Name="To" Type="String" Mode="In" />
+      <Parameter Name="Scope" Type="String" Mode="In" />
+      <Parameter Name="Title" Type="String" Mode="In" />
+      <Parameter Name="DateModified" Type="DateTime" Mode="In" />
+      <Parameter Name="Id" Type="Guid" Mode="In" />
+      <Parameter Name="DateAdded" Type="DateTime" Mode="In" />
+      <Parameter Name="Uri" Type="String" Mode="In" />
+      <Parameter Name="Description" Type="String" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="Updatefbad8cd768d0465fb6162d4f2f1964b5">
+      <Parameter Name="Subject" Type="String" Mode="In" />
+      <Parameter Name="From" Type="String" Mode="In" />
+      <Parameter Name="DateExchanged" Type="DateTime" Mode="In" />
+      <Parameter Name="To" Type="String" Mode="In" />
+      <Parameter Name="Scope" Type="String" Mode="In" />
+      <Parameter Name="Title" Type="String" Mode="In" />
+      <Parameter Name="DateModified" Type="DateTime" Mode="In" />
+      <Parameter Name="Id" Type="Guid" Mode="In" />
+      <Parameter Name="DateAdded" Type="DateTime" Mode="In" />
+      <Parameter Name="Uri" Type="String" Mode="In" />
+      <Parameter Name="Description" Type="String" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="Deletefbad8cd768d0465fb6162d4f2f1964b5">
+      <Parameter Name="Id" Type="Guid" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="Insert8a3e790bec774ab3abbc30008fdb9ebc">
+      <Parameter Name="Codec" Type="String" Mode="In" />
+      <Parameter Name="BitRate" Type="Int32" Mode="In" />
+      <Parameter Name="Mode" Type="String" Mode="In" />
+      <Parameter Name="License" Type="String" Mode="In" />
+      <Parameter Name="Copyright" Type="String" Mode="In" />
+      <Parameter Name="DateCopyrighted" Type="DateTime" Mode="In" />
+      <Parameter Name="Duration" Type="Int32" Mode="In" />
+      <Parameter Name="Language" Type="String" Mode="In" />
+      <Parameter Name="Scope" Type="String" Mode="In" />
+      <Parameter Name="Title" Type="String" Mode="In" />
+      <Parameter Name="DateModified" Type="DateTime" Mode="In" />
+      <Parameter Name="Id" Type="Guid" Mode="In" />
+      <Parameter Name="DateAdded" Type="DateTime" Mode="In" />
+      <Parameter Name="Uri" Type="String" Mode="In" />
+      <Parameter Name="Description" Type="String" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="Update8a3e790bec774ab3abbc30008fdb9ebc">
+      <Parameter Name="Codec" Type="String" Mode="In" />
+      <Parameter Name="BitRate" Type="Int32" Mode="In" />
+      <Parameter Name="Mode" Type="String" Mode="In" />
+      <Parameter Name="License" Type="String" Mode="In" />
+      <Parameter Name="Copyright" Type="String" Mode="In" />
+      <Parameter Name="DateCopyrighted" Type="DateTime" Mode="In" />
+      <Parameter Name="Duration" Type="Int32" Mode="In" />
+      <Parameter Name="Language" Type="String" Mode="In" />
+      <Parameter Name="Scope" Type="String" Mode="In" />
+      <Parameter Name="Title" Type="String" Mode="In" />
+      <Parameter Name="DateModified" Type="DateTime" Mode="In" />
+      <Parameter Name="Id" Type="Guid" Mode="In" />
+      <Parameter Name="DateAdded" Type="DateTime" Mode="In" />
+      <Parameter Name="Uri" Type="String" Mode="In" />
+      <Parameter Name="Description" Type="String" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="Delete8a3e790bec774ab3abbc30008fdb9ebc">
+      <Parameter Name="Id" Type="Guid" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="Insertb0eb981eb5aa48c0bf975622abef1e6e">
+      <Parameter Name="DatePublished" Type="DateTime" Mode="In" />
+      <Parameter Name="DOI" Type="String" Mode="In" />
+      <Parameter Name="Pages" Type="String" Mode="In" />
+      <Parameter Name="Institution" Type="String" Mode="In" />
+      <Parameter Name="DayPublished" Type="Int32" Mode="In" />
+      <Parameter Name="PublisherAddress" Type="String" Mode="In" />
+      <Parameter Name="Location" Type="String" Mode="In" />
+      <Parameter Name="BookTitle" Type="String" Mode="In" />
+      <Parameter Name="Volume" Type="String" Mode="In" />
+      <Parameter Name="CatalogNumber" Type="String" Mode="In" />
+      <Parameter Name="PublisherUri" Type="String" Mode="In" />
+      <Parameter Name="DateSubmitted" Type="DateTime" Mode="In" />
+      <Parameter Name="Chapter" Type="String" Mode="In" />
+      <Parameter Name="Number" Type="String" Mode="In" />
+      <Parameter Name="DateAccepted" Type="DateTime" Mode="In" />
+      <Parameter Name="Publisher" Type="String" Mode="In" />
+      <Parameter Name="Edition" Type="String" Mode="In" />
+      <Parameter Name="MonthPublished" Type="Int32" Mode="In" />
+      <Parameter Name="YearPublished" Type="Int32" Mode="In" />
+      <Parameter Name="Organization" Type="String" Mode="In" />
+      <Parameter Name="Series" Type="String" Mode="In" />
+      <Parameter Name="License" Type="String" Mode="In" />
+      <Parameter Name="DateValidUntil" Type="DateTime" Mode="In" />
+      <Parameter Name="Notes" Type="String" Mode="In" />
+      <Parameter Name="Abstract" Type="String" Mode="In" />
+      <Parameter Name="Copyright" Type="String" Mode="In" />
+      <Parameter Name="DateValidFrom" Type="DateTime" Mode="In" />
+      <Parameter Name="Language" Type="String" Mode="In" />
+      <Parameter Name="DateAvailableUntil" Type="DateTime" Mode="In" />
+      <Parameter Name="DateAvailableFrom" Type="DateTime" Mode="In" />
+      <Parameter Name="DateCopyrighted" Type="DateTime" Mode="In" />
+      <Parameter Name="Scope" Type="String" Mode="In" />
+      <Parameter Name="Title" Type="String" Mode="In" />
+      <Parameter Name="DateModified" Type="DateTime" Mode="In" />
+      <Parameter Name="Id" Type="Guid" Mode="In" />
+      <Parameter Name="DateAdded" Type="DateTime" Mode="In" />
+      <Parameter Name="Uri" Type="String" Mode="In" />
+      <Parameter Name="Description" Type="String" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="Updateb0eb981eb5aa48c0bf975622abef1e6e">
+      <Parameter Name="DatePublished" Type="DateTime" Mode="In" />
+      <Parameter Name="DOI" Type="String" Mode="In" />
+      <Parameter Name="Pages" Type="String" Mode="In" />
+      <Parameter Name="Institution" Type="String" Mode="In" />
+      <Parameter Name="DayPublished" Type="Int32" Mode="In" />
+      <Parameter Name="PublisherAddress" Type="String" Mode="In" />
+      <Parameter Name="Location" Type="String" Mode="In" />
+      <Parameter Name="BookTitle" Type="String" Mode="In" />
+      <Parameter Name="Volume" Type="String" Mode="In" />
+      <Parameter Name="CatalogNumber" Type="String" Mode="In" />
+      <Parameter Name="PublisherUri" Type="String" Mode="In" />
+      <Parameter Name="DateSubmitted" Type="DateTime" Mode="In" />
+      <Parameter Name="Chapter" Type="String" Mode="In" />
+      <Parameter Name="Number" Type="String" Mode="In" />
+      <Parameter Name="DateAccepted" Type="DateTime" Mode="In" />
+      <Parameter Name="Publisher" Type="String" Mode="In" />
+      <Parameter Name="Edition" Type="String" Mode="In" />
+      <Parameter Name="MonthPublished" Type="Int32" Mode="In" />
+      <Parameter Name="YearPublished" Type="Int32" Mode="In" />
+      <Parameter Name="Organization" Type="String" Mode="In" />
+      <Parameter Name="Series" Type="String" Mode="In" />
+      <Parameter Name="License" Type="String" Mode="In" />
+      <Parameter Name="DateValidUntil" Type="DateTime" Mode="In" />
+      <Parameter Name="Notes" Type="String" Mode="In" />
+      <Parameter Name="Abstract" Type="String" Mode="In" />
+      <Parameter Name="Copyright" Type="String" Mode="In" />
+      <Parameter Name="DateValidFrom" Type="DateTime" Mode="In" />
+      <Parameter Name="Language" Type="String" Mode="In" />
+      <Parameter Name="DateAvailableUntil" Type="DateTime" Mode="In" />
+      <Parameter Name="DateAvailableFrom" Type="DateTime" Mode="In" />
+      <Parameter Name="DateCopyrighted" Type="DateTime" Mode="In" />
+      <Parameter Name="Scope" Type="String" Mode="In" />
+      <Parameter Name="Title" Type="String" Mode="In" />
+      <Parameter Name="DateModified" Type="DateTime" Mode="In" />
+      <Parameter Name="Id" Type="Guid" Mode="In" />
+      <Parameter Name="DateAdded" Type="DateTime" Mode="In" />
+      <Parameter Name="Uri" Type="String" Mode="In" />
+      <Parameter Name="Description" Type="String" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="Deleteb0eb981eb5aa48c0bf975622abef1e6e">
+      <Parameter Name="Id" Type="Guid" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="Insertf46d9cb111be445b90675d558d8714c4">
+      <Parameter Name="VersionInformation" Type="String" Mode="In" />
+      <Parameter Name="Copyright" Type="String" Mode="In" />
+      <Parameter Name="HardwareRequirements" Type="String" Mode="In" />
+      <Parameter Name="EULA" Type="String" Mode="In" />
+      <Parameter Name="OperatingSystem" Type="String" Mode="In" />
+      <Parameter Name="DownloadRequirements" Type="String" Mode="In" />
+      <Parameter Name="SystemRequirements" Type="String" Mode="In" />
+      <Parameter Name="Language" Type="String" Mode="In" />
+      <Parameter Name="License" Type="String" Mode="In" />
+      <Parameter Name="DateCopyrighted" Type="DateTime" Mode="In" />
+      <Parameter Name="Scope" Type="String" Mode="In" />
+      <Parameter Name="Title" Type="String" Mode="In" />
+      <Parameter Name="DateModified" Type="DateTime" Mode="In" />
+      <Parameter Name="Id" Type="Guid" Mode="In" />
+      <Parameter Name="DateAdded" Type="DateTime" Mode="In" />
+      <Parameter Name="Uri" Type="String" Mode="In" />
+      <Parameter Name="Description" Type="String" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="Updatef46d9cb111be445b90675d558d8714c4">
+      <Parameter Name="VersionInformation" Type="String" Mode="In" />
+      <Parameter Name="Copyright" Type="String" Mode="In" />
+      <Parameter Name="HardwareRequirements" Type="String" Mode="In" />
+      <Parameter Name="EULA" Type="String" Mode="In" />
+      <Parameter Name="OperatingSystem" Type="String" Mode="In" />
+      <Parameter Name="DownloadRequirements" Type="String" Mode="In" />
+      <Parameter Name="SystemRequirements" Type="String" Mode="In" />
+      <Parameter Name="Language" Type="String" Mode="In" />
+      <Parameter Name="License" Type="String" Mode="In" />
+      <Parameter Name="DateCopyrighted" Type="DateTime" Mode="In" />
+      <Parameter Name="Scope" Type="String" Mode="In" />
+      <Parameter Name="Title" Type="String" Mode="In" />
+      <Parameter Name="DateModified" Type="DateTime" Mode="In" />
+      <Parameter Name="Id" Type="Guid" Mode="In" />
+      <Parameter Name="DateAdded" Type="DateTime" Mode="In" />
+      <Parameter Name="Uri" Type="String" Mode="In" />
+      <Parameter Name="Description" Type="String" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="Deletef46d9cb111be445b90675d558d8714c4">
+      <Parameter Name="Id" Type="Guid" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="Insert2961c44e725248149ca15ebc584d4932">
+      <Parameter Name="DatePublished" Type="DateTime" Mode="In" />
+      <Parameter Name="DOI" Type="String" Mode="In" />
+      <Parameter Name="Pages" Type="String" Mode="In" />
+      <Parameter Name="Institution" Type="String" Mode="In" />
+      <Parameter Name="DayPublished" Type="Int32" Mode="In" />
+      <Parameter Name="PublisherAddress" Type="String" Mode="In" />
+      <Parameter Name="Location" Type="String" Mode="In" />
+      <Parameter Name="BookTitle" Type="String" Mode="In" />
+      <Parameter Name="Volume" Type="String" Mode="In" />
+      <Parameter Name="CatalogNumber" Type="String" Mode="In" />
+      <Parameter Name="PublisherUri" Type="String" Mode="In" />
+      <Parameter Name="DateSubmitted" Type="DateTime" Mode="In" />
+      <Parameter Name="Chapter" Type="String" Mode="In" />
+      <Parameter Name="Number" Type="String" Mode="In" />
+      <Parameter Name="DateAccepted" Type="DateTime" Mode="In" />
+      <Parameter Name="Publisher" Type="String" Mode="In" />
+      <Parameter Name="Edition" Type="String" Mode="In" />
+      <Parameter Name="MonthPublished" Type="Int32" Mode="In" />
+      <Parameter Name="YearPublished" Type="Int32" Mode="In" />
+      <Parameter Name="Organization" Type="String" Mode="In" />
+      <Parameter Name="Series" Type="String" Mode="In" />
+      <Parameter Name="License" Type="String" Mode="In" />
+      <Parameter Name="DateValidUntil" Type="DateTime" Mode="In" />
+      <Parameter Name="Notes" Type="String" Mode="In" />
+      <Parameter Name="Abstract" Type="String" Mode="In" />
+      <Parameter Name="Copyright" Type="String" Mode="In" />
+      <Parameter Name="DateValidFrom" Type="DateTime" Mode="In" />
+      <Parameter Name="Language" Type="String" Mode="In" />
+      <Parameter Name="DateAvailableUntil" Type="DateTime" Mode="In" />
+      <Parameter Name="DateAvailableFrom" Type="DateTime" Mode="In" />
+      <Parameter Name="DateCopyrighted" Type="DateTime" Mode="In" />
+      <Parameter Name="Scope" Type="String" Mode="In" />
+      <Parameter Name="Title" Type="String" Mode="In" />
+      <Parameter Name="DateModified" Type="DateTime" Mode="In" />
+      <Parameter Name="Id" Type="Guid" Mode="In" />
+      <Parameter Name="DateAdded" Type="DateTime" Mode="In" />
+      <Parameter Name="Uri" Type="String" Mode="In" />
+      <Parameter Name="Description" Type="String" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="Update2961c44e725248149ca15ebc584d4932">
+      <Parameter Name="DatePublished" Type="DateTime" Mode="In" />
+      <Parameter Name="DOI" Type="String" Mode="In" />
+      <Parameter Name="Pages" Type="String" Mode="In" />
+      <Parameter Name="Institution" Type="String" Mode="In" />
+      <Parameter Name="DayPublished" Type="Int32" Mode="In" />
+      <Parameter Name="PublisherAddress" Type="String" Mode="In" />
+      <Parameter Name="Location" Type="String" Mode="In" />
+      <Parameter Name="BookTitle" Type="String" Mode="In" />
+      <Parameter Name="Volume" Type="String" Mode="In" />
+      <Parameter Name="CatalogNumber" Type="String" Mode="In" />
+      <Parameter Name="PublisherUri" Type="String" Mode="In" />
+      <Parameter Name="DateSubmitted" Type="DateTime" Mode="In" />
+      <Parameter Name="Chapter" Type="String" Mode="In" />
+      <Parameter Name="Number" Type="String" Mode="In" />
+      <Parameter Name="DateAccepted" Type="DateTime" Mode="In" />
+      <Parameter Name="Publisher" Type="String" Mode="In" />
+      <Parameter Name="Edition" Type="String" Mode="In" />
+      <Parameter Name="MonthPublished" Type="Int32" Mode="In" />
+      <Parameter Name="YearPublished" Type="Int32" Mode="In" />
+      <Parameter Name="Organization" Type="String" Mode="In" />
+      <Parameter Name="Series" Type="String" Mode="In" />
+      <Parameter Name="License" Type="String" Mode="In" />
+      <Parameter Name="DateValidUntil" Type="DateTime" Mode="In" />
+      <Parameter Name="Notes" Type="String" Mode="In" />
+      <Parameter Name="Abstract" Type="String" Mode="In" />
+      <Parameter Name="Copyright" Type="String" Mode="In" />
+      <Parameter Name="DateValidFrom" Type="DateTime" Mode="In" />
+      <Parameter Name="Language" Type="String" Mode="In" />
+      <Parameter Name="DateAvailableUntil" Type="DateTime" Mode="In" />
+      <Parameter Name="DateAvailableFrom" Type="DateTime" Mode="In" />
+      <Parameter Name="DateCopyrighted" Type="DateTime" Mode="In" />
+      <Parameter Name="Scope" Type="String" Mode="In" />
+      <Parameter Name="Title" Type="String" Mode="In" />
+      <Parameter Name="DateModified" Type="DateTime" Mode="In" />
+      <Parameter Name="Id" Type="Guid" Mode="In" />
+      <Parameter Name="DateAdded" Type="DateTime" Mode="In" />
+      <Parameter Name="Uri" Type="String" Mode="In" />
+      <Parameter Name="Description" Type="String" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="Delete2961c44e725248149ca15ebc584d4932">
+      <Parameter Name="Id" Type="Guid" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="Insertc91643ffe8704a12b1406040a989fd6d">
+      <Parameter Name="DatePublished" Type="DateTime" Mode="In" />
+      <Parameter Name="DOI" Type="String" Mode="In" />
+      <Parameter Name="Pages" Type="String" Mode="In" />
+      <Parameter Name="Institution" Type="String" Mode="In" />
+      <Parameter Name="DayPublished" Type="Int32" Mode="In" />
+      <Parameter Name="PublisherAddress" Type="String" Mode="In" />
+      <Parameter Name="Location" Type="String" Mode="In" />
+      <Parameter Name="BookTitle" Type="String" Mode="In" />
+      <Parameter Name="Volume" Type="String" Mode="In" />
+      <Parameter Name="CatalogNumber" Type="String" Mode="In" />
+      <Parameter Name="PublisherUri" Type="String" Mode="In" />
+      <Parameter Name="DateSubmitted" Type="DateTime" Mode="In" />
+      <Parameter Name="Chapter" Type="String" Mode="In" />
+      <Parameter Name="Number" Type="String" Mode="In" />
+      <Parameter Name="DateAccepted" Type="DateTime" Mode="In" />
+      <Parameter Name="Publisher" Type="String" Mode="In" />
+      <Parameter Name="Edition" Type="String" Mode="In" />
+      <Parameter Name="MonthPublished" Type="Int32" Mode="In" />
+      <Parameter Name="YearPublished" Type="Int32" Mode="In" />
+      <Parameter Name="Organization" Type="String" Mode="In" />
+      <Parameter Name="Series" Type="String" Mode="In" />
+      <Parameter Name="License" Type="String" Mode="In" />
+      <Parameter Name="DateValidUntil" Type="DateTime" Mode="In" />
+      <Parameter Name="Notes" Type="String" Mode="In" />
+      <Parameter Name="Abstract" Type="String" Mode="In" />
+      <Parameter Name="Copyright" Type="String" Mode="In" />
+      <Parameter Name="DateValidFrom" Type="DateTime" Mode="In" />
+      <Parameter Name="Language" Type="String" Mode="In" />
+      <Parameter Name="DateAvailableUntil" Type="DateTime" Mode="In" />
+      <Parameter Name="DateAvailableFrom" Type="DateTime" Mode="In" />
+      <Parameter Name="DateCopyrighted" Type="DateTime" Mode="In" />
+      <Parameter Name="Scope" Type="String" Mode="In" />
+      <Parameter Name="Title" Type="String" Mode="In" />
+      <Parameter Name="DateModified" Type="DateTime" Mode="In" />
+      <Parameter Name="Id" Type="Guid" Mode="In" />
+      <Parameter Name="DateAdded" Type="DateTime" Mode="In" />
+      <Parameter Name="Uri" Type="String" Mode="In" />
+      <Parameter Name="Description" Type="String" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="Updatec91643ffe8704a12b1406040a989fd6d">
+      <Parameter Name="DatePublished" Type="DateTime" Mode="In" />
+      <Parameter Name="DOI" Type="String" Mode="In" />
+      <Parameter Name="Pages" Type="String" Mode="In" />
+      <Parameter Name="Institution" Type="String" Mode="In" />
+      <Parameter Name="DayPublished" Type="Int32" Mode="In" />
+      <Parameter Name="PublisherAddress" Type="String" Mode="In" />
+      <Parameter Name="Location" Type="String" Mode="In" />
+      <Parameter Name="BookTitle" Type="String" Mode="In" />
+      <Parameter Name="Volume" Type="String" Mode="In" />
+      <Parameter Name="CatalogNumber" Type="String" Mode="In" />
+      <Parameter Name="PublisherUri" Type="String" Mode="In" />
+      <Parameter Name="DateSubmitted" Type="DateTime" Mode="In" />
+      <Parameter Name="Chapter" Type="String" Mode="In" />
+      <Parameter Name="Number" Type="String" Mode="In" />
+      <Parameter Name="DateAccepted" Type="DateTime" Mode="In" />
+      <Parameter Name="Publisher" Type="String" Mode="In" />
+      <Parameter Name="Edition" Type="String" Mode="In" />
+      <Parameter Name="MonthPublished" Type="Int32" Mode="In" />
+      <Parameter Name="YearPublished" Type="Int32" Mode="In" />
+      <Parameter Name="Organization" Type="String" Mode="In" />
+      <Parameter Name="Series" Type="String" Mode="In" />
+      <Parameter Name="License" Type="String" Mode="In" />
+      <Parameter Name="DateValidUntil" Type="DateTime" Mode="In" />
+      <Parameter Name="Notes" Type="String" Mode="In" />
+      <Parameter Name="Abstract" Type="String" Mode="In" />
+      <Parameter Name="Copyright" Type="String" Mode="In" />
+      <Parameter Name="DateValidFrom" Type="DateTime" Mode="In" />
+      <Parameter Name="Language" Type="String" Mode="In" />
+      <Parameter Name="DateAvailableUntil" Type="DateTime" Mode="In" />
+      <Parameter Name="DateAvailableFrom" Type="DateTime" Mode="In" />
+      <Parameter Name="DateCopyrighted" Type="DateTime" Mode="In" />
+      <Parameter Name="Scope" Type="String" Mode="In" />
+      <Parameter Name="Title" Type="String" Mode="In" />
+      <Parameter Name="DateModified" Type="DateTime" Mode="In" />
+      <Parameter Name="Id" Type="Guid" Mode="In" />
+      <Parameter Name="DateAdded" Type="DateTime" Mode="In" />
+      <Parameter Name="Uri" Type="String" Mode="In" />
+      <Parameter Name="Description" Type="String" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="Deletec91643ffe8704a12b1406040a989fd6d">
+      <Parameter Name="Id" Type="Guid" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="Insert4c89074ef0d6470687006d2e0d1afe98">
+      <Parameter Name="ProgrammingLanguage" Type="String" Mode="In" />
+      <Parameter Name="Technology" Type="String" Mode="In" />
+      <Parameter Name="VersionInformation" Type="String" Mode="In" />
+      <Parameter Name="Copyright" Type="String" Mode="In" />
+      <Parameter Name="HardwareRequirements" Type="String" Mode="In" />
+      <Parameter Name="EULA" Type="String" Mode="In" />
+      <Parameter Name="OperatingSystem" Type="String" Mode="In" />
+      <Parameter Name="DownloadRequirements" Type="String" Mode="In" />
+      <Parameter Name="SystemRequirements" Type="String" Mode="In" />
+      <Parameter Name="Language" Type="String" Mode="In" />
+      <Parameter Name="License" Type="String" Mode="In" />
+      <Parameter Name="DateCopyrighted" Type="DateTime" Mode="In" />
+      <Parameter Name="Scope" Type="String" Mode="In" />
+      <Parameter Name="Title" Type="String" Mode="In" />
+      <Parameter Name="DateModified" Type="DateTime" Mode="In" />
+      <Parameter Name="Id" Type="Guid" Mode="In" />
+      <Parameter Name="DateAdded" Type="DateTime" Mode="In" />
+      <Parameter Name="Uri" Type="String" Mode="In" />
+      <Parameter Name="Description" Type="String" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="Update4c89074ef0d6470687006d2e0d1afe98">
+      <Parameter Name="ProgrammingLanguage" Type="String" Mode="In" />
+      <Parameter Name="Technology" Type="String" Mode="In" />
+      <Parameter Name="VersionInformation" Type="String" Mode="In" />
+      <Parameter Name="Copyright" Type="String" Mode="In" />
+      <Parameter Name="HardwareRequirements" Type="String" Mode="In" />
+      <Parameter Name="EULA" Type="String" Mode="In" />
+      <Parameter Name="OperatingSystem" Type="String" Mode="In" />
+      <Parameter Name="DownloadRequirements" Type="String" Mode="In" />
+      <Parameter Name="SystemRequirements" Type="String" Mode="In" />
+      <Parameter Name="Language" Type="String" Mode="In" />
+      <Parameter Name="License" Type="String" Mode="In" />
+      <Parameter Name="DateCopyrighted" Type="DateTime" Mode="In" />
+      <Parameter Name="Scope" Type="String" Mode="In" />
+      <Parameter Name="Title" Type="String" Mode="In" />
+      <Parameter Name="DateModified" Type="DateTime" Mode="In" />
+      <Parameter Name="Id" Type="Guid" Mode="In" />
+      <Parameter Name="DateAdded" Type="DateTime" Mode="In" />
+      <Parameter Name="Uri" Type="String" Mode="In" />
+      <Parameter Name="Description" Type="String" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="Delete4c89074ef0d6470687006d2e0d1afe98">
+      <Parameter Name="Id" Type="Guid" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="Insert750bd9f2aa9d4a0382c0739fceafe7b2">
+      <Parameter Name="Series" Type="String" Mode="In" />
+      <Parameter Name="Image" Type="Binary" Mode="In" />
+      <Parameter Name="Audience" Type="String" Mode="In" />
+      <Parameter Name="Venue" Type="String" Mode="In" />
+      <Parameter Name="DateEnd" Type="DateTime" Mode="In" />
+      <Parameter Name="DateStart" Type="DateTime" Mode="In" />
+      <Parameter Name="License" Type="String" Mode="In" />
+      <Parameter Name="DateValidUntil" Type="DateTime" Mode="In" />
+      <Parameter Name="Notes" Type="String" Mode="In" />
+      <Parameter Name="Abstract" Type="String" Mode="In" />
+      <Parameter Name="Copyright" Type="String" Mode="In" />
+      <Parameter Name="DateValidFrom" Type="DateTime" Mode="In" />
+      <Parameter Name="Language" Type="String" Mode="In" />
+      <Parameter Name="DateAvailableUntil" Type="DateTime" Mode="In" />
+      <Parameter Name="DateAvailableFrom" Type="DateTime" Mode="In" />
+      <Parameter Name="DateCopyrighted" Type="DateTime" Mode="In" />
+      <Parameter Name="Scope" Type="String" Mode="In" />
+      <Parameter Name="Title" Type="String" Mode="In" />
+      <Parameter Name="DateModified" Type="DateTime" Mode="In" />
+      <Parameter Name="Id" Type="Guid" Mode="In" />
+      <Parameter Name="DateAdded" Type="DateTime" Mode="In" />
+      <Parameter Name="Uri" Type="String" Mode="In" />
+      <Parameter Name="Description" Type="String" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="Update750bd9f2aa9d4a0382c0739fceafe7b2">
+      <Parameter Name="Series" Type="String" Mode="In" />
+      <Parameter Name="Image" Type="Binary" Mode="In" />
+      <Parameter Name="Audience" Type="String" Mode="In" />
+      <Parameter Name="Venue" Type="String" Mode="In" />
+      <Parameter Name="DateEnd" Type="DateTime" Mode="In" />
+      <Parameter Name="DateStart" Type="DateTime" Mode="In" />
+      <Parameter Name="License" Type="String" Mode="In" />
+      <Parameter Name="DateValidUntil" Type="DateTime" Mode="In" />
+      <Parameter Name="Notes" Type="String" Mode="In" />
+      <Parameter Name="Abstract" Type="String" Mode="In" />
+      <Parameter Name="Copyright" Type="String" Mode="In" />
+      <Parameter Name="DateValidFrom" Type="DateTime" Mode="In" />
+      <Parameter Name="Language" Type="String" Mode="In" />
+      <Parameter Name="DateAvailableUntil" Type="DateTime" Mode="In" />
+      <Parameter Name="DateAvailableFrom" Type="DateTime" Mode="In" />
+      <Parameter Name="DateCopyrighted" Type="DateTime" Mode="In" />
+      <Parameter Name="Scope" Type="String" Mode="In" />
+      <Parameter Name="Title" Type="String" Mode="In" />
+      <Parameter Name="DateModified" Type="DateTime" Mode="In" />
+      <Parameter Name="Id" Type="Guid" Mode="In" />
+      <Parameter Name="DateAdded" Type="DateTime" Mode="In" />
+      <Parameter Name="Uri" Type="String" Mode="In" />
+      <Parameter Name="Description" Type="String" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="Delete750bd9f2aa9d4a0382c0739fceafe7b2">
+      <Parameter Name="Id" Type="Guid" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="Insert807b649a83284caaa29d7a61048fcef2">
+      <Parameter Name="Stereoscopic" Type="Boolean" Mode="In" />
+      <Parameter Name="Resolution" Type="String" Mode="In" />
+      <Parameter Name="PSNR" Type="Decimal" Mode="In" />
+      <Parameter Name="Director" Type="String" Mode="In" />
+      <Parameter Name="Codec" Type="String" Mode="In" />
+      <Parameter Name="BitRate" Type="Int32" Mode="In" />
+      <Parameter Name="AspectRatio" Type="String" Mode="In" />
+      <Parameter Name="FrameWidth" Type="Int32" Mode="In" />
+      <Parameter Name="FrameHeight" Type="Int32" Mode="In" />
+      <Parameter Name="FramesPerSecond" Type="Int16" Mode="In" />
+      <Parameter Name="ScanningMethod" Type="String" Mode="In" />
+      <Parameter Name="BitsPerPixel" Type="Int16" Mode="In" />
+      <Parameter Name="ColorModel" Type="String" Mode="In" />
+      <Parameter Name="License" Type="String" Mode="In" />
+      <Parameter Name="Copyright" Type="String" Mode="In" />
+      <Parameter Name="DateCopyrighted" Type="DateTime" Mode="In" />
+      <Parameter Name="Duration" Type="Int32" Mode="In" />
+      <Parameter Name="Language" Type="String" Mode="In" />
+      <Parameter Name="Scope" Type="String" Mode="In" />
+      <Parameter Name="Title" Type="String" Mode="In" />
+      <Parameter Name="DateModified" Type="DateTime" Mode="In" />
+      <Parameter Name="Id" Type="Guid" Mode="In" />
+      <Parameter Name="DateAdded" Type="DateTime" Mode="In" />
+      <Parameter Name="Uri" Type="String" Mode="In" />
+      <Parameter Name="Description" Type="String" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="Update807b649a83284caaa29d7a61048fcef2">
+      <Parameter Name="Stereoscopic" Type="Boolean" Mode="In" />
+      <Parameter Name="Resolution" Type="String" Mode="In" />
+      <Parameter Name="PSNR" Type="Decimal" Mode="In" />
+      <Parameter Name="Director" Type="String" Mode="In" />
+      <Parameter Name="Codec" Type="String" Mode="In" />
+      <Parameter Name="BitRate" Type="Int32" Mode="In" />
+      <Parameter Name="AspectRatio" Type="String" Mode="In" />
+      <Parameter Name="FrameWidth" Type="Int32" Mode="In" />
+      <Parameter Name="FrameHeight" Type="Int32" Mode="In" />
+      <Parameter Name="FramesPerSecond" Type="Int16" Mode="In" />
+      <Parameter Name="ScanningMethod" Type="String" Mode="In" />
+      <Parameter Name="BitsPerPixel" Type="Int16" Mode="In" />
+      <Parameter Name="ColorModel" Type="String" Mode="In" />
+      <Parameter Name="License" Type="String" Mode="In" />
+      <Parameter Name="Copyright" Type="String" Mode="In" />
+      <Parameter Name="DateCopyrighted" Type="DateTime" Mode="In" />
+      <Parameter Name="Duration" Type="Int32" Mode="In" />
+      <Parameter Name="Language" Type="String" Mode="In" />
+      <Parameter Name="Scope" Type="String" Mode="In" />
+      <Parameter Name="Title" Type="String" Mode="In" />
+      <Parameter Name="DateModified" Type="DateTime" Mode="In" />
+      <Parameter Name="Id" Type="Guid" Mode="In" />
+      <Parameter Name="DateAdded" Type="DateTime" Mode="In" />
+      <Parameter Name="Uri" Type="String" Mode="In" />
+      <Parameter Name="Description" Type="String" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="Delete807b649a83284caaa29d7a61048fcef2">
+      <Parameter Name="Id" Type="Guid" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="Insert7b65d54a4e78440995057e3e09d23c68">
+      <Parameter Name="Count" Type="Int32" Mode="In" />
+      <Parameter Name="License" Type="String" Mode="In" />
+      <Parameter Name="DateValidUntil" Type="DateTime" Mode="In" />
+      <Parameter Name="Notes" Type="String" Mode="In" />
+      <Parameter Name="Abstract" Type="String" Mode="In" />
+      <Parameter Name="Copyright" Type="String" Mode="In" />
+      <Parameter Name="DateValidFrom" Type="DateTime" Mode="In" />
+      <Parameter Name="Language" Type="String" Mode="In" />
+      <Parameter Name="DateAvailableUntil" Type="DateTime" Mode="In" />
+      <Parameter Name="DateAvailableFrom" Type="DateTime" Mode="In" />
+      <Parameter Name="DateCopyrighted" Type="DateTime" Mode="In" />
+      <Parameter Name="Scope" Type="String" Mode="In" />
+      <Parameter Name="Title" Type="String" Mode="In" />
+      <Parameter Name="DateModified" Type="DateTime" Mode="In" />
+      <Parameter Name="Id" Type="Guid" Mode="In" />
+      <Parameter Name="DateAdded" Type="DateTime" Mode="In" />
+      <Parameter Name="Uri" Type="String" Mode="In" />
+      <Parameter Name="Description" Type="String" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="Update7b65d54a4e78440995057e3e09d23c68">
+      <Parameter Name="Count" Type="Int32" Mode="In" />
+      <Parameter Name="License" Type="String" Mode="In" />
+      <Parameter Name="DateValidUntil" Type="DateTime" Mode="In" />
+      <Parameter Name="Notes" Type="String" Mode="In" />
+      <Parameter Name="Abstract" Type="String" Mode="In" />
+      <Parameter Name="Copyright" Type="String" Mode="In" />
+      <Parameter Name="DateValidFrom" Type="DateTime" Mode="In" />
+      <Parameter Name="Language" Type="String" Mode="In" />
+      <Parameter Name="DateAvailableUntil" Type="DateTime" Mode="In" />
+      <Parameter Name="DateAvailableFrom" Type="DateTime" Mode="In" />
+      <Parameter Name="DateCopyrighted" Type="DateTime" Mode="In" />
+      <Parameter Name="Scope" Type="String" Mode="In" />
+      <Parameter Name="Title" Type="String" Mode="In" />
+      <Parameter Name="DateModified" Type="DateTime" Mode="In" />
+      <Parameter Name="Id" Type="Guid" Mode="In" />
+      <Parameter Name="DateAdded" Type="DateTime" Mode="In" />
+      <Parameter Name="Uri" Type="String" Mode="In" />
+      <Parameter Name="Description" Type="String" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="Delete7b65d54a4e78440995057e3e09d23c68">
+      <Parameter Name="Id" Type="Guid" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="Insert1f2c6537db1a42f884da7fba29803174">
+      <Parameter Name="Email" Type="String" Mode="In" />
+      <Parameter Name="Scope" Type="String" Mode="In" />
+      <Parameter Name="Title" Type="String" Mode="In" />
+      <Parameter Name="DateModified" Type="DateTime" Mode="In" />
+      <Parameter Name="Id" Type="Guid" Mode="In" />
+      <Parameter Name="DateAdded" Type="DateTime" Mode="In" />
+      <Parameter Name="Uri" Type="String" Mode="In" />
+      <Parameter Name="Description" Type="String" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="Update1f2c6537db1a42f884da7fba29803174">
+      <Parameter Name="Email" Type="String" Mode="In" />
+      <Parameter Name="Scope" Type="String" Mode="In" />
+      <Parameter Name="Title" Type="String" Mode="In" />
+      <Parameter Name="DateModified" Type="DateTime" Mode="In" />
+      <Parameter Name="Id" Type="Guid" Mode="In" />
+      <Parameter Name="DateAdded" Type="DateTime" Mode="In" />
+      <Parameter Name="Uri" Type="String" Mode="In" />
+      <Parameter Name="Description" Type="String" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="Delete1f2c6537db1a42f884da7fba29803174">
+      <Parameter Name="Id" Type="Guid" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="Insert798fc6e5d57d4027b0da8b39e1a9dfe3">
+      <Parameter Name="EventName" Type="String" Mode="In" />
+      <Parameter Name="DatePublished" Type="DateTime" Mode="In" />
+      <Parameter Name="DOI" Type="String" Mode="In" />
+      <Parameter Name="Pages" Type="String" Mode="In" />
+      <Parameter Name="Institution" Type="String" Mode="In" />
+      <Parameter Name="DayPublished" Type="Int32" Mode="In" />
+      <Parameter Name="PublisherAddress" Type="String" Mode="In" />
+      <Parameter Name="Location" Type="String" Mode="In" />
+      <Parameter Name="BookTitle" Type="String" Mode="In" />
+      <Parameter Name="Volume" Type="String" Mode="In" />
+      <Parameter Name="CatalogNumber" Type="String" Mode="In" />
+      <Parameter Name="PublisherUri" Type="String" Mode="In" />
+      <Parameter Name="DateSubmitted" Type="DateTime" Mode="In" />
+      <Parameter Name="Chapter" Type="String" Mode="In" />
+      <Parameter Name="Number" Type="String" Mode="In" />
+      <Parameter Name="DateAccepted" Type="DateTime" Mode="In" />
+      <Parameter Name="Publisher" Type="String" Mode="In" />
+      <Parameter Name="Edition" Type="String" Mode="In" />
+      <Parameter Name="MonthPublished" Type="Int32" Mode="In" />
+      <Parameter Name="YearPublished" Type="Int32" Mode="In" />
+      <Parameter Name="Organization" Type="String" Mode="In" />
+      <Parameter Name="Series" Type="String" Mode="In" />
+      <Parameter Name="License" Type="String" Mode="In" />
+      <Parameter Name="DateValidUntil" Type="DateTime" Mode="In" />
+      <Parameter Name="Notes" Type="String" Mode="In" />
+      <Parameter Name="Abstract" Type="String" Mode="In" />
+      <Parameter Name="Copyright" Type="String" Mode="In" />
+      <Parameter Name="DateValidFrom" Type="DateTime" Mode="In" />
+      <Parameter Name="Language" Type="String" Mode="In" />
+      <Parameter Name="DateAvailableUntil" Type="DateTime" Mode="In" />
+      <Parameter Name="DateAvailableFrom" Type="DateTime" Mode="In" />
+      <Parameter Name="DateCopyrighted" Type="DateTime" Mode="In" />
+      <Parameter Name="Scope" Type="String" Mode="In" />
+      <Parameter Name="Title" Type="String" Mode="In" />
+      <Parameter Name="DateModified" Type="DateTime" Mode="In" />
+      <Parameter Name="Id" Type="Guid" Mode="In" />
+      <Parameter Name="DateAdded" Type="DateTime" Mode="In" />
+      <Parameter Name="Uri" Type="String" Mode="In" />
+      <Parameter Name="Description" Type="String" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="Update798fc6e5d57d4027b0da8b39e1a9dfe3">
+      <Parameter Name="EventName" Type="String" Mode="In" />
+      <Parameter Name="DatePublished" Type="DateTime" Mode="In" />
+      <Parameter Name="DOI" Type="String" Mode="In" />
+      <Parameter Name="Pages" Type="String" Mode="In" />
+      <Parameter Name="Institution" Type="String" Mode="In" />
+      <Parameter Name="DayPublished" Type="Int32" Mode="In" />
+      <Parameter Name="PublisherAddress" Type="String" Mode="In" />
+      <Parameter Name="Location" Type="String" Mode="In" />
+      <Parameter Name="BookTitle" Type="String" Mode="In" />
+      <Parameter Name="Volume" Type="String" Mode="In" />
+      <Parameter Name="CatalogNumber" Type="String" Mode="In" />
+      <Parameter Name="PublisherUri" Type="String" Mode="In" />
+      <Parameter Name="DateSubmitted" Type="DateTime" Mode="In" />
+      <Parameter Name="Chapter" Type="String" Mode="In" />
+      <Parameter Name="Number" Type="String" Mode="In" />
+      <Parameter Name="DateAccepted" Type="DateTime" Mode="In" />
+      <Parameter Name="Publisher" Type="String" Mode="In" />
+      <Parameter Name="Edition" Type="String" Mode="In" />
+      <Parameter Name="MonthPublished" Type="Int32" Mode="In" />
+      <Parameter Name="YearPublished" Type="Int32" Mode="In" />
+      <Parameter Name="Organization" Type="String" Mode="In" />
+      <Parameter Name="Series" Type="String" Mode="In" />
+      <Parameter Name="License" Type="String" Mode="In" />
+      <Parameter Name="DateValidUntil" Type="DateTime" Mode="In" />
+      <Parameter Name="Notes" Type="String" Mode="In" />
+      <Parameter Name="Abstract" Type="String" Mode="In" />
+      <Parameter Name="Copyright" Type="String" Mode="In" />
+      <Parameter Name="DateValidFrom" Type="DateTime" Mode="In" />
+      <Parameter Name="Language" Type="String" Mode="In" />
+      <Parameter Name="DateAvailableUntil" Type="DateTime" Mode="In" />
+      <Parameter Name="DateAvailableFrom" Type="DateTime" Mode="In" />
+      <Parameter Name="DateCopyrighted" Type="DateTime" Mode="In" />
+      <Parameter Name="Scope" Type="String" Mode="In" />
+      <Parameter Name="Title" Type="String" Mode="In" />
+      <Parameter Name="DateModified" Type="DateTime" Mode="In" />
+      <Parameter Name="Id" Type="Guid" Mode="In" />
+      <Parameter Name="DateAdded" Type="DateTime" Mode="In" />
+      <Parameter Name="Uri" Type="String" Mode="In" />
+      <Parameter Name="Description" Type="String" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="Delete798fc6e5d57d4027b0da8b39e1a9dfe3">
+      <Parameter Name="Id" Type="Guid" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="Insert44c2b18fa1ec4dedabb09c4ef1b1e740">
+      <Parameter Name="DatePublished" Type="DateTime" Mode="In" />
+      <Parameter Name="DOI" Type="String" Mode="In" />
+      <Parameter Name="Pages" Type="String" Mode="In" />
+      <Parameter Name="Institution" Type="String" Mode="In" />
+      <Parameter Name="DayPublished" Type="Int32" Mode="In" />
+      <Parameter Name="PublisherAddress" Type="String" Mode="In" />
+      <Parameter Name="Location" Type="String" Mode="In" />
+      <Parameter Name="BookTitle" Type="String" Mode="In" />
+      <Parameter Name="Volume" Type="String" Mode="In" />
+      <Parameter Name="CatalogNumber" Type="String" Mode="In" />
+      <Parameter Name="PublisherUri" Type="String" Mode="In" />
+      <Parameter Name="DateSubmitted" Type="DateTime" Mode="In" />
+      <Parameter Name="Chapter" Type="String" Mode="In" />
+      <Parameter Name="Number" Type="String" Mode="In" />
+      <Parameter Name="DateAccepted" Type="DateTime" Mode="In" />
+      <Parameter Name="Publisher" Type="String" Mode="In" />
+      <Parameter Name="Edition" Type="String" Mode="In" />
+      <Parameter Name="MonthPublished" Type="Int32" Mode="In" />
+      <Parameter Name="YearPublished" Type="Int32" Mode="In" />
+      <Parameter Name="Organization" Type="String" Mode="In" />
+      <Parameter Name="Series" Type="String" Mode="In" />
+      <Parameter Name="License" Type="String" Mode="In" />
+      <Parameter Name="DateValidUntil" Type="DateTime" Mode="In" />
+      <Parameter Name="Notes" Type="String" Mode="In" />
+      <Parameter Name="Abstract" Type="String" Mode="In" />
+      <Parameter Name="Copyright" Type="String" Mode="In" />
+      <Parameter Name="DateValidFrom" Type="DateTime" Mode="In" />
+      <Parameter Name="Language" Type="String" Mode="In" />
+      <Parameter Name="DateAvailableUntil" Type="DateTime" Mode="In" />
+      <Parameter Name="DateAvailableFrom" Type="DateTime" Mode="In" />
+      <Parameter Name="DateCopyrighted" Type="DateTime" Mode="In" />
+      <Parameter Name="Scope" Type="String" Mode="In" />
+      <Parameter Name="Title" Type="String" Mode="In" />
+      <Parameter Name="DateModified" Type="DateTime" Mode="In" />
+      <Parameter Name="Id" Type="Guid" Mode="In" />
+      <Parameter Name="DateAdded" Type="DateTime" Mode="In" />
+      <Parameter Name="Uri" Type="String" Mode="In" />
+      <Parameter Name="Description" Type="String" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="Update44c2b18fa1ec4dedabb09c4ef1b1e740">
+      <Parameter Name="DatePublished" Type="DateTime" Mode="In" />
+      <Parameter Name="DOI" Type="String" Mode="In" />
+      <Parameter Name="Pages" Type="String" Mode="In" />
+      <Parameter Name="Institution" Type="String" Mode="In" />
+      <Parameter Name="DayPublished" Type="Int32" Mode="In" />
+      <Parameter Name="PublisherAddress" Type="String" Mode="In" />
+      <Parameter Name="Location" Type="String" Mode="In" />
+      <Parameter Name="BookTitle" Type="String" Mode="In" />
+      <Parameter Name="Volume" Type="String" Mode="In" />
+      <Parameter Name="CatalogNumber" Type="String" Mode="In" />
+      <Parameter Name="PublisherUri" Type="String" Mode="In" />
+      <Parameter Name="DateSubmitted" Type="DateTime" Mode="In" />
+      <Parameter Name="Chapter" Type="String" Mode="In" />
+      <Parameter Name="Number" Type="String" Mode="In" />
+      <Parameter Name="DateAccepted" Type="DateTime" Mode="In" />
+      <Parameter Name="Publisher" Type="String" Mode="In" />
+      <Parameter Name="Edition" Type="String" Mode="In" />
+      <Parameter Name="MonthPublished" Type="Int32" Mode="In" />
+      <Parameter Name="YearPublished" Type="Int32" Mode="In" />
+      <Parameter Name="Organization" Type="String" Mode="In" />
+      <Parameter Name="Series" Type="String" Mode="In" />
+      <Parameter Name="License" Type="String" Mode="In" />
+      <Parameter Name="DateValidUntil" Type="DateTime" Mode="In" />
+      <Parameter Name="Notes" Type="String" Mode="In" />
+      <Parameter Name="Abstract" Type="String" Mode="In" />
+      <Parameter Name="Copyright" Type="String" Mode="In" />
+      <Parameter Name="DateValidFrom" Type="DateTime" Mode="In" />
+      <Parameter Name="Language" Type="String" Mode="In" />
+      <Parameter Name="DateAvailableUntil" Type="DateTime" Mode="In" />
+      <Parameter Name="DateAvailableFrom" Type="DateTime" Mode="In" />
+      <Parameter Name="DateCopyrighted" Type="DateTime" Mode="In" />
+      <Parameter Name="Scope" Type="String" Mode="In" />
+      <Parameter Name="Title" Type="String" Mode="In" />
+      <Parameter Name="DateModified" Type="DateTime" Mode="In" />
+      <Parameter Name="Id" Type="Guid" Mode="In" />
+      <Parameter Name="DateAdded" Type="DateTime" Mode="In" />
+      <Parameter Name="Uri" Type="String" Mode="In" />
+      <Parameter Name="Description" Type="String" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="Delete44c2b18fa1ec4dedabb09c4ef1b1e740">
+      <Parameter Name="Id" Type="Guid" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="Insert1b6989307cc14535888ea489eece878d">
+      <Parameter Name="JournalName" Type="String" Mode="In" />
+      <Parameter Name="DatePublished" Type="DateTime" Mode="In" />
+      <Parameter Name="DOI" Type="String" Mode="In" />
+      <Parameter Name="Pages" Type="String" Mode="In" />
+      <Parameter Name="Institution" Type="String" Mode="In" />
+      <Parameter Name="DayPublished" Type="Int32" Mode="In" />
+      <Parameter Name="PublisherAddress" Type="String" Mode="In" />
+      <Parameter Name="Location" Type="String" Mode="In" />
+      <Parameter Name="BookTitle" Type="String" Mode="In" />
+      <Parameter Name="Volume" Type="String" Mode="In" />
+      <Parameter Name="CatalogNumber" Type="String" Mode="In" />
+      <Parameter Name="PublisherUri" Type="String" Mode="In" />
+      <Parameter Name="DateSubmitted" Type="DateTime" Mode="In" />
+      <Parameter Name="Chapter" Type="String" Mode="In" />
+      <Parameter Name="Number" Type="String" Mode="In" />
+      <Parameter Name="DateAccepted" Type="DateTime" Mode="In" />
+      <Parameter Name="Publisher" Type="String" Mode="In" />
+      <Parameter Name="Edition" Type="String" Mode="In" />
+      <Parameter Name="MonthPublished" Type="Int32" Mode="In" />
+      <Parameter Name="YearPublished" Type="Int32" Mode="In" />
+      <Parameter Name="Organization" Type="String" Mode="In" />
+      <Parameter Name="Series" Type="String" Mode="In" />
+      <Parameter Name="License" Type="String" Mode="In" />
+      <Parameter Name="DateValidUntil" Type="DateTime" Mode="In" />
+      <Parameter Name="Notes" Type="String" Mode="In" />
+      <Parameter Name="Abstract" Type="String" Mode="In" />
+      <Parameter Name="Copyright" Type="String" Mode="In" />
+      <Parameter Name="DateValidFrom" Type="DateTime" Mode="In" />
+      <Parameter Name="Language" Type="String" Mode="In" />
+      <Parameter Name="DateAvailableUntil" Type="DateTime" Mode="In" />
+      <Parameter Name="DateAvailableFrom" Type="DateTime" Mode="In" />
+      <Parameter Name="DateCopyrighted" Type="DateTime" Mode="In" />
+      <Parameter Name="Scope" Type="String" Mode="In" />
+      <Parameter Name="Title" Type="String" Mode="In" />
+      <Parameter Name="DateModified" Type="DateTime" Mode="In" />
+      <Parameter Name="Id" Type="Guid" Mode="In" />
+      <Parameter Name="DateAdded" Type="DateTime" Mode="In" />
+      <Parameter Name="Uri" Type="String" Mode="In" />
+      <Parameter Name="Description" Type="String" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="Update1b6989307cc14535888ea489eece878d">
+      <Parameter Name="JournalName" Type="String" Mode="In" />
+      <Parameter Name="DatePublished" Type="DateTime" Mode="In" />
+      <Parameter Name="DOI" Type="String" Mode="In" />
+      <Parameter Name="Pages" Type="String" Mode="In" />
+      <Parameter Name="Institution" Type="String" Mode="In" />
+      <Parameter Name="DayPublished" Type="Int32" Mode="In" />
+      <Parameter Name="PublisherAddress" Type="String" Mode="In" />
+      <Parameter Name="Location" Type="String" Mode="In" />
+      <Parameter Name="BookTitle" Type="String" Mode="In" />
+      <Parameter Name="Volume" Type="String" Mode="In" />
+      <Parameter Name="CatalogNumber" Type="String" Mode="In" />
+      <Parameter Name="PublisherUri" Type="String" Mode="In" />
+      <Parameter Name="DateSubmitted" Type="DateTime" Mode="In" />
+      <Parameter Name="Chapter" Type="String" Mode="In" />
+      <Parameter Name="Number" Type="String" Mode="In" />
+      <Parameter Name="DateAccepted" Type="DateTime" Mode="In" />
+      <Parameter Name="Publisher" Type="String" Mode="In" />
+      <Parameter Name="Edition" Type="String" Mode="In" />
+      <Parameter Name="MonthPublished" Type="Int32" Mode="In" />
+      <Parameter Name="YearPublished" Type="Int32" Mode="In" />
+      <Parameter Name="Organization" Type="String" Mode="In" />
+      <Parameter Name="Series" Type="String" Mode="In" />
+      <Parameter Name="License" Type="String" Mode="In" />
+      <Parameter Name="DateValidUntil" Type="DateTime" Mode="In" />
+      <Parameter Name="Notes" Type="String" Mode="In" />
+      <Parameter Name="Abstract" Type="String" Mode="In" />
+      <Parameter Name="Copyright" Type="String" Mode="In" />
+      <Parameter Name="DateValidFrom" Type="DateTime" Mode="In" />
+      <Parameter Name="Language" Type="String" Mode="In" />
+      <Parameter Name="DateAvailableUntil" Type="DateTime" Mode="In" />
+      <Parameter Name="DateAvailableFrom" Type="DateTime" Mode="In" />
+      <Parameter Name="DateCopyrighted" Type="DateTime" Mode="In" />
+      <Parameter Name="Scope" Type="String" Mode="In" />
+      <Parameter Name="Title" Type="String" Mode="In" />
+      <Parameter Name="DateModified" Type="DateTime" Mode="In" />
+      <Parameter Name="Id" Type="Guid" Mode="In" />
+      <Parameter Name="DateAdded" Type="DateTime" Mode="In" />
+      <Parameter Name="Uri" Type="String" Mode="In" />
+      <Parameter Name="Description" Type="String" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="Delete1b6989307cc14535888ea489eece878d">
+      <Parameter Name="Id" Type="Guid" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="Insertc9528c0e2ca74dc8908fadfdaa1f0b7f">
+      <Parameter Name="License" Type="String" Mode="In" />
+      <Parameter Name="DateValidUntil" Type="DateTime" Mode="In" />
+      <Parameter Name="Notes" Type="String" Mode="In" />
+      <Parameter Name="Abstract" Type="String" Mode="In" />
+      <Parameter Name="Copyright" Type="String" Mode="In" />
+      <Parameter Name="DateValidFrom" Type="DateTime" Mode="In" />
+      <Parameter Name="Language" Type="String" Mode="In" />
+      <Parameter Name="DateAvailableUntil" Type="DateTime" Mode="In" />
+      <Parameter Name="DateAvailableFrom" Type="DateTime" Mode="In" />
+      <Parameter Name="DateCopyrighted" Type="DateTime" Mode="In" />
+      <Parameter Name="Scope" Type="String" Mode="In" />
+      <Parameter Name="Title" Type="String" Mode="In" />
+      <Parameter Name="DateModified" Type="DateTime" Mode="In" />
+      <Parameter Name="Id" Type="Guid" Mode="In" />
+      <Parameter Name="DateAdded" Type="DateTime" Mode="In" />
+      <Parameter Name="Uri" Type="String" Mode="In" />
+      <Parameter Name="Description" Type="String" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="Updatec9528c0e2ca74dc8908fadfdaa1f0b7f">
+      <Parameter Name="License" Type="String" Mode="In" />
+      <Parameter Name="DateValidUntil" Type="DateTime" Mode="In" />
+      <Parameter Name="Notes" Type="String" Mode="In" />
+      <Parameter Name="Abstract" Type="String" Mode="In" />
+      <Parameter Name="Copyright" Type="String" Mode="In" />
+      <Parameter Name="DateValidFrom" Type="DateTime" Mode="In" />
+      <Parameter Name="Language" Type="String" Mode="In" />
+      <Parameter Name="DateAvailableUntil" Type="DateTime" Mode="In" />
+      <Parameter Name="DateAvailableFrom" Type="DateTime" Mode="In" />
+      <Parameter Name="DateCopyrighted" Type="DateTime" Mode="In" />
+      <Parameter Name="Scope" Type="String" Mode="In" />
+      <Parameter Name="Title" Type="String" Mode="In" />
+      <Parameter Name="DateModified" Type="DateTime" Mode="In" />
+      <Parameter Name="Id" Type="Guid" Mode="In" />
+      <Parameter Name="DateAdded" Type="DateTime" Mode="In" />
+      <Parameter Name="Uri" Type="String" Mode="In" />
+      <Parameter Name="Description" Type="String" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="Deletec9528c0e2ca74dc8908fadfdaa1f0b7f">
+      <Parameter Name="Id" Type="Guid" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="Insertbd23247c26f441ef9ad4b1e677ec19ce">
+      <Parameter Name="EventName" Type="String" Mode="In" />
+      <Parameter Name="DatePublished" Type="DateTime" Mode="In" />
+      <Parameter Name="DOI" Type="String" Mode="In" />
+      <Parameter Name="Pages" Type="String" Mode="In" />
+      <Parameter Name="Institution" Type="String" Mode="In" />
+      <Parameter Name="DayPublished" Type="Int32" Mode="In" />
+      <Parameter Name="PublisherAddress" Type="String" Mode="In" />
+      <Parameter Name="Location" Type="String" Mode="In" />
+      <Parameter Name="BookTitle" Type="String" Mode="In" />
+      <Parameter Name="Volume" Type="String" Mode="In" />
+      <Parameter Name="CatalogNumber" Type="String" Mode="In" />
+      <Parameter Name="PublisherUri" Type="String" Mode="In" />
+      <Parameter Name="DateSubmitted" Type="DateTime" Mode="In" />
+      <Parameter Name="Chapter" Type="String" Mode="In" />
+      <Parameter Name="Number" Type="String" Mode="In" />
+      <Parameter Name="DateAccepted" Type="DateTime" Mode="In" />
+      <Parameter Name="Publisher" Type="String" Mode="In" />
+      <Parameter Name="Edition" Type="String" Mode="In" />
+      <Parameter Name="MonthPublished" Type="Int32" Mode="In" />
+      <Parameter Name="YearPublished" Type="Int32" Mode="In" />
+      <Parameter Name="Organization" Type="String" Mode="In" />
+      <Parameter Name="Series" Type="String" Mode="In" />
+      <Parameter Name="License" Type="String" Mode="In" />
+      <Parameter Name="DateValidUntil" Type="DateTime" Mode="In" />
+      <Parameter Name="Notes" Type="String" Mode="In" />
+      <Parameter Name="Abstract" Type="String" Mode="In" />
+      <Parameter Name="Copyright" Type="String" Mode="In" />
+      <Parameter Name="DateValidFrom" Type="DateTime" Mode="In" />
+      <Parameter Name="Language" Type="String" Mode="In" />
+      <Parameter Name="DateAvailableUntil" Type="DateTime" Mode="In" />
+      <Parameter Name="DateAvailableFrom" Type="DateTime" Mode="In" />
+      <Parameter Name="DateCopyrighted" Type="DateTime" Mode="In" />
+      <Parameter Name="Scope" Type="String" Mode="In" />
+      <Parameter Name="Title" Type="String" Mode="In" />
+      <Parameter Name="DateModified" Type="DateTime" Mode="In" />
+      <Parameter Name="Id" Type="Guid" Mode="In" />
+      <Parameter Name="DateAdded" Type="DateTime" Mode="In" />
+      <Parameter Name="Uri" Type="String" Mode="In" />
+      <Parameter Name="Description" Type="String" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="Updatebd23247c26f441ef9ad4b1e677ec19ce">
+      <Parameter Name="EventName" Type="String" Mode="In" />
+      <Parameter Name="DatePublished" Type="DateTime" Mode="In" />
+      <Parameter Name="DOI" Type="String" Mode="In" />
+      <Parameter Name="Pages" Type="String" Mode="In" />
+      <Parameter Name="Institution" Type="String" Mode="In" />
+      <Parameter Name="DayPublished" Type="Int32" Mode="In" />
+      <Parameter Name="PublisherAddress" Type="String" Mode="In" />
+      <Parameter Name="Location" Type="String" Mode="In" />
+      <Parameter Name="BookTitle" Type="String" Mode="In" />
+      <Parameter Name="Volume" Type="String" Mode="In" />
+      <Parameter Name="CatalogNumber" Type="String" Mode="In" />
+      <Parameter Name="PublisherUri" Type="String" Mode="In" />
+      <Parameter Name="DateSubmitted" Type="DateTime" Mode="In" />
+      <Parameter Name="Chapter" Type="String" Mode="In" />
+      <Parameter Name="Number" Type="String" Mode="In" />
+      <Parameter Name="DateAccepted" Type="DateTime" Mode="In" />
+      <Parameter Name="Publisher" Type="String" Mode="In" />
+      <Parameter Name="Edition" Type="String" Mode="In" />
+      <Parameter Name="MonthPublished" Type="Int32" Mode="In" />
+      <Parameter Name="YearPublished" Type="Int32" Mode="In" />
+      <Parameter Name="Organization" Type="String" Mode="In" />
+      <Parameter Name="Series" Type="String" Mode="In" />
+      <Parameter Name="License" Type="String" Mode="In" />
+      <Parameter Name="DateValidUntil" Type="DateTime" Mode="In" />
+      <Parameter Name="Notes" Type="String" Mode="In" />
+      <Parameter Name="Abstract" Type="String" Mode="In" />
+      <Parameter Name="Copyright" Type="String" Mode="In" />
+      <Parameter Name="DateValidFrom" Type="DateTime" Mode="In" />
+      <Parameter Name="Language" Type="String" Mode="In" />
+      <Parameter Name="DateAvailableUntil" Type="DateTime" Mode="In" />
+      <Parameter Name="DateAvailableFrom" Type="DateTime" Mode="In" />
+      <Parameter Name="DateCopyrighted" Type="DateTime" Mode="In" />
+      <Parameter Name="Scope" Type="String" Mode="In" />
+      <Parameter Name="Title" Type="String" Mode="In" />
+      <Parameter Name="DateModified" Type="DateTime" Mode="In" />
+      <Parameter Name="Id" Type="Guid" Mode="In" />
+      <Parameter Name="DateAdded" Type="DateTime" Mode="In" />
+      <Parameter Name="Uri" Type="String" Mode="In" />
+      <Parameter Name="Description" Type="String" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="Deletebd23247c26f441ef9ad4b1e677ec19ce">
+      <Parameter Name="Id" Type="Guid" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="Insertba2ecb5d12814ba3bfbdb53fc3eec02c">
+      <Parameter Name="DateApproved" Type="DateTime" Mode="In" />
+      <Parameter Name="DateRejected" Type="DateTime" Mode="In" />
+      <Parameter Name="DatePublished" Type="DateTime" Mode="In" />
+      <Parameter Name="DOI" Type="String" Mode="In" />
+      <Parameter Name="Pages" Type="String" Mode="In" />
+      <Parameter Name="Institution" Type="String" Mode="In" />
+      <Parameter Name="DayPublished" Type="Int32" Mode="In" />
+      <Parameter Name="PublisherAddress" Type="String" Mode="In" />
+      <Parameter Name="Location" Type="String" Mode="In" />
+      <Parameter Name="BookTitle" Type="String" Mode="In" />
+      <Parameter Name="Volume" Type="String" Mode="In" />
+      <Parameter Name="CatalogNumber" Type="String" Mode="In" />
+      <Parameter Name="PublisherUri" Type="String" Mode="In" />
+      <Parameter Name="DateSubmitted" Type="DateTime" Mode="In" />
+      <Parameter Name="Chapter" Type="String" Mode="In" />
+      <Parameter Name="Number" Type="String" Mode="In" />
+      <Parameter Name="DateAccepted" Type="DateTime" Mode="In" />
+      <Parameter Name="Publisher" Type="String" Mode="In" />
+      <Parameter Name="Edition" Type="String" Mode="In" />
+      <Parameter Name="MonthPublished" Type="Int32" Mode="In" />
+      <Parameter Name="YearPublished" Type="Int32" Mode="In" />
+      <Parameter Name="Organization" Type="String" Mode="In" />
+      <Parameter Name="Series" Type="String" Mode="In" />
+      <Parameter Name="License" Type="String" Mode="In" />
+      <Parameter Name="DateValidUntil" Type="DateTime" Mode="In" />
+      <Parameter Name="Notes" Type="String" Mode="In" />
+      <Parameter Name="Abstract" Type="String" Mode="In" />
+      <Parameter Name="Copyright" Type="String" Mode="In" />
+      <Parameter Name="DateValidFrom" Type="DateTime" Mode="In" />
+      <Parameter Name="Language" Type="String" Mode="In" />
+      <Parameter Name="DateAvailableUntil" Type="DateTime" Mode="In" />
+      <Parameter Name="DateAvailableFrom" Type="DateTime" Mode="In" />
+      <Parameter Name="DateCopyrighted" Type="DateTime" Mode="In" />
+      <Parameter Name="Scope" Type="String" Mode="In" />
+      <Parameter Name="Title" Type="String" Mode="In" />
+      <Parameter Name="DateModified" Type="DateTime" Mode="In" />
+      <Parameter Name="Id" Type="Guid" Mode="In" />
+      <Parameter Name="DateAdded" Type="DateTime" Mode="In" />
+      <Parameter Name="Uri" Type="String" Mode="In" />
+      <Parameter Name="Description" Type="String" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="Updateba2ecb5d12814ba3bfbdb53fc3eec02c">
+      <Parameter Name="DateApproved" Type="DateTime" Mode="In" />
+      <Parameter Name="DateRejected" Type="DateTime" Mode="In" />
+      <Parameter Name="DatePublished" Type="DateTime" Mode="In" />
+      <Parameter Name="DOI" Type="String" Mode="In" />
+      <Parameter Name="Pages" Type="String" Mode="In" />
+      <Parameter Name="Institution" Type="String" Mode="In" />
+      <Parameter Name="DayPublished" Type="Int32" Mode="In" />
+      <Parameter Name="PublisherAddress" Type="String" Mode="In" />
+      <Parameter Name="Location" Type="String" Mode="In" />
+      <Parameter Name="BookTitle" Type="String" Mode="In" />
+      <Parameter Name="Volume" Type="String" Mode="In" />
+      <Parameter Name="CatalogNumber" Type="String" Mode="In" />
+      <Parameter Name="PublisherUri" Type="String" Mode="In" />
+      <Parameter Name="DateSubmitted" Type="DateTime" Mode="In" />
+      <Parameter Name="Chapter" Type="String" Mode="In" />
+      <Parameter Name="Number" Type="String" Mode="In" />
+      <Parameter Name="DateAccepted" Type="DateTime" Mode="In" />
+      <Parameter Name="Publisher" Type="String" Mode="In" />
+      <Parameter Name="Edition" Type="String" Mode="In" />
+      <Parameter Name="MonthPublished" Type="Int32" Mode="In" />
+      <Parameter Name="YearPublished" Type="Int32" Mode="In" />
+      <Parameter Name="Organization" Type="String" Mode="In" />
+      <Parameter Name="Series" Type="String" Mode="In" />
+      <Parameter Name="License" Type="String" Mode="In" />
+      <Parameter Name="DateValidUntil" Type="DateTime" Mode="In" />
+      <Parameter Name="Notes" Type="String" Mode="In" />
+      <Parameter Name="Abstract" Type="String" Mode="In" />
+      <Parameter Name="Copyright" Type="String" Mode="In" />
+      <Parameter Name="DateValidFrom" Type="DateTime" Mode="In" />
+      <Parameter Name="Language" Type="String" Mode="In" />
+      <Parameter Name="DateAvailableUntil" Type="DateTime" Mode="In" />
+      <Parameter Name="DateAvailableFrom" Type="DateTime" Mode="In" />
+      <Parameter Name="DateCopyrighted" Type="DateTime" Mode="In" />
+      <Parameter Name="Scope" Type="String" Mode="In" />
+      <Parameter Name="Title" Type="String" Mode="In" />
+      <Parameter Name="DateModified" Type="DateTime" Mode="In" />
+      <Parameter Name="Id" Type="Guid" Mode="In" />
+      <Parameter Name="DateAdded" Type="DateTime" Mode="In" />
+      <Parameter Name="Uri" Type="String" Mode="In" />
+      <Parameter Name="Description" Type="String" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="Deleteba2ecb5d12814ba3bfbdb53fc3eec02c">
+      <Parameter Name="Id" Type="Guid" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="Inserta58aa716641a41dc9deebcd8a323c401">
+      <Parameter Name="From" Type="String" Mode="In" />
+      <Parameter Name="DateExchanged" Type="DateTime" Mode="In" />
+      <Parameter Name="To" Type="String" Mode="In" />
+      <Parameter Name="Scope" Type="String" Mode="In" />
+      <Parameter Name="Title" Type="String" Mode="In" />
+      <Parameter Name="DateModified" Type="DateTime" Mode="In" />
+      <Parameter Name="Id" Type="Guid" Mode="In" />
+      <Parameter Name="DateAdded" Type="DateTime" Mode="In" />
+      <Parameter Name="Uri" Type="String" Mode="In" />
+      <Parameter Name="Description" Type="String" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="Updatea58aa716641a41dc9deebcd8a323c401">
+      <Parameter Name="From" Type="String" Mode="In" />
+      <Parameter Name="DateExchanged" Type="DateTime" Mode="In" />
+      <Parameter Name="To" Type="String" Mode="In" />
+      <Parameter Name="Scope" Type="String" Mode="In" />
+      <Parameter Name="Title" Type="String" Mode="In" />
+      <Parameter Name="DateModified" Type="DateTime" Mode="In" />
+      <Parameter Name="Id" Type="Guid" Mode="In" />
+      <Parameter Name="DateAdded" Type="DateTime" Mode="In" />
+      <Parameter Name="Uri" Type="String" Mode="In" />
+      <Parameter Name="Description" Type="String" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="Deletea58aa716641a41dc9deebcd8a323c401">
+      <Parameter Name="Id" Type="Guid" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="Insertf0b6249c94f748d3a8cdc70a390b7403">
+      <Parameter Name="Scope" Type="String" Mode="In" />
+      <Parameter Name="Title" Type="String" Mode="In" />
+      <Parameter Name="DateModified" Type="DateTime" Mode="In" />
+      <Parameter Name="Id" Type="Guid" Mode="In" />
+      <Parameter Name="DateAdded" Type="DateTime" Mode="In" />
+      <Parameter Name="Uri" Type="String" Mode="In" />
+      <Parameter Name="Description" Type="String" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="Updatef0b6249c94f748d3a8cdc70a390b7403">
+      <Parameter Name="Scope" Type="String" Mode="In" />
+      <Parameter Name="Title" Type="String" Mode="In" />
+      <Parameter Name="DateModified" Type="DateTime" Mode="In" />
+      <Parameter Name="Id" Type="Guid" Mode="In" />
+      <Parameter Name="DateAdded" Type="DateTime" Mode="In" />
+      <Parameter Name="Uri" Type="String" Mode="In" />
+      <Parameter Name="Description" Type="String" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="Deletef0b6249c94f748d3a8cdc70a390b7403">
+      <Parameter Name="Id" Type="Guid" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="Inserte314b72c021d48719403c8af9d929b10">
+      <Parameter Name="Report" Type="String" Mode="In" />
+      <Parameter Name="Status" Type="String" Mode="In" />
+      <Parameter Name="Plan" Type="String" Mode="In" />
+      <Parameter Name="Name" Type="String" Mode="In" />
+      <Parameter Name="License" Type="String" Mode="In" />
+      <Parameter Name="DateValidUntil" Type="DateTime" Mode="In" />
+      <Parameter Name="Notes" Type="String" Mode="In" />
+      <Parameter Name="Abstract" Type="String" Mode="In" />
+      <Parameter Name="Copyright" Type="String" Mode="In" />
+      <Parameter Name="DateValidFrom" Type="DateTime" Mode="In" />
+      <Parameter Name="Language" Type="String" Mode="In" />
+      <Parameter Name="DateAvailableUntil" Type="DateTime" Mode="In" />
+      <Parameter Name="DateAvailableFrom" Type="DateTime" Mode="In" />
+      <Parameter Name="DateCopyrighted" Type="DateTime" Mode="In" />
+      <Parameter Name="Scope" Type="String" Mode="In" />
+      <Parameter Name="Title" Type="String" Mode="In" />
+      <Parameter Name="DateModified" Type="DateTime" Mode="In" />
+      <Parameter Name="Id" Type="Guid" Mode="In" />
+      <Parameter Name="DateAdded" Type="DateTime" Mode="In" />
+      <Parameter Name="Uri" Type="String" Mode="In" />
+      <Parameter Name="Description" Type="String" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="Updatee314b72c021d48719403c8af9d929b10">
+      <Parameter Name="Report" Type="String" Mode="In" />
+      <Parameter Name="Status" Type="String" Mode="In" />
+      <Parameter Name="Plan" Type="String" Mode="In" />
+      <Parameter Name="Name" Type="String" Mode="In" />
+      <Parameter Name="License" Type="String" Mode="In" />
+      <Parameter Name="DateValidUntil" Type="DateTime" Mode="In" />
+      <Parameter Name="Notes" Type="String" Mode="In" />
+      <Parameter Name="Abstract" Type="String" Mode="In" />
+      <Parameter Name="Copyright" Type="String" Mode="In" />
+      <Parameter Name="DateValidFrom" Type="DateTime" Mode="In" />
+      <Parameter Name="Language" Type="String" Mode="In" />
+      <Parameter Name="DateAvailableUntil" Type="DateTime" Mode="In" />
+      <Parameter Name="DateAvailableFrom" Type="DateTime" Mode="In" />
+      <Parameter Name="DateCopyrighted" Type="DateTime" Mode="In" />
+      <Parameter Name="Scope" Type="String" Mode="In" />
+      <Parameter Name="Title" Type="String" Mode="In" />
+      <Parameter Name="DateModified" Type="DateTime" Mode="In" />
+      <Parameter Name="Id" Type="Guid" Mode="In" />
+      <Parameter Name="DateAdded" Type="DateTime" Mode="In" />
+      <Parameter Name="Uri" Type="String" Mode="In" />
+      <Parameter Name="Description" Type="String" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="Deletee314b72c021d48719403c8af9d929b10">
+      <Parameter Name="Id" Type="Guid" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="Inserted6a2f1fa36e4a3fa828c972929ded7e">
+      <Parameter Name="Reference" Type="String" Mode="In" />
+      <Parameter Name="Scope" Type="String" Mode="In" />
+      <Parameter Name="Title" Type="String" Mode="In" />
+      <Parameter Name="DateModified" Type="DateTime" Mode="In" />
+      <Parameter Name="Id" Type="Guid" Mode="In" />
+      <Parameter Name="DateAdded" Type="DateTime" Mode="In" />
+      <Parameter Name="Uri" Type="String" Mode="In" />
+      <Parameter Name="Description" Type="String" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="Updateed6a2f1fa36e4a3fa828c972929ded7e">
+      <Parameter Name="Reference" Type="String" Mode="In" />
+      <Parameter Name="Scope" Type="String" Mode="In" />
+      <Parameter Name="Title" Type="String" Mode="In" />
+      <Parameter Name="DateModified" Type="DateTime" Mode="In" />
+      <Parameter Name="Id" Type="Guid" Mode="In" />
+      <Parameter Name="DateAdded" Type="DateTime" Mode="In" />
+      <Parameter Name="Uri" Type="String" Mode="In" />
+      <Parameter Name="Description" Type="String" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="Deleteed6a2f1fa36e4a3fa828c972929ded7e">
+      <Parameter Name="Id" Type="Guid" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="Insert73bf716d3f2845d98426cd31f7b3552a">
+      <Parameter Name="DatePublished" Type="DateTime" Mode="In" />
+      <Parameter Name="DOI" Type="String" Mode="In" />
+      <Parameter Name="Pages" Type="String" Mode="In" />
+      <Parameter Name="Institution" Type="String" Mode="In" />
+      <Parameter Name="DayPublished" Type="Int32" Mode="In" />
+      <Parameter Name="PublisherAddress" Type="String" Mode="In" />
+      <Parameter Name="Location" Type="String" Mode="In" />
+      <Parameter Name="BookTitle" Type="String" Mode="In" />
+      <Parameter Name="Volume" Type="String" Mode="In" />
+      <Parameter Name="CatalogNumber" Type="String" Mode="In" />
+      <Parameter Name="PublisherUri" Type="String" Mode="In" />
+      <Parameter Name="DateSubmitted" Type="DateTime" Mode="In" />
+      <Parameter Name="Chapter" Type="String" Mode="In" />
+      <Parameter Name="Number" Type="String" Mode="In" />
+      <Parameter Name="DateAccepted" Type="DateTime" Mode="In" />
+      <Parameter Name="Publisher" Type="String" Mode="In" />
+      <Parameter Name="Edition" Type="String" Mode="In" />
+      <Parameter Name="MonthPublished" Type="Int32" Mode="In" />
+      <Parameter Name="YearPublished" Type="Int32" Mode="In" />
+      <Parameter Name="Organization" Type="String" Mode="In" />
+      <Parameter Name="Series" Type="String" Mode="In" />
+      <Parameter Name="License" Type="String" Mode="In" />
+      <Parameter Name="DateValidUntil" Type="DateTime" Mode="In" />
+      <Parameter Name="Notes" Type="String" Mode="In" />
+      <Parameter Name="Abstract" Type="String" Mode="In" />
+      <Parameter Name="Copyright" Type="String" Mode="In" />
+      <Parameter Name="DateValidFrom" Type="DateTime" Mode="In" />
+      <Parameter Name="Language" Type="String" Mode="In" />
+      <Parameter Name="DateAvailableUntil" Type="DateTime" Mode="In" />
+      <Parameter Name="DateAvailableFrom" Type="DateTime" Mode="In" />
+      <Parameter Name="DateCopyrighted" Type="DateTime" Mode="In" />
+      <Parameter Name="Scope" Type="String" Mode="In" />
+      <Parameter Name="Title" Type="String" Mode="In" />
+      <Parameter Name="DateModified" Type="DateTime" Mode="In" />
+      <Parameter Name="Id" Type="Guid" Mode="In" />
+      <Parameter Name="DateAdded" Type="DateTime" Mode="In" />
+      <Parameter Name="Uri" Type="String" Mode="In" />
+      <Parameter Name="Description" Type="String" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="Update73bf716d3f2845d98426cd31f7b3552a">
+      <Parameter Name="DatePublished" Type="DateTime" Mode="In" />
+      <Parameter Name="DOI" Type="String" Mode="In" />
+      <Parameter Name="Pages" Type="String" Mode="In" />
+      <Parameter Name="Institution" Type="String" Mode="In" />
+      <Parameter Name="DayPublished" Type="Int32" Mode="In" />
+      <Parameter Name="PublisherAddress" Type="String" Mode="In" />
+      <Parameter Name="Location" Type="String" Mode="In" />
+      <Parameter Name="BookTitle" Type="String" Mode="In" />
+      <Parameter Name="Volume" Type="String" Mode="In" />
+      <Parameter Name="CatalogNumber" Type="String" Mode="In" />
+      <Parameter Name="PublisherUri" Type="String" Mode="In" />
+      <Parameter Name="DateSubmitted" Type="DateTime" Mode="In" />
+      <Parameter Name="Chapter" Type="String" Mode="In" />
+      <Parameter Name="Number" Type="String" Mode="In" />
+      <Parameter Name="DateAccepted" Type="DateTime" Mode="In" />
+      <Parameter Name="Publisher" Type="String" Mode="In" />
+      <Parameter Name="Edition" Type="String" Mode="In" />
+      <Parameter Name="MonthPublished" Type="Int32" Mode="In" />
+      <Parameter Name="YearPublished" Type="Int32" Mode="In" />
+      <Parameter Name="Organization" Type="String" Mode="In" />
+      <Parameter Name="Series" Type="String" Mode="In" />
+      <Parameter Name="License" Type="String" Mode="In" />
+      <Parameter Name="DateValidUntil" Type="DateTime" Mode="In" />
+      <Parameter Name="Notes" Type="String" Mode="In" />
+      <Parameter Name="Abstract" Type="String" Mode="In" />
+      <Parameter Name="Copyright" Type="String" Mode="In" />
+      <Parameter Name="DateValidFrom" Type="DateTime" Mode="In" />
+      <Parameter Name="Language" Type="String" Mode="In" />
+      <Parameter Name="DateAvailableUntil" Type="DateTime" Mode="In" />
+      <Parameter Name="DateAvailableFrom" Type="DateTime" Mode="In" />
+      <Parameter Name="DateCopyrighted" Type="DateTime" Mode="In" />
+      <Parameter Name="Scope" Type="String" Mode="In" />
+      <Parameter Name="Title" Type="String" Mode="In" />
+      <Parameter Name="DateModified" Type="DateTime" Mode="In" />
+      <Parameter Name="Id" Type="Guid" Mode="In" />
+      <Parameter Name="DateAdded" Type="DateTime" Mode="In" />
+      <Parameter Name="Uri" Type="String" Mode="In" />
+      <Parameter Name="Description" Type="String" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="Delete73bf716d3f2845d98426cd31f7b3552a">
+      <Parameter Name="Id" Type="Guid" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="Insertd2d6d8f750f74c048456d03c22534eb9">
+      <Parameter Name="License" Type="String" Mode="In" />
+      <Parameter Name="Copyright" Type="String" Mode="In" />
+      <Parameter Name="DateCopyrighted" Type="DateTime" Mode="In" />
+      <Parameter Name="Duration" Type="Int32" Mode="In" />
+      <Parameter Name="Language" Type="String" Mode="In" />
+      <Parameter Name="Scope" Type="String" Mode="In" />
+      <Parameter Name="Title" Type="String" Mode="In" />
+      <Parameter Name="DateModified" Type="DateTime" Mode="In" />
+      <Parameter Name="Id" Type="Guid" Mode="In" />
+      <Parameter Name="DateAdded" Type="DateTime" Mode="In" />
+      <Parameter Name="Uri" Type="String" Mode="In" />
+      <Parameter Name="Description" Type="String" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="Updated2d6d8f750f74c048456d03c22534eb9">
+      <Parameter Name="License" Type="String" Mode="In" />
+      <Parameter Name="Copyright" Type="String" Mode="In" />
+      <Parameter Name="DateCopyrighted" Type="DateTime" Mode="In" />
+      <Parameter Name="Duration" Type="Int32" Mode="In" />
+      <Parameter Name="Language" Type="String" Mode="In" />
+      <Parameter Name="Scope" Type="String" Mode="In" />
+      <Parameter Name="Title" Type="String" Mode="In" />
+      <Parameter Name="DateModified" Type="DateTime" Mode="In" />
+      <Parameter Name="Id" Type="Guid" Mode="In" />
+      <Parameter Name="DateAdded" Type="DateTime" Mode="In" />
+      <Parameter Name="Uri" Type="String" Mode="In" />
+      <Parameter Name="Description" Type="String" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="Deleted2d6d8f750f74c048456d03c22534eb9">
+      <Parameter Name="Id" Type="Guid" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="Insert78d47d6099e643168e81d7317c70667f">
+      <Parameter Name="Scope" Type="String" Mode="In" />
+      <Parameter Name="Title" Type="String" Mode="In" />
+      <Parameter Name="DateModified" Type="DateTime" Mode="In" />
+      <Parameter Name="Id" Type="Guid" Mode="In" />
+      <Parameter Name="DateAdded" Type="DateTime" Mode="In" />
+      <Parameter Name="Uri" Type="String" Mode="In" />
+      <Parameter Name="Description" Type="String" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="Update78d47d6099e643168e81d7317c70667f">
+      <Parameter Name="Scope" Type="String" Mode="In" />
+      <Parameter Name="Title" Type="String" Mode="In" />
+      <Parameter Name="DateModified" Type="DateTime" Mode="In" />
+      <Parameter Name="Id" Type="Guid" Mode="In" />
+      <Parameter Name="DateAdded" Type="DateTime" Mode="In" />
+      <Parameter Name="Uri" Type="String" Mode="In" />
+      <Parameter Name="Description" Type="String" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="Delete78d47d6099e643168e81d7317c70667f">
+      <Parameter Name="Id" Type="Guid" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="Insert367057b41bde448689c0d7b49956662c">
+      <Parameter Name="Journal" Type="String" Mode="In" />
+      <Parameter Name="DatePublished" Type="DateTime" Mode="In" />
+      <Parameter Name="DOI" Type="String" Mode="In" />
+      <Parameter Name="Pages" Type="String" Mode="In" />
+      <Parameter Name="Institution" Type="String" Mode="In" />
+      <Parameter Name="DayPublished" Type="Int32" Mode="In" />
+      <Parameter Name="PublisherAddress" Type="String" Mode="In" />
+      <Parameter Name="Location" Type="String" Mode="In" />
+      <Parameter Name="BookTitle" Type="String" Mode="In" />
+      <Parameter Name="Volume" Type="String" Mode="In" />
+      <Parameter Name="CatalogNumber" Type="String" Mode="In" />
+      <Parameter Name="PublisherUri" Type="String" Mode="In" />
+      <Parameter Name="DateSubmitted" Type="DateTime" Mode="In" />
+      <Parameter Name="Chapter" Type="String" Mode="In" />
+      <Parameter Name="Number" Type="String" Mode="In" />
+      <Parameter Name="DateAccepted" Type="DateTime" Mode="In" />
+      <Parameter Name="Publisher" Type="String" Mode="In" />
+      <Parameter Name="Edition" Type="String" Mode="In" />
+      <Parameter Name="MonthPublished" Type="Int32" Mode="In" />
+      <Parameter Name="YearPublished" Type="Int32" Mode="In" />
+      <Parameter Name="Organization" Type="String" Mode="In" />
+      <Parameter Name="Series" Type="String" Mode="In" />
+      <Parameter Name="License" Type="String" Mode="In" />
+      <Parameter Name="DateValidUntil" Type="DateTime" Mode="In" />
+      <Parameter Name="Notes" Type="String" Mode="In" />
+      <Parameter Name="Abstract" Type="String" Mode="In" />
+      <Parameter Name="Copyright" Type="String" Mode="In" />
+      <Parameter Name="DateValidFrom" Type="DateTime" Mode="In" />
+      <Parameter Name="Language" Type="String" Mode="In" />
+      <Parameter Name="DateAvailableUntil" Type="DateTime" Mode="In" />
+      <Parameter Name="DateAvailableFrom" Type="DateTime" Mode="In" />
+      <Parameter Name="DateCopyrighted" Type="DateTime" Mode="In" />
+      <Parameter Name="Scope" Type="String" Mode="In" />
+      <Parameter Name="Title" Type="String" Mode="In" />
+      <Parameter Name="DateModified" Type="DateTime" Mode="In" />
+      <Parameter Name="Id" Type="Guid" Mode="In" />
+      <Parameter Name="DateAdded" Type="DateTime" Mode="In" />
+      <Parameter Name="Uri" Type="String" Mode="In" />
+      <Parameter Name="Description" Type="String" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="Update367057b41bde448689c0d7b49956662c">
+      <Parameter Name="Journal" Type="String" Mode="In" />
+      <Parameter Name="DatePublished" Type="DateTime" Mode="In" />
+      <Parameter Name="DOI" Type="String" Mode="In" />
+      <Parameter Name="Pages" Type="String" Mode="In" />
+      <Parameter Name="Institution" Type="String" Mode="In" />
+      <Parameter Name="DayPublished" Type="Int32" Mode="In" />
+      <Parameter Name="PublisherAddress" Type="String" Mode="In" />
+      <Parameter Name="Location" Type="String" Mode="In" />
+      <Parameter Name="BookTitle" Type="String" Mode="In" />
+      <Parameter Name="Volume" Type="String" Mode="In" />
+      <Parameter Name="CatalogNumber" Type="String" Mode="In" />
+      <Parameter Name="PublisherUri" Type="String" Mode="In" />
+      <Parameter Name="DateSubmitted" Type="DateTime" Mode="In" />
+      <Parameter Name="Chapter" Type="String" Mode="In" />
+      <Parameter Name="Number" Type="String" Mode="In" />
+      <Parameter Name="DateAccepted" Type="DateTime" Mode="In" />
+      <Parameter Name="Publisher" Type="String" Mode="In" />
+      <Parameter Name="Edition" Type="String" Mode="In" />
+      <Parameter Name="MonthPublished" Type="Int32" Mode="In" />
+      <Parameter Name="YearPublished" Type="Int32" Mode="In" />
+      <Parameter Name="Organization" Type="String" Mode="In" />
+      <Parameter Name="Series" Type="String" Mode="In" />
+      <Parameter Name="License" Type="String" Mode="In" />
+      <Parameter Name="DateValidUntil" Type="DateTime" Mode="In" />
+      <Parameter Name="Notes" Type="String" Mode="In" />
+      <Parameter Name="Abstract" Type="String" Mode="In" />
+      <Parameter Name="Copyright" Type="String" Mode="In" />
+      <Parameter Name="DateValidFrom" Type="DateTime" Mode="In" />
+      <Parameter Name="Language" Type="String" Mode="In" />
+      <Parameter Name="DateAvailableUntil" Type="DateTime" Mode="In" />
+      <Parameter Name="DateAvailableFrom" Type="DateTime" Mode="In" />
+      <Parameter Name="DateCopyrighted" Type="DateTime" Mode="In" />
+      <Parameter Name="Scope" Type="String" Mode="In" />
+      <Parameter Name="Title" Type="String" Mode="In" />
+      <Parameter Name="DateModified" Type="DateTime" Mode="In" />
+      <Parameter Name="Id" Type="Guid" Mode="In" />
+      <Parameter Name="DateAdded" Type="DateTime" Mode="In" />
+      <Parameter Name="Uri" Type="String" Mode="In" />
+      <Parameter Name="Description" Type="String" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="Delete367057b41bde448689c0d7b49956662c">
+      <Parameter Name="Id" Type="Guid" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="Inserta2fda58832b842b0b35fdd9ecaa21a57">
+      <Parameter Name="DatePublished" Type="DateTime" Mode="In" />
+      <Parameter Name="DOI" Type="String" Mode="In" />
+      <Parameter Name="Pages" Type="String" Mode="In" />
+      <Parameter Name="Institution" Type="String" Mode="In" />
+      <Parameter Name="DayPublished" Type="Int32" Mode="In" />
+      <Parameter Name="PublisherAddress" Type="String" Mode="In" />
+      <Parameter Name="Location" Type="String" Mode="In" />
+      <Parameter Name="BookTitle" Type="String" Mode="In" />
+      <Parameter Name="Volume" Type="String" Mode="In" />
+      <Parameter Name="CatalogNumber" Type="String" Mode="In" />
+      <Parameter Name="PublisherUri" Type="String" Mode="In" />
+      <Parameter Name="DateSubmitted" Type="DateTime" Mode="In" />
+      <Parameter Name="Chapter" Type="String" Mode="In" />
+      <Parameter Name="Number" Type="String" Mode="In" />
+      <Parameter Name="DateAccepted" Type="DateTime" Mode="In" />
+      <Parameter Name="Publisher" Type="String" Mode="In" />
+      <Parameter Name="Edition" Type="String" Mode="In" />
+      <Parameter Name="MonthPublished" Type="Int32" Mode="In" />
+      <Parameter Name="YearPublished" Type="Int32" Mode="In" />
+      <Parameter Name="Organization" Type="String" Mode="In" />
+      <Parameter Name="Series" Type="String" Mode="In" />
+      <Parameter Name="License" Type="String" Mode="In" />
+      <Parameter Name="DateValidUntil" Type="DateTime" Mode="In" />
+      <Parameter Name="Notes" Type="String" Mode="In" />
+      <Parameter Name="Abstract" Type="String" Mode="In" />
+      <Parameter Name="Copyright" Type="String" Mode="In" />
+      <Parameter Name="DateValidFrom" Type="DateTime" Mode="In" />
+      <Parameter Name="Language" Type="String" Mode="In" />
+      <Parameter Name="DateAvailableUntil" Type="DateTime" Mode="In" />
+      <Parameter Name="DateAvailableFrom" Type="DateTime" Mode="In" />
+      <Parameter Name="DateCopyrighted" Type="DateTime" Mode="In" />
+      <Parameter Name="Scope" Type="String" Mode="In" />
+      <Parameter Name="Title" Type="String" Mode="In" />
+      <Parameter Name="DateModified" Type="DateTime" Mode="In" />
+      <Parameter Name="Id" Type="Guid" Mode="In" />
+      <Parameter Name="DateAdded" Type="DateTime" Mode="In" />
+      <Parameter Name="Uri" Type="String" Mode="In" />
+      <Parameter Name="Description" Type="String" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="Updatea2fda58832b842b0b35fdd9ecaa21a57">
+      <Parameter Name="DatePublished" Type="DateTime" Mode="In" />
+      <Parameter Name="DOI" Type="String" Mode="In" />
+      <Parameter Name="Pages" Type="String" Mode="In" />
+      <Parameter Name="Institution" Type="String" Mode="In" />
+      <Parameter Name="DayPublished" Type="Int32" Mode="In" />
+      <Parameter Name="PublisherAddress" Type="String" Mode="In" />
+      <Parameter Name="Location" Type="String" Mode="In" />
+      <Parameter Name="BookTitle" Type="String" Mode="In" />
+      <Parameter Name="Volume" Type="String" Mode="In" />
+      <Parameter Name="CatalogNumber" Type="String" Mode="In" />
+      <Parameter Name="PublisherUri" Type="String" Mode="In" />
+      <Parameter Name="DateSubmitted" Type="DateTime" Mode="In" />
+      <Parameter Name="Chapter" Type="String" Mode="In" />
+      <Parameter Name="Number" Type="String" Mode="In" />
+      <Parameter Name="DateAccepted" Type="DateTime" Mode="In" />
+      <Parameter Name="Publisher" Type="String" Mode="In" />
+      <Parameter Name="Edition" Type="String" Mode="In" />
+      <Parameter Name="MonthPublished" Type="Int32" Mode="In" />
+      <Parameter Name="YearPublished" Type="Int32" Mode="In" />
+      <Parameter Name="Organization" Type="String" Mode="In" />
+      <Parameter Name="Series" Type="String" Mode="In" />
+      <Parameter Name="License" Type="String" Mode="In" />
+      <Parameter Name="DateValidUntil" Type="DateTime" Mode="In" />
+      <Parameter Name="Notes" Type="String" Mode="In" />
+      <Parameter Name="Abstract" Type="String" Mode="In" />
+      <Parameter Name="Copyright" Type="String" Mode="In" />
+      <Parameter Name="DateValidFrom" Type="DateTime" Mode="In" />
+      <Parameter Name="Language" Type="String" Mode="In" />
+      <Parameter Name="DateAvailableUntil" Type="DateTime" Mode="In" />
+      <Parameter Name="DateAvailableFrom" Type="DateTime" Mode="In" />
+      <Parameter Name="DateCopyrighted" Type="DateTime" Mode="In" />
+      <Parameter Name="Scope" Type="String" Mode="In" />
+      <Parameter Name="Title" Type="String" Mode="In" />
+      <Parameter Name="DateModified" Type="DateTime" Mode="In" />
+      <Parameter Name="Id" Type="Guid" Mode="In" />
+      <Parameter Name="DateAdded" Type="DateTime" Mode="In" />
+      <Parameter Name="Uri" Type="String" Mode="In" />
+      <Parameter Name="Description" Type="String" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="Deletea2fda58832b842b0b35fdd9ecaa21a57">
+      <Parameter Name="Id" Type="Guid" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="Insertcd4a41de8b5f4144aa9be4535c6ac949">
+      <Parameter Name="Category" Type="String" Mode="In" />
+      <Parameter Name="DatePublished" Type="DateTime" Mode="In" />
+      <Parameter Name="DOI" Type="String" Mode="In" />
+      <Parameter Name="Pages" Type="String" Mode="In" />
+      <Parameter Name="Institution" Type="String" Mode="In" />
+      <Parameter Name="DayPublished" Type="Int32" Mode="In" />
+      <Parameter Name="PublisherAddress" Type="String" Mode="In" />
+      <Parameter Name="Location" Type="String" Mode="In" />
+      <Parameter Name="BookTitle" Type="String" Mode="In" />
+      <Parameter Name="Volume" Type="String" Mode="In" />
+      <Parameter Name="CatalogNumber" Type="String" Mode="In" />
+      <Parameter Name="PublisherUri" Type="String" Mode="In" />
+      <Parameter Name="DateSubmitted" Type="DateTime" Mode="In" />
+      <Parameter Name="Chapter" Type="String" Mode="In" />
+      <Parameter Name="Number" Type="String" Mode="In" />
+      <Parameter Name="DateAccepted" Type="DateTime" Mode="In" />
+      <Parameter Name="Publisher" Type="String" Mode="In" />
+      <Parameter Name="Edition" Type="String" Mode="In" />
+      <Parameter Name="MonthPublished" Type="Int32" Mode="In" />
+      <Parameter Name="YearPublished" Type="Int32" Mode="In" />
+      <Parameter Name="Organization" Type="String" Mode="In" />
+      <Parameter Name="Series" Type="String" Mode="In" />
+      <Parameter Name="License" Type="String" Mode="In" />
+      <Parameter Name="DateValidUntil" Type="DateTime" Mode="In" />
+      <Parameter Name="Notes" Type="String" Mode="In" />
+      <Parameter Name="Abstract" Type="String" Mode="In" />
+      <Parameter Name="Copyright" Type="String" Mode="In" />
+      <Parameter Name="DateValidFrom" Type="DateTime" Mode="In" />
+      <Parameter Name="Language" Type="String" Mode="In" />
+      <Parameter Name="DateAvailableUntil" Type="DateTime" Mode="In" />
+      <Parameter Name="DateAvailableFrom" Type="DateTime" Mode="In" />
+      <Parameter Name="DateCopyrighted" Type="DateTime" Mode="In" />
+      <Parameter Name="Scope" Type="String" Mode="In" />
+      <Parameter Name="Title" Type="String" Mode="In" />
+      <Parameter Name="DateModified" Type="DateTime" Mode="In" />
+      <Parameter Name="Id" Type="Guid" Mode="In" />
+      <Parameter Name="DateAdded" Type="DateTime" Mode="In" />
+      <Parameter Name="Uri" Type="String" Mode="In" />
+      <Parameter Name="Description" Type="String" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="Updatecd4a41de8b5f4144aa9be4535c6ac949">
+      <Parameter Name="Category" Type="String" Mode="In" />
+      <Parameter Name="DatePublished" Type="DateTime" Mode="In" />
+      <Parameter Name="DOI" Type="String" Mode="In" />
+      <Parameter Name="Pages" Type="String" Mode="In" />
+      <Parameter Name="Institution" Type="String" Mode="In" />
+      <Parameter Name="DayPublished" Type="Int32" Mode="In" />
+      <Parameter Name="PublisherAddress" Type="String" Mode="In" />
+      <Parameter Name="Location" Type="String" Mode="In" />
+      <Parameter Name="BookTitle" Type="String" Mode="In" />
+      <Parameter Name="Volume" Type="String" Mode="In" />
+      <Parameter Name="CatalogNumber" Type="String" Mode="In" />
+      <Parameter Name="PublisherUri" Type="String" Mode="In" />
+      <Parameter Name="DateSubmitted" Type="DateTime" Mode="In" />
+      <Parameter Name="Chapter" Type="String" Mode="In" />
+      <Parameter Name="Number" Type="String" Mode="In" />
+      <Parameter Name="DateAccepted" Type="DateTime" Mode="In" />
+      <Parameter Name="Publisher" Type="String" Mode="In" />
+      <Parameter Name="Edition" Type="String" Mode="In" />
+      <Parameter Name="MonthPublished" Type="Int32" Mode="In" />
+      <Parameter Name="YearPublished" Type="Int32" Mode="In" />
+      <Parameter Name="Organization" Type="String" Mode="In" />
+      <Parameter Name="Series" Type="String" Mode="In" />
+      <Parameter Name="License" Type="String" Mode="In" />
+      <Parameter Name="DateValidUntil" Type="DateTime" Mode="In" />
+      <Parameter Name="Notes" Type="String" Mode="In" />
+      <Parameter Name="Abstract" Type="String" Mode="In" />
+      <Parameter Name="Copyright" Type="String" Mode="In" />
+      <Parameter Name="DateValidFrom" Type="DateTime" Mode="In" />
+      <Parameter Name="Language" Type="String" Mode="In" />
+      <Parameter Name="DateAvailableUntil" Type="DateTime" Mode="In" />
+      <Parameter Name="DateAvailableFrom" Type="DateTime" Mode="In" />
+      <Parameter Name="DateCopyrighted" Type="DateTime" Mode="In" />
+      <Parameter Name="Scope" Type="String" Mode="In" />
+      <Parameter Name="Title" Type="String" Mode="In" />
+      <Parameter Name="DateModified" Type="DateTime" Mode="In" />
+      <Parameter Name="Id" Type="Guid" Mode="In" />
+      <Parameter Name="DateAdded" Type="DateTime" Mode="In" />
+      <Parameter Name="Uri" Type="String" Mode="In" />
+      <Parameter Name="Description" Type="String" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="Deletecd4a41de8b5f4144aa9be4535c6ac949">
+      <Parameter Name="Id" Type="Guid" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="Insert8047506b8c7d432093b3e515c868cf48">
+      <Parameter Name="DatePublished" Type="DateTime" Mode="In" />
+      <Parameter Name="DOI" Type="String" Mode="In" />
+      <Parameter Name="Pages" Type="String" Mode="In" />
+      <Parameter Name="Institution" Type="String" Mode="In" />
+      <Parameter Name="DayPublished" Type="Int32" Mode="In" />
+      <Parameter Name="PublisherAddress" Type="String" Mode="In" />
+      <Parameter Name="Location" Type="String" Mode="In" />
+      <Parameter Name="BookTitle" Type="String" Mode="In" />
+      <Parameter Name="Volume" Type="String" Mode="In" />
+      <Parameter Name="CatalogNumber" Type="String" Mode="In" />
+      <Parameter Name="PublisherUri" Type="String" Mode="In" />
+      <Parameter Name="DateSubmitted" Type="DateTime" Mode="In" />
+      <Parameter Name="Chapter" Type="String" Mode="In" />
+      <Parameter Name="Number" Type="String" Mode="In" />
+      <Parameter Name="DateAccepted" Type="DateTime" Mode="In" />
+      <Parameter Name="Publisher" Type="String" Mode="In" />
+      <Parameter Name="Edition" Type="String" Mode="In" />
+      <Parameter Name="MonthPublished" Type="Int32" Mode="In" />
+      <Parameter Name="YearPublished" Type="Int32" Mode="In" />
+      <Parameter Name="Organization" Type="String" Mode="In" />
+      <Parameter Name="Series" Type="String" Mode="In" />
+      <Parameter Name="License" Type="String" Mode="In" />
+      <Parameter Name="DateValidUntil" Type="DateTime" Mode="In" />
+      <Parameter Name="Notes" Type="String" Mode="In" />
+      <Parameter Name="Abstract" Type="String" Mode="In" />
+      <Parameter Name="Copyright" Type="String" Mode="In" />
+      <Parameter Name="DateValidFrom" Type="DateTime" Mode="In" />
+      <Parameter Name="Language" Type="String" Mode="In" />
+      <Parameter Name="DateAvailableUntil" Type="DateTime" Mode="In" />
+      <Parameter Name="DateAvailableFrom" Type="DateTime" Mode="In" />
+      <Parameter Name="DateCopyrighted" Type="DateTime" Mode="In" />
+      <Parameter Name="Scope" Type="String" Mode="In" />
+      <Parameter Name="Title" Type="String" Mode="In" />
+      <Parameter Name="DateModified" Type="DateTime" Mode="In" />
+      <Parameter Name="Id" Type="Guid" Mode="In" />
+      <Parameter Name="DateAdded" Type="DateTime" Mode="In" />
+      <Parameter Name="Uri" Type="String" Mode="In" />
+      <Parameter Name="Description" Type="String" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="Update8047506b8c7d432093b3e515c868cf48">
+      <Parameter Name="DatePublished" Type="DateTime" Mode="In" />
+      <Parameter Name="DOI" Type="String" Mode="In" />
+      <Parameter Name="Pages" Type="String" Mode="In" />
+      <Parameter Name="Institution" Type="String" Mode="In" />
+      <Parameter Name="DayPublished" Type="Int32" Mode="In" />
+      <Parameter Name="PublisherAddress" Type="String" Mode="In" />
+      <Parameter Name="Location" Type="String" Mode="In" />
+      <Parameter Name="BookTitle" Type="String" Mode="In" />
+      <Parameter Name="Volume" Type="String" Mode="In" />
+      <Parameter Name="CatalogNumber" Type="String" Mode="In" />
+      <Parameter Name="PublisherUri" Type="String" Mode="In" />
+      <Parameter Name="DateSubmitted" Type="DateTime" Mode="In" />
+      <Parameter Name="Chapter" Type="String" Mode="In" />
+      <Parameter Name="Number" Type="String" Mode="In" />
+      <Parameter Name="DateAccepted" Type="DateTime" Mode="In" />
+      <Parameter Name="Publisher" Type="String" Mode="In" />
+      <Parameter Name="Edition" Type="String" Mode="In" />
+      <Parameter Name="MonthPublished" Type="Int32" Mode="In" />
+      <Parameter Name="YearPublished" Type="Int32" Mode="In" />
+      <Parameter Name="Organization" Type="String" Mode="In" />
+      <Parameter Name="Series" Type="String" Mode="In" />
+      <Parameter Name="License" Type="String" Mode="In" />
+      <Parameter Name="DateValidUntil" Type="DateTime" Mode="In" />
+      <Parameter Name="Notes" Type="String" Mode="In" />
+      <Parameter Name="Abstract" Type="String" Mode="In" />
+      <Parameter Name="Copyright" Type="String" Mode="In" />
+      <Parameter Name="DateValidFrom" Type="DateTime" Mode="In" />
+      <Parameter Name="Language" Type="String" Mode="In" />
+      <Parameter Name="DateAvailableUntil" Type="DateTime" Mode="In" />
+      <Parameter Name="DateAvailableFrom" Type="DateTime" Mode="In" />
+      <Parameter Name="DateCopyrighted" Type="DateTime" Mode="In" />
+      <Parameter Name="Scope" Type="String" Mode="In" />
+      <Parameter Name="Title" Type="String" Mode="In" />
+      <Parameter Name="DateModified" Type="DateTime" Mode="In" />
+      <Parameter Name="Id" Type="Guid" Mode="In" />
+      <Parameter Name="DateAdded" Type="DateTime" Mode="In" />
+      <Parameter Name="Uri" Type="String" Mode="In" />
+      <Parameter Name="Description" Type="String" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="Delete8047506b8c7d432093b3e515c868cf48">
+      <Parameter Name="Id" Type="Guid" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="Inserte47c360d3a1e4d618e3de979b1265adb">
+      <Parameter Name="DatePresented" Type="DateTime" Mode="In" />
+      <Parameter Name="Length" Type="Int64" Mode="In" />
+      <Parameter Name="License" Type="String" Mode="In" />
+      <Parameter Name="DateValidUntil" Type="DateTime" Mode="In" />
+      <Parameter Name="Notes" Type="String" Mode="In" />
+      <Parameter Name="Abstract" Type="String" Mode="In" />
+      <Parameter Name="Copyright" Type="String" Mode="In" />
+      <Parameter Name="DateValidFrom" Type="DateTime" Mode="In" />
+      <Parameter Name="Language" Type="String" Mode="In" />
+      <Parameter Name="DateAvailableUntil" Type="DateTime" Mode="In" />
+      <Parameter Name="DateAvailableFrom" Type="DateTime" Mode="In" />
+      <Parameter Name="DateCopyrighted" Type="DateTime" Mode="In" />
+      <Parameter Name="Scope" Type="String" Mode="In" />
+      <Parameter Name="Title" Type="String" Mode="In" />
+      <Parameter Name="DateModified" Type="DateTime" Mode="In" />
+      <Parameter Name="Id" Type="Guid" Mode="In" />
+      <Parameter Name="DateAdded" Type="DateTime" Mode="In" />
+      <Parameter Name="Uri" Type="String" Mode="In" />
+      <Parameter Name="Description" Type="String" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="Updatee47c360d3a1e4d618e3de979b1265adb">
+      <Parameter Name="DatePresented" Type="DateTime" Mode="In" />
+      <Parameter Name="Length" Type="Int64" Mode="In" />
+      <Parameter Name="License" Type="String" Mode="In" />
+      <Parameter Name="DateValidUntil" Type="DateTime" Mode="In" />
+      <Parameter Name="Notes" Type="String" Mode="In" />
+      <Parameter Name="Abstract" Type="String" Mode="In" />
+      <Parameter Name="Copyright" Type="String" Mode="In" />
+      <Parameter Name="DateValidFrom" Type="DateTime" Mode="In" />
+      <Parameter Name="Language" Type="String" Mode="In" />
+      <Parameter Name="DateAvailableUntil" Type="DateTime" Mode="In" />
+      <Parameter Name="DateAvailableFrom" Type="DateTime" Mode="In" />
+      <Parameter Name="DateCopyrighted" Type="DateTime" Mode="In" />
+      <Parameter Name="Scope" Type="String" Mode="In" />
+      <Parameter Name="Title" Type="String" Mode="In" />
+      <Parameter Name="DateModified" Type="DateTime" Mode="In" />
+      <Parameter Name="Id" Type="Guid" Mode="In" />
+      <Parameter Name="DateAdded" Type="DateTime" Mode="In" />
+      <Parameter Name="Uri" Type="String" Mode="In" />
+      <Parameter Name="Description" Type="String" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="Deletee47c360d3a1e4d618e3de979b1265adb">
+      <Parameter Name="Id" Type="Guid" Mode="In" />
+    </FunctionImport>
+    <AssociationSet Name="ScholarlyWorkItemHasTag" Association="Zentity.ScholarlyWorks.ScholarlyWorkItemHasTag">
+      <End Role="ScholarlyWorkItem" EntitySet="Resources" />
+      <End Role="Tag" EntitySet="Resources" />
+    </AssociationSet>
+    <FunctionImport Name="Insert1915314262f84ef0ad9cc8e9183178ed">
+      <Parameter Name="SubjectResourceId" Type="Guid" Mode="In" />
+      <Parameter Name="ObjectResourceId" Type="Guid" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="Delete1915314262f84ef0ad9cc8e9183178ed">
+      <Parameter Name="SubjectResourceId" Type="Guid" Mode="In" />
+      <Parameter Name="ObjectResourceId" Type="Guid" Mode="In" />
+    </FunctionImport>
+    <AssociationSet Name="ScholarlyWorkIsAssociatedWithDownload" Association="Zentity.ScholarlyWorks.ScholarlyWorkIsAssociatedWithDownload">
+      <End Role="ScholarlyWork" EntitySet="Resources" />
+      <End Role="Download" EntitySet="Resources" />
+    </AssociationSet>
+    <FunctionImport Name="Insert0a62762a195841baaa3c8abd8a4a5aee">
+      <Parameter Name="SubjectResourceId" Type="Guid" Mode="In" />
+      <Parameter Name="ObjectResourceId" Type="Guid" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="Delete0a62762a195841baaa3c8abd8a4a5aee">
+      <Parameter Name="SubjectResourceId" Type="Guid" Mode="In" />
+      <Parameter Name="ObjectResourceId" Type="Guid" Mode="In" />
+    </FunctionImport>
+    <AssociationSet Name="ScholarlyWorkContainerContainsWorks" Association="Zentity.ScholarlyWorks.ScholarlyWorkContainerContainsWorks">
+      <End Role="ScholarlyWorkContainer" EntitySet="Resources" />
+      <End Role="ScholarlyWork" EntitySet="Resources" />
+    </AssociationSet>
+    <FunctionImport Name="Insert0e451d98427849b6ada5fda9c0c922d5">
+      <Parameter Name="SubjectResourceId" Type="Guid" Mode="In" />
+      <Parameter Name="ObjectResourceId" Type="Guid" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="Delete0e451d98427849b6ada5fda9c0c922d5">
+      <Parameter Name="SubjectResourceId" Type="Guid" Mode="In" />
+      <Parameter Name="ObjectResourceId" Type="Guid" Mode="In" />
+    </FunctionImport>
+    <AssociationSet Name="ScholarlyWorkHasContributionBy" Association="Zentity.ScholarlyWorks.ScholarlyWorkHasContributionBy">
+      <End Role="ScholarlyWork" EntitySet="Resources" />
+      <End Role="Contact" EntitySet="Resources" />
+    </AssociationSet>
+    <FunctionImport Name="Insert456369b6732c4b31861898d65f5001c8">
+      <Parameter Name="SubjectResourceId" Type="Guid" Mode="In" />
+      <Parameter Name="ObjectResourceId" Type="Guid" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="Delete456369b6732c4b31861898d65f5001c8">
+      <Parameter Name="SubjectResourceId" Type="Guid" Mode="In" />
+      <Parameter Name="ObjectResourceId" Type="Guid" Mode="In" />
+    </FunctionImport>
+    <AssociationSet Name="ScholarlyWorkIsPresentedBy" Association="Zentity.ScholarlyWorks.ScholarlyWorkIsPresentedBy">
+      <End Role="ScholarlyWork" EntitySet="Resources" />
+      <End Role="Contact" EntitySet="Resources" />
+    </AssociationSet>
+    <FunctionImport Name="Insertfb6e0e136a5949a99c1c12e5157a3a21">
+      <Parameter Name="SubjectResourceId" Type="Guid" Mode="In" />
+      <Parameter Name="ObjectResourceId" Type="Guid" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="Deletefb6e0e136a5949a99c1c12e5157a3a21">
+      <Parameter Name="SubjectResourceId" Type="Guid" Mode="In" />
+      <Parameter Name="ObjectResourceId" Type="Guid" Mode="In" />
+    </FunctionImport>
+    <AssociationSet Name="ScholarlyWorkIsEditedBy" Association="Zentity.ScholarlyWorks.ScholarlyWorkIsEditedBy">
+      <End Role="ScholarlyWork" EntitySet="Resources" />
+      <End Role="Contact" EntitySet="Resources" />
+    </AssociationSet>
+    <FunctionImport Name="Insert2664cf484ae544ac97351fba700e3e99">
+      <Parameter Name="SubjectResourceId" Type="Guid" Mode="In" />
+      <Parameter Name="ObjectResourceId" Type="Guid" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="Delete2664cf484ae544ac97351fba700e3e99">
+      <Parameter Name="SubjectResourceId" Type="Guid" Mode="In" />
+      <Parameter Name="ObjectResourceId" Type="Guid" Mode="In" />
+    </FunctionImport>
+    <AssociationSet Name="ScholarlyWorkItemIsAddedBy" Association="Zentity.ScholarlyWorks.ScholarlyWorkItemIsAddedBy">
+      <End Role="ScholarlyWorkItem" EntitySet="Resources" />
+      <End Role="Contact" EntitySet="Resources" />
+    </AssociationSet>
+    <FunctionImport Name="Insert003876b665834574a53a2069587ac10e">
+      <Parameter Name="SubjectResourceId" Type="Guid" Mode="In" />
+      <Parameter Name="ObjectResourceId" Type="Guid" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="Delete003876b665834574a53a2069587ac10e">
+      <Parameter Name="SubjectResourceId" Type="Guid" Mode="In" />
+      <Parameter Name="ObjectResourceId" Type="Guid" Mode="In" />
+    </FunctionImport>
+    <AssociationSet Name="ScholarlyWorkIsAuthoredBy" Association="Zentity.ScholarlyWorks.ScholarlyWorkIsAuthoredBy">
+      <End Role="ScholarlyWork" EntitySet="Resources" />
+      <End Role="Contact" EntitySet="Resources" />
+    </AssociationSet>
+    <FunctionImport Name="Insertaab520cc086440e6a4ecb66dfc521c54">
+      <Parameter Name="SubjectResourceId" Type="Guid" Mode="In" />
+      <Parameter Name="ObjectResourceId" Type="Guid" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="Deleteaab520cc086440e6a4ecb66dfc521c54">
+      <Parameter Name="SubjectResourceId" Type="Guid" Mode="In" />
+      <Parameter Name="ObjectResourceId" Type="Guid" Mode="In" />
+    </FunctionImport>
+    <AssociationSet Name="ScholarlyWorkIsAssociatedWithElectronicSource" Association="Zentity.ScholarlyWorks.ScholarlyWorkIsAssociatedWithElectronicSource">
+      <End Role="ScholarlyWork" EntitySet="Resources" />
+      <End Role="ElectronicSource" EntitySet="Resources" />
+    </AssociationSet>
+    <FunctionImport Name="Insert8b00027db4f043c9bb32406fb5195a4a">
+      <Parameter Name="SubjectResourceId" Type="Guid" Mode="In" />
+      <Parameter Name="ObjectResourceId" Type="Guid" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="Delete8b00027db4f043c9bb32406fb5195a4a">
+      <Parameter Name="SubjectResourceId" Type="Guid" Mode="In" />
+      <Parameter Name="ObjectResourceId" Type="Guid" Mode="In" />
+    </FunctionImport>
+    <AssociationSet Name="ScholarlyWorkIsAssociatedWithMedia" Association="Zentity.ScholarlyWorks.ScholarlyWorkIsAssociatedWithMedia">
+      <End Role="ScholarlyWork" EntitySet="Resources" />
+      <End Role="Media" EntitySet="Resources" />
+    </AssociationSet>
+    <FunctionImport Name="Insert62e7627ae3284164b8e68968f18470fa">
+      <Parameter Name="SubjectResourceId" Type="Guid" Mode="In" />
+      <Parameter Name="ObjectResourceId" Type="Guid" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="Delete62e7627ae3284164b8e68968f18470fa">
+      <Parameter Name="SubjectResourceId" Type="Guid" Mode="In" />
+      <Parameter Name="ObjectResourceId" Type="Guid" Mode="In" />
+    </FunctionImport>
+    <AssociationSet Name="ScholarlyWorkHasVersion" Association="Zentity.ScholarlyWorks.ScholarlyWorkHasVersion">
+      <End Role="ScholarlyWork1" EntitySet="Resources" />
+      <End Role="ScholarlyWork2" EntitySet="Resources" />
+    </AssociationSet>
+    <FunctionImport Name="Insertbf151136741745deb68c504bd2d71dc0">
+      <Parameter Name="SubjectResourceId" Type="Guid" Mode="In" />
+      <Parameter Name="ObjectResourceId" Type="Guid" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="Deletebf151136741745deb68c504bd2d71dc0">
+      <Parameter Name="SubjectResourceId" Type="Guid" Mode="In" />
+      <Parameter Name="ObjectResourceId" Type="Guid" Mode="In" />
+    </FunctionImport>
+    <AssociationSet Name="ScholarlyWorkIsCitedBy" Association="Zentity.ScholarlyWorks.ScholarlyWorkIsCitedBy">
+      <End Role="ScholarlyWork1" EntitySet="Resources" />
+      <End Role="ScholarlyWork2" EntitySet="Resources" />
+    </AssociationSet>
+    <FunctionImport Name="Insert81c58166ced94ce18eb3a1f6a0dd3d1c">
+      <Parameter Name="SubjectResourceId" Type="Guid" Mode="In" />
+      <Parameter Name="ObjectResourceId" Type="Guid" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="Delete81c58166ced94ce18eb3a1f6a0dd3d1c">
+      <Parameter Name="SubjectResourceId" Type="Guid" Mode="In" />
+      <Parameter Name="ObjectResourceId" Type="Guid" Mode="In" />
+    </FunctionImport>
+    <AssociationSet Name="ScholarlyWorkHasRepresentation" Association="Zentity.ScholarlyWorks.ScholarlyWorkHasRepresentation">
+      <End Role="ScholarlyWork1" EntitySet="Resources" />
+      <End Role="ScholarlyWork2" EntitySet="Resources" />
+    </AssociationSet>
+    <FunctionImport Name="Insert4377b424756d40a5a207840ae5db5d94">
+      <Parameter Name="SubjectResourceId" Type="Guid" Mode="In" />
+      <Parameter Name="ObjectResourceId" Type="Guid" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="Delete4377b424756d40a5a207840ae5db5d94">
+      <Parameter Name="SubjectResourceId" Type="Guid" Mode="In" />
+      <Parameter Name="ObjectResourceId" Type="Guid" Mode="In" />
+    </FunctionImport>
+    <AssociationSet Name="ScholarlyWorkIsAssociatedWithPersonalCommunication" Association="Zentity.ScholarlyWorks.ScholarlyWorkIsAssociatedWithPersonalCommunication">
+      <End Role="ScholarlyWork" EntitySet="Resources" />
+      <End Role="PersonalCommunication" EntitySet="Resources" />
+    </AssociationSet>
+    <FunctionImport Name="Insertcd10127c8b574de4a7b7368c66976ef5">
+      <Parameter Name="SubjectResourceId" Type="Guid" Mode="In" />
+      <Parameter Name="ObjectResourceId" Type="Guid" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="Deletecd10127c8b574de4a7b7368c66976ef5">
+      <Parameter Name="SubjectResourceId" Type="Guid" Mode="In" />
+      <Parameter Name="ObjectResourceId" Type="Guid" Mode="In" />
+    </FunctionImport>
+    <AssociationSet Name="CategoryNodeHasScholarlyWorkItem" Association="Zentity.ScholarlyWorks.CategoryNodeHasScholarlyWorkItem">
+      <End Role="CategoryNode" EntitySet="Resources" />
+      <End Role="ScholarlyWorkItem" EntitySet="Resources" />
+    </AssociationSet>
+    <FunctionImport Name="Insert5c9496a95d824150ab1432b00d6f6869">
+      <Parameter Name="SubjectResourceId" Type="Guid" Mode="In" />
+      <Parameter Name="ObjectResourceId" Type="Guid" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="Delete5c9496a95d824150ab1432b00d6f6869">
+      <Parameter Name="SubjectResourceId" Type="Guid" Mode="In" />
+      <Parameter Name="ObjectResourceId" Type="Guid" Mode="In" />
+    </FunctionImport>
+    <AssociationSet Name="CategoryNodeHasChildren" Association="Zentity.ScholarlyWorks.CategoryNodeHasChildren">
+      <End Role="CategoryNode1" EntitySet="Resources" />
+      <End Role="CategoryNode2" EntitySet="Resources" />
+    </AssociationSet>
+    <FunctionImport Name="Inserte5f7c76f5be5456ab097611295a14d63">
+      <Parameter Name="SubjectResourceId" Type="Guid" Mode="In" />
+      <Parameter Name="ObjectResourceId" Type="Guid" Mode="In" />
+    </FunctionImport>
+    <FunctionImport Name="Deletee5f7c76f5be5456ab097611295a14d63">
+      <Parameter Name="SubjectResourceId" Type="Guid" Mode="In" />
+      <Parameter Name="ObjectResourceId" Type="Guid" Mode="In" />
+    </FunctionImport>
+  </EntityContainer>
+  <EntityType Name="Predicate">
+    <Documentation>
+      <Summary>Represents the nature of relationships between two resources. </Summary>
+    </Documentation>
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" a:SetterAccess="Internal" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+      <Documentation>
+        <Summary>Gets the Id value that uniquely identifies the Predicate. </Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false">
+      <Documentation>
+        <Summary>Gets or sets the Name for this predicate. </Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Uri" Type="String" Nullable="false" MaxLength="1024" Unicode="true" FixedLength="false">
+      <Documentation>
+        <Summary>Gets or sets the URI for this predicate. </Summary>
+      </Documentation>
+    </Property>
+    <NavigationProperty Name="Relationships" Relationship="Zentity.Core.RelationshipPredicateIs" FromRole="Predicate" ToRole="Relationship" a:SetterAccess="Internal" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+      <Documentation>
+        <Summary>Gets the resource-to-resource relationships that use this predicate. </Summary>
+      </Documentation>
+    </NavigationProperty>
+    <NavigationProperty Name="Properties" Relationship="Zentity.Core.PredicateHasProperty" FromRole="Predicate" ToRole="PredicateProperty" a:SetterAccess="Internal" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+      <Documentation>
+        <Summary>Gets the properties of this predicate. </Summary>
+      </Documentation>
+    </NavigationProperty>
+  </EntityType>
+  <EntityType Name="Property">
+    <Documentation>
+      <Summary>Represents a characteristic of a resource in the repository. </Summary>
+    </Documentation>
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" a:SetterAccess="Internal" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+      <Documentation>
+        <Summary>Gets the Id value that uniquely identifies the property. </Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false">
+      <Documentation>
+        <Summary>Gets or sets the name of the property. </Summary>
+      </Documentation>
+    </Property>
+    <NavigationProperty Name="PredicateProperties" Relationship="Zentity.Core.PredicatePropertyIs" FromRole="Property" ToRole="PredicateProperty" a:SetterAccess="Internal" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+      <Documentation>
+        <Summary>Gets the PredicateProperty objects that use this property. </Summary>
+      </Documentation>
+    </NavigationProperty>
+    <NavigationProperty Name="ResourceProperties" Relationship="Zentity.Core.ResourcePropertyIs" FromRole="Property" ToRole="ResourceProperty" a:SetterAccess="Internal" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+      <Documentation>
+        <Summary>Gets the ResourceProperty objects that use this property. </Summary>
+      </Documentation>
+    </NavigationProperty>
+    <NavigationProperty Name="RelationshipProperties" Relationship="Zentity.Core.TripletPropertyIs" FromRole="Property" ToRole="RelationshipProperty" a:SetterAccess="Internal" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+      <Documentation>
+        <Summary>Gets the RelationshipProperty objects that use this property. </Summary>
+      </Documentation>
+    </NavigationProperty>
+    <Property Name="Uri" Type="String" Nullable="true">
+      <Documentation>
+        <Summary>Gets or sets the Uri of the property. </Summary>
+      </Documentation>
+    </Property>
+  </EntityType>
+  <EntityType Name="Relationship">
+    <Documentation>
+      <Summary>Represents a relationship between two resources. </Summary>
+    </Documentation>
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" a:SetterAccess="Internal" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+      <Documentation>
+        <Summary>Gets the Id value that uniquely identifies the relationship. </Summary>
+      </Documentation>
+    </Property>
+    <Property Name="OrdinalPosition" Type="Int32">
+      <Documentation>
+        <Summary>Gets or sets the ordinal position field. This field can be used by applications for ordering the relationships. For example, if the resource is 'authored by' to two persons, this property can be used to identify in what order did those persons authored the resource. </Summary>
+      </Documentation>
+    </Property>
+    <NavigationProperty Name="Predicate" Relationship="Zentity.Core.RelationshipPredicateIs" FromRole="Relationship" ToRole="Predicate" a:SetterAccess="Public" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+      <Documentation>
+        <Summary>Gets or sets the predicate of the relationship. </Summary>
+      </Documentation>
+    </NavigationProperty>
+    <NavigationProperty Name="Properties" Relationship="Zentity.Core.RelationshipHasProperty" FromRole="Relationship" ToRole="RelationshipProperty" a:SetterAccess="Internal" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+      <Documentation>
+        <Summary>Gets the properties of this relationship. </Summary>
+      </Documentation>
+    </NavigationProperty>
+    <NavigationProperty Name="Object" Relationship="Zentity.Core.RelationshipIsAboutResource" FromRole="Relationship" ToRole="Resource" a:SetterAccess="Public" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+      <Documentation>
+        <Summary>Gets or sets the object resource of this relationship. </Summary>
+      </Documentation>
+    </NavigationProperty>
+    <NavigationProperty Name="Subject" Relationship="Zentity.Core.ResourceHasRelationship" FromRole="Relationship" ToRole="Resource" a:SetterAccess="Public" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+      <Documentation>
+        <Summary>Gets or sets the subject resource of this relationship. </Summary>
+      </Documentation>
+    </NavigationProperty>
+    <Property Name="DateAdded" Type="DateTime" Nullable="true">
+      <Documentation>
+        <Summary>Gets or sets the date on which this relationship was added to the repository.</Summary>
+      </Documentation>
+    </Property>
+  </EntityType>
+  <EntityType Name="RelationshipProperty">
+    <Documentation>
+      <Summary>The RelationshipProperty object provides a value for a Property on a Relationship. </Summary>
+    </Documentation>
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" a:SetterAccess="Internal" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+      <Documentation>
+        <Summary>Gets the Id value that uniquely identifies the RelationshipProperty. </Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Value" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false">
+      <Documentation>
+        <Summary>The value of this RelationshipProperty. </Summary>
+      </Documentation>
+    </Property>
+    <NavigationProperty Name="Property" Relationship="Zentity.Core.TripletPropertyIs" FromRole="RelationshipProperty" ToRole="Property" a:SetterAccess="Public" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+      <Documentation>
+        <Summary>Gets or sets the Property whose value is provided by this RelationshipProperty. </Summary>
+      </Documentation>
+    </NavigationProperty>
+    <NavigationProperty Name="Relationship" Relationship="Zentity.Core.RelationshipHasProperty" FromRole="RelationshipProperty" ToRole="Relationship" a:SetterAccess="Public" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+      <Documentation>
+        <Summary>Gets or sets the Relationship to which this RelationshipProperty belongs. </Summary>
+      </Documentation>
+    </NavigationProperty>
+  </EntityType>
+  <EntityType Name="Resource">
+    <Documentation>
+      <Summary>Represents a resource, usually the research output of an organization. </Summary>
+      <LongDescription>Represents a resource, usually the research output of an organization. </LongDescription>
+    </Documentation>
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" a:SetterAccess="Protected" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+      <Documentation>
+        <Summary>Gets the Id value that uniquely identifies the Resource. </Summary>
+      </Documentation>
+    </Property>
+    <Property Name="DateAdded" Type="DateTime">
+      <Documentation>
+        <Summary>Gets or sets the date on which the Resource was added in the repository. </Summary>
+      </Documentation>
+    </Property>
+    <Property Name="DateModified" Type="DateTime">
+      <Documentation>
+        <Summary>Gets or sets the date on which the Resource was last modified. </Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Description" Type="String" MaxLength="Max" Unicode="true" FixedLength="false">
+      <Documentation>
+        <Summary>Gets or sets the description of the Resource. </Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Title" Type="String" MaxLength="425" Unicode="true" FixedLength="false">
+      <Documentation>
+        <Summary>Gets or sets the title of the Resource. </Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Uri" Type="String" MaxLength="1024" Unicode="true" FixedLength="false">
+      <Documentation>
+        <Summary>Gets or sets the URI of the Resource. </Summary>
+      </Documentation>
+    </Property>
+    <NavigationProperty Name="RelationshipsAsObject" Relationship="Zentity.Core.RelationshipIsAboutResource" FromRole="Resource" ToRole="Relationship" a:SetterAccess="Internal" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+      <Documentation>
+        <Summary>Gets the relationships in which this resource participates as object.</Summary>
+      </Documentation>
+    </NavigationProperty>
+    <NavigationProperty Name="RelationshipsAsSubject" Relationship="Zentity.Core.ResourceHasRelationship" FromRole="Resource" ToRole="Relationship" a:SetterAccess="Internal" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+      <Documentation>
+        <Summary>Gets the relationships in which this resource participates as subject.</Summary>
+      </Documentation>
+    </NavigationProperty>
+    <NavigationProperty Name="ResourceProperties" Relationship="Zentity.Core.ResourceHasProperty" FromRole="Resource" ToRole="ResourceProperty" a:SetterAccess="Internal" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+      <Documentation>
+        <Summary>Gets the collection of ResourceProperty objects for this resource.</Summary>
+      </Documentation>
+    </NavigationProperty>
+    <NavigationProperty Name="Files" Relationship="Zentity.Core.ResourceHasFile" FromRole="Resource" ToRole="File" a:SetterAccess="Internal" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+      <Documentation>
+        <Summary>Gets a collection of associated File objects with this resource.</Summary>
+      </Documentation>
+    </NavigationProperty>
+  </EntityType>
+  <EntityType Name="ResourceProperty">
+    <Documentation>
+      <Summary>The ResourceProperty object provides a value for a Property on a Resource. </Summary>
+    </Documentation>
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" a:SetterAccess="Internal" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+      <Documentation>
+        <Summary>Gets the Id value that uniquely identifies the ResourceProperty. </Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Value" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false">
+      <Documentation>
+        <Summary>Gets or sets the value of this ResourceProperty. </Summary>
+      </Documentation>
+    </Property>
+    <NavigationProperty Name="Property" Relationship="Zentity.Core.ResourcePropertyIs" FromRole="ResourceProperty" ToRole="Property" a:SetterAccess="Public" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+      <Documentation>
+        <Summary>Gets or sets the Property whose value is provided by this ResourceProperty. </Summary>
+      </Documentation>
+    </NavigationProperty>
+    <NavigationProperty Name="Resource" Relationship="Zentity.Core.ResourceHasProperty" FromRole="ResourceProperty" ToRole="Resource" a:SetterAccess="Public" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+      <Documentation>
+        <Summary>Gets or sets the Resource to which this ResourceProperty belongs. </Summary>
+      </Documentation>
+    </NavigationProperty>
+  </EntityType>
+  <EntityType Name="PredicateProperty">
+    <Documentation>
+      <Summary>The PredicateProperty object provides a value for a Property on a Predicate. </Summary>
+    </Documentation>
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" a:SetterAccess="Internal" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+      <Documentation>
+        <Summary>Gets the Id value that uniquely identifies the PredicateProperty. </Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Value" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false">
+      <Documentation>
+        <Summary>Gets or sets the value of this PredicateProperty. </Summary>
+      </Documentation>
+    </Property>
+    <NavigationProperty Name="Property" Relationship="Zentity.Core.PredicatePropertyIs" FromRole="PredicateProperty" ToRole="Property" a:SetterAccess="Public" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+      <Documentation>
+        <Summary>Gets or sets the Property whose value is provided by this PredicateProperty. </Summary>
+      </Documentation>
+    </NavigationProperty>
+    <NavigationProperty Name="Predicate" Relationship="Zentity.Core.PredicateHasProperty" FromRole="PredicateProperty" ToRole="Predicate" a:SetterAccess="Public" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+      <Documentation>
+        <Summary>Gets or sets the Predicate to which this PredicateProperty belongs. </Summary>
+      </Documentation>
+    </NavigationProperty>
+  </EntityType>
+  <Association Name="RelationshipPredicateIs">
+    <End Role="Predicate" Type="Zentity.Core.Predicate" Multiplicity="1" />
+    <End Role="Relationship" Type="Zentity.Core.Relationship" Multiplicity="*" />
+  </Association>
+  <Association Name="ResourcePropertyIs">
+    <End Role="Property" Type="Zentity.Core.Property" Multiplicity="1" />
+    <End Role="ResourceProperty" Type="Zentity.Core.ResourceProperty" Multiplicity="*" />
+  </Association>
+  <Association Name="PredicatePropertyIs">
+    <End Role="Property" Type="Zentity.Core.Property" Multiplicity="1" />
+    <End Role="PredicateProperty" Type="Zentity.Core.PredicateProperty" Multiplicity="*" />
+  </Association>
+  <Association Name="TripletPropertyIs">
+    <End Role="Property" Type="Zentity.Core.Property" Multiplicity="1" />
+    <End Role="RelationshipProperty" Type="Zentity.Core.RelationshipProperty" Multiplicity="*" />
+  </Association>
+  <Association Name="RelationshipHasProperty">
+    <End Role="Relationship" Type="Zentity.Core.Relationship" Multiplicity="1" />
+    <End Role="RelationshipProperty" Type="Zentity.Core.RelationshipProperty" Multiplicity="*" />
+  </Association>
+  <Association Name="RelationshipIsAboutResource">
+    <End Role="Resource" Type="Zentity.Core.Resource" Multiplicity="1" />
+    <End Role="Relationship" Type="Zentity.Core.Relationship" Multiplicity="*" />
+  </Association>
+  <Association Name="ResourceHasRelationship">
+    <End Role="Resource" Type="Zentity.Core.Resource" Multiplicity="1" />
+    <End Role="Relationship" Type="Zentity.Core.Relationship" Multiplicity="*" />
+  </Association>
+  <Association Name="ResourceHasProperty">
+    <End Role="Resource" Type="Zentity.Core.Resource" Multiplicity="1" />
+    <End Role="ResourceProperty" Type="Zentity.Core.ResourceProperty" Multiplicity="*" />
+  </Association>
+  <Association Name="PredicateHasProperty">
+    <End Role="Predicate" Type="Zentity.Core.Predicate" Multiplicity="1" />
+    <End Role="PredicateProperty" Type="Zentity.Core.PredicateProperty" Multiplicity="*" />
+  </Association>
+  <EntityType Name="File" BaseType="Zentity.Core.Resource">
+    <Documentation>
+      <Summary>Represents a binary file. </Summary>
+    </Documentation>
+    <Property Name="Checksum" Type="String" Nullable="true">
+      <Documentation>
+        <Summary>Gets or sets the hash value of file data. </Summary>
+      </Documentation>
+    </Property>
+    <Property Name="FileExtension" Type="String" Nullable="true">
+      <Documentation>
+        <Summary>Gets or sets the extension of file. This property value is used for full text indexing purposes.</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="MimeType" Type="String" Nullable="true">
+      <Documentation>
+        <Summary>Gets or sets the MIME type of file. </Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Size" Type="Int64" Nullable="true">
+      <Documentation>
+        <Summary>Gets or sets the size of file. </Summary>
+      </Documentation>
+    </Property>
+    <NavigationProperty Name="Resources" Relationship="Zentity.Core.ResourceHasFile" FromRole="File" ToRole="Resource" a:SetterAccess="Internal" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+      <Documentation>
+        <Summary>Gets the associated resources with this File.</Summary>
+      </Documentation>
+    </NavigationProperty>
+  </EntityType>
+  <Association Name="ResourceHasFile">
+    <End Role="Resource" Type="Zentity.Core.Resource" Multiplicity="*" />
+    <End Role="File" Type="Zentity.Core.File" Multiplicity="*" />
+  </Association>
+</Schema>

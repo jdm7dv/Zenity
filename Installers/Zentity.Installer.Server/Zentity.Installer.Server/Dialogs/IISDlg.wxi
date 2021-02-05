@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Include>
+  <UI>
+    <Dialog Id="IISDlg" Width="370" Height="270" Title="!(loc.IISDlg_Title)">
+      <Control Id="Title" Type="Text" X="15" Y="6" Width="200" Height="15" Transparent="yes" NoPrefix="yes" Text="!(loc.IISDlgTitle)" />
+      <Control Id="Description" Type="Text" X="25" Y="23" Width="280" Height="15" Transparent="yes" NoPrefix="yes" Text="!(loc.IISDlgDescription)" />
+      <Control Id="TopBanner" Type="Bitmap" X="0" Y="0" Width="370" Height="44" TabSkip="no" Text="!(loc.TopBannerBitmap)" />
+      <Control Id="BannerLine" Type="Line" X="0" Y="44" Width="370" Height="0" />
+      <Control Id="BottomLine" Type="Line" X="0" Y="234" Width="370" Height="0" />
+
+      <!--Web Site name-->
+      <Control Id="WebSiteName" Type="Text" X="24" Y="61" Width="330" Height="50" Transparent="yes" Text="!(loc.IISDlgWebSiteNameText)" />
+      <Control Id="WebSiteNameInput" Type="Edit" X="24" Y="73" Width="300" Height="18" ToolTip="!(loc.WebSiteNameInputToolTip)" Property="ZENTITYIISWEBSITENAME" Text="[ZENTITYIISWEBSITENAME]"  />
+
+      <!--Web Site port-->
+      <Control Id="WebSitePort" Type="Text" X="24" Y="96" Width="330" Height="50" Transparent="yes" Text="!(loc.IISDlgWebSitePortText)" />
+      <Control Id="WebSitePortInput" Type="Edit" X="24" Y="108" Width="300" Height="18" ToolTip="!(loc.WebSitePortInputToolTip)" Property="ZENTITYIISWEBSITEPORT" Text="[ZENTITYIISWEBSITEPORT]" />
+
+      <!--Port for Call back on Progress reporting service-->
+      <Control Id="CallbackPort" Type="Text" X="24" Y="131" Width="330" Height="50" Transparent="yes" Text="!(loc.IISDlgCallbackPortText)" />
+      <Control Id="CallbackPortInput" Type="Edit" X="24" Y="143" Width="300" Height="18" ToolTip="!(loc.CallbackPortInputToolTip)" Property="ZENTITYCALLBACKPORT" Text="[ZENTITYCALLBACKPORT]" />
+
+      <Control Id="Back" Type="PushButton" X="180" Y="243" Width="56" Height="17" Text="&amp;Back">
+        <Publish Event="NewDialog" Value="[WixUI_IISDlg_Back]">1</Publish>
+      </Control>
+      <Control Id="Next" Type="PushButton" X="236" Y="243" Width="56" Height="17" Default="yes" Text="&amp;Next">
+        <Publish Property="CATOEXECUTE" Value="ValidateIISDialogInput">1</Publish>
+        <Publish Event="DoAction" Value="ExecuteManagedCA">1</Publish>
+        <Publish Event="NewDialog" Value="[WixUI_IISDlg_Next]">VALIDZENTITYINPUT = "1"</Publish>        
+      </Control>
+      <Control Id="Cancel" Type="PushButton" X="304" Y="243" Width="56" Height="17" Cancel="yes" Text="!(loc.WixUICancel)">
+        <Publish Event="SpawnDialog" Value="CancelDlg">1</Publish>
+      </Control>
+    </Dialog>
+  </UI>
+</Include>

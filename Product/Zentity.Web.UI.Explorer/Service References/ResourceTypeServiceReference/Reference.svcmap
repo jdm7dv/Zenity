@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="d22aa787-4cb4-4c57-9d21-f3fe47c779a2" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:9090/Services/ResourceTypeService" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="ResourceTypeService.disco" MetadataType="Disco" ID="38f4baab-dc1f-4af2-8537-bc4047d3e897" SourceId="1" SourceUrl="http://aditidt486:9090/Services/ResourceTypeService?disco" />
+    <MetadataFile FileName="ResourceTypeService1.xsd" MetadataType="Schema" ID="c5f30388-bcb7-416e-aa08-4640a464db3a" SourceId="1" SourceUrl="http://aditidt486:9090/Services/ResourceTypeService?xsd=xsd0" />
+    <MetadataFile FileName="ResourceTypeService11.xsd" MetadataType="Schema" ID="4690573d-a28f-4fc3-b591-47837c055061" SourceId="1" SourceUrl="http://aditidt486:9090/Services/ResourceTypeService?xsd=xsd3" />
+    <MetadataFile FileName="ResourceTypeService12.xsd" MetadataType="Schema" ID="2ec95e59-8513-4d91-bbe4-330d3e7cba5f" SourceId="1" SourceUrl="http://aditidt486:9090/Services/ResourceTypeService?xsd=xsd4" />
+    <MetadataFile FileName="ResourceTypeService13.xsd" MetadataType="Schema" ID="44bec163-b699-457d-a280-4bb9b33768b7" SourceId="1" SourceUrl="http://aditidt486:9090/Services/ResourceTypeService?xsd=xsd1" />
+    <MetadataFile FileName="ResourceTypeService.wsdl" MetadataType="Wsdl" ID="09d552ae-6025-4ac5-a0e1-89ba4a7636e2" SourceId="1" SourceUrl="http://aditidt486:9090/Services/ResourceTypeService?wsdl" />
+    <MetadataFile FileName="ResourceTypeService14.xsd" MetadataType="Schema" ID="24efaf7f-3462-499e-b79a-f60107e62883" SourceId="1" SourceUrl="http://aditidt486:9090/Services/ResourceTypeService?xsd=xsd2" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

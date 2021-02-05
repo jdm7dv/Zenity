@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://aditidt486:9090/Services/ResourceTypeService?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Zentity.Core" />
+  <xs:import schemaLocation="http://aditidt486:9090/Services/ResourceTypeService?xsd=xsd4" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:element name="GetAllResourceTypesByNamespace">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="modelNameSpace" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllResourceTypesByNamespaceResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/Zentity.Core" minOccurs="0" name="GetAllResourceTypesByNamespaceResult" nillable="true" type="q1:ResourceTypeCollection" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetResourceCountForResourceType">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="modelNamespace" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="resourceTypeName" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetResourceCountForResourceTypeResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetResourceCountForResourceTypeResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetResourceCountForDataModel">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="dataModelNamesapceList" nillable="true" type="q2:ArrayOfstring" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetResourceCountForDataModelResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GetResourceCountForDataModelResult" nillable="true" type="q3:ArrayOfKeyValueOfstringint" />
+        <xs:element minOccurs="0" name="totalUniqueItemCount" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllScalarPropertiesForResourceType">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="modelNamespace" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="resourceType" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllScalarPropertiesForResourceTypeResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/Zentity.Core" minOccurs="0" name="GetAllScalarPropertiesForResourceTypeResult" nillable="true" type="q4:ScalarPropertyCollection" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddScalarPropertyToResourceType">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="modelNamespace" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="resourceType" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="propertyName" nillable="true" type="xs:string" />
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/Zentity.Core" minOccurs="0" name="dataType" type="q5:DataTypes" />
+        <xs:element minOccurs="0" name="maxLength" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="precision" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="scale" nillable="true" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddScalarPropertyToResourceTypeResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteScalarPropertyOfResourceType">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="modelNamespace" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="resourceType" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="propertyName" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteScalarPropertyOfResourceTypeResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllNavigationPropertiesForResourceType">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="modelNamespace" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="resourceType" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllNavigationPropertiesForResourceTypeResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/Zentity.Core" minOccurs="0" name="GetAllNavigationPropertiesForResourceTypeResult" nillable="true" type="q6:NavigationPropertyCollection" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddNavigationPropertyToResourceType">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="modelNamespace" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="subjectResourceType" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="objectResourceType" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="subjectNavigationPropertyName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="objectNavigationPropertyName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="associationName" nillable="true" type="xs:string" />
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/Zentity.Core" minOccurs="0" name="subjectMultiplicity" type="q7:AssociationEndMultiplicity" />
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/Zentity.Core" minOccurs="0" name="objectMultiplicity" type="q8:AssociationEndMultiplicity" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddNavigationPropertyToResourceTypeResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteNavigationPropertyOfResourceType">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="modelNamespace" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="resourceType" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="propertyName" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteNavigationPropertyOfResourceTypeResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

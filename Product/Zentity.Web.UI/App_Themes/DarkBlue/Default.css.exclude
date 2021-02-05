@@ -1,0 +1,768 @@
+/* Sets element margins, padding, and border to 0 to even out browser differences when adding desired values later. */
+html, body, div, p, h1, h2, h3, h4, h5, h6, blockquote, ol, ul, li, dl, dt, dd, td, form, fieldset, a, img, button {
+     margin: 0;
+     padding: 0;
+     border: 0;
+}
+
+table.sample {
+	border-width: 1px;
+	border-style: outset;
+	border-color: gray;
+	border-collapse: separate;
+	background-color: white;
+}
+table.sample th {
+	border-width: 1px;
+	color:#FFFFFF;
+	padding: 1px;
+	border-style: inset;
+	border-color: gray;
+	background-color:#8d8d8d;
+}
+.rStyle
+{	
+	font-size: 12px;
+}
+
+.arStyle
+{
+	background-color:#EDF3FE;
+	font-size: 12px;
+}
+
+.ellipsis table
+{ 
+	table-layout:fixed; 
+}
+
+.ellipsis td
+{ 
+	float:left ; text-overflow:ellipsis;
+	overflow:hidden; text-align:center; 
+}
+
+.ellipsis a:link 
+{
+		color: Black;text-decoration :none
+} 
+
+/* visited link */
+.ellipsis a:visited 
+{	
+	color: Navy;text-decoration :none 
+} 
+
+/* mouse over link */
+.ellipsis a:hover 
+{
+	color: #FF00FF;text-decoration :none 
+}
+
+/* selected link */
+.ellipsis a:active 
+{
+	color: #0000FF;text-decoration :none 
+}
+
+body{
+	text-align:center;
+	background-color:White;	
+	background-repeat:repeat;
+	font-family:Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size:0.78em;
+}
+ 
+div.UpdateProgressModalBackground 
+{
+    position:fixed;
+    top:0px;
+    bottom:0px;
+    left:0px;
+    right:0px;
+    overflow:hidden;
+    padding:0;
+    margin:0;
+    background-color:black;
+    filter:alpha(opacity=50);
+    opacity:0.5;
+    z-index:1000;
+}
+
+div.UpdateProgress 
+{ 
+    position:fixed; 
+    top:40%;
+    left:40%;
+    width:200px;
+    padding:35px; 
+    z-index:1001;
+    background-color:white;
+    border:solid 1px black;
+}
+
+/* CSS for Grid */
+/* The overall style of the GridView */
+
+.gridStyle
+{
+      border-color:#A29F9F;   
+      border:1;
+      width: 100%;
+}
+
+/* The header of this GridView */
+.gridHeader
+{
+      background-color: #6b6259 ;
+      font-weight:bold;
+      color:Yellow  ;
+      
+}
+
+/* One row white, another row #E6DACE */
+.gridAlternatingItem
+{  
+  background-color: #DCDCDC;
+}
+
+/* Paging */
+.gridPager 
+{
+      background-color:#BAB9B9;
+      text-align:right;
+}
+
+/* Underline the selected page */
+.gridPager span
+{
+      text-decoration: underline;
+}
+
+/* end here*/
+h1, h2, h3, h4, h5, h6 {color:#444444;}
+
+h1 {
+	margin-top:1em;
+	font-size: 1.4em;
+	font-weight: bold;
+}
+h2 {
+	margin-top:1em;
+	font-size: 1.3em;
+	font-weight: bold;
+}
+h3 {
+	margin: 0.5em 0;
+	font-size: 1.2em;
+	font-weight: normal;
+}
+h4 {
+	margin: 0.5em 0;
+	font-size: 1.1em;
+	font-weight: bold;
+}
+h5 {
+	margin: 0.5em 0;
+	font-size: 1.0em;
+	font-weight: bold;
+}
+h6 {
+	margin: 0.5em 0;
+	font-size: 0.8em;
+	font-weight: bold;
+}
+
+p  {margin: 1em 0;}
+
+a {color:Black;
+   text-decoration:underline;
+   }
+   
+
+.PanelClass
+{
+	background-color: white;
+	font-family:Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size:0.9em;
+	border-style: solid;
+
+}
+
+.MyCalendar .ajax__calendar_container {
+    border:1px solid #646464;
+    background-color:Yellow;
+    color: red;
+    z-index : 1004 ;  
+    
+
+
+}
+.div.ajax__calendar_days table tr td
+{
+    padding-right:0px;
+}
+
+
+.MyCalendar .ajax__calendar_other .ajax__calendar_day,
+.MyCalendar .ajax__calendar_other .ajax__calendar_year {
+    color: black;
+    
+}
+.MyCalendar .ajax__calendar_hover .ajax__calendar_day,
+.MyCalendar .ajax__calendar_hover .ajax__calendar_month,
+.MyCalendar .ajax__calendar_hover .ajax__calendar_year {
+    color: black;
+}
+.MyCalendar .ajax__calendar_active .ajax__calendar_day,
+.MyCalendar .ajax__calendar_active .ajax__calendar_month,
+.MyCalendar .ajax__calendar_active .ajax__calendar_year {
+    color: black;
+    font-weight:bold;
+}
+
+/* latest UI skin*/
+
+.TableContainer
+{
+	table-layout:fixed; 
+	overflow:auto; 
+	white-space: nowrap; 
+	width: 625px;
+}
+
+#main_container
+{
+	width:1000px;
+	margin:0px auto;
+	padding:0px;
+	border:0px;
+	
+}
+
+#left_bottom_crn
+{
+	background-image:url(Images/left_bottom_corner.jpg);
+	background-repeat:repeat;
+	height:130px;
+	width:51px;
+	
+}
+
+#right_bt_crn
+{
+	background-image:url(Images/right_bottom_corner.jpg);
+	background-repeat:repeat;
+	float:right;
+	height:130px;
+	width:42px;
+}
+#ImageTop{
+	float:right; 
+}
+#MenuTD1{
+	background-image:url(Images/Corner.jpg);
+	background-repeat:no-repeat;
+	height:40px;
+	width:70px;
+}
+#mainlink1 {
+	background-image:url(Images/bg_menutop.jpg);
+	background-repeat:repeat;
+	height:40px;
+}
+
+* html #mainlink1 tr {height:1.4em;}
+
+#mainlink1 .item {
+	
+	padding:2px 7px;
+	color:Yellow ; 
+	height:39px;
+}
+
+* html #mainlink1 .item {padding:0 20px;}
+
+#mainlink1 .selected {
+	background-color:Red ; 
+	color:#FFFFFF;
+}
+
+#mainlink1 :visited {
+	text-decoration: none;
+}
+
+#mainlink1 .hover {
+	color:#FF284E; 
+	background-color:#DADADA;
+}
+.block
+{
+ width:1000px;
+}
+
+#div_1
+{
+  width:933px;
+  float:left;
+ }
+
+
+#div_3
+ {
+  width:958px;
+  float:left;
+ }
+
+ #bottom_mid_rp
+  {
+  background:url(images/Bottom_rp.gif) repeat-x;
+  height:130px;
+  width:907px;
+  float:right;
+  padding-top:30px;
+  padding-left:0px;
+  text-align: left;
+  font-size: smaller;	
+  vertical-align:bottom
+  }
+
+
+  #repeat1
+ {
+   float:left;
+   background:url(images/Left_Top_Rp.jpg) repeat-y;
+   height:25px;
+   width:51px;
+   
+ }
+ #right_rp1
+ {
+   height:25px;
+   width:42px;
+   background:url(images/Right_top_Rp.gif) repeat-y;
+   float:right;
+ }
+ 
+
+#div_2
+{
+  width:308px;
+  float:left;
+  padding-right:0%;
+  
+ }
+ 
+ #div2_1
+ {
+  width:625px;
+ 
+ }
+ 
+ 
+#upper_grey
+{
+	height:31px;
+	width:866px;
+	background:#e9e9e9;
+	float:right;
+}
+
+#logo_img
+{
+ height:175px;
+ width:866px;
+ float:right;
+ background:url(images/header.jpg) no-repeat;
+ vertical-align:bottom;
+   
+}
+ 
+ #buttons
+ {
+    height:40px;
+    width:867px;
+	float:right;
+	margin-top:-2%;
+	
+	
+ }
+ 
+ #repeat
+ {
+   float:left;
+   background:url(images/Left_Top_Rp.jpg) repeat-y;
+   height:259px;
+   width:51px;
+   
+ }
+ 
+ #right_rp
+ {
+   height:259px;
+   width:42px;
+   background:url(images/Right_top_Rp.gif);
+   float:right;
+   background-repeat: repeat-y;
+ }
+   
+ .left_middle_rp
+ {
+ float:left;
+ width:51px;
+ background:url(images/left_middle_rp.jpg);
+ background-repeat: repeat-y; 
+ }
+ 
+ #repeat_lft_mid
+ {
+ float:left;
+ width:51px;
+ height:55px;
+ background:url(images/left_middle_rp.jpg) ;
+ background-repeat: repeat-y;
+ }
+ 
+ 
+ #dot_bk
+ {
+ height:350px;
+ width:228px;
+ float:right;
+ margin-right:5px;
+ background:url(images/dot_bg.gif);
+ }
+ 
+ .right_middle_rp
+ {
+ float:right;
+ background:url(images/right_middle_rp.jpg); 
+ width:42px;
+ background-repeat: repeat-y;
+ }
+ 
+ .table1
+ {
+ float:left;
+ width:623px;
+ height:180px;
+ margin-left:2px;
+ margin-top:5px;
+ }
+ 
+ 
+ .head
+ {
+ 	
+ width:623px;
+ height:29px;
+ background:#716559;
+ color:#FFFFFF;
+ 
+  }
+/* end here*/
+
+/*Secion for new skin*/
+.ContentHEAD
+{
+	text-align:left;
+	background-color:#6b6259;
+	height:26px;
+	vertical-align:middle;
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	color:#CCCCCC;
+	padding-left:10px;
+	padding-right:10px;
+	font-size:12px;
+	font-weight:bold;
+	margin-top: 5px;
+}
+
+.accordionHeader
+{
+	text-align:left;
+	background-color:#6b6259;
+	height:26px;
+	vertical-align:middle;
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	color:#CCCCCC;
+	padding-left:10px;
+	padding-right:10px;
+	font-size:12px;
+	font-weight:bold;
+	margin-top: 5px;
+	cursor:Hand;
+}
+
+.accordionContent
+{
+    padding: 5px;
+    padding-top: 5px;
+}
+#Main1{
+	border-width:0px;
+	width:1024px;
+}
+
+.sidelink {
+	overflow:hidden;
+	margin-bottom:10px;
+	background-color:White;
+	width:232px;
+	margin-top:0px;
+}
+
+
+* html .sidelink tr {height:1.4em;}
+
+.sidelink .item {
+	padding:2px 7px;
+	color:Black; 
+	height:20px;
+	width:232px;
+	border-top:1px solid Black;
+	border-left:1px solid Black;
+	border-bottom:1px solid Black;
+	border-right:1px solid Black;
+	text-align:left;	
+}
+
+* html .sidelink .item {padding:0 20px;}
+
+.sidelink .selected {
+	background-color:#AAD284; 
+	color:#FFFFFF;
+}
+
+.sidelink :visited {
+	text-decoration: none;
+}
+
+.sidelink .hover {
+	color:#FF284E; 
+	background-color:#E4E4E4;
+}
+
+#mainlink {
+	background-image:url(Images/bg_Image.PNG);
+	background-repeat:repeat;
+}
+
+* html #mainlink tr {height:1.4em;}
+
+#mainlink .item {
+	
+	padding:2px 7px;
+	color:Yellow ; 
+	height:39px;
+}
+
+* html #mainlink .item {padding:0 20px;}
+
+#mainlink .selected {
+	background-color:#AAD284 ; 
+	color:#FFFFFF;
+}
+#mainlink .hover {
+	color:#FF284E; 
+	background-color:#DADADA;
+}
+
+#Banner1TD{
+	height:237px;
+	width:637px;
+}
+/*Secion for new skin*/
+a:visited
+{
+color: Blue;
+text-decoration:underline;
+}
+
+a:hover 
+{ 
+    color:Blue;
+	text-decoration:none;
+}
+
+#search
+{
+	background-image:url(Images/bg_menutop.jpg);
+	background-repeat:repeat;
+	white-space:nowrap; 
+	width: 350px;
+	text-align: right;
+	font-size: larger;
+}
+#mainnav {
+	padding:0 150px;
+	border-bottom:1px solid #FFFFFF;
+	border-top:1px solid #FC506F;	
+	background-color:#F2F2F2;
+}
+
+* html #mainnav tr {height:1.4em;}
+
+#mainnav .item {
+	padding:2px 7px;
+	border-width:1px 0 0 1px; 
+	border-style:solid; 
+	border-color:#FFFFFF;
+	background-color:#DADADA; 
+	color:#333333; 
+}
+
+* html #mainnav .item {padding:0 20px;}
+
+#mainnav .selected {
+	background-color:#FF9900; 
+	color:#FFFFFF;
+}
+#mainnav .hover {
+	color:#FF284E; 
+	background-color:#DADADA;
+}
+
+#mainnav table {border-right:1px solid #FFFFFF;}
+
+#mainnav table table {border-right:none;}
+
+#copy .container {
+	margin:5px;
+	padding:0 20px 15px 20px;
+	border:1px solid #999999;
+	background-color:#FFFFFF;
+}
+
+/* \*/
+* html #copy .container {height:1%;}
+/* */
+textarea#styled {
+	font-family:MS Reference Sans Serif ;
+	}
+#copy img, #rightcolumn img {border:0px solid #000000 !important;}
+
+#copy td, #copy th {padding: 0.2em 0.0em;}
+
+#copy .container table tr {font-size:0.9em;}
+
+.txtBox {border:1px solid ;
+         font-family: MS Reference Sans Serif ;
+         }
+
+#copy fieldset {	
+	margin:1em 0;
+	padding:1em;
+	border:1px solid #CCCCCC;
+}
+
+#copy legend {
+	color:#666666;
+	background-color:#FFFFFF;
+}
+
+* html #copy legend {padding:0.5em;}
+
+.button {
+    border:1px solid #FFFFFF;
+    color:#FFFFFF;
+    background-color:#6B6259;
+    font-size:1em;
+	height: 24px;
+
+}
+.tree {
+    border:1px solid #FFFFFF;
+    color:#FFFFFF;
+    font-size:1em;
+	color:#FFFFFF;
+}
+
+#copy .container .button {border-color:#CCCCCC;
+	height: 19px;
+}
+
+div.readmore {
+	text-align:right;
+	font-size:0.9em;
+}
+
+
+
+h4 img {margin-bottom:-0.5em;}
+
+
+#footer {
+	clear:both;
+	margin:1px 5px;
+	padding:2px 20px;
+	border:1px solid #999999;
+	background-color:#FFFFFF;
+	font-size:0.9em;
+}
+#footer a {
+	margin:1px 5px;
+}
+
+
+@media print {	
+	body{
+		font-size:11pt;
+		line-height:13pt;
+		background:#FFFFFF !important;
+	}	
+	#wrapper, #contentwrapper, #floatwrapper, #centercolumn, * html #wrapper, * html #contentwrapper, * html #floatwrapper, * html #centercolumn {
+		width:auto !important;
+		margin:auto !important;
+	}
+
+	#wrapper, #contentwrapper {border:none;}
+
+	#mainnav{
+		padding:0;
+		text-align:center;
+	}
+
+	#leftcolumn, #rightcolumn, #search {display:none;}
+
+	#wrapper, #header, #mainnav, #mainnav .item, #mainnav .selected, #copy .container, #footer {
+		background:transparent;
+	}
+	#centercolumn {
+		float:none;
+		margin:0 1em 0 2.5em;
+	}	
+
+	#breadcrumbs {position:static;}
+
+	#copy .container{
+		margin:0;
+		padding:0 !important;
+		border-style:none !important;
+		border-width:0;
+		text-align :left ;
+		background:#FFFFFF
+	}
+	
+    #copy fieldset {border:none;}	
+	    
+
+}
+
+.SearchExample
+{
+	font-style:italic;
+	font-size:11px;
+}
+
+.scrollableDivAdvancedSearch
+{	
+	overflow: auto;
+	border: solid 1px #eeeeee
+}
+
+.AdvSearchSectionBorder
+{
+	vertical-align: top; 
+	border: solid 1px #eeeeee
+}

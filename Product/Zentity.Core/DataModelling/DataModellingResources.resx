@@ -1,0 +1,1178 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Aggregate" xml:space="preserve">
+    <value>Aggregate</value>
+  </data>
+  <data name="Alias" xml:space="preserve">
+    <value>Alias</value>
+  </data>
+  <data name="AllowImplicitConversion" xml:space="preserve">
+    <value>AllowImplicitConversion</value>
+  </data>
+  <data name="AlterTableAddColumn" xml:space="preserve">
+    <value>ALTER TABLE [Core].[{0}] ADD [{1}] {2}</value>
+  </data>
+  <data name="AlterTableAddForeignKeyColumn" xml:space="preserve">
+    <value>ALTER TABLE [Core].[{0}] ADD [{1}] {2} CONSTRAINT [{3}] FOREIGN KEY REFERENCES [Core].[{4}] ([{5}])</value>
+  </data>
+  <data name="AlterTableAlterColumn" xml:space="preserve">
+    <value>ALTER TABLE [Core].[{0}] ALTER COLUMN [{1}] {2};</value>
+  </data>
+  <data name="AlterTableDropColumn" xml:space="preserve">
+    <value>ALTER TABLE [Core].[{0}] DROP COLUMN [{1}]</value>
+  </data>
+  <data name="Association" xml:space="preserve">
+    <value>Association</value>
+  </data>
+  <data name="AssociationEnd" xml:space="preserve">
+    <value>AssociationEnd</value>
+  </data>
+  <data name="AssociationSet" xml:space="preserve">
+    <value>AssociationSet</value>
+  </data>
+  <data name="AssociationSetMapping" xml:space="preserve">
+    <value>AssociationSetMapping</value>
+  </data>
+  <data name="At" xml:space="preserve">
+    <value>@</value>
+  </data>
+  <data name="AtId" xml:space="preserve">
+    <value>@Id</value>
+  </data>
+  <data name="AtIdUniqueIdentifier" xml:space="preserve">
+    <value>@Id [uniqueidentifier]</value>
+  </data>
+  <data name="AtPrevious" xml:space="preserve">
+    <value>@Previous</value>
+  </data>
+  <data name="BaseType" xml:space="preserve">
+    <value>BaseType</value>
+  </data>
+  <data name="BaseTypeId" xml:space="preserve">
+    <value>BaseTypeId</value>
+  </data>
+  <data name="BuiltIn" xml:space="preserve">
+    <value>BuiltIn</value>
+  </data>
+  <data name="CardinalityDefinition" xml:space="preserve">
+    <value>{0}-To-{1}</value>
+  </data>
+  <data name="CheckRelationshipsForOneToXXX" xml:space="preserve">
+    <value>IF EXISTS( SELECT 1	FROM [Core].[Association] [A]
+	INNER JOIN [Core].[Relationship] [R]
+	ON [A].[PredicateId] = [R].[PredicateId]
+	WHERE [A].[Id] = '{0}')
+BEGIN
+	RAISERROR('Association with Id = [{0}] cannot be deleted since Relationships are present in the store with this association. It is a {1} association. Delete the resource on [{2}] side to remove the relationship and then delete the association.', 16, 1);
+END</value>
+  </data>
+  <data name="Cmd" xml:space="preserve">
+    <value>Cmd</value>
+  </data>
+  <data name="ColumnName" xml:space="preserve">
+    <value>ColumnName</value>
+  </data>
+  <data name="CommaWithTrailingSpace" xml:space="preserve">
+    <value>, </value>
+  </data>
+  <data name="CompilerVersion" xml:space="preserve">
+    <value>CompilerVersion</value>
+  </data>
+  <data name="Condition" xml:space="preserve">
+    <value>Condition</value>
+  </data>
+  <data name="Core" xml:space="preserve">
+    <value>Core</value>
+  </data>
+  <data name="Core_GetDataModelModules" xml:space="preserve">
+    <value>Core.GetDataModelModules</value>
+  </data>
+  <data name="Core_GetTableModelMap" xml:space="preserve">
+    <value>Core.GetTableModelMap</value>
+  </data>
+  <data name="Core_SpExecuteSql" xml:space="preserve">
+    <value>Core.SpExecuteSql</value>
+  </data>
+  <data name="CreateDeleteProcedureForView" xml:space="preserve">
+    <value>CREATE PROCEDURE [Core].[{0}]
+	@SubjectResourceId [uniqueidentifier], 
+	@ObjectResourceId [uniqueidentifier]
+AS
+BEGIN
+	SET NOCOUNT ON
+	DELETE FROM [Core].[Relationship]
+	WHERE [SubjectResourceId] = @SubjectResourceId
+	AND [ObjectResourceId] = @ObjectResourceId
+	AND [PredicateId] = '{1}';
+END</value>
+  </data>
+  <data name="CreateInsertProcedureForView" xml:space="preserve">
+    <value>CREATE PROCEDURE [Core].[{0}]
+	@SubjectResourceId [uniqueidentifier], 
+	@ObjectResourceId [uniqueidentifier]
+AS
+BEGIN
+	SET NOCOUNT ON
+	INSERT INTO [Core].[Relationship]
+	(	
+		[Id],
+		[SubjectResourceId],
+		[ObjectResourceId],
+		[PredicateId]
+	)
+	VALUES
+	(
+		NEWID(),
+		@SubjectResourceId, 
+		@ObjectResourceId, 
+		'{1}'
+	) 
+END</value>
+  </data>
+  <data name="CreateOrUpdateAssociation" xml:space="preserve">
+    <value>EXEC [Core].[CreateOrUpdateAssociation] {0},{1},{2},{3},{4},{5},{6},{7},{8}</value>
+  </data>
+  <data name="CreateOrUpdateDataModelModule" xml:space="preserve">
+    <value>EXEC [Core].[CreateOrUpdateDataModelModule] {0},{1},{2},{3}</value>
+  </data>
+  <data name="CreateOrUpdateNavigationProperty" xml:space="preserve">
+    <value>EXEC [Core].[CreateOrUpdateNavigationProperty] {0},{1},{2},{3},{4},{5},{6}</value>
+  </data>
+  <data name="CreateOrUpdateResourceType" xml:space="preserve">
+    <value>EXEC [Core].[CreateOrUpdateResourceType] {0},{1},{2},{3},{4},{5},{6},{7}</value>
+  </data>
+  <data name="CreateOrUpdateScalarProperty" xml:space="preserve">
+    <value>EXEC [Core].[CreateOrUpdateScalarProperty] {0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10},{11}</value>
+  </data>
+  <data name="CreatePredicate" xml:space="preserve">
+    <value>EXEC [Core].[CreatePredicate] {0}, {1}, {2};</value>
+  </data>
+  <data name="CreateProcedure" xml:space="preserve">
+    <value>CREATE PROCEDURE [Core].[{0}]
+{1}
+AS
+BEGIN
+SET NOCOUNT ON;
+-- Not NULL value check 
+{2}
+
+{3}
+END</value>
+  </data>
+  <data name="CreateTable" xml:space="preserve">
+    <value>CREATE TABLE [Core].[{0}](
+	[Id] [uniqueidentifier] ROWGUIDCOL  NOT NULL,
+	[ResourceTypeId] [uniqueidentifier] FOREIGN KEY REFERENCES [Core].[ResourceType]([Id]) NOT NULL,
+	[Discriminator] [int] NOT NULL,
+	CONSTRAINT [PK_{0}] PRIMARY KEY NONCLUSTERED 
+	(
+		[Id] ASC
+	)
+)
+
+CREATE CLUSTERED INDEX [IX_{0}] ON [Core].[{0}] 
+(
+	[Discriminator] ASC,
+	[Id] ASC,
+	[ResourceTypeId] ASC
+)</value>
+  </data>
+  <data name="CreateUniqueClusteredIndex" xml:space="preserve">
+    <value>CREATE UNIQUE CLUSTERED INDEX [PK_{0}] ON [Core].[{1}] 
+(
+	{2}
+)</value>
+  </data>
+  <data name="CreateUniqueNonClusteredIndex" xml:space="preserve">
+    <value>CREATE UNIQUE NONCLUSTERED INDEX [UQ_{0}] ON [Core].[{1}] 
+(
+	{2}
+)</value>
+  </data>
+  <data name="CreateView" xml:space="preserve">
+    <value>CREATE VIEW [Core].[{0}]
+WITH SCHEMABINDING
+AS
+	SELECT [SubjectResourceId], [ObjectResourceId]
+	FROM [Core].[Relationship] T
+	WHERE [T].[PredicateId] = '{1}';</value>
+  </data>
+  <data name="CSDLManifestResourceName" xml:space="preserve">
+    <value>Core.ZentityDataModel.csdl</value>
+  </data>
+  <data name="CSDLNamespacePrefix" xml:space="preserve">
+    <value>csdl</value>
+  </data>
+  <data name="CSDLSchemaNameSpace" xml:space="preserve">
+    <value>http://schemas.microsoft.com/ado/2008/09/edm</value>
+  </data>
+  <data name="CSharpClassFormat" xml:space="preserve">
+    <value>class {0} {{ {1} }}</value>
+  </data>
+  <data name="CSharpNamespaceFormat" xml:space="preserve">
+    <value>namespace {0} {{ {1} }}</value>
+  </data>
+  <data name="CSharpPropertyFormat" xml:space="preserve">
+    <value>string {0};</value>
+  </data>
+  <data name="Current" xml:space="preserve">
+    <value>Current</value>
+  </data>
+  <data name="DataModel" xml:space="preserve">
+    <value>DataModel</value>
+  </data>
+  <data name="DataModelModule" xml:space="preserve">
+    <value>DataModelModule</value>
+  </data>
+  <data name="DataModelModules" xml:space="preserve">
+    <value>DataModelModules</value>
+  </data>
+  <data name="DataType" xml:space="preserve">
+    <value>DataType</value>
+  </data>
+  <data name="DataTypeBigint" xml:space="preserve">
+    <value>bigint</value>
+  </data>
+  <data name="DataTypeBit" xml:space="preserve">
+    <value>bit</value>
+  </data>
+  <data name="DataTypeDatetime" xml:space="preserve">
+    <value>datetime</value>
+  </data>
+  <data name="DataTypeDecimal" xml:space="preserve">
+    <value>decimal</value>
+  </data>
+  <data name="DataTypeFloat" xml:space="preserve">
+    <value>float</value>
+  </data>
+  <data name="DataTypeInt" xml:space="preserve">
+    <value>int</value>
+  </data>
+  <data name="DataTypeNvarchar" xml:space="preserve">
+    <value>nvarchar</value>
+  </data>
+  <data name="DataTypeReal" xml:space="preserve">
+    <value>real</value>
+  </data>
+  <data name="DataTypeSmallDatetime" xml:space="preserve">
+    <value>smalldatetime</value>
+  </data>
+  <data name="DataTypeSmallint" xml:space="preserve">
+    <value>smallint</value>
+  </data>
+  <data name="DataTypeUniqueidentifier" xml:space="preserve">
+    <value>uniqueidentifier</value>
+  </data>
+  <data name="DataTypeVarbinary" xml:space="preserve">
+    <value>varbinary</value>
+  </data>
+  <data name="DefaultBaseUri" xml:space="preserve">
+    <value>http://www.Zentity.Org/</value>
+  </data>
+  <data name="DeleteFrom" xml:space="preserve">
+    <value>DELETE FROM [Core].[{0}] 
+WHERE [{1}] = {2};</value>
+  </data>
+  <data name="DeleteFromAssociation" xml:space="preserve">
+    <value>DELETE FROM [Core].[Association] WHERE [Id] = {0}</value>
+  </data>
+  <data name="DeleteFromDataModelModule" xml:space="preserve">
+    <value>DELETE FROM [Core].[DataModelModule] WHERE [Id] = {0}</value>
+  </data>
+  <data name="DeleteFromNavigationProperty" xml:space="preserve">
+    <value>DELETE FROM [Core].[NavigationProperty] WHERE [Id] = {0};</value>
+  </data>
+  <data name="DeleteFromPredicate" xml:space="preserve">
+    <value>DELETE FROM [Core].[Predicate] WHERE [Id] = {0}</value>
+  </data>
+  <data name="DeleteFromRelationshipForPredicate" xml:space="preserve">
+    <value>DELETE FROM [Core].[Relationship] WHERE [PredicateId] = {0};</value>
+  </data>
+  <data name="DeleteFromRelationshipFromDeleted" xml:space="preserve">
+    <value>DELETE FROM [Core].[Relationship]
+WHERE [SubjectResourceId] = {0}
+AND [ObjectResourceId] = {1}
+AND [PredicateId] = {2};</value>
+  </data>
+  <data name="DeleteFromResourceType" xml:space="preserve">
+    <value>DELETE FROM [Core].[ResourceType]
+WHERE [Id] = {0}</value>
+  </data>
+  <data name="DeleteFromScalarProperty" xml:space="preserve">
+    <value>DELETE FROM [Core].[ScalarProperty] WHERE [Id] = {0};</value>
+  </data>
+  <data name="DeleteFromTableBasedOnResourceType" xml:space="preserve">
+    <value>DELETE FROM [Core].[{0}] WHERE [ResourceTypeId] = {1};</value>
+  </data>
+  <data name="DeleteFunction" xml:space="preserve">
+    <value>DeleteFunction</value>
+  </data>
+  <data name="Dependent" xml:space="preserve">
+    <value>Dependent</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="Discriminator" xml:space="preserve">
+    <value>Discriminator</value>
+  </data>
+  <data name="DllSystem" xml:space="preserve">
+    <value>System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="DllSystemDataEntity" xml:space="preserve">
+    <value>System.Data.Entity, Version=3.5.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="DllSystemRuntimeSerialization" xml:space="preserve">
+    <value>System.Runtime.Serialization, Version=3.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="DllSystemXml" xml:space="preserve">
+    <value>System.Xml, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Documentation" xml:space="preserve">
+    <value>Documentation</value>
+  </data>
+  <data name="DotCs" xml:space="preserve">
+    <value>.cs</value>
+  </data>
+  <data name="DotCsdl" xml:space="preserve">
+    <value>.csdl</value>
+  </data>
+  <data name="DotDll" xml:space="preserve">
+    <value>.dll</value>
+  </data>
+  <data name="DotMsl" xml:space="preserve">
+    <value>.msl</value>
+  </data>
+  <data name="DotSsdl" xml:space="preserve">
+    <value>.ssdl</value>
+  </data>
+  <data name="DropForeignkey" xml:space="preserve">
+    <value>ALTER TABLE [Core].[{0}] 
+DROP CONSTRAINT [{1}]</value>
+  </data>
+  <data name="DropProcedure" xml:space="preserve">
+    <value>DROP PROCEDURE [Core].[{0}]</value>
+  </data>
+  <data name="DropView" xml:space="preserve">
+    <value>DROP VIEW [Core].[{0}]</value>
+  </data>
+  <data name="End" xml:space="preserve">
+    <value>End</value>
+  </data>
+  <data name="EndProperty" xml:space="preserve">
+    <value>EndProperty</value>
+  </data>
+  <data name="EntitySet" xml:space="preserve">
+    <value>EntitySet</value>
+  </data>
+  <data name="EntityType" xml:space="preserve">
+    <value>EntityType</value>
+  </data>
+  <data name="EntityTypeMapping" xml:space="preserve">
+    <value>EntityTypeMapping</value>
+  </data>
+  <data name="EqualsWithLeadingAndTrailingSpaces" xml:space="preserve">
+    <value>  =  </value>
+  </data>
+  <data name="ExceptionAbsentModuleNamespace" xml:space="preserve">
+    <value>Namespace [{0}] present in the include list does not have a corresponding module in the data model.</value>
+  </data>
+  <data name="ExceptionArgumentIsNull" xml:space="preserve">
+    <value>Argument is null.</value>
+  </data>
+  <data name="ExceptionCannotLocateParentModule" xml:space="preserve">
+    <value>Cannot locate Parent module for this resource type. FullName cannot be computed.</value>
+  </data>
+  <data name="ExceptionCannotLocateParentType" xml:space="preserve">
+    <value>Cannot locate Parent type for this property. FullName cannot be computed.</value>
+  </data>
+  <data name="ExceptionCycleInDependencyGraph" xml:space="preserve">
+    <value>Cycle detected in the dependency graph of data model modules.</value>
+  </data>
+  <data name="ExceptionInvalidMaxLength" xml:space="preserve">
+    <value>Value {0} cannot be assigned to the MaxLength property of a ScalarProperty object with DataType {1}. MaxLength must be a value from 1 through {2} or -1.</value>
+  </data>
+  <data name="ExceptionInvalidPrecision" xml:space="preserve">
+    <value>Value {0} cannot be assigned to Precision. The precision must be a value from 1 through the maximum precision of 38. Also, it should be greater than or equal to the Scale.</value>
+  </data>
+  <data name="ExceptionInvalidScale" xml:space="preserve">
+    <value>Value {0} cannot be assigned to Scale. Scale must be a value from 0 through Precision upto a maximum of 26.</value>
+  </data>
+  <data name="ExceptionItemAndCollectionParentsDoNotMatch" xml:space="preserve">
+    <value>Parent property of object [{0}] does not match the collection's parent to which it is added.</value>
+  </data>
+  <data name="ExceptionMultipleColumnMappingsForProperty" xml:space="preserve">
+    <value>Multiple column mappings found for the property.</value>
+  </data>
+  <data name="ExceptionMultipleNavigationPropertyDetected" xml:space="preserve">
+    <value>Multiple navigation properties detected with same Id.</value>
+  </data>
+  <data name="ExceptionMultipleResourceTypeDetected" xml:space="preserve">
+    <value>Multiple resource types detected with same Id.</value>
+  </data>
+  <data name="ExceptionNotSupportedCardinality" xml:space="preserve">
+    <value>Not supported cardinality.</value>
+  </data>
+  <data name="ExceptionUnavailableNavProperty" xml:space="preserve">
+    <value>The new navigation property is already participating in an association. An association can be detached from its subject or object navigation property by setting its SubjectNavigationProperty or ObjectNavigationProperty property to a null reference.</value>
+  </data>
+  <data name="ExceptionUnsynchronizedModule" xml:space="preserve">
+    <value>Cannot generate artifacts for the module with namespace [{0}] since it is  not synchronized with the backend.</value>
+  </data>
+  <data name="ExecAfterSchemaChanges" xml:space="preserve">
+    <value>EXEC [Core].[AfterSchemaChanges];</value>
+  </data>
+  <data name="ExecCreateUniqueIndexesOnMetadata" xml:space="preserve">
+    <value>EXEC [Core].[CreateUniqueIndexesOnMetadata]</value>
+  </data>
+  <data name="ExecDropUniqueIndexesFromMetadata" xml:space="preserve">
+    <value>EXEC [Core].[DropUniqueIndexesFromMetadata]</value>
+  </data>
+  <data name="FixedLength" xml:space="preserve">
+    <value>FixedLength</value>
+  </data>
+  <data name="FKConstraintName" xml:space="preserve">
+    <value>FK_{0}</value>
+  </data>
+  <data name="From" xml:space="preserve">
+    <value>From</value>
+  </data>
+  <data name="FromRole" xml:space="preserve">
+    <value>FromRole</value>
+  </data>
+  <data name="Function" xml:space="preserve">
+    <value>Function</value>
+  </data>
+  <data name="FunctionImport" xml:space="preserve">
+    <value>FunctionImport</value>
+  </data>
+  <data name="FunctionImportMapping" xml:space="preserve">
+    <value>FunctionImportMapping</value>
+  </data>
+  <data name="FunctionImportName" xml:space="preserve">
+    <value>FunctionImportName</value>
+  </data>
+  <data name="FunctionName" xml:space="preserve">
+    <value>FunctionName</value>
+  </data>
+  <data name="Id" xml:space="preserve">
+    <value>Id</value>
+  </data>
+  <data name="In" xml:space="preserve">
+    <value>In</value>
+  </data>
+  <data name="InsertFunction" xml:space="preserve">
+    <value>InsertFunction</value>
+  </data>
+  <data name="InsertInto" xml:space="preserve">
+    <value>INSERT INTO [Core].[{0}]
+( 
+{1}
+)
+VALUES
+(
+{2}
+);</value>
+  </data>
+  <data name="InsertIntoRelationshipFromInserted" xml:space="preserve">
+    <value>INSERT INTO [Core].[Relationship]
+(	
+	[Id],
+	[SubjectResourceId],
+	[ObjectResourceId],
+	[PredicateId]
+)
+VALUES
+(
+	NEWID(), 
+	{0}, 
+	{1}, 
+	{2}
+);</value>
+  </data>
+  <data name="InvalidIdEmpty" xml:space="preserve">
+    <value>Id cannot be an empty value.</value>
+  </data>
+  <data name="InvalidMultiplicityOneToOne" xml:space="preserve">
+    <value>One to one associations are not supported by this version of Zentity.</value>
+  </data>
+  <data name="InvalidResourceTypesCyclicInheritance" xml:space="preserve">
+    <value>Error occurred while sorting the resource types. A cycle is detected in the inheritance hierarchy.</value>
+  </data>
+  <data name="InvalidStringPropertyCannotBeNullOrEmpty" xml:space="preserve">
+    <value>The {0} property on {1} object cannot be null or empty.</value>
+  </data>
+  <data name="IsComposable" xml:space="preserve">
+    <value>IsComposable</value>
+  </data>
+  <data name="IsFullTextIndexed" xml:space="preserve">
+    <value>IsFullTextIndexed</value>
+  </data>
+  <data name="IsMapped" xml:space="preserve">
+    <value>IsMapped</value>
+  </data>
+  <data name="IsMsShipped" xml:space="preserve">
+    <value>IsMsShipped</value>
+  </data>
+  <data name="IsNull" xml:space="preserve">
+    <value>IsNull</value>
+  </data>
+  <data name="IsScalarProperty" xml:space="preserve">
+    <value>IsScalarProperty</value>
+  </data>
+  <data name="Key" xml:space="preserve">
+    <value>Key</value>
+  </data>
+  <data name="Many" xml:space="preserve">
+    <value>*</value>
+  </data>
+  <data name="MappingFragment" xml:space="preserve">
+    <value>MappingFragment</value>
+  </data>
+  <data name="Max" xml:space="preserve">
+    <value>Max</value>
+  </data>
+  <data name="MaxDiscriminator" xml:space="preserve">
+    <value>MaxDiscriminator</value>
+  </data>
+  <data name="MaxLength" xml:space="preserve">
+    <value>MaxLength</value>
+  </data>
+  <data name="Mode" xml:space="preserve">
+    <value>Mode</value>
+  </data>
+  <data name="ModificationFunctionMapping" xml:space="preserve">
+    <value>ModificationFunctionMapping</value>
+  </data>
+  <data name="MsgDomainInterpreterDomainTripleObjectNotDefined" xml:space="preserve">
+    <value>Object of a domain triple" {0}" is not defined.</value>
+  </data>
+  <data name="MsgDomainInterpreterDomainTripleSubjectNotDefined" xml:space="preserve">
+    <value>Subject of a domain triple" {0}" is not defined.</value>
+  </data>
+  <data name="MsgDomainInterpreterRangeTripleObjectNotDefined" xml:space="preserve">
+    <value>Object of a range triple" {0}" is not defined.</value>
+  </data>
+  <data name="MsgDomainInterpreterRangeTripleSubjectNotDefined" xml:space="preserve">
+    <value>Subject of a range triple" {0}" is not defined.</value>
+  </data>
+  <data name="MsgPredicateInterpreterDuplicateTriples" xml:space="preserve">
+    <value>Graph is having duplicate Triples.</value>
+  </data>
+  <data name="MsgPredicateInterpreterNotSupportedPredicates" xml:space="preserve">
+    <value>Graph Contains triples having predicate other than allowed (rdf:type|rdfs:SubClassOf|rdfs:domain|rdfs:range).</value>
+  </data>
+  <data name="MsgSubClassOfInterpreterObjectNotDefined" xml:space="preserve">
+    <value>Object of a subClassOf triple "{0}" is not defined.</value>
+  </data>
+  <data name="MsgSubClassOfInterpreterSameSubject" xml:space="preserve">
+    <value>Multiple subClassOf triples are defined with same subject "{0}".</value>
+  </data>
+  <data name="MsgSubClassOfInterpreterSameSubjectObject" xml:space="preserve">
+    <value>Subject and Object of a subClassOf triple "{0}" cannot be same.</value>
+  </data>
+  <data name="MsgSubClassOfInterpreterSubjectNotDefined" xml:space="preserve">
+    <value>Subject of a subClassOf triple "{0}" is not defined.</value>
+  </data>
+  <data name="MsgTypeInterpreterDuplicateSubject" xml:space="preserve">
+    <value>Type triple "{0} " is defined with the same subject more than once.</value>
+  </data>
+  <data name="MsgTypeInterpreterMoreDomains" xml:space="preserve">
+    <value>Property triple "{0}" is associated with more than one domain triple.</value>
+  </data>
+  <data name="MsgTypeInterpreterMoreRanges" xml:space="preserve">
+    <value>Property triple "{0}" is associated with more than one range triple.</value>
+  </data>
+  <data name="MsgTypeInterpreterNoDomains" xml:space="preserve">
+    <value>Property triple "{0}" is not associated with a domain triple.</value>
+  </data>
+  <data name="MsgTypeInterpreterNoRanges" xml:space="preserve">
+    <value>Property triple "{0}" is not associated with a range triple.</value>
+  </data>
+  <data name="MsgTypeInterpreterNotSupportedObject" xml:space="preserve">
+    <value>Graph contains type triples having object other than Allowed (rdfs:Class|rdf:Property).</value>
+  </data>
+  <data name="MsgXsdDataTypeFacetNotSupported" xml:space="preserve">
+    <value>Facets other than "maxLength", "fractionDigits" and "totalDigits" are not supported.</value>
+  </data>
+  <data name="MsgXsdDataTypeSimpleTypeSupported" xml:space="preserve">
+    <value> Xml schema elements other than SimpleType are are not supported.</value>
+  </data>
+  <data name="MSLManifestResourceName" xml:space="preserve">
+    <value>Core.ZentityDataModel.msl</value>
+  </data>
+  <data name="MSLNamespacePrefix" xml:space="preserve">
+    <value>msl</value>
+  </data>
+  <data name="MSLSchemaNamespace" xml:space="preserve">
+    <value>http://schemas.microsoft.com/ado/2008/09/mapping/cs</value>
+  </data>
+  <data name="Multiplicity" xml:space="preserve">
+    <value>Multiplicity</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="Namespace" xml:space="preserve">
+    <value>Namespace</value>
+  </data>
+  <data name="NavigationProperty" xml:space="preserve">
+    <value>NavigationProperty</value>
+  </data>
+  <data name="NiladicFunction" xml:space="preserve">
+    <value>NiladicFunction</value>
+  </data>
+  <data name="Null" xml:space="preserve">
+    <value>NULL</value>
+  </data>
+  <data name="Nullable" xml:space="preserve">
+    <value>Nullable</value>
+  </data>
+  <data name="Object" xml:space="preserve">
+    <value>Object</value>
+  </data>
+  <data name="ObjectMultiplicity" xml:space="preserve">
+    <value>ObjectMultiplicity</value>
+  </data>
+  <data name="ObjectNavigationProperty" xml:space="preserve">
+    <value>ObjectNavigationProperty</value>
+  </data>
+  <data name="ObjectNavigationPropertyId" xml:space="preserve">
+    <value>ObjectNavigationPropertyId</value>
+  </data>
+  <data name="ObjectResourceId" xml:space="preserve">
+    <value>ObjectResourceId</value>
+  </data>
+  <data name="One" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="Parameter" xml:space="preserve">
+    <value>Parameter</value>
+  </data>
+  <data name="ParameterName" xml:space="preserve">
+    <value>ParameterName</value>
+  </data>
+  <data name="ParameterNotNullCheck" xml:space="preserve">
+    <value>IF @{0} IS NULL
+BEGIN
+	RAISERROR (N'Cannot insert the value NULL into column [{0}].', 16, 1);
+	RETURN -1;
+END</value>
+  </data>
+  <data name="ParameterTypeSemantics" xml:space="preserve">
+    <value>ParameterTypeSemantics</value>
+  </data>
+  <data name="Paranthesis" xml:space="preserve">
+    <value>({0})</value>
+  </data>
+  <data name="Precision" xml:space="preserve">
+    <value>Precision</value>
+  </data>
+  <data name="PredicateId" xml:space="preserve">
+    <value>PredicateId</value>
+  </data>
+  <data name="Principal" xml:space="preserve">
+    <value>Principal</value>
+  </data>
+  <data name="Property" xml:space="preserve">
+    <value>Property</value>
+  </data>
+  <data name="PropertyId" xml:space="preserve">
+    <value>PropertyId</value>
+  </data>
+  <data name="PropertyRef" xml:space="preserve">
+    <value>PropertyRef</value>
+  </data>
+  <data name="RdfNamespace" xml:space="preserve">
+    <value>http://www.w3.org/1999/02/22-rdf-syntax-ns#</value>
+  </data>
+  <data name="RdfsNamespace" xml:space="preserve">
+    <value>http://www.w3.org/2000/01/rdf-schema#</value>
+  </data>
+  <data name="ReferentialConstraint" xml:space="preserve">
+    <value>ReferentialConstraint</value>
+  </data>
+  <data name="Relationship" xml:space="preserve">
+    <value>Relationship</value>
+  </data>
+  <data name="Resource" xml:space="preserve">
+    <value>Resource</value>
+  </data>
+  <data name="Resources" xml:space="preserve">
+    <value>Resources</value>
+  </data>
+  <data name="ResourceType" xml:space="preserve">
+    <value>ResourceType</value>
+  </data>
+  <data name="ResourceTypeId" xml:space="preserve">
+    <value>ResourceTypeId</value>
+  </data>
+  <data name="Role" xml:space="preserve">
+    <value>Role</value>
+  </data>
+  <data name="ScalarProperty" xml:space="preserve">
+    <value>ScalarProperty</value>
+  </data>
+  <data name="Scale" xml:space="preserve">
+    <value>Scale</value>
+  </data>
+  <data name="Schema" xml:space="preserve">
+    <value>Schema</value>
+  </data>
+  <data name="Self" xml:space="preserve">
+    <value>Self</value>
+  </data>
+  <data name="Space" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="SquareBracket" xml:space="preserve">
+    <value>[{0}]</value>
+  </data>
+  <data name="SSDLManifestResourceName" xml:space="preserve">
+    <value>Core.ZentityDataModel.ssdl</value>
+  </data>
+  <data name="SSDLNamespacePrefix" xml:space="preserve">
+    <value>ssdl</value>
+  </data>
+  <data name="SSDLSchemaNameSpace" xml:space="preserve">
+    <value>http://schemas.microsoft.com/ado/2009/02/edm/ssdl</value>
+  </data>
+  <data name="StoreEntitySet" xml:space="preserve">
+    <value>StoreEntitySet</value>
+  </data>
+  <data name="Subject" xml:space="preserve">
+    <value>Subject</value>
+  </data>
+  <data name="SubjectMultiplicity" xml:space="preserve">
+    <value>SubjectMultiplicity</value>
+  </data>
+  <data name="SubjectNavigationProperty" xml:space="preserve">
+    <value>SubjectNavigationProperty</value>
+  </data>
+  <data name="SubjectNavigationPropertyId" xml:space="preserve">
+    <value>SubjectNavigationPropertyId</value>
+  </data>
+  <data name="SubjectResourceId" xml:space="preserve">
+    <value>SubjectResourceId</value>
+  </data>
+  <data name="Summary" xml:space="preserve">
+    <value>Summary</value>
+  </data>
+  <data name="TableModelMap" xml:space="preserve">
+    <value>TableModelMap</value>
+  </data>
+  <data name="TableName" xml:space="preserve">
+    <value>TableName</value>
+  </data>
+  <data name="To" xml:space="preserve">
+    <value>To</value>
+  </data>
+  <data name="ToRole" xml:space="preserve">
+    <value>ToRole</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>Type</value>
+  </data>
+  <data name="TypeName" xml:space="preserve">
+    <value>TypeName</value>
+  </data>
+  <data name="Unicode" xml:space="preserve">
+    <value>Unicode</value>
+  </data>
+  <data name="UnknownDatatype" xml:space="preserve">
+    <value>Cannot interpret datatype [{0}].</value>
+  </data>
+  <data name="UpdateFunction" xml:space="preserve">
+    <value>UpdateFunction</value>
+  </data>
+  <data name="UpdateRelationshipForAssociation" xml:space="preserve">
+    <value>DECLARE {0} [uniqueidentifier];
+SELECT {0} = [{1}] FROM [Core].[{2}] WHERE [Id] = {3};
+UPDATE [Core].[Relationship]
+SET 
+[SubjectResourceId] = {4}, 
+[ObjectResourceId]= {5}
+WHERE 
+[SubjectResourceId] = {6}
+AND [ObjectResourceId] = {7}
+AND [PredicateId] = {8};</value>
+  </data>
+  <data name="UpdateSet" xml:space="preserve">
+    <value>UPDATE [Core].[{0}] 
+SET	
+{1}
+WHERE 
+[{2}] = {3};</value>
+  </data>
+  <data name="Uri" xml:space="preserve">
+    <value>Uri</value>
+  </data>
+  <data name="v3_5" xml:space="preserve">
+    <value>v3.5</value>
+  </data>
+  <data name="ValidationExceptionAssociationNotFound" xml:space="preserve">
+    <value>No association detected for NavigationProperty with Id [{0}], Name [{1}].</value>
+  </data>
+  <data name="ValidationExceptionBaseTypeNotInModel" xml:space="preserve">
+    <value>BaseType property of resource type with Id [{0}], Name [{1}] points to a ResourceType that is not a part of this DataModel.</value>
+  </data>
+  <data name="ValidationExceptionCannotTraceItem" xml:space="preserve">
+    <value>{0} with Id [{1}], {2} [{3}] cannot be traced back to the original DataModel reference. There is a possibility that the {0} is shared with another DataModel.</value>
+  </data>
+  <data name="ValidationExceptionDirectionNotDefined" xml:space="preserve">
+    <value>Direction property of the NavigationProperty with Id [{0}], Name [{1}] is not defined.</value>
+  </data>
+  <data name="ValidationExceptionDirectionOutOfSync" xml:space="preserve">
+    <value>NavigationProperty with Id [{0}], Name [{1}] indicates that it is the {2} of an Association with Id [{3}], Name [{4}] but the {5} of the Association does not point back to the NavigationProperty.</value>
+  </data>
+  <data name="ValidationExceptionDuplicateAssociationName" xml:space="preserve">
+    <value>Multiple Associations detected with Name [{0}] in the data model. Association names must be unique across all the data model modules.</value>
+  </data>
+  <data name="ValidationExceptionDuplicateId" xml:space="preserve">
+    <value>Multiple data model items detected with same Id [{0}].</value>
+  </data>
+  <data name="ValidationExceptionDuplicateItemInCollection" xml:space="preserve">
+    <value>Multiple {0} objects detected in the collection with same {1} = {2}.</value>
+  </data>
+  <data name="ValidationExceptionDuplicatePropertiesInResourceType" xml:space="preserve">
+    <value>Multiple properties detected with same Name [{0}] for the ResourceType with FullName = [{1}]. Make sure that the names are unique across all scalar and navigation properties for a ResourceType.</value>
+  </data>
+  <data name="ValidationExceptionInvalidCSharpIdentifier" xml:space="preserve">
+    <value>Some of the items of this DataModel do not comply with the C# identifier requirements. Please ensure that the Namespace property of DataModelModule item is a valid C# namespace name, Name property of ResourceType and Association items is a valid C# class name, Name property of ScalarProperty and NavigationProperty items is a valid C# property name. Compiler generated the following error: [{0}]</value>
+  </data>
+  <data name="ValidationExceptionInvalidLength" xml:space="preserve">
+    <value>Length of property [{0}] cannot be greater than {1}.</value>
+  </data>
+  <data name="ValidationExceptionMsShippedAssociationAdded" xml:space="preserve">
+    <value>Association with FullName = [{0}] is added to an MsShipped module. It is an error to update MsShipped model items.</value>
+  </data>
+  <data name="ValidationExceptionMsShippedAssociationDeleted" xml:space="preserve">
+    <value>Association with FullName = [{0}] is deleted from an MsShipped module. It is an error to update MsShipped model items.</value>
+  </data>
+  <data name="ValidationExceptionMsShippedAssociationUpdated" xml:space="preserve">
+    <value>Association with FullName = [{0}] belongs to an MsShipped module and has undergone some updates. It is an error to update MsShipped model items.</value>
+  </data>
+  <data name="ValidationExceptionMsShippedModuleDeleted" xml:space="preserve">
+    <value>MsShipped module with Namespace = [{0}] is deleted. It is an error to update MsShipped module items.</value>
+  </data>
+  <data name="ValidationExceptionMsShippedModuleUpdated" xml:space="preserve">
+    <value>MsShipped module with Namespace = [{0}] is updated. It is an error to update MsShipped module items.</value>
+  </data>
+  <data name="ValidationExceptionMsShippedNavigationPropertyAdded" xml:space="preserve">
+    <value>NavigationProperty with FullName = [{0}] is added to an MsShipped module. It is an error to update MsShipped model items.</value>
+  </data>
+  <data name="ValidationExceptionMsShippedNavigationPropertyDeleted" xml:space="preserve">
+    <value>NavigationProperty with FullName = [{0}] is deleted from an MsShipped module. It is an error to update MsShipped model items.</value>
+  </data>
+  <data name="ValidationExceptionMsShippedNavigationPropertyUpdated" xml:space="preserve">
+    <value>NavigationProperty with FullName = [{0}] belongs to an MsShipped module and has undergone some updates. It is an error to update MsShipped model items.</value>
+  </data>
+  <data name="ValidationExceptionMsShippedResourceTypeAdded" xml:space="preserve">
+    <value>ResourceType with FullName = [{0}] is added to an MsShipped module. It is an error to update MsShipped model items.</value>
+  </data>
+  <data name="ValidationExceptionMsShippedResourceTypeDeleted" xml:space="preserve">
+    <value>ResourceType with FullName = [{0}] is deleted from an MsShipped module. It is an error to update MsShipped model items.</value>
+  </data>
+  <data name="ValidationExceptionMsShippedResourceTypeUpdated" xml:space="preserve">
+    <value>ResourceType with FullName = [{0}] belongs to an MsShipped module and has undergone some updates. It is an error to update MsShipped model items.</value>
+  </data>
+  <data name="ValidationExceptionMsShippedScalarPropertyAdded" xml:space="preserve">
+    <value>ScalarProperty with FullName = [{0}] is added to an MsShipped module. It is an error to update MsShipped model items.</value>
+  </data>
+  <data name="ValidationExceptionMsShippedScalarPropertyDeleted" xml:space="preserve">
+    <value>ScalarProperty with FullName = [{0}] is deleted from an MsShipped module. It is an error to update MsShipped model items.</value>
+  </data>
+  <data name="ValidationExceptionMsShippedScalarPropertyUpdated" xml:space="preserve">
+    <value>ScalarProperty with FullName = [{0}] belongs to an MsShipped module and has undergone some updates. It is an error to update MsShipped model items.</value>
+  </data>
+  <data name="ValidationExceptionNullBaseType" xml:space="preserve">
+    <value>BaseType property of the ResourceType with Id [{0}], Name [{1}] is set to a null reference.The BaseType can be a null reference only for the type [Zentity.Core.Resource].</value>
+  </data>
+  <data name="ValidationExceptionNullNavigationProperty" xml:space="preserve">
+    <value>The {0} property of association with Id [{1}], Name [{2}] is set to a null reference.</value>
+  </data>
+  <data name="ValidationExceptionOtherEndNotInModel" xml:space="preserve">
+    <value>Association with Id [{0}], Name [{1}] is attached to a navigation property with Id [{2}], Name [{3}] that is not a part of this DataModel.</value>
+  </data>
+  <data name="ValidationExceptionPropertyEmpty" xml:space="preserve">
+    <value>Property [{0}] on an object of type [{1}] cannot have an empty value.</value>
+  </data>
+  <data name="ValidationExceptionPropertyNull" xml:space="preserve">
+    <value>Property [{0}] on an object of type [{1}] cannot be a null reference.</value>
+  </data>
+  <data name="ValidationExceptionSeeInnerException" xml:space="preserve">
+    <value>An error occurred while validating the data model. See inner exception for more details.</value>
+  </data>
+  <data name="ValidationExceptionStringPropertyNullOrEmpty" xml:space="preserve">
+    <value>String property [{0}] on an object of type [{1}] cannot be a null reference or an empty string.</value>
+  </data>
+  <data name="Value" xml:space="preserve">
+    <value>Value</value>
+  </data>
+  <data name="Version" xml:space="preserve">
+    <value>Version</value>
+  </data>
+  <data name="ViewName" xml:space="preserve">
+    <value>ViewName</value>
+  </data>
+  <data name="XPathAssociation" xml:space="preserve">
+    <value>//Association</value>
+  </data>
+  <data name="XPathCSDLEntityContainer" xml:space="preserve">
+    <value>//csdl:EntityContainer</value>
+  </data>
+  <data name="XPathCSDLSchema" xml:space="preserve">
+    <value>//csdl:Schema</value>
+  </data>
+  <data name="XPathDataModelModule" xml:space="preserve">
+    <value>//DataModelModule</value>
+  </data>
+  <data name="XPathMSLEntityContainerMapping" xml:space="preserve">
+    <value>//msl:EntityContainerMapping</value>
+  </data>
+  <data name="XPathMSLEntitySetMapping" xml:space="preserve">
+    <value>//msl:EntitySetMapping[@Name='{0}']</value>
+  </data>
+  <data name="XPathMSLEntityTypeMapping" xml:space="preserve">
+    <value>./msl:EntityTypeMapping[@TypeName='{0}']</value>
+  </data>
+  <data name="XPathMSLMappingFragment" xml:space="preserve">
+    <value>./msl:MappingFragment[@StoreEntitySet='{0}']</value>
+  </data>
+  <data name="XPathMSLRelativeMappingFragments" xml:space="preserve">
+    <value>./msl:MappingFragment</value>
+  </data>
+  <data name="XPathRelativeColumn" xml:space="preserve">
+    <value>./Column</value>
+  </data>
+  <data name="XPathRelativeNavigationProperty" xml:space="preserve">
+    <value>./NavigationProperty</value>
+  </data>
+  <data name="XPathRelativeResourceType" xml:space="preserve">
+    <value>./ResourceType</value>
+  </data>
+  <data name="XPathRelativeScalarProperty" xml:space="preserve">
+    <value>./ScalarProperty</value>
+  </data>
+  <data name="XPathResourceType" xml:space="preserve">
+    <value>//ResourceType</value>
+  </data>
+  <data name="XPathSSDLEntityContainer" xml:space="preserve">
+    <value>//ssdl:EntityContainer</value>
+  </data>
+  <data name="XPathSSDLEntityType" xml:space="preserve">
+    <value>./ssdl:EntityType[@Name='{0}']</value>
+  </data>
+  <data name="XPathSSDLSchema" xml:space="preserve">
+    <value>//ssdl:Schema</value>
+  </data>
+  <data name="XPathTable" xml:space="preserve">
+    <value>//Table</value>
+  </data>
+  <data name="xsdNameSpace" xml:space="preserve">
+    <value>http://www.w3.org/2001/XMLSchema#</value>
+  </data>
+  <data name="ZentityCore" xml:space="preserve">
+    <value>Zentity.Core</value>
+  </data>
+  <data name="ZentityCoreResource" xml:space="preserve">
+    <value>Zentity.Core.Resource</value>
+  </data>
+  <data name="ZeroOrOne" xml:space="preserve">
+    <value>0..1</value>
+  </data>
+  <data name="ValidationExceptionTooManyProperties" xml:space="preserve">
+    <value>The resource type with Id [{0}], FullName [{1}] has too many properties. The total number of scalar and navigation properties for a resource type, including the properties inherited from all its ancestors cannot exceed {2}.</value>
+  </data>
+  <data name="DataTypeTinyInt" xml:space="preserve">
+    <value>tinyint</value>
+  </data>
+  <data name="DllSystem4_0" xml:space="preserve">
+    <value>System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="DllSystemDataEntity4_0" xml:space="preserve">
+    <value>System.Data.Entity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="DllSystemRuntimeSerialization4_0" xml:space="preserve">
+    <value>System.Runtime.Serialization, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="DllSystemXml4_0" xml:space="preserve">
+    <value>System.Xml, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="v4_0" xml:space="preserve">
+    <value>v4.0</value>
+  </data>
+  <data name="DummyClassCode" xml:space="preserve">
+    <value>internal static class Dummy {}</value>
+  </data>
+  <data name="ConfigurationXml" xml:space="preserve">
+    <value>ConfigurationXml</value>
+  </data>
+  <data name="XPathRelativeConfigurationXml" xml:space="preserve">
+    <value>./ConfigurationXml</value>
+  </data>
+  <data name="Core_CreateOrUpdateResourceType" xml:space="preserve">
+    <value>Core.CreateOrUpdateResourceType</value>
+  </data>
+  <data name="DefiningQuery" xml:space="preserve">
+    <value>DefiningQuery</value>
+  </data>
+  <data name="EntityDefiningQueryFormat" xml:space="preserve">
+    <value>SELECT  Id, DateAdded, DateModified, Description, Title, Uri
+{0} FROM Core.Resource INNER JOIN 
+    (SELECT Id AS ResourceTypeId FROM Core.GetDerivedTypes('{1}')) AS DerivedTypes
+     ON DerivedTypes.ResourceTypeId = Core.Resource.ResourceTypeId</value>
+  </data>
+  <data name="EntityDefiningQueryColumnFormat" xml:space="preserve">
+    <value>,[{0}] AS [{1}]
+</value>
+  </data>
+  <data name="EntitySetMapping" xml:space="preserve">
+    <value>EntitySetMapping</value>
+  </data>
+  <data name="SuffixedNameFormat" xml:space="preserve">
+    <value>{0}_{1}</value>
+  </data>
+  <data name="ViewDefiningQueryFormat" xml:space="preserve">
+    <value>SELECT SubjectResourceId, ObjectResourceId FROM Core.[{0}]</value>
+  </data>
+  <data name="AssemblyFileRelationshipFormat" xml:space="preserve">
+    <value>[assembly: System.Data.Objects.DataClasses.EdmRelationshipAttribute("{1}", "ResourceHasFile_{0}File", "{0}", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof({1}.{0}), "File", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Zentity.Core.FlattenedFile))]
+</value>
+  </data>
+  <data name="Files" xml:space="preserve">
+    <value>Files</value>
+  </data>
+  <data name="FlattenedFile" xml:space="preserve">
+    <value>FlattenedFile</value>
+  </data>
+  <data name="FlattenedFiles" xml:space="preserve">
+    <value>FlattenedFiles</value>
+  </data>
+  <data name="ValidationExceptionDuplicateResourceTypeName" xml:space="preserve">
+    <value>ResourceType names should be unique across all data model modules. The following ResourceType names are already a part of another data model : [{0}]</value>
+  </data>
+  <data name="Core_GetDataModelResourceItemCount" xml:space="preserve">
+    <value>Core.GetDataModelResourceItemCount</value>
+  </data>
+  <data name="ItemCount" xml:space="preserve">
+    <value>ItemCount</value>
+  </data>
+</root>

@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="PivotCollectionItem" msprop:Generator_TableClassName="PivotCollectionItemDataTable" msprop:Generator_TableVarName="tablePivotCollectionItem" msprop:Generator_TablePropName="PivotCollectionItem" msprop:Generator_RowDeletingName="PivotCollectionItemRowDeleting" msprop:Generator_UserTableName="PivotCollectionItem" msprop:Generator_RowChangingName="PivotCollectionItemRowChanging" msprop:Generator_RowEvHandlerName="PivotCollectionItemRowChangeEventHandler" msprop:Generator_RowDeletedName="PivotCollectionItemRowDeleted" msprop:Generator_RowEvArgName="PivotCollectionItemRowChangeEvent" msprop:Generator_RowChangedName="PivotCollectionItemRowChanged" msprop:Generator_RowClassName="PivotCollectionItemRow">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Name" msprop:Generator_ColumnVarNameInTable="columnName" msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_ColumnPropNameInTable="NameColumn" msprop:Generator_UserColumnName="Name" type="xs:string" minOccurs="0" />
+        <xs:element name="ResourceType" msprop:Generator_ColumnVarNameInTable="columnResourceType" msprop:Generator_ColumnPropNameInRow="ResourceType" msprop:Generator_ColumnPropNameInTable="ResourceTypeColumn" msprop:Generator_UserColumnName="ResourceType" type="xs:string" minOccurs="0" />
+        <xs:element name="DataModel" msprop:Generator_ColumnVarNameInTable="columnDataModel" msprop:Generator_ColumnPropNameInRow="DataModel" msprop:Generator_ColumnPropNameInTable="DataModelColumn" msprop:Generator_UserColumnName="DataModel" type="xs:string" minOccurs="0" />
+        <xs:element name="LastUpdated" msprop:Generator_ColumnVarNameInTable="columnDateAdded" msprop:Generator_ColumnPropNameInRow="LastUpdated" msprop:Generator_ColumnPropNameInTable="DateAddedColumn" msprop:Generator_UserColumnName="LastUpdated" type="xs:string" minOccurs="0" />
+        <xs:element name="Path" msprop:Generator_ColumnVarNameInTable="columnPath" msprop:Generator_ColumnPropNameInRow="Path" msprop:Generator_ColumnPropNameInTable="PathColumn" msprop:Generator_UserColumnName="Path" type="xs:string" minOccurs="0" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_DataSetName="NewDataSet" msprop:Generator_UserDSName="NewDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element ref="PivotCollectionItem" />
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

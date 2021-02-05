@@ -1,0 +1,266 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Description" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="ValidationExceptionScalarPropertyNameNullOrEmpty" xml:space="preserve">
+    <value>Scalar property name cannot be null or empty.</value>
+  </data>
+  <data name="FileNotFoundForDownload" xml:space="preserve">
+    <value>File not found in the repository. Content can be downloaded only from an existing File resource.</value>
+  </data>
+  <data name="FileNotFoundForUpload" xml:space="preserve">
+    <value>File not found in the repository. Content can be uploaded only to an existing File resource.</value>
+  </data>
+  <data name="InvalidConfigNameNullOrEmpty" xml:space="preserve">
+    <value>The configuration name cannot be a null reference or an empty string.</value>
+  </data>
+  <data name="InvalidInputPathNullOrEmtpy" xml:space="preserve">
+    <value>The input path cannot be a null reference or an empty string.</value>
+  </data>
+  <data name="InvalidInputPathNonExisting" xml:space="preserve">
+    <value>The specified input file does not exist.</value>
+  </data>
+  <data name="InvalidInputStream" xml:space="preserve">
+    <value>Input stream does not support reading. The input stream must support reading for copying to work.</value>
+  </data>
+  <data name="InvalidOutputStream" xml:space="preserve">
+    <value>The output stream does not support writing. For copying to work, the output stream must support writing.</value>
+  </data>
+  <data name="MimeType" xml:space="preserve">
+    <value>MimeType</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="PropertyName" xml:space="preserve">
+    <value>PropertyName</value>
+  </data>
+  <data name="Scope" xml:space="preserve">
+    <value>Scope</value>
+  </data>
+  <data name="DateModified" xml:space="preserve">
+    <value>DateModified</value>
+  </data>
+  <data name="Core_ValidateOneToXxxDeletion" xml:space="preserve">
+    <value>Core.ValidateOneToXxxDeletion</value>
+  </data>
+  <data name="CsvDeletedRelationshipIds" xml:space="preserve">
+    <value>CsvDeletedRelationshipIds</value>
+  </data>
+  <data name="CsvDeletedResourceIds" xml:space="preserve">
+    <value>CsvDeletedResourceIds</value>
+  </data>
+  <data name="ResourceId" xml:space="preserve">
+    <value>ResourceId</value>
+  </data>
+  <data name="TransactionContext" xml:space="preserve">
+    <value>TransactionContext</value>
+  </data>
+  <data name="ConfigName" xml:space="preserve">
+    <value>ConfigName</value>
+  </data>
+  <data name="ConfigValue" xml:space="preserve">
+    <value>ConfigValue</value>
+  </data>
+  <data name="PropertyValue" xml:space="preserve">
+    <value>PropertyValue</value>
+  </data>
+  <data name="Core_GetServerProperty" xml:space="preserve">
+    <value>Core.GetServerProperty</value>
+  </data>
+  <data name="CommandTimeoutFormat" xml:space="preserve">
+    <value>Command Timeout={0}</value>
+  </data>
+  <data name="CmdGetPathNameAndTransactionToken" xml:space="preserve">
+    <value>SELECT @PathName = Content.PathName(), 
+@TransactionContext = GET_FILESTREAM_TRANSACTION_CONTEXT() 
+FROM [Core].[Content] WITH (ROWLOCK) 
+WHERE [ResourceId] = @Id;</value>
+  </data>
+  <data name="Command_Timeout" xml:space="preserve">
+    <value>Command Timeout</value>
+  </data>
+  <data name="ConnectionString" xml:space="preserve">
+    <value>ConnectionString</value>
+  </data>
+  <data name="Checksum" xml:space="preserve">
+    <value>Checksum</value>
+  </data>
+  <data name="Id" xml:space="preserve">
+    <value>Id</value>
+  </data>
+  <data name="PathName" xml:space="preserve">
+    <value>PathName</value>
+  </data>
+  <data name="ProductVersion" xml:space="preserve">
+    <value>ProductVersion</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Title</value>
+  </data>
+  <data name="Uri" xml:space="preserve">
+    <value>Uri</value>
+  </data>
+  <data name="ValidationExceptionInvalidLength" xml:space="preserve">
+    <value>Length of property [{0}] cannot be greater than {1}.</value>
+  </data>
+  <data name="CmdFileExists" xml:space="preserve">
+    <value>SELECT 1 FROM [Core].[Resource] WITH(NOLOCK) 
+WHERE [Id] = @Id AND [ResourceTypeId] IN 
+(SELECT [Id] FROM [Core].[GetDerivedTypes]('94c567f8-b3eb-4ccb-9bf1-fc88970f78d7'))</value>
+  </data>
+  <data name="Core_GetConfigurationValue" xml:space="preserve">
+    <value>Core.GetConfigurationValue</value>
+  </data>
+  <data name="FileExtension" xml:space="preserve">
+    <value>FileExtension</value>
+  </data>
+  <data name="InvalidOutputPathNullOrEmpty" xml:space="preserve">
+    <value>The output path cannot be a null reference or an empty string.</value>
+  </data>
+  <data name="FileCannotBeSaved" xml:space="preserve">
+    <value>The File resource could not be saved</value>
+  </data>
+  <data name="FileContentNotStreamed" xml:space="preserve">
+    <value>The content stream could not be returned for the File with an identity of {0} : {1}</value>
+  </data>
+  <data name="FileETagsNotSupported" xml:space="preserve">
+    <value>The ZentityFileStreamProvider does not support eTags for File resources.</value>
+  </data>
+  <data name="FileIdIsGuidEmpty" xml:space="preserve">
+    <value>The 'Id' of the File resource that was sent in the slug header of the SetSaveStream method cannot be Guid.Empty (00000000-0000-0000-0000-000000000000).</value>
+  </data>
+  <data name="FileIdIsInvalid" xml:space="preserve">
+    <value>The 'Id' of the File resource that was sent in the slug header of the SetSaveStream cannot be parsed. The 'Id' value must be a valid Guid.</value>
+  </data>
+  <data name="FileIdNotSent" xml:space="preserve">
+    <value>The 'Id' of the File resource must be sent as the slug header of the SetSaveStream method. The 'Id' value must be a valid Guid.</value>
+  </data>
+  <data name="FileNotFound" xml:space="preserve">
+    <value>The requested File resource was not found.</value>
+  </data>
+  <data name="HttpHeaderSlug" xml:space="preserve">
+    <value>Slug</value>
+  </data>
+  <data name="InvalidIdForEntity" xml:space="preserve">
+    <value>The 'Id' property value of the entity cannot be Guid.Empty.</value>
+  </data>
+</root>

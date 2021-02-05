@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Mapping>
+  <Proeprty Name="Title">
+    <TargetName>Title</TargetName>
+  </Proeprty>
+  <Proeprty Name="Description">
+    <TargetName>Description</TargetName>
+  </Proeprty>
+  <Proeprty Name="Copyright">
+    <TargetName>Rights</TargetName>
+  </Proeprty>
+  <Proeprty Name="Language">
+    <TargetName>Language</TargetName>
+  </Proeprty>
+  <Proeprty Name="DateAdded">
+    <TargetName>DateCreated</TargetName>
+  </Proeprty>
+  
+  
+  
+  <Proeprty Name="Authors">
+    <TargetName>Creator</TargetName>
+  </Proeprty>
+  <Proeprty Name="Contributors">
+    <TargetName>Contributor</TargetName>
+  </Proeprty>
+  <Proeprty Name="Presenters">
+    <TargetName>Publisher</TargetName>
+  </Proeprty>
+</Mapping>

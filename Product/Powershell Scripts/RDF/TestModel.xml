@@ -1,0 +1,75 @@
+﻿<?xml version="1.0"?>
+<!DOCTYPE rdf:RDF [
+  <!ENTITY sch "http://TestModel.example.org" >
+]>
+<rdf:RDF
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+   xmlns:sch="http://TestModel.example.org"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xml:base="http://TestModel.example.org">
+  
+   <!-- TestModel -->
+  <rdfs:Class rdf:about="TestModel" />
+
+  <!-- NewResourceType1 -->
+  <rdfs:Class rdf:about="NewResourceType1">
+    <rdfs:subClassOf rdf:resource="TestModel" />
+  </rdfs:Class>
+
+  <rdf:Property rdf:about="FirstName">
+    <rdfs:range rdf:resource="&sch;string"/>
+    <rdfs:domain rdf:resource="NewResourceType1"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="LastName">
+    <rdfs:range rdf:resource="&sch;string"/>
+    <rdfs:domain rdf:resource="NewResourceType1"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="Age">
+    <rdfs:range rdf:resource="&sch;integer"/>
+    <rdfs:domain rdf:resource="NewResourceType1"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="HasResource">
+    <rdfs:range rdf:resource="NewResourceType2"/>
+    <rdfs:domain rdf:resource="NewResourceType1"/>
+  </rdf:Property>
+  
+  <!-- NewResourceType2 -->
+  <rdfs:Class rdf:about="NewResourceType2">
+    <rdfs:subClassOf rdf:resource="TestModel" />
+  </rdfs:Class>
+  
+  <rdf:Property rdf:about="relates">
+    <rdfs:range rdf:resource="NewResourceType1"/>
+    <rdfs:domain rdf:resource="NewResourceType2"/>
+  </rdf:Property>
+  
+  <rdf:Property rdf:about="PublishedDate">
+    <rdfs:range rdf:resource="&sch;datetime"/>
+    <rdfs:domain rdf:resource="NewResourceType2"/>
+  </rdf:Property>
+  
+  <rdf:Property rdf:about="Abstract">
+    <rdfs:range rdf:resource="&sch;string"/>
+    <rdfs:domain rdf:resource="NewResourceType2"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="Primary">
+    <rdfs:range rdf:resource="&sch;string"/>
+    <rdfs:domain rdf:resource="NewResourceType2"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="License">
+    <rdfs:range rdf:resource="&sch;string"/>
+    <rdfs:domain rdf:resource="NewResourceType2"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="Comments">
+    <rdfs:range rdf:resource="&sch;string"/>
+    <rdfs:domain rdf:resource="NewResourceType2"/>
+  </rdf:Property>
+  
+</rdf:RDF>

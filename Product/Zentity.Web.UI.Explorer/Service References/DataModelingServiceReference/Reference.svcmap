@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="b5e35012-ef38-4234-a8b8-1fde36c89c72" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:9090/Services/DataModelingService" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="DataModelingService.xsd" MetadataType="Schema" ID="0988724e-a88d-4b5a-80d1-ed089fdfe7bc" SourceId="1" SourceUrl="http://aditidt486:9090/Services/DataModelingService?xsd=xsd2" />
+    <MetadataFile FileName="DataModelingService1.xsd" MetadataType="Schema" ID="586f3dad-5b81-49dd-9743-9504edc059fc" SourceId="1" SourceUrl="http://aditidt486:9090/Services/DataModelingService?xsd=xsd1" />
+    <MetadataFile FileName="DataModelingService.disco" MetadataType="Disco" ID="f1871550-a737-4ccf-81e1-7d788cf234d8" SourceId="1" SourceUrl="http://aditidt486:9090/Services/DataModelingService?disco" />
+    <MetadataFile FileName="DataModelingService2.xsd" MetadataType="Schema" ID="1fea80b0-a235-4ab7-b058-a13136a9b822" SourceId="1" SourceUrl="http://aditidt486:9090/Services/DataModelingService?xsd=xsd3" />
+    <MetadataFile FileName="DataModelService.wsdl" MetadataType="Wsdl" ID="1755164b-493a-43f5-a767-4b4c8c8c8328" SourceId="1" SourceUrl="http://aditidt486:9090/Services/DataModelingService?wsdl" />
+    <MetadataFile FileName="DataModelingService3.xsd" MetadataType="Schema" ID="a1bad813-dc22-432f-8c6a-7448a55d0648" SourceId="1" SourceUrl="http://aditidt486:9090/Services/DataModelingService?xsd=xsd0" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

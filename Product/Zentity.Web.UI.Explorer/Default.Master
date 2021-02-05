@@ -1,0 +1,59 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Default.master.cs" Inherits="Zentity.Pivot.Web.Default" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>
+        <asp:ContentPlaceHolder ID="titleContentPlaceHolder" runat="server">
+        </asp:ContentPlaceHolder>
+    </title>
+    <style id="defaultStyle" type="text/css">
+        BODY
+        {
+            padding-bottom: 0px;
+            line-height: 1.5em;
+            margin: 0px auto;
+            padding-left: 0px;
+            padding-right: 0px;
+            font-family: Segoe UI, Arial, Verdana, Helvetica, Sans-Serif;
+            background: url(/images/no-horizon-bg.jpg) #f0f3f8 repeat-x center top;
+            color: #666666;
+            font-size: 12px;
+            padding-top: 0px;
+        }
+        #Page
+        {
+            padding-top: 0px;
+        }
+        #MainBody
+        {
+            margin-top: 0px;
+            background: no-repeat left top;            
+        }
+    </style>
+    <link href="styles/body.css" rel="stylesheet" type="text/css" />
+    <link href="styles/chrome.css" rel="stylesheet" type="text/css" />
+    <link href="styles/templates.css" rel="stylesheet" type="text/css" />
+    <asp:ContentPlaceHolder ID="headContentPlaceHolder" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="mainForm" runat="server">
+    <asp:ScriptManager ID="scriptManager" runat="server" EnablePartialRendering="false" />
+    <table style="width: 100%;">
+        <tr>
+            <td>
+                <asp:ContentPlaceHolder ID="defaultContentPlaceHolder" runat="server">
+                </asp:ContentPlaceHolder>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <asp:ContentPlaceHolder ID="footerContentPlaceHolder" runat="server">
+                </asp:ContentPlaceHolder>
+            </td>
+        </tr>
+    </table>
+    </form>
+</body>
+</html>

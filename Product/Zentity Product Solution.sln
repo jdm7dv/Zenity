@@ -1,0 +1,395 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zentity.Rdf", "Zentity.Rdf\Zentity.Rdf.csproj", "{1005BEC2-5CE9-4734-908D-2328AED6C60F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zentity", "Zentity.Core\Zentity.csproj", "{E141CAE2-FBAC-452A-81A9-C027CA9182BE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zentity.Pivot.CollectionCreator", "Zentity.Pivot.CollectionCreator\Zentity.Pivot.CollectionCreator.csproj", "{ABBF4160-F6BC-455F-8F89-5EF2EADD20DB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zentity.Pivot.DeepZoomCreator", "Zentity.Pivot.DeepZoomCreator\Zentity.Pivot.DeepZoomCreator.csproj", "{06A0232B-489F-4CD7-8250-A8635A8EED7E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zentity.ScholarlyWorks", "Zentity.ScholarlyWorks\Zentity.ScholarlyWorks.csproj", "{1EA9F927-E9CA-417D-946C-83A957A18B99}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zentity.ScholarlyWorksAndAuthorization", "Zentity.ScholarlyWorksAndAuthorization\Zentity.ScholarlyWorksAndAuthorization\Zentity.ScholarlyWorksAndAuthorization.csproj", "{4012CC1B-5200-4FBA-865A-7A5FD5AB5FB5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zentity.SchWorksAndAuthArtifactGenerator", "Zentity.ScholarlyWorksAndAuthorization\Zentity.SchWorksAndAuthArtifactGenerator\Zentity.SchWorksAndAuthArtifactGenerator.csproj", "{20A42149-BECA-4CC2-B59E-B0C448B21830}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zentity.Security.Authentication", "Zentity.Security\Zentity.Security.Authentication\Zentity.Security.Authentication.csproj", "{3822E9FB-5E57-4099-8CFD-0C78CDC3EDCF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zentity.Security.AuthenticationProvider", "Zentity.Security\Zentity.Security.AuthenticationProvider\Zentity.Security.AuthenticationProvider.csproj", "{5E14B8B7-C9AB-4B02-840B-D2C4829079FA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zentity.Security.Authorization", "Zentity.Security\Zentity.Security.Authorization\Zentity.Security.Authorization.csproj", "{D344B44A-C269-4E91-AEDC-740ED095C1C3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zentity.Security.AuthorizationHelper", "Zentity.Security\Zentity.Security.AuthorizationHelper\Zentity.Security.AuthorizationHelper.csproj", "{C8600CA3-C0FD-41BA-A710-5A05571C5DAF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zentity.Platform", "Zentity.Services\Zentity.Platform\Zentity.Platform.csproj", "{6E6F2C21-4CD4-46C5-BD94-FA3C5FC17DB9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zentity.Services", "Zentity.Services\Zentity.Services\Zentity.Services.csproj", "{A9FB006A-349F-4BA5-8FB8-5800626E9276}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zentity.Services.Data", "Zentity.Services.Data\Zentity.Services.Data.csproj", "{F9BDC190-753B-4606-BA36-8D93C4732CA6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zentity.Services.External", "Zentity.Services.External\Zentity.Services.External.csproj", "{F65FDA0B-D8A0-4345-8885-55E8B58E5DBD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zentity.Services.ServiceHost", "Zentity.Services.ServiceHost\Zentity.Services.ServiceHost.csproj", "{F974EA31-EF5C-4806-AC14-A099A21236C0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zentity.Services.Web", "Zentity.Services.Web\Zentity.Services.Web.csproj", "{AC581A4A-5071-4631-8BB6-2E8E0AA29377}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zentity.Services.Windows", "Zentity.Services.Windows\Zentity.Services.Windows.csproj", "{648AD1A2-B958-4952-9C4A-198F77512836}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zentity.Zip", "Zentity.Zip\Zentity.Zip.csproj", "{F55AFE73-EBF6-48A6-B6A3-9159C2621BE5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zentity.Pivot.Web.Viewer", "Zentity.Pivot.Web.Viewer\Zentity.Pivot.Web.Viewer.csproj", "{559E6D71-C25A-49BC-96FF-A2EDE725BAE5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zentity.Web.UI.Explorer", "Zentity.Web.UI.Explorer\Zentity.Web.UI.Explorer.csproj", "{D3AFA14A-B0F1-485F-9A2A-1567C36464FC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zentity.VisualExplorer", "Zentity.VisualExplorer\Zentity.VisualExplorer.csproj", "{22011112-D8AF-423D-8764-5AA99E9102FD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ODataToCxmlTranslator", "ODataToCxmlTranslator\ODataToCxmlTranslator.csproj", "{1C898DC5-750E-48A8-8F9A-93D6A6C4C5EB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{52884AF9-C661-483A-8D63-1D2DBA0BFB4C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ScholarlyWorks", "ScholarlyWorks", "{5112AA8A-1061-4F3C-BD48-109922F8BE46}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Security", "Security", "{0364037F-8EA8-421B-9B81-E38F2D8D2F11}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core Services", "Core Services", "{958F66F4-0239-41A4-A9E1-9817FAF745EB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Zentity Applications", "Zentity Applications", "{17235254-D425-4BE6-B4E7-DFFD4EBBD0F2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{750C2309-3D51-4C15-B214-D438C11F5709}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zentity.Web.UI", "Zentity.Web.UI\Zentity.Web.UI.csproj", "{C59124DD-2AD6-4CF4-9364-B6F9B220300D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zentity.Web.UI.ToolKit", "Zentity.Web.UI.ToolKit\Zentity.Web.UI.ToolKit.csproj", "{E13A7E15-6F5E-4BD8-8677-74BA51F02990}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zentity.ScholarlyWorks.Flattened", "Zentity.ScholarlyWorks.Flattened\Zentity.ScholarlyWorks.Flattened.csproj", "{631317DD-87ED-48F9-A1F6-23263D65548A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zentity.Metadata.Flattened", "Zentity.Metadata.Flattened\Zentity.Metadata.Flattened.csproj", "{CA64DB90-788B-4C4F-A682-73182B03EF42}"
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 28
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = http://vstfpg02:8080/tfs/pg02
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = ODataToCxmlTranslator\\ODataToCxmlTranslator.csproj
+		SccProjectTopLevelParentUniqueName1 = Zentity\u0020Product\u0020Solution.sln
+		SccProjectName1 = ODataToCxmlTranslator
+		SccLocalPath1 = ODataToCxmlTranslator
+		SccProjectUniqueName2 = Zentity.Core\\Zentity.csproj
+		SccProjectTopLevelParentUniqueName2 = Zentity\u0020Product\u0020Solution.sln
+		SccProjectName2 = Zentity.Core
+		SccLocalPath2 = Zentity.Core
+		SccProjectUniqueName3 = Zentity.Pivot.CollectionCreator\\Zentity.Pivot.CollectionCreator.csproj
+		SccProjectTopLevelParentUniqueName3 = Zentity\u0020Product\u0020Solution.sln
+		SccProjectName3 = Zentity.Pivot.CollectionCreator
+		SccLocalPath3 = Zentity.Pivot.CollectionCreator
+		SccProjectUniqueName4 = Zentity.Pivot.DeepZoomCreator\\Zentity.Pivot.DeepZoomCreator.csproj
+		SccProjectTopLevelParentUniqueName4 = Zentity\u0020Product\u0020Solution.sln
+		SccProjectName4 = Zentity.Pivot.DeepZoomCreator
+		SccLocalPath4 = Zentity.Pivot.DeepZoomCreator
+		SccProjectUniqueName5 = Zentity.Pivot.Web.Viewer\\Zentity.Pivot.Web.Viewer.csproj
+		SccProjectTopLevelParentUniqueName5 = Zentity\u0020Product\u0020Solution.sln
+		SccProjectName5 = Zentity.Pivot.Web.Viewer
+		SccLocalPath5 = Zentity.Pivot.Web.Viewer
+		SccProjectUniqueName6 = Zentity.Rdf\\Zentity.Rdf.csproj
+		SccProjectTopLevelParentUniqueName6 = Zentity\u0020Product\u0020Solution.sln
+		SccProjectName6 = Zentity.Rdf
+		SccLocalPath6 = Zentity.Rdf
+		SccProjectUniqueName7 = Zentity.ScholarlyWorks\\Zentity.ScholarlyWorks.csproj
+		SccProjectTopLevelParentUniqueName7 = Zentity\u0020Product\u0020Solution.sln
+		SccProjectName7 = Zentity.ScholarlyWorks
+		SccLocalPath7 = Zentity.ScholarlyWorks
+		SccProjectUniqueName8 = Zentity.ScholarlyWorksAndAuthorization\\Zentity.ScholarlyWorksAndAuthorization\\Zentity.ScholarlyWorksAndAuthorization.csproj
+		SccProjectTopLevelParentUniqueName8 = Zentity\u0020Product\u0020Solution.sln
+		SccProjectName8 = Zentity.ScholarlyWorksAndAuthorization/Zentity.ScholarlyWorksAndAuthorization
+		SccLocalPath8 = Zentity.ScholarlyWorksAndAuthorization\\Zentity.ScholarlyWorksAndAuthorization
+		SccProjectUniqueName9 = Zentity.ScholarlyWorksAndAuthorization\\Zentity.SchWorksAndAuthArtifactGenerator\\Zentity.SchWorksAndAuthArtifactGenerator.csproj
+		SccProjectTopLevelParentUniqueName9 = Zentity\u0020Product\u0020Solution.sln
+		SccProjectName9 = Zentity.ScholarlyWorksAndAuthorization/Zentity.SchWorksAndAuthArtifactGenerator
+		SccLocalPath9 = Zentity.ScholarlyWorksAndAuthorization\\Zentity.SchWorksAndAuthArtifactGenerator
+		SccProjectUniqueName10 = Zentity.Security\\Zentity.Security.Authentication\\Zentity.Security.Authentication.csproj
+		SccProjectTopLevelParentUniqueName10 = Zentity\u0020Product\u0020Solution.sln
+		SccProjectName10 = Zentity.Security/Zentity.Security.Authentication
+		SccLocalPath10 = Zentity.Security\\Zentity.Security.Authentication
+		SccProjectUniqueName11 = Zentity.Security\\Zentity.Security.AuthenticationProvider\\Zentity.Security.AuthenticationProvider.csproj
+		SccProjectTopLevelParentUniqueName11 = Zentity\u0020Product\u0020Solution.sln
+		SccProjectName11 = Zentity.Security/Zentity.Security.AuthenticationProvider
+		SccLocalPath11 = Zentity.Security\\Zentity.Security.AuthenticationProvider
+		SccProjectUniqueName12 = Zentity.Security\\Zentity.Security.Authorization\\Zentity.Security.Authorization.csproj
+		SccProjectTopLevelParentUniqueName12 = Zentity\u0020Product\u0020Solution.sln
+		SccProjectName12 = Zentity.Security/Zentity.Security.Authorization
+		SccLocalPath12 = Zentity.Security\\Zentity.Security.Authorization
+		SccProjectUniqueName13 = Zentity.Security\\Zentity.Security.AuthorizationHelper\\Zentity.Security.AuthorizationHelper.csproj
+		SccProjectTopLevelParentUniqueName13 = Zentity\u0020Product\u0020Solution.sln
+		SccProjectName13 = Zentity.Security/Zentity.Security.AuthorizationHelper
+		SccLocalPath13 = Zentity.Security\\Zentity.Security.AuthorizationHelper
+		SccProjectUniqueName14 = Zentity.Services.Data\\Zentity.Services.Data.csproj
+		SccProjectTopLevelParentUniqueName14 = Zentity\u0020Product\u0020Solution.sln
+		SccProjectName14 = Zentity.Services.Data
+		SccLocalPath14 = Zentity.Services.Data
+		SccProjectUniqueName15 = Zentity.Services.External\\Zentity.Services.External.csproj
+		SccProjectTopLevelParentUniqueName15 = Zentity\u0020Product\u0020Solution.sln
+		SccProjectName15 = Zentity.Services.External
+		SccLocalPath15 = Zentity.Services.External
+		SccProjectUniqueName16 = Zentity.Services.ServiceHost\\Zentity.Services.ServiceHost.csproj
+		SccProjectTopLevelParentUniqueName16 = Zentity\u0020Product\u0020Solution.sln
+		SccProjectName16 = Zentity.Services.ServiceHost
+		SccLocalPath16 = Zentity.Services.ServiceHost
+		SccProjectUniqueName17 = Zentity.Services.Web\\Zentity.Services.Web.csproj
+		SccProjectTopLevelParentUniqueName17 = Zentity\u0020Product\u0020Solution.sln
+		SccProjectName17 = Zentity.Services.Web
+		SccLocalPath17 = Zentity.Services.Web
+		SccProjectUniqueName18 = Zentity.Services.Windows\\Zentity.Services.Windows.csproj
+		SccProjectTopLevelParentUniqueName18 = Zentity\u0020Product\u0020Solution.sln
+		SccProjectName18 = Zentity.Services.Windows
+		SccLocalPath18 = Zentity.Services.Windows
+		SccProjectUniqueName19 = Zentity.Services\\Zentity.Platform\\Zentity.Platform.csproj
+		SccProjectTopLevelParentUniqueName19 = Zentity\u0020Product\u0020Solution.sln
+		SccProjectName19 = Zentity.Services/Zentity.Platform
+		SccLocalPath19 = Zentity.Services\\Zentity.Platform
+		SccProjectUniqueName20 = Zentity.Services\\Zentity.Services\\Zentity.Services.csproj
+		SccProjectTopLevelParentUniqueName20 = Zentity\u0020Product\u0020Solution.sln
+		SccProjectName20 = Zentity.Services/Zentity.Services
+		SccLocalPath20 = Zentity.Services\\Zentity.Services
+		SccProjectUniqueName21 = Zentity.VisualExplorer\\Zentity.VisualExplorer.csproj
+		SccProjectTopLevelParentUniqueName21 = Zentity\u0020Product\u0020Solution.sln
+		SccProjectName21 = Zentity.VisualExplorer
+		SccLocalPath21 = Zentity.VisualExplorer
+		SccProjectUniqueName22 = Zentity.Web.UI.Explorer\\Zentity.Web.UI.Explorer.csproj
+		SccProjectTopLevelParentUniqueName22 = Zentity\u0020Product\u0020Solution.sln
+		SccProjectName22 = Zentity.Web.UI.Explorer
+		SccLocalPath22 = Zentity.Web.UI.Explorer
+		SccProjectUniqueName23 = Zentity.Zip\\Zentity.Zip.csproj
+		SccProjectTopLevelParentUniqueName23 = Zentity\u0020Product\u0020Solution.sln
+		SccProjectName23 = Zentity.Zip
+		SccLocalPath23 = Zentity.Zip
+		SccProjectUniqueName24 = Zentity.Web.UI\\Zentity.Web.UI.csproj
+		SccProjectTopLevelParentUniqueName24 = Zentity\u0020Product\u0020Solution.sln
+		SccProjectName24 = Zentity.Web.UI
+		SccLocalPath24 = Zentity.Web.UI
+		SccProjectUniqueName25 = Zentity.Web.UI.ToolKit\\Zentity.Web.UI.ToolKit.csproj
+		SccProjectTopLevelParentUniqueName25 = Zentity\u0020Product\u0020Solution.sln
+		SccProjectName25 = Zentity.Web.UI.ToolKit
+		SccLocalPath25 = Zentity.Web.UI.ToolKit
+		SccProjectUniqueName26 = Zentity.Metadata.Flattened\\Zentity.Metadata.Flattened.csproj
+		SccProjectTopLevelParentUniqueName26 = Zentity\u0020Product\u0020Solution.sln
+		SccProjectName26 = Zentity.Metadata.Flattened
+		SccLocalPath26 = Zentity.Metadata.Flattened
+		SccProjectUniqueName27 = Zentity.ScholarlyWorks.Flattened\\Zentity.ScholarlyWorks.Flattened.csproj
+		SccProjectTopLevelParentUniqueName27 = Zentity\u0020Product\u0020Solution.sln
+		SccProjectName27 = Zentity.ScholarlyWorks.Flattened
+		SccLocalPath27 = Zentity.ScholarlyWorks.Flattened
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1005BEC2-5CE9-4734-908D-2328AED6C60F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1005BEC2-5CE9-4734-908D-2328AED6C60F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1005BEC2-5CE9-4734-908D-2328AED6C60F}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{1005BEC2-5CE9-4734-908D-2328AED6C60F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1005BEC2-5CE9-4734-908D-2328AED6C60F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1005BEC2-5CE9-4734-908D-2328AED6C60F}.Release|x86.ActiveCfg = Release|Any CPU
+		{E141CAE2-FBAC-452A-81A9-C027CA9182BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E141CAE2-FBAC-452A-81A9-C027CA9182BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E141CAE2-FBAC-452A-81A9-C027CA9182BE}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{E141CAE2-FBAC-452A-81A9-C027CA9182BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E141CAE2-FBAC-452A-81A9-C027CA9182BE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E141CAE2-FBAC-452A-81A9-C027CA9182BE}.Release|x86.ActiveCfg = Release|Any CPU
+		{ABBF4160-F6BC-455F-8F89-5EF2EADD20DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ABBF4160-F6BC-455F-8F89-5EF2EADD20DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ABBF4160-F6BC-455F-8F89-5EF2EADD20DB}.Debug|x86.ActiveCfg = Debug|x86
+		{ABBF4160-F6BC-455F-8F89-5EF2EADD20DB}.Debug|x86.Build.0 = Debug|x86
+		{ABBF4160-F6BC-455F-8F89-5EF2EADD20DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ABBF4160-F6BC-455F-8F89-5EF2EADD20DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ABBF4160-F6BC-455F-8F89-5EF2EADD20DB}.Release|x86.ActiveCfg = Release|x86
+		{ABBF4160-F6BC-455F-8F89-5EF2EADD20DB}.Release|x86.Build.0 = Release|x86
+		{06A0232B-489F-4CD7-8250-A8635A8EED7E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{06A0232B-489F-4CD7-8250-A8635A8EED7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{06A0232B-489F-4CD7-8250-A8635A8EED7E}.Debug|x86.ActiveCfg = Debug|x86
+		{06A0232B-489F-4CD7-8250-A8635A8EED7E}.Debug|x86.Build.0 = Debug|x86
+		{06A0232B-489F-4CD7-8250-A8635A8EED7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{06A0232B-489F-4CD7-8250-A8635A8EED7E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{06A0232B-489F-4CD7-8250-A8635A8EED7E}.Release|x86.ActiveCfg = Release|x86
+		{06A0232B-489F-4CD7-8250-A8635A8EED7E}.Release|x86.Build.0 = Release|x86
+		{1EA9F927-E9CA-417D-946C-83A957A18B99}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1EA9F927-E9CA-417D-946C-83A957A18B99}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1EA9F927-E9CA-417D-946C-83A957A18B99}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{1EA9F927-E9CA-417D-946C-83A957A18B99}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1EA9F927-E9CA-417D-946C-83A957A18B99}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1EA9F927-E9CA-417D-946C-83A957A18B99}.Release|x86.ActiveCfg = Release|Any CPU
+		{4012CC1B-5200-4FBA-865A-7A5FD5AB5FB5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4012CC1B-5200-4FBA-865A-7A5FD5AB5FB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4012CC1B-5200-4FBA-865A-7A5FD5AB5FB5}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{4012CC1B-5200-4FBA-865A-7A5FD5AB5FB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4012CC1B-5200-4FBA-865A-7A5FD5AB5FB5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4012CC1B-5200-4FBA-865A-7A5FD5AB5FB5}.Release|x86.ActiveCfg = Release|Any CPU
+		{20A42149-BECA-4CC2-B59E-B0C448B21830}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{20A42149-BECA-4CC2-B59E-B0C448B21830}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{20A42149-BECA-4CC2-B59E-B0C448B21830}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{20A42149-BECA-4CC2-B59E-B0C448B21830}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{20A42149-BECA-4CC2-B59E-B0C448B21830}.Release|Any CPU.Build.0 = Release|Any CPU
+		{20A42149-BECA-4CC2-B59E-B0C448B21830}.Release|x86.ActiveCfg = Release|Any CPU
+		{3822E9FB-5E57-4099-8CFD-0C78CDC3EDCF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3822E9FB-5E57-4099-8CFD-0C78CDC3EDCF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3822E9FB-5E57-4099-8CFD-0C78CDC3EDCF}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{3822E9FB-5E57-4099-8CFD-0C78CDC3EDCF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3822E9FB-5E57-4099-8CFD-0C78CDC3EDCF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3822E9FB-5E57-4099-8CFD-0C78CDC3EDCF}.Release|x86.ActiveCfg = Release|Any CPU
+		{5E14B8B7-C9AB-4B02-840B-D2C4829079FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E14B8B7-C9AB-4B02-840B-D2C4829079FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E14B8B7-C9AB-4B02-840B-D2C4829079FA}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{5E14B8B7-C9AB-4B02-840B-D2C4829079FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E14B8B7-C9AB-4B02-840B-D2C4829079FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E14B8B7-C9AB-4B02-840B-D2C4829079FA}.Release|x86.ActiveCfg = Release|Any CPU
+		{D344B44A-C269-4E91-AEDC-740ED095C1C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D344B44A-C269-4E91-AEDC-740ED095C1C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D344B44A-C269-4E91-AEDC-740ED095C1C3}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{D344B44A-C269-4E91-AEDC-740ED095C1C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D344B44A-C269-4E91-AEDC-740ED095C1C3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D344B44A-C269-4E91-AEDC-740ED095C1C3}.Release|x86.ActiveCfg = Release|Any CPU
+		{C8600CA3-C0FD-41BA-A710-5A05571C5DAF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C8600CA3-C0FD-41BA-A710-5A05571C5DAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C8600CA3-C0FD-41BA-A710-5A05571C5DAF}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{C8600CA3-C0FD-41BA-A710-5A05571C5DAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C8600CA3-C0FD-41BA-A710-5A05571C5DAF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C8600CA3-C0FD-41BA-A710-5A05571C5DAF}.Release|x86.ActiveCfg = Release|Any CPU
+		{6E6F2C21-4CD4-46C5-BD94-FA3C5FC17DB9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E6F2C21-4CD4-46C5-BD94-FA3C5FC17DB9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E6F2C21-4CD4-46C5-BD94-FA3C5FC17DB9}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{6E6F2C21-4CD4-46C5-BD94-FA3C5FC17DB9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E6F2C21-4CD4-46C5-BD94-FA3C5FC17DB9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6E6F2C21-4CD4-46C5-BD94-FA3C5FC17DB9}.Release|x86.ActiveCfg = Release|Any CPU
+		{A9FB006A-349F-4BA5-8FB8-5800626E9276}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A9FB006A-349F-4BA5-8FB8-5800626E9276}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A9FB006A-349F-4BA5-8FB8-5800626E9276}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{A9FB006A-349F-4BA5-8FB8-5800626E9276}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A9FB006A-349F-4BA5-8FB8-5800626E9276}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A9FB006A-349F-4BA5-8FB8-5800626E9276}.Release|x86.ActiveCfg = Release|Any CPU
+		{F9BDC190-753B-4606-BA36-8D93C4732CA6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F9BDC190-753B-4606-BA36-8D93C4732CA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F9BDC190-753B-4606-BA36-8D93C4732CA6}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{F9BDC190-753B-4606-BA36-8D93C4732CA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F9BDC190-753B-4606-BA36-8D93C4732CA6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F9BDC190-753B-4606-BA36-8D93C4732CA6}.Release|x86.ActiveCfg = Release|Any CPU
+		{F65FDA0B-D8A0-4345-8885-55E8B58E5DBD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F65FDA0B-D8A0-4345-8885-55E8B58E5DBD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F65FDA0B-D8A0-4345-8885-55E8B58E5DBD}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{F65FDA0B-D8A0-4345-8885-55E8B58E5DBD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F65FDA0B-D8A0-4345-8885-55E8B58E5DBD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F65FDA0B-D8A0-4345-8885-55E8B58E5DBD}.Release|x86.ActiveCfg = Release|Any CPU
+		{F974EA31-EF5C-4806-AC14-A099A21236C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F974EA31-EF5C-4806-AC14-A099A21236C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F974EA31-EF5C-4806-AC14-A099A21236C0}.Debug|x86.ActiveCfg = Debug|x86
+		{F974EA31-EF5C-4806-AC14-A099A21236C0}.Debug|x86.Build.0 = Debug|x86
+		{F974EA31-EF5C-4806-AC14-A099A21236C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F974EA31-EF5C-4806-AC14-A099A21236C0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F974EA31-EF5C-4806-AC14-A099A21236C0}.Release|x86.ActiveCfg = Release|x86
+		{F974EA31-EF5C-4806-AC14-A099A21236C0}.Release|x86.Build.0 = Release|x86
+		{AC581A4A-5071-4631-8BB6-2E8E0AA29377}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC581A4A-5071-4631-8BB6-2E8E0AA29377}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC581A4A-5071-4631-8BB6-2E8E0AA29377}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{AC581A4A-5071-4631-8BB6-2E8E0AA29377}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC581A4A-5071-4631-8BB6-2E8E0AA29377}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC581A4A-5071-4631-8BB6-2E8E0AA29377}.Release|x86.ActiveCfg = Release|Any CPU
+		{648AD1A2-B958-4952-9C4A-198F77512836}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{648AD1A2-B958-4952-9C4A-198F77512836}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{648AD1A2-B958-4952-9C4A-198F77512836}.Debug|x86.ActiveCfg = Debug|x86
+		{648AD1A2-B958-4952-9C4A-198F77512836}.Debug|x86.Build.0 = Debug|x86
+		{648AD1A2-B958-4952-9C4A-198F77512836}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{648AD1A2-B958-4952-9C4A-198F77512836}.Release|Any CPU.Build.0 = Release|Any CPU
+		{648AD1A2-B958-4952-9C4A-198F77512836}.Release|x86.ActiveCfg = Release|x86
+		{648AD1A2-B958-4952-9C4A-198F77512836}.Release|x86.Build.0 = Release|x86
+		{F55AFE73-EBF6-48A6-B6A3-9159C2621BE5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F55AFE73-EBF6-48A6-B6A3-9159C2621BE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F55AFE73-EBF6-48A6-B6A3-9159C2621BE5}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{F55AFE73-EBF6-48A6-B6A3-9159C2621BE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F55AFE73-EBF6-48A6-B6A3-9159C2621BE5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F55AFE73-EBF6-48A6-B6A3-9159C2621BE5}.Release|x86.ActiveCfg = Release|Any CPU
+		{559E6D71-C25A-49BC-96FF-A2EDE725BAE5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{559E6D71-C25A-49BC-96FF-A2EDE725BAE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{559E6D71-C25A-49BC-96FF-A2EDE725BAE5}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{559E6D71-C25A-49BC-96FF-A2EDE725BAE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{559E6D71-C25A-49BC-96FF-A2EDE725BAE5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{559E6D71-C25A-49BC-96FF-A2EDE725BAE5}.Release|x86.ActiveCfg = Release|Any CPU
+		{D3AFA14A-B0F1-485F-9A2A-1567C36464FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3AFA14A-B0F1-485F-9A2A-1567C36464FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3AFA14A-B0F1-485F-9A2A-1567C36464FC}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{D3AFA14A-B0F1-485F-9A2A-1567C36464FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3AFA14A-B0F1-485F-9A2A-1567C36464FC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D3AFA14A-B0F1-485F-9A2A-1567C36464FC}.Release|x86.ActiveCfg = Release|Any CPU
+		{22011112-D8AF-423D-8764-5AA99E9102FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{22011112-D8AF-423D-8764-5AA99E9102FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{22011112-D8AF-423D-8764-5AA99E9102FD}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{22011112-D8AF-423D-8764-5AA99E9102FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{22011112-D8AF-423D-8764-5AA99E9102FD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{22011112-D8AF-423D-8764-5AA99E9102FD}.Release|x86.ActiveCfg = Release|Any CPU
+		{1C898DC5-750E-48A8-8F9A-93D6A6C4C5EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C898DC5-750E-48A8-8F9A-93D6A6C4C5EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C898DC5-750E-48A8-8F9A-93D6A6C4C5EB}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{1C898DC5-750E-48A8-8F9A-93D6A6C4C5EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C898DC5-750E-48A8-8F9A-93D6A6C4C5EB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C898DC5-750E-48A8-8F9A-93D6A6C4C5EB}.Release|x86.ActiveCfg = Release|Any CPU
+		{C59124DD-2AD6-4CF4-9364-B6F9B220300D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C59124DD-2AD6-4CF4-9364-B6F9B220300D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C59124DD-2AD6-4CF4-9364-B6F9B220300D}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{C59124DD-2AD6-4CF4-9364-B6F9B220300D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C59124DD-2AD6-4CF4-9364-B6F9B220300D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C59124DD-2AD6-4CF4-9364-B6F9B220300D}.Release|x86.ActiveCfg = Release|Any CPU
+		{E13A7E15-6F5E-4BD8-8677-74BA51F02990}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E13A7E15-6F5E-4BD8-8677-74BA51F02990}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E13A7E15-6F5E-4BD8-8677-74BA51F02990}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{E13A7E15-6F5E-4BD8-8677-74BA51F02990}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E13A7E15-6F5E-4BD8-8677-74BA51F02990}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E13A7E15-6F5E-4BD8-8677-74BA51F02990}.Release|x86.ActiveCfg = Release|Any CPU
+		{631317DD-87ED-48F9-A1F6-23263D65548A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{631317DD-87ED-48F9-A1F6-23263D65548A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{631317DD-87ED-48F9-A1F6-23263D65548A}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{631317DD-87ED-48F9-A1F6-23263D65548A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{631317DD-87ED-48F9-A1F6-23263D65548A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{631317DD-87ED-48F9-A1F6-23263D65548A}.Release|x86.ActiveCfg = Release|Any CPU
+		{CA64DB90-788B-4C4F-A682-73182B03EF42}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA64DB90-788B-4C4F-A682-73182B03EF42}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA64DB90-788B-4C4F-A682-73182B03EF42}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{CA64DB90-788B-4C4F-A682-73182B03EF42}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA64DB90-788B-4C4F-A682-73182B03EF42}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CA64DB90-788B-4C4F-A682-73182B03EF42}.Release|x86.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{E141CAE2-FBAC-452A-81A9-C027CA9182BE} = {52884AF9-C661-483A-8D63-1D2DBA0BFB4C}
+		{1005BEC2-5CE9-4734-908D-2328AED6C60F} = {52884AF9-C661-483A-8D63-1D2DBA0BFB4C}
+		{06A0232B-489F-4CD7-8250-A8635A8EED7E} = {750C2309-3D51-4C15-B214-D438C11F5709}
+		{F9BDC190-753B-4606-BA36-8D93C4732CA6} = {750C2309-3D51-4C15-B214-D438C11F5709}
+		{F65FDA0B-D8A0-4345-8885-55E8B58E5DBD} = {750C2309-3D51-4C15-B214-D438C11F5709}
+		{F974EA31-EF5C-4806-AC14-A099A21236C0} = {750C2309-3D51-4C15-B214-D438C11F5709}
+		{AC581A4A-5071-4631-8BB6-2E8E0AA29377} = {750C2309-3D51-4C15-B214-D438C11F5709}
+		{648AD1A2-B958-4952-9C4A-198F77512836} = {750C2309-3D51-4C15-B214-D438C11F5709}
+		{ABBF4160-F6BC-455F-8F89-5EF2EADD20DB} = {750C2309-3D51-4C15-B214-D438C11F5709}
+		{4012CC1B-5200-4FBA-865A-7A5FD5AB5FB5} = {5112AA8A-1061-4F3C-BD48-109922F8BE46}
+		{20A42149-BECA-4CC2-B59E-B0C448B21830} = {5112AA8A-1061-4F3C-BD48-109922F8BE46}
+		{1EA9F927-E9CA-417D-946C-83A957A18B99} = {5112AA8A-1061-4F3C-BD48-109922F8BE46}
+		{631317DD-87ED-48F9-A1F6-23263D65548A} = {5112AA8A-1061-4F3C-BD48-109922F8BE46}
+		{CA64DB90-788B-4C4F-A682-73182B03EF42} = {5112AA8A-1061-4F3C-BD48-109922F8BE46}
+		{5E14B8B7-C9AB-4B02-840B-D2C4829079FA} = {0364037F-8EA8-421B-9B81-E38F2D8D2F11}
+		{D344B44A-C269-4E91-AEDC-740ED095C1C3} = {0364037F-8EA8-421B-9B81-E38F2D8D2F11}
+		{C8600CA3-C0FD-41BA-A710-5A05571C5DAF} = {0364037F-8EA8-421B-9B81-E38F2D8D2F11}
+		{3822E9FB-5E57-4099-8CFD-0C78CDC3EDCF} = {0364037F-8EA8-421B-9B81-E38F2D8D2F11}
+		{A9FB006A-349F-4BA5-8FB8-5800626E9276} = {958F66F4-0239-41A4-A9E1-9817FAF745EB}
+		{F55AFE73-EBF6-48A6-B6A3-9159C2621BE5} = {958F66F4-0239-41A4-A9E1-9817FAF745EB}
+		{6E6F2C21-4CD4-46C5-BD94-FA3C5FC17DB9} = {958F66F4-0239-41A4-A9E1-9817FAF745EB}
+		{D3AFA14A-B0F1-485F-9A2A-1567C36464FC} = {17235254-D425-4BE6-B4E7-DFFD4EBBD0F2}
+		{22011112-D8AF-423D-8764-5AA99E9102FD} = {17235254-D425-4BE6-B4E7-DFFD4EBBD0F2}
+		{1C898DC5-750E-48A8-8F9A-93D6A6C4C5EB} = {17235254-D425-4BE6-B4E7-DFFD4EBBD0F2}
+		{559E6D71-C25A-49BC-96FF-A2EDE725BAE5} = {17235254-D425-4BE6-B4E7-DFFD4EBBD0F2}
+		{C59124DD-2AD6-4CF4-9364-B6F9B220300D} = {17235254-D425-4BE6-B4E7-DFFD4EBBD0F2}
+		{E13A7E15-6F5E-4BD8-8677-74BA51F02990} = {17235254-D425-4BE6-B4E7-DFFD4EBBD0F2}
+	EndGlobalSection
+EndGlobal

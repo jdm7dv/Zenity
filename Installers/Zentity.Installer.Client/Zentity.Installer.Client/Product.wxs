@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi" xmlns:util="http://schemas.microsoft.com/wix/UtilExtension">
+  <?include CommonDefines.wxi?>
+
+  <Product Id="fce6fcc1-b408-46f2-b67a-7bbf3643b125" Name="$(var.ProductName)" Language="!(loc.LCID)" Version="$(var.RTMVersionNumber)" Manufacturer="$(var.ProductManufacturer)" UpgradeCode="d8d2bbb9-3c74-47be-b2c1-0ca05d463055">
+    <Package InstallPrivileges="elevated" InstallerVersion="200" Compressed="yes" Platform="$(var.Platform)"/>
+
+    <Media Id="1" Cabinet="media1.cab" EmbedCab="yes" />
+
+    <!-- Include the Launch conditions, Zentity Core files -->
+    <?include ChecksAndProperties.wxi?>
+    <?include CoreFiles.wxi?>
+    <?include Dialogs\CustomizeDlg.wxi?>
+    <Binary Id="ZentityCustomAction" SourceFile="$(var.SolutionDir)\Zentity.Installer.Client.CustomAction\bin\$(var.Configuration)\Zentity.Installer.CustomAction.CA.dll"/>
+    <Binary Id="ZentityPSCustomAction" SourceFile="$(var.SolutionDir)\Zentity.Installer.Client.PowerShell\bin\$(var.Configuration)\Zentity.Installer.Client.PowerShell.exe"/>
+
+    <!-- Icon displayed in Add/Remove Programs -->
+    <Icon Id="InstallerIcon" SourceFile="Resources\Installer.ico"/>
+    <Property Id="ARPPRODUCTICON" Value="InstallerIcon" />
+
+    <!-- Custom action to write to the config file -->
+    <CustomAction Id="WriteConfigEntries.Setup" Property="WriteConfigEntries" Value="InstallPath=[INSTALLDIR];MachineName=[MACHINENAME];PortNumber=[PORTNUMBER];ZentityWebsiteDesc=[ZENTITYWEBSITEDESC]" Execute="immediate"/>
+    <CustomAction Id="WriteConfigEntries" BinaryKey="ZentityCustomAction" DllEntry="WriteConfigEntries" Execute="deferred" Impersonate="no" Return="check"/>
+    <CustomAction Id="ValidateWebsiteDetails" BinaryKey="ZentityCustomAction" DllEntry="ValidateWebsiteDetails" Execute="immediate" Impersonate="no" Return="check"/>
+
+    <!--Custom action to copy the PowerShell config file on x64 systems-->
+    <CustomAction Id="CopyPSConfig64" BinaryKey="ZentityPSCustomAction" Execute="deferred" ExeCommand="PowerShell" Impersonate="no" Return="check"></CustomAction>
+
+    <!-- Custom action to set properties during repair -->
+    <CustomAction Id="SetWebSiteName" Property="ZENTITYWEBSITEDESC" Value="[INSTALLEDWEBSITEDESC]"/>
+    <CustomAction Id="SetPortNumber" Property="PORTNUMBER" Value="[INSTALLEDPORTNUMBER]"/>
+    <CustomAction Id="SetMachineName" Property="MACHINENAME" Value="[INSTALLEDMACHINENAME]"></CustomAction>
+
+    <!--FILES INSTALLATION DIRECTORY LAYOUT-->
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id="$(var.ProgramFilesFolder)" Name="Program Files">
+        <Directory Id="INSTALLDIR" Name="$(var.ZentityInstallationFolder)">
+          <!-- Installing folder structure -->
+          <Directory Id="DocumentationFolder" Name="$(var.DocumentFolderName)" />
+          <Directory Id="ScriptsFolder" Name="$(var.ScriptsFolderName)">
+            <Directory Id="RDFFolder" Name="$(var.RDFFolderName)"/>
+          </Directory>
+          <Directory Id="SamplesFolder" Name="$(var.SamplesFolderName)" />
+
+          <Directory Id="LicenseFolder" Name="$(var.LicenseFolderName)" />
+          <Directory Id="ProgramMenuFolder" Name="ProgMenu">
+            <Directory Id="ApplicationProgramsFolder" Name="$(var.ZentityInstallationFolder)">
+              <Directory Id="DocumentationShortCutFolder" Name="$(var.DocumentFolderName)"/>
+              <Directory Id="ScriptsShortCutFolder" Name="$(var.ScriptsFolderName)"/>
+              <Directory Id="SamplesShortCutFolder" Name="$(var.SamplesFolderName)"/>
+            </Directory>
+          </Directory>
+        </Directory>
+      </Directory>
+      <Directory Id="$(var.SystemFilesFolder)" Name=".">
+        <Directory Id="WP" Name="$(var.PowerShellFolderName)">
+          <Directory Id="WPVersion" Name="$(var.PowerShellVersionFolderName)"/>
+        </Directory>
+      </Directory>
+    </Directory>
+
+    <!--FEATURES DESCRIPTION-->
+    <Feature Id="ZentityFeature" Title="!(loc.ZentityClientFeatureTitle)" Description="!(loc.ZentityClientFeatureDesc)" Level="1" Absent="disallow" AllowAdvertise="no" InstallDefault="local" ConfigurableDirectory="INSTALLDIR">
+      <Feature Id="DocumentationFeature" Title="!(loc.ZentityDocFeatureTitle)" Description="!(loc.ZentityDocFeatureDesc)" Level="1" Absent="disallow" AllowAdvertise="no" InstallDefault="local">
+        <ComponentRef Id="DocumentationComponent"/>
+      </Feature>
+      <Feature Id="ScriptFeature" Title="!(loc.ZentityScriptFeatureTitle)" Description="!(loc.ZentityScriptFeatureDesc)" Level="1" Absent="disallow" AllowAdvertise="no" InstallDefault="local">
+        <ComponentRef Id="ScriptComponent" />
+        <ComponentRef Id="RDFComponent"/>
+        <ComponentRef Id="PowerShellConfig"/>
+      </Feature>
+      <Feature Id="SamplesFeature" Title="!(loc.ZentitySampleFeatureTitle)" Description="!(loc.ZentitySampleFeatureDesc)" Level="1" Absent="disallow" AllowAdvertise="no" InstallDefault="local">
+        <ComponentRef Id="SamplesComponent" />
+      </Feature>
+      <ComponentRef Id="ApplicationShortcut" />
+      <ComponentRef Id="LicenseStore" />
+    </Feature>
+
+    <WixVariable Id="WixUILicenseRtf" Value="EULA.rtf" />
+
+    <!-- UI Dialog for MachineName and Port number input -->
+    <UI>
+      <Dialog Id="InputDlg" Width="370" Height="270" Title="!(loc.InputDlg_Title)">
+        <Control Id="Next" Type="PushButton" X="236" Y="243" Width="56" Height="17" Default="yes" Text="!(loc.WixUINext)">         
+          <Publish Event="DoAction" Value="ValidateWebsiteDetails">1</Publish>          
+        </Control>
+        <Control Id="Cancel" Type="PushButton" X="304" Y="243" Width="56" Height="17" Cancel="yes" Text="!(loc.WixUICancel)">
+          <Publish Event="SpawnDialog" Value="CancelDlg">1</Publish>
+        </Control>
+        <Control Id="BannerBitmap" Type="Bitmap" X="0" Y="0" Width="370" Height="44" TabSkip="no" Text="!(loc.InputDlgBannerBitmap)" />
+        <Control Id="Back" Type="PushButton" X="180" Y="243" Width="56" Height="17" Text="!(loc.WixUIBack)" />
+        <Control Id="BannerLine" Type="Line" X="0" Y="44" Width="370" Height="0" />
+        <Control Id="BottomLine" Type="Line" X="0" Y="234" Width="370" Height="0" />
+        <Control Id="Description" Type="Text" X="25" Y="23" Width="340" Height="15" Transparent="yes" NoPrefix="yes" Text="!(loc.InputDlgDescription)" />
+        <Control Id="Title" Type="Text" X="15" Y="6" Width="200" Height="15" Transparent="yes" NoPrefix="yes" Text="!(loc.InputDlgTitle)" />
+
+        <Control Id="WebSiteName" Type="Text" X="70" Y="90" Width="60" Height="20" Transparent="yes" NoPrefix="yes" Text="!(loc.InputDlgWebSiteName)" />
+        <Control Id="MachineNameText" Type="Text" X="70" Y="125" Width="60" Height="20" Transparent="yes" NoPrefix="yes" Text="!(loc.InputDlgMachineName)" />
+        <Control Id="PortNoText" Type="Text" X="70" Y="160" Width="60" Height="20" Transparent="yes" NoPrefix="yes" Text="!(loc.InputDlgPortNumber)" />
+
+        <Control Id="WebSiteEdit" Type="Edit" X="170" Y="85" Width="100" Height="20" Property="ZENTITYWEBSITEDESC" ToolTip="!(loc.InputDlgWebSiteNameToolTip)"/>
+        <Control Id="MachineNameedit" Type="Edit" X="170" Y="120" Width="100" Height="20" Property="MACHINENAME" ToolTip="!(loc.InputDlgMachineNameToolTip)"/>
+        <Control Id="PortNoedit" Type="Edit" X="170" Y="155" Width="100" Height="20" Property="PORTNUMBER" ToolTip="!(loc.InputDlgPortNumberToolTip)"/>
+      </Dialog>
+    </UI>
+
+    <!-- UI Dialog sequence -->
+    <UI Id="WixUI_FeatureTree">
+      <Binary Id="WixUI_Bmp_Banner_Long" SourceFile="$(var.bannerBmpLong)" />
+      <TextStyle Id="WixUI_Font_Normal" FaceName="Microsoft Sans Serif" Size="8" />
+      <TextStyle Id="WixUI_Font_Bigger" FaceName="Microsoft Sans Serif" Size="12" Bold="yes" />
+      <TextStyle Id="WixUI_Font_Title" FaceName="Microsoft Sans Serif" Size="9" Bold="yes" />
+      <TextStyle Id="WixUI_Font_Bold" FaceName="Microsoft Sans Serif" Size="8" Bold="yes" />
+      <TextStyle Id="WixUI_Font_Link" FaceName="Microsoft Sans Serif" Size="8" Underline="yes" Red="81" Green="54" Blue="244" />
+
+      <Property Id="DefaultUIFont" Value="WixUI_Font_Normal" />
+      <Property Id="WixUI_Mode" Value="FeatureTree" />
+
+      <DialogRef Id="ErrorDlg" />
+      <DialogRef Id="FatalError" />
+      <DialogRef Id="FilesInUse" />
+      <DialogRef Id="MsiRMFilesInUse" />
+      <DialogRef Id="PrepareDlg" />
+      <DialogRef Id="ProgressDlg" />
+      <DialogRef Id="ResumeDlg" />
+      <DialogRef Id="UserExit" />
+      <DialogRef Id="ZentityCustomizeDlg" />
+
+      <Publish Dialog="ExitDialog" Control="Finish" Event="EndDialog" Value="Return" Order="999">1</Publish>
+
+      <Publish Dialog="WelcomeDlg" Control="Next" Event="NewDialog" Value="LicenseAgreementDlg">1</Publish>
+
+      <Publish Dialog="LicenseAgreementDlg" Control="Back" Event="NewDialog" Value="WelcomeDlg">1</Publish>
+      <Publish Dialog="LicenseAgreementDlg" Control="Next" Event="NewDialog" Value="ZentityCustomizeDlg">LicenseAccepted = "1"</Publish>
+
+      <Publish Dialog="ZentityCustomizeDlg" Control="Back" Event="NewDialog" Value="MaintenanceTypeDlg" Order="1">Installed</Publish>
+      <Publish Dialog="ZentityCustomizeDlg" Control="Back" Event="NewDialog" Value="LicenseAgreementDlg" Order="2">NOT Installed</Publish>
+      <Publish Dialog="ZentityCustomizeDlg" Control="Next" Event="NewDialog" Value="InputDlg">Not Installed</Publish>
+      <Publish Dialog="ZentityCustomizeDlg" Control="Next" Event="NewDialog" Value="VerifyReadyDlg">Installed</Publish>
+
+      <Publish Dialog="InputDlg" Control="Back" Event="NewDialog" Value="ZentityCustomizeDlg">NOT Installed</Publish>
+      <Publish Dialog="InputDlg" Control="Next" Event="NewDialog" Value="VerifyReadyDlg">VALIDZENTITYINPUT = "1"</Publish>
+
+      <Publish Dialog="VerifyReadyDlg" Control="Back" Event="NewDialog" Value="InputDlg" Order="1">NOT Installed OR WixUI_InstallMode = "Change"</Publish>
+      <Publish Dialog="VerifyReadyDlg" Control="Back" Event="NewDialog" Value="MaintenanceTypeDlg" Order="2">Installed</Publish>
+
+      <Publish Dialog="MaintenanceWelcomeDlg" Control="Next" Event="NewDialog" Value="MaintenanceTypeDlg">1</Publish>
+
+      <Publish Dialog="MaintenanceTypeDlg" Control="ChangeButton" Event="NewDialog" Value="ZentityCustomizeDlg">1</Publish>
+      <Publish Dialog="MaintenanceTypeDlg" Control="RepairButton" Event="NewDialog" Value="VerifyReadyDlg">1</Publish>
+      <Publish Dialog="MaintenanceTypeDlg" Control="RemoveButton" Event="NewDialog" Value="VerifyReadyDlg">1</Publish>
+      <Publish Dialog="MaintenanceTypeDlg" Control="Back" Event="NewDialog" Value="MaintenanceWelcomeDlg">1</Publish>
+    </UI>
+
+    <!-- UI References -->
+    <UIRef Id="WixUI_ErrorProgressText" />
+    <UIRef Id="WixUI_Common" />
+
+    <InstallExecuteSequence>
+      <Custom Action="WriteConfigEntries.Setup" After="InstallFiles">(NOT Installed OR (NOT REMOVE="ALL"))</Custom>
+      <Custom Action="WriteConfigEntries" After="WriteConfigEntries.Setup">(NOT Installed OR (NOT REMOVE="ALL"))</Custom>
+      <Custom Action="CopyPSConfig64" After="WriteConfigEntries">(NOT Installed OR (NOT REMOVE="ALL"))</Custom>
+
+      <!-- Runs only during repair -->
+      <Custom Action="SetWebSiteName" After="InstallInitialize"><![CDATA[((!ZentityFeature = 3) AND NOT(&ZentityFeature = 2))]]></Custom>
+      <Custom Action="SetPortNumber" After="SetWebSiteName"><![CDATA[((!ZentityFeature = 3) AND NOT(&ZentityFeature = 2))]]></Custom>
+      <Custom Action="SetMachineName" After="SetPortNumber"><![CDATA[((!ZentityFeature = 3) AND NOT(&ZentityFeature = 2))]]></Custom>
+    </InstallExecuteSequence>
+
+  </Product>
+</Wix>

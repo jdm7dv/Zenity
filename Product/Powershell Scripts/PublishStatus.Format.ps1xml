@@ -1,0 +1,48 @@
+<Configuration>
+  <ViewDefinitions>
+    <View>
+      <Name>PublishStatus</Name>
+      <ViewSelectedBy>
+        <TypeName>Zentity.Services.Web.Pivot.PublishStatus</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>ResourceType</Label>
+                <ScriptBlock>($_.DataModelNamespace) + "." + ($_.ResourceTypeName)</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <PropertyName>InstanceId</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>CurrentStage</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>StartTime</Label>
+                <ScriptBlock>if($_.StartTime-ne[System.DateTime]::MinValue){$_.StartTime}</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>EndTime</Label>
+                <ScriptBlock>if($_.EndTime-ne[System.DateTime]::MinValue){$_.EndTime}</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>ResourceItems</Label>
+                <ScriptBlock>"Total     : " + ($_.ResourceItems.Total) + "`n" + "Completed : " + ($_.ResourceItems.Completed)</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>Images</Label>
+                <ScriptBlock>"Total     : " + ($_.Images.Total) + "`n" + "Completed : " + ($_.Images.Completed)</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>DeepZoomImages</Label>
+                <ScriptBlock>"Total     : " + ($_.DeepZoomImages.Total) + "`n" + "Completed : " + ($_.DeepZoomImages.Completed)</ScriptBlock>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+  </ViewDefinitions>
+</Configuration>

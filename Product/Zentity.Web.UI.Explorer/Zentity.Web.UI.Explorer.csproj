@@ -1,0 +1,353 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{D3AFA14A-B0F1-485F-9A2A-1567C36464FC}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Zentity.Web.UI.Explorer</RootNamespace>
+    <AssemblyName>Zentity.Web.UI.Explorer</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <SilverlightApplicationList>{22011112-D8AF-423D-8764-5AA99E9102FD}|..\Zentity.VisualExplorer\Zentity.VisualExplorer.csproj|ClientBin|False,{559E6D71-C25A-49BC-96FF-A2EDE725BAE5}|..\Zentity.Pivot.Web.Viewer\Zentity.Pivot.Web.Viewer.csproj|ClientBin|False</SilverlightApplicationList>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="GuanxiMapCore">
+      <HintPath>..\External Libraries\GuanxiMapCore.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.XML" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="Zentity.Core, Version=1.0.905.801, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Zentity.Core.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="clientaccesspolicy.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ClientBin\Zentity.Pivot.Web.Viewer.xap" />
+    <Content Include="ClientBin\Zentity.VisualExplorer.xap" />
+    <Content Include="crossdomain.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\default-logo.png" />
+    <Content Include="images\no-horizon-bg.jpg" />
+    <Content Include="Pivot\ODataViewer.aspx" />
+    <Content Include="Pivot\Gallery.aspx" />
+    <Content Include="Pivot\Viewer.aspx" />
+    <Content Include="Redirect.aspx" />
+    <Content Include="collections\web.config" />
+    <None Include="Properties\DataSources\Zentity.Services.Web.Pivot.Collection.PublishStatus.datasource" />
+    <None Include="Properties\DataSources\Zentity.Services.Web.PublishStatus.datasource" />
+    <None Include="Service References\DataModelingServiceReference\configuration91.svcinfo" />
+    <None Include="Service References\DataModelingServiceReference\configuration.svcinfo" />
+    <None Include="Service References\DataModelingServiceReference\DataModelingService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\DataModelingServiceReference\DataModelingService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\DataModelingServiceReference\DataModelingService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\DataModelingServiceReference\DataModelingService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\DataModelingServiceReference\DataModelService.wsdl" />
+    <None Include="Service References\DataModelingServiceReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\PublishingServiceReference\PublishingService1.wsdl" />
+    <None Include="Service References\PublishingServiceReference\PublishingService5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PublishingServiceReference\PublishingService51.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PublishingServiceReference\PublishingService52.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PublishingServiceReference\PublishingService53.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PublishingServiceReference\PublishingService54.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PublishingServiceReference\Zentity.Web.UI.Explorer.PublishingServiceReference.PublishStatus.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ResourceTypeServiceReference\configuration91.svcinfo" />
+    <None Include="Service References\ResourceTypeServiceReference\configuration.svcinfo" />
+    <None Include="Service References\ResourceTypeServiceReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\PublishingServiceReference\configuration91.svcinfo" />
+    <None Include="Service References\PublishingServiceReference\configuration.svcinfo" />
+    <None Include="Service References\PublishingServiceReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\DataModelingServiceReference\DataModelingService.disco" />
+    <None Include="Service References\PublishingServiceReference\PublishingService1.disco" />
+    <None Include="Service References\ResourceTypeServiceReference\ResourceTypeService.disco" />
+    <Content Include="Styles\body.css" />
+    <Content Include="Styles\chrome.css" />
+    <Content Include="Styles\Site.css" />
+    <Content Include="Default.aspx" />
+    <Content Include="Services\VisualExplorer.svc" />
+    <Content Include="Styles\templates.css" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <None Include="Service References\ResourceTypeServiceReference\ResourceTypeService.wsdl" />
+    <None Include="Service References\ResourceTypeServiceReference\ResourceTypeService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ResourceTypeServiceReference\ResourceTypeService11.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ResourceTypeServiceReference\ResourceTypeService12.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ResourceTypeServiceReference\ResourceTypeService13.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ResourceTypeServiceReference\ResourceTypeService14.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ResourceTypeServiceReference\Zentity.Web.UI.Explorer.ResourceTypeServiceReference.NavigationPropertyCollection.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ResourceTypeServiceReference\Zentity.Web.UI.Explorer.ResourceTypeServiceReference.ResourceTypeCollection.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ResourceTypeServiceReference\Zentity.Web.UI.Explorer.ResourceTypeServiceReference.ScalarPropertyCollection.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Default.Master.cs">
+      <DependentUpon>Default.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default.Master.designer.cs">
+      <DependentUpon>Default.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Handlers\PivotCollectionHandler.cs" />
+    <Compile Include="Messages.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Messages.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Pivot\ODataViewer.aspx.cs">
+      <DependentUpon>ODataViewer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pivot\ODataViewer.aspx.designer.cs">
+      <DependentUpon>ODataViewer.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pivot\Gallery.aspx.cs">
+      <DependentUpon>Gallery.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pivot\Gallery.aspx.designer.cs">
+      <DependentUpon>Gallery.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pivot\Viewer.aspx.cs">
+      <DependentUpon>Viewer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pivot\Viewer.aspx.designer.cs">
+      <DependentUpon>Viewer.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pivot\PivotCollectionHelper.cs" />
+    <Compile Include="Pivot\PivotCollectionItem.Designer.cs">
+      <DependentUpon>PivotCollectionItem.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Pivot\PublishingCollectionData.cs" />
+    <Compile Include="Properties\Messages.Designer.cs" />
+    <Compile Include="PublishingStatus.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PublishingStatus.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\DataModelingServiceReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\PublishingServiceReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\ResourceTypeServiceReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Services\IVisualExplorer.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Redirect.aspx.cs">
+      <DependentUpon>Redirect.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Redirect.aspx.designer.cs">
+      <DependentUpon>Redirect.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Services\VisualExplorer.svc.cs">
+      <DependentUpon>VisualExplorer.svc</DependentUpon>
+    </Compile>
+    <Compile Include="Services\VisualExplorerHelper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Default.Master" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Pivot\PivotCollectionItem.xsc">
+      <DependentUpon>PivotCollectionItem.xsd</DependentUpon>
+    </None>
+    <None Include="Pivot\PivotCollectionItem.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>PivotCollectionItem.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Pivot\PivotCollectionItem.xss">
+      <DependentUpon>PivotCollectionItem.xsd</DependentUpon>
+    </None>
+    <Content Include="Search\ExcludedPredicates.config" />
+    <Content Include="Search\ExcludedResourceTypes.config" />
+    <Content Include="Search\ImplicitProperties.config" />
+    <Content Include="Search\PredicateTokens.config" />
+    <Content Include="Search\SpecialTokens.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Zentity.ScholarlyWorks\Zentity.ScholarlyWorks.csproj">
+      <Project>{1EA9F927-E9CA-417D-946C-83A957A18B99}</Project>
+      <Name>Zentity.ScholarlyWorks</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Product\Zentity.Security\Zentity.Security.Authentication\Zentity.Security.Authentication.csproj">
+      <Project>{3822E9FB-5E57-4099-8CFD-0C78CDC3EDCF}</Project>
+      <Name>Zentity.Security.Authentication</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Product\Zentity.Services\Zentity.Platform\Zentity.Platform.csproj">
+      <Project>{6E6F2C21-4CD4-46C5-BD94-FA3C5FC17DB9}</Project>
+      <Name>Zentity.Platform</Name>
+    </ProjectReference>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\DataModelingServiceReference\" />
+    <WCFMetadataStorage Include="Service References\PublishingServiceReference\" />
+    <WCFMetadataStorage Include="Service References\ResourceTypeServiceReference\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Product\Zentity.Security\Zentity.Security.Authentication\Zentity.Security.Authentication.csproj">
+      <Project>{3822E9FB-5E57-4099-8CFD-0C78CDC3EDCF}</Project>
+      <Name>Zentity.Security.Authentication</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Product\Zentity.Services.Web\Zentity.Services.Web.csproj">
+      <Project>{AC581A4A-5071-4631-8BB6-2E8E0AA29377}</Project>
+      <Name>Zentity.Services.Web</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Messages.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Messages.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Messages.resx" />
+    <EmbeddedResource Include="PublishingStatus.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>PublishingStatus.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>False</AutoAssignPort>
+          <DevelopmentServerPort>6666</DevelopmentServerPort>
+          <DevelopmentServerVPath>/VisualExplorer</DevelopmentServerVPath>
+          <IISUrl>http://localhost:9090/VisualExplorer</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

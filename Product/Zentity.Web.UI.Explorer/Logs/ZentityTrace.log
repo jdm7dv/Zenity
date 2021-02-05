@@ -1,0 +1,219 @@
+----------------------------------------
+Title: Error :: LoadAssemblyCache - Could not load file or assembly 'System.Windows, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e' or one of its dependencies. The system cannot find the file specified.
+Message: Parameter Information
+
+System.IO.FileNotFoundException: Could not load file or assembly 'System.Windows, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e' or one of its dependencies. The system cannot find the file specified.
+File name: 'System.Windows, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e'
+   at System.Reflection.RuntimeAssembly.GetExportedTypes(RuntimeAssembly assembly, ObjectHandleOnStack retTypes)
+   at System.Reflection.RuntimeAssembly.GetExportedTypes()
+   at Zentity.Services.Web.AssemblyCache.LoadAssemblyCache() in D:\ZentityCodeplex\Zentity_Main\Product\Zentity.Services.Web\AssemblyCache.cs:line 120
+
+=== Pre-bind state information ===
+LOG: User = REDMOND\v-masarc
+LOG: DisplayName = System.Windows, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e
+ (Fully-specified)
+LOG: Appbase = file:///D:/ZentityCodeplex/Zentity_Main/Product/Zentity.Web.UI.Explorer/
+LOG: Initial PrivatePath = D:\ZentityCodeplex\Zentity_Main\Product\Zentity.Web.UI.Explorer\bin
+Calling assembly : GuanxiMapCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null.
+===
+LOG: This bind starts in default load context.
+LOG: Using application configuration file: D:\ZentityCodeplex\Zentity_Main\Product\Zentity.Web.UI.Explorer\web.config
+LOG: Using host configuration file: 
+LOG: Using machine configuration file from C:\Windows\Microsoft.NET\Framework\v4.0.30319\config\machine.config.
+LOG: Post-policy reference: System.Windows, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e
+LOG: Attempting download of new URL file:///C:/Windows/Microsoft.NET/Framework/v4.0.30319/Temporary ASP.NET Files/visualexplorer/ff32aa0a/bc95548e/System.Windows.DLL.
+LOG: Attempting download of new URL file:///C:/Windows/Microsoft.NET/Framework/v4.0.30319/Temporary ASP.NET Files/visualexplorer/ff32aa0a/bc95548e/System.Windows/System.Windows.DLL.
+LOG: Attempting download of new URL file:///D:/ZentityCodeplex/Zentity_Main/Product/Zentity.Web.UI.Explorer/bin/System.Windows.DLL.
+LOG: Attempting download of new URL file:///D:/ZentityCodeplex/Zentity_Main/Product/Zentity.Web.UI.Explorer/bin/System.Windows/System.Windows.DLL.
+LOG: Attempting download of new URL file:///C:/Windows/Microsoft.NET/Framework/v4.0.30319/Temporary ASP.NET Files/visualexplorer/ff32aa0a/bc95548e/System.Windows.EXE.
+LOG: Attempting download of new URL file:///C:/Windows/Microsoft.NET/Framework/v4.0.30319/Temporary ASP.NET Files/visualexplorer/ff32aa0a/bc95548e/System.Windows/System.Windows.EXE.
+LOG: Attempting download of new URL file:///D:/ZentityCodeplex/Zentity_Main/Product/Zentity.Web.UI.Explorer/bin/System.Windows.EXE.
+LOG: Attempting download of new URL file:///D:/ZentityCodeplex/Zentity_Main/Product/Zentity.Web.UI.Explorer/bin/System.Windows/System.Windows.EXE.
+
+Timestamp: 2010-10-18 16:08:52
+Severity: Error
+App Domain: 80f28d79-1-129318718987908282
+
+----------------------------------------
+----------------------------------------
+Title: Error :: LoadAssemblyCache - Could not load file or assembly 'System.Windows, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e' or one of its dependencies. The system cannot find the file specified.
+Message: Parameter Information
+
+System.IO.FileNotFoundException: Could not load file or assembly 'System.Windows, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e' or one of its dependencies. The system cannot find the file specified.
+File name: 'System.Windows, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e'
+   at System.Reflection.RuntimeAssembly.GetExportedTypes(RuntimeAssembly assembly, ObjectHandleOnStack retTypes)
+   at System.Reflection.RuntimeAssembly.GetExportedTypes()
+   at Zentity.Services.Web.AssemblyCache.LoadAssemblyCache() in D:\ZentityCodeplex\Zentity_Main\Product\Zentity.Services.Web\AssemblyCache.cs:line 120
+
+=== Pre-bind state information ===
+LOG: User = REDMOND\v-masarc
+LOG: DisplayName = System.Windows, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e
+ (Fully-specified)
+LOG: Appbase = file:///D:/ZentityCodeplex/Zentity_Main/Product/Zentity.Web.UI.Explorer/
+LOG: Initial PrivatePath = D:\ZentityCodeplex\Zentity_Main\Product\Zentity.Web.UI.Explorer\bin
+Calling assembly : ruochi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null.
+===
+LOG: This bind starts in default load context.
+LOG: Using application configuration file: D:\ZentityCodeplex\Zentity_Main\Product\Zentity.Web.UI.Explorer\web.config
+LOG: Using host configuration file: 
+LOG: Using machine configuration file from C:\Windows\Microsoft.NET\Framework\v4.0.30319\config\machine.config.
+LOG: Post-policy reference: System.Windows, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e
+LOG: The same bind was seen before, and was failed with hr = 0x80070002.
+
+Timestamp: 2010-10-18 16:08:53
+Severity: Error
+App Domain: 80f28d79-1-129318718987908282
+
+----------------------------------------
+----------------------------------------
+Title: Error :: LoadAssemblyCache - Could not load file or assembly 'System.Windows, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e' or one of its dependencies. The system cannot find the file specified.
+Message: Parameter Information
+
+System.IO.FileNotFoundException: Could not load file or assembly 'System.Windows, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e' or one of its dependencies. The system cannot find the file specified.
+File name: 'System.Windows, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e'
+   at System.Reflection.RuntimeAssembly.GetExportedTypes(RuntimeAssembly assembly, ObjectHandleOnStack retTypes)
+   at System.Reflection.RuntimeAssembly.GetExportedTypes()
+   at Zentity.Services.Web.AssemblyCache.LoadAssemblyCache() in D:\ZentityCodeplex\Zentity_Main\Product\Zentity.Services.Web\AssemblyCache.cs:line 120
+
+=== Pre-bind state information ===
+LOG: User = REDMOND\v-masarc
+LOG: DisplayName = System.Windows, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e
+ (Fully-specified)
+LOG: Appbase = file:///D:/ZentityCodeplex/Zentity_Main/Product/Zentity.Web.UI.Explorer/
+LOG: Initial PrivatePath = D:\ZentityCodeplex\Zentity_Main\Product\Zentity.Web.UI.Explorer\bin
+Calling assembly : GuanxiMapCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null.
+===
+LOG: This bind starts in default load context.
+LOG: Using application configuration file: D:\ZentityCodeplex\Zentity_Main\Product\Zentity.Web.UI.Explorer\web.config
+LOG: Using host configuration file: 
+LOG: Using machine configuration file from C:\Windows\Microsoft.NET\Framework\v4.0.30319\config\machine.config.
+LOG: Post-policy reference: System.Windows, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e
+LOG: The same bind was seen before, and was failed with hr = 0x80070002.
+
+Timestamp: 2010-10-18 16:08:53
+Severity: Error
+App Domain: 80f28d79-1-129318718987908282
+
+----------------------------------------
+----------------------------------------
+Title: Error :: LoadAssemblyCache - Could not load file or assembly 'System.Windows, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e' or one of its dependencies. The system cannot find the file specified.
+Message: Parameter Information
+
+System.IO.FileNotFoundException: Could not load file or assembly 'System.Windows, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e' or one of its dependencies. The system cannot find the file specified.
+File name: 'System.Windows, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e'
+   at System.Reflection.RuntimeAssembly.GetExportedTypes(RuntimeAssembly assembly, ObjectHandleOnStack retTypes)
+   at System.Reflection.RuntimeAssembly.GetExportedTypes()
+   at Zentity.Services.Web.AssemblyCache.LoadAssemblyCache() in D:\ZentityCodeplex\Zentity_Main\Product\Zentity.Services.Web\AssemblyCache.cs:line 120
+
+=== Pre-bind state information ===
+LOG: User = REDMOND\v-masarc
+LOG: DisplayName = System.Windows, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e
+ (Fully-specified)
+LOG: Appbase = file:///D:/ZentityCodeplex/Zentity_Main/Product/Zentity.Web.UI.Explorer/
+LOG: Initial PrivatePath = D:\ZentityCodeplex\Zentity_Main\Product\Zentity.Web.UI.Explorer\bin
+Calling assembly : ruochi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null.
+===
+LOG: This bind starts in default load context.
+LOG: Using application configuration file: D:\ZentityCodeplex\Zentity_Main\Product\Zentity.Web.UI.Explorer\web.config
+LOG: Using host configuration file: 
+LOG: Using machine configuration file from C:\Windows\Microsoft.NET\Framework\v4.0.30319\config\machine.config.
+LOG: Post-policy reference: System.Windows, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e
+LOG: The same bind was seen before, and was failed with hr = 0x80070002.
+
+Timestamp: 2010-10-18 16:08:53
+Severity: Error
+App Domain: 80f28d79-1-129318718987908282
+
+----------------------------------------
+----------------------------------------
+Title: Error :: GetResourcesByKeyword - Object reference not set to an instance of an object.
+Message: Parameter Information
+	keyword : String
+
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at System.Collections.Generic.Dictionary`2.Insert(TKey key, TValue value, Boolean add)
+   at System.Collections.Generic.Dictionary`2.Add(TKey key, TValue value)
+   at Zentity.Platform.Utility.ReadXmlConfigurationFile(String fileNameAppSettingsKey) in D:\ZentityCodeplex\Zentity_Main\Product\Zentity.Services\Zentity.Platform\SearchEngine\Utility.cs:line 418
+   at Zentity.Platform.PredicateToken.FetchPredicateTokens(ZentityContext context) in D:\ZentityCodeplex\Zentity_Main\Product\Zentity.Services\Zentity.Platform\SearchEngine\Tokens\PredicateToken.cs:line 79
+   at Zentity.Platform.PredicateToken.FetchPredicateToken(String token, ZentityContext context) in D:\ZentityCodeplex\Zentity_Main\Product\Zentity.Services\Zentity.Platform\SearchEngine\Tokens\PredicateToken.cs:line 64
+   at Zentity.Platform.SearchTokens.FetchPredicateToken(String token) in D:\ZentityCodeplex\Zentity_Main\Product\Zentity.Services\Zentity.Platform\SearchEngine\Tokens\SearchTokens.cs:line 105
+   at Zentity.Platform.Tokenizer.StartsWithPredicateToken(String searchQuery) in D:\ZentityCodeplex\Zentity_Main\Product\Zentity.Services\Zentity.Platform\SearchEngine\Parser\Tokenizer.cs:line 1540
+   at Zentity.Platform.Tokenizer.FetchPredicateConditions(String& conditionString) in D:\ZentityCodeplex\Zentity_Main\Product\Zentity.Services\Zentity.Platform\SearchEngine\Parser\Tokenizer.cs:line 476
+   at Zentity.Platform.Tokenizer.FetchSubjectCriteriaResourceType(String& conditionString) in D:\ZentityCodeplex\Zentity_Main\Product\Zentity.Services\Zentity.Platform\SearchEngine\Parser\Tokenizer.cs:line 403
+   at Zentity.Platform.Tokenizer.GetTokens(String searchQuery, String& resourceTypeFullName) in D:\ZentityCodeplex\Zentity_Main\Product\Zentity.Services\Zentity.Platform\SearchEngine\Parser\Tokenizer.cs:line 68
+   at Zentity.Platform.Parser.Parse(String inputQuery, String& resourceTypeFullName) in D:\ZentityCodeplex\Zentity_Main\Product\Zentity.Services\Zentity.Platform\SearchEngine\Parser\Parser.cs:line 62
+   at Zentity.Platform.SearchEngine.HandleResourceSearch(String searchCriteria, ZentityContext context, SortProperty sortProperty, Int32 currentCursor, Int32& totalRecords) in D:\ZentityCodeplex\Zentity_Main\Product\Zentity.Services\Zentity.Platform\SearchEngine\SearchEngine.cs:line 1001
+   at Zentity.Platform.SearchEngine.SearchResources(String searchCriteria, ZentityContext context, SortProperty sortProperty, Int32 currentCursor, Int32& totalRecords) in D:\ZentityCodeplex\Zentity_Main\Product\Zentity.Services\Zentity.Platform\SearchEngine\SearchEngine.cs:line 917
+   at Zentity.Services.Explorer.VisualExplorer.GetResourcesByKeyword(String keyword) in D:\ZentityCodeplex\Zentity_Main\Product\Zentity.Web.UI.Explorer\Services\VisualExplorer.svc.cs:line 166
+Timestamp: 2010-10-18 16:08:53
+Severity: Error
+App Domain: 80f28d79-1-129318718987908282
+
+----------------------------------------
+----------------------------------------
+Title: Error :: LoadAssemblyCache - Could not load file or assembly 'System.Windows, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e' or one of its dependencies. The system cannot find the file specified.
+Message: Parameter Information
+
+System.IO.FileNotFoundException: Could not load file or assembly 'System.Windows, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e' or one of its dependencies. The system cannot find the file specified.
+File name: 'System.Windows, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e'
+   at System.Reflection.RuntimeAssembly.GetExportedTypes(RuntimeAssembly assembly, ObjectHandleOnStack retTypes)
+   at System.Reflection.RuntimeAssembly.GetExportedTypes()
+   at Zentity.Services.Web.AssemblyCache.LoadAssemblyCache() in D:\ZentityCodeplex\Zentity_Main\Product\Zentity.Services.Web\AssemblyCache.cs:line 120
+
+=== Pre-bind state information ===
+LOG: User = REDMOND\v-masarc
+LOG: DisplayName = System.Windows, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e
+ (Fully-specified)
+LOG: Appbase = file:///D:/ZentityCodeplex/Zentity_Main/Product/Zentity.Web.UI.Explorer/
+LOG: Initial PrivatePath = D:\ZentityCodeplex\Zentity_Main\Product\Zentity.Web.UI.Explorer\bin
+Calling assembly : GuanxiMapCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null.
+===
+LOG: This bind starts in default load context.
+LOG: Using application configuration file: D:\ZentityCodeplex\Zentity_Main\Product\Zentity.Web.UI.Explorer\web.config
+LOG: Using host configuration file: 
+LOG: Using machine configuration file from C:\Windows\Microsoft.NET\Framework\v4.0.30319\config\machine.config.
+LOG: Post-policy reference: System.Windows, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e
+LOG: Attempting download of new URL file:///C:/Windows/Microsoft.NET/Framework/v4.0.30319/Temporary ASP.NET Files/visualexplorer/ff32aa0a/bc95548e/System.Windows.DLL.
+LOG: Attempting download of new URL file:///C:/Windows/Microsoft.NET/Framework/v4.0.30319/Temporary ASP.NET Files/visualexplorer/ff32aa0a/bc95548e/System.Windows/System.Windows.DLL.
+LOG: Attempting download of new URL file:///D:/ZentityCodeplex/Zentity_Main/Product/Zentity.Web.UI.Explorer/bin/System.Windows.DLL.
+LOG: Attempting download of new URL file:///D:/ZentityCodeplex/Zentity_Main/Product/Zentity.Web.UI.Explorer/bin/System.Windows/System.Windows.DLL.
+LOG: Attempting download of new URL file:///C:/Windows/Microsoft.NET/Framework/v4.0.30319/Temporary ASP.NET Files/visualexplorer/ff32aa0a/bc95548e/System.Windows.EXE.
+LOG: Attempting download of new URL file:///C:/Windows/Microsoft.NET/Framework/v4.0.30319/Temporary ASP.NET Files/visualexplorer/ff32aa0a/bc95548e/System.Windows/System.Windows.EXE.
+LOG: Attempting download of new URL file:///D:/ZentityCodeplex/Zentity_Main/Product/Zentity.Web.UI.Explorer/bin/System.Windows.EXE.
+LOG: Attempting download of new URL file:///D:/ZentityCodeplex/Zentity_Main/Product/Zentity.Web.UI.Explorer/bin/System.Windows/System.Windows.EXE.
+
+Timestamp: 2010-10-18 16:11:25
+Severity: Error
+App Domain: 80f28d79-2-129318720664518282
+
+----------------------------------------
+----------------------------------------
+Title: Error :: LoadAssemblyCache - Could not load file or assembly 'System.Windows, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e' or one of its dependencies. The system cannot find the file specified.
+Message: Parameter Information
+
+System.IO.FileNotFoundException: Could not load file or assembly 'System.Windows, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e' or one of its dependencies. The system cannot find the file specified.
+File name: 'System.Windows, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e'
+   at System.Reflection.RuntimeAssembly.GetExportedTypes(RuntimeAssembly assembly, ObjectHandleOnStack retTypes)
+   at System.Reflection.RuntimeAssembly.GetExportedTypes()
+   at Zentity.Services.Web.AssemblyCache.LoadAssemblyCache() in D:\ZentityCodeplex\Zentity_Main\Product\Zentity.Services.Web\AssemblyCache.cs:line 120
+
+=== Pre-bind state information ===
+LOG: User = REDMOND\v-masarc
+LOG: DisplayName = System.Windows, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e
+ (Fully-specified)
+LOG: Appbase = file:///D:/ZentityCodeplex/Zentity_Main/Product/Zentity.Web.UI.Explorer/
+LOG: Initial PrivatePath = D:\ZentityCodeplex\Zentity_Main\Product\Zentity.Web.UI.Explorer\bin
+Calling assembly : ruochi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null.
+===
+LOG: This bind starts in default load context.
+LOG: Using application configuration file: D:\ZentityCodeplex\Zentity_Main\Product\Zentity.Web.UI.Explorer\web.config
+LOG: Using host configuration file: 
+LOG: Using machine configuration file from C:\Windows\Microsoft.NET\Framework\v4.0.30319\config\machine.config.
+LOG: Post-policy reference: System.Windows, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e
+LOG: The same bind was seen before, and was failed with hr = 0x80070002.
+
+Timestamp: 2010-10-18 16:11:26
+Severity: Error
+App Domain: 80f28d79-2-129318720664518282
+
+----------------------------------------

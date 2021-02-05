@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:9090/VisualExplorer/services/VisualExplorer.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Zentity.Services.Explorer" />
+  <xs:element name="GetVisualExplorerGraphBySearchKeyword">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="keyword" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetVisualExplorerGraphBySearchKeywordResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/Zentity.Services.Explorer" minOccurs="0" name="GetVisualExplorerGraphBySearchKeywordResult" nillable="true" type="q1:VisualExplorerGraph" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetVisualExplorerGraphByResourceId">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="resourceId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetVisualExplorerGraphByResourceIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/Zentity.Services.Explorer" minOccurs="0" name="GetVisualExplorerGraphByResourceIdResult" nillable="true" type="q2:VisualExplorerGraph" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetResourceMetadataByResourceId">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="resourceId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetResourceMetadataByResourceIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetResourceMetadataByResourceIdResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetResourceRelationByResourceId">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="subjectResourceId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="objectResourceId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetResourceRelationByResourceIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetResourceRelationByResourceIdResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetResourcesByKeyword">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="keyword" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetResourcesByKeywordResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetResourcesByKeywordResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetVisualExplorerFilterList">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetVisualExplorerFilterListResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/Zentity.Services.Explorer" minOccurs="0" name="GetVisualExplorerFilterListResult" nillable="true" type="q3:VisualExplorerFilterList" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

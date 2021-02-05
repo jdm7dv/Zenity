@@ -1,0 +1,28 @@
+<Schema Namespace="Zentity.Security.Authorization" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2006/04/edm">
+  <EntityType Name="Identity" BaseType="Zentity.Core.Resource">
+    <Documentation>
+      <Summary>Represents an Identity.</Summary>
+    </Documentation>
+    <Property Name="IdentityName" Type="String" Nullable="true" Unicode="true" MaxLength="Max" FixedLength="false" />
+    <NavigationProperty Name="Groups" Relationship="Zentity.Security.Authorization.IdentityBelongsToGroups" FromRole="Identity" ToRole="Group">
+      <Documentation>
+        <Summary>Gets a collection of related Group objects.</Summary>
+      </Documentation>
+    </NavigationProperty>
+  </EntityType>
+  <EntityType Name="Group" BaseType="Zentity.Core.Resource">
+    <Documentation>
+      <Summary>Represents a Group.</Summary>
+    </Documentation>
+    <Property Name="GroupName" Type="String" Nullable="true" Unicode="true" MaxLength="Max" FixedLength="false" />
+    <NavigationProperty Name="Identities" Relationship="Zentity.Security.Authorization.IdentityBelongsToGroups" FromRole="Group" ToRole="Identity">
+      <Documentation>
+        <Summary>Gets a collection of related Identity objects.</Summary>
+      </Documentation>
+    </NavigationProperty>
+  </EntityType>
+  <Association Name="IdentityBelongsToGroups">
+    <End Role="Identity" Type="Zentity.Security.Authorization.Identity" Multiplicity="*" />
+    <End Role="Group" Type="Zentity.Security.Authorization.Group" Multiplicity="*" />
+  </Association>
+</Schema>

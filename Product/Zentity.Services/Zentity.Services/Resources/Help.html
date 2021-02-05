@@ -1,0 +1,152 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<head>
+    <title>Syndication Service</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style type="text/css" media="all">
+        body
+        {
+            background: #fff;
+            margin: 0px;
+            padding: 0px;
+            font-family: Calibri, Tahoma, Arial;
+        }
+        .banner
+        {
+            padding: 5px 5px 5px 15px;
+            background-color: #B6CFA8;
+        }
+        .content
+        {
+            margin: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="banner">
+        <h1>
+            Syndication Service</h1>
+    </div>
+    <div class="content">
+        <h2>
+            Available Feeds</h2>
+        <ul>
+            <li><a href="./ScholarlyWork/author/firstname/lastname/1">author</a> &mdash; /ScholarlyWork/author/firstName/lastName/numberOfFeedItems/(<a
+                href="./ScholarlyWork/author/firstname/lastname/1/rss">rss</a>|<a href="./ScholarlyWork/author/firstname/lastname/1/atom">atom</a>)
+            </li>
+            <li><a href="./ScholarlyWork/authorId/Id/1">authorId</a> &mdash; /ScholarlyWork/authorId/id/numberOfFeedItems/(<a
+                href="./ScholarlyWork/authorId/Id/1/rss">rss</a>|<a href="./ScholarlyWork/authorId/Id/1/atom">atom</a>)
+            </li>
+            <li><a href="./ScholarlyWork/authorEmail/emailId/1">authorEmail</a> &mdash; /ScholarlyWork/authorEmail/id/numberOfFeedItems/(<a
+                href="./ScholarlyWork/authorEmail/emailId/1/rss">rss</a>|<a href="./ScholarlyWork/authorEmail/emailId/1/atom">atom</a>)
+            </li>
+            <li><a href="./ScholarlyWorkItem/tag/tagLabel/1">tag</a> &mdash; /ScholarlyWorkItem/tag/tagLabel/numberOfFeedItems/(<a
+                href="./ScholarlyWorkItem/tag/tagLabel/1/rss">rss</a>|<a href="./ScholarlyWorkItem/tag/tagLabel/1/atom">atom</a>)
+            </li>
+            <li><a href="./ScholarlyWorkItem/tagId/Id/1">tagId</a> &mdash; /ScholarlyWorkItem/tagId/Id/numberOfFeedItems/(<a
+                href="./ScholarlyWorkItem/tagId/Id/1/rss">rss</a>|<a href="./ScholarlyWorkItem/tagId/Id/1/atom">atom</a>)
+            </li>
+            <li><a href="./ScholarlyWorkItem/category/categoryName/1">category</a> &mdash; /ScholarlyWorkItem/category/categoryName/numberOfFeedItems/(<a
+                href="./ScholarlyWorkItem/category/categoryName/1/rss">rss</a>|<a href="./ScholarlyWorkItem/category/categoryName/1/atom">atom</a>)
+            </li>
+            <li><a href="./ScholarlyWorkItem/categoryId/Id/1">categoryId</a> &mdash; /ScholarlyWorkItem/categoryId/Id/numberOfFeedItems/(<a
+                href="./ScholarlyWorkItem/categoryId/Id/1/rss">rss</a>|<a href="./ScholarlyWorkItem/categoryId/Id/1/atom">atom</a>)
+            </li>
+            <li><a href="./ScholarlyWork/contributor/firstname/lastname/1">contributor</a> &mdash;
+                /ScholarlyWork /contributor/firstName/lastName/numberOfFeedItems/(<a href="./ScholarlyWork/contributor/firstname/lastname/1">rss</a>|<a
+                    href="./ScholarlyWork/contributor/firstname/lastname/1/atom">atom</a>)
+            </li>
+            <li><a href="./ScholarlyWork/contributorId/Id/1">contributorId</a> &mdash; /ScholarlyWork/contributorId/id/numberOfFeedItems/(<a
+                href="./ScholarlyWork/contributorId/Id/1/rss">rss</a>|<a href="./ScholarlyWork/contributorId/Id/1/atom">atom</a>)
+            </li>
+            <li><a href="./ScholarlyWork/contributorEmail/emailId/1">contributorEmail</a> &mdash;
+                /ScholarlyWork/contributorEmail/id/numberOfFeedItems/(<a href="./ScholarlyWork/contributorEmail/emailId/1/rss">rss</a>|<a
+                    href="./ScholarlyWork/contributorEmail/emailId/1/atom">atom</a>) </li>
+            <li><a href="./Resource/dateAdded/date/1">DateAdded</a> &mdash; /Resource/dateAdded/date/numberOfFeedItems/(<a
+                href="./Resource/dateAdded/date/1/rss">rss</a>|<a href="./Resource/dateAdded/date/1/atom">atom</a>)
+            </li>
+            <li><a href="./Resource/dateModified/date/1">DateModified</a> &mdash; /Resource/dateModified/date/numberOfFeedItems/(<a
+                href="./Resource/dateModified/date/1/rss">rss</a>|<a href="./Resource/dateModified/date/1/atom">atom</a>)
+            </li>
+        </ul>
+        <h2>
+            Full list of available Endpoints</h2>
+        <ul>
+            <li><b>/{ScholarlyWork}/author/{firstName}/{lastName}/{numberOfFeedItems}</b> &mdash;
+                Returns the ScholarlyWorks specified for the given author in default format</li>
+            <li><b>/{ScholarlyWork}/author/{firstName}/{lastName}/{numberOfFeedItems}/rss</b>&mdash;
+                Returns the Resources specified for the given author in RSS 2.0</li>
+            <li><b>/{ScholarlyWork}/author/{firstName}/{lastName}/{numberOfFeedItems}/atom</b> &mdash;
+                Returns the ScholarlyWorks specified for the given author in Atom 1.0</li>
+            <li><b>/{ScholarlyWork}/authorId/{id}/{numberOfFeedItems}</b> &mdash; Returns the ScholarlyWorks
+                specified for the given author id in default format</li>
+            <li><b>/{ScholarlyWork}/authorId/{id}/{numberOfFeedItems}/rss</b>&mdash; Returns the
+                ScholarlyWorks specified for the given author id in RSS 2.0</li>
+            <li><b>/{ScholarlyWork}/authorId/{id}/{numberOfFeedItems}/atom</b> &mdash; Returns the
+                ScholarlyWorks specified for the given author id in Atom 1.0</li>
+            <li><b>/{ScholarlyWork}/authorEmail/{emailId}/{numberOfFeedItems}</b> &mdash; Returns
+                the ScholarlyWorks specified for the given author email id in default format</li>
+            <li><b>/{ScholarlyWork}/authorEmail/{emailId}/{numberOfFeedItems}/rss</b>&mdash; Returns
+                the ScholarlyWorks specified for the given author email id in RSS 2.0</li>
+            <li><b>/{ScholarlyWork}/authorEmail/{emailId}/{numberOfFeedItems}/atom</b> &mdash; Returns
+                the ScholarlyWorks specified for the given author email id in Atom 1.0</li>
+            <li><b>/{ScholarlyWorkItem}/tag/{tagLabel}/{numberOfFeedItems}</b> &mdash; Returns the 
+                ScholarlyWorkItems specified for the given tag label in default format</li>
+            <li><b>/{ScholarlyWorkItem}/tag/{tagLabel}/{numberOfFeedItems}/rss</b>&mdash; Returns the 
+                ScholarlyWorkItems specified for the given tag label in RSS 2.0</li>
+            <li><b>/{ScholarlyWorkItem}/tag/{tagLabel}/{numberOfFeedItems}/atom</b> &mdash; Returns the 
+                ScholarlyWorkItems specified for the given tag label in Atom 1.0</li>
+            <li><b>/{ScholarlyWorkItem}/tagId/{tagId}/{numberOfFeedItems}</b> &mdash; Returns the 
+                ScholarlyWorkItems specified for the given tag Id in default format</li>
+            <li><b>/{ScholarlyWorkItem}/tagId/{tagId}/{numberOfFeedItems}/rss</b>&mdash; Returns the 
+                ScholarlyWorkItems specified for the given tag Id in RSS 2.0</li>
+            <li><b>/{ScholarlyWorkItem}/tagId/{tagId}/{numberOfFeedItems}/atom</b> &mdash; Returns the 
+                ScholarlyWorkItems specified for the given tag Id in Atom 1.0</li>
+            <li><b>/{ScholarlyWorkItem}/category/{categoryName}/{numberOfFeedItems}</b> &mdash; Returns the
+                ScholarlyWorkItems specified for the given category name in default format</li>
+            <li><b>/{ScholarlyWorkItem}/category/{categoryName}/{numberOfFeedItems}/rss</b>&mdash; Returns
+                the ScholarlyWorkItems specified for the given category name in RSS 2.0</li>
+            <li><b>/{ScholarlyWorkItem}/category/{categoryName}/{numberOfFeedItems}/atom</b> &mdash; Returns
+                the ScholarlyWorkItems specified for the given category name in Atom 1.0</li>
+            <li><b>/{ScholarlyWorkItem}/categoryId/{categoryId}/{numberOfFeedItems}</b> &mdash; Returns the
+                ScholarlyWorkItems specified for the given category Id in default format</li>
+            <li><b>/{ScholarlyWorkItem}/categoryId/{categoryId}/{numberOfFeedItems}/rss</b>&mdash; Returns
+                the ScholarlyWorkItems specified for the given category Id in RSS 2.0</li>
+            <li><b>/{ScholarlyWorkItem}/categoryId/{categoryId}/{numberOfFeedItems}/atom</b> &mdash; Returns
+                the ScholarlyWorkItems specified for the given category Id in Atom 1.0</li>
+            <li><b>/{ScholarlyWork}/contributor/{firstName}/{lastName}/{numberOfFeedItems}</b> &mdash;
+                Returns the ScholarlyWorks specified for the given contributor in default format</li>
+            <li><b>/{ScholarlyWork}/contributor/{firstName}/{lastName}/{numberOfFeedItems}/rss</b>&mdash;
+                Returns the ScholarlyWorks specified for the given contributor in RSS 2.0</li>
+            <li><b>/{ScholarlyWork}/contributor/{firstName}/{lastName}/{numberOfFeedItems}/atom</b>
+                &mdash; Returns the ScholarlyWorks specified for the given contributor in Atom 1.0</li>
+            <li><b>/{ScholarlyWork}/contributorId/{id}/{numberOfFeedItems}</b> &mdash; Returns the
+                ScholarlyWorks specified for the given contributor id in default format</li>
+            <li><b>/{ScholarlyWork}/contributorId/{id}/{numberOfFeedItems}/rss</b>&mdash; Returns
+                the ScholarlyWorks specified for the given contributor id in RSS 2.0</li>
+            <li><b>/{ScholarlyWork}/contributorId/{id}/{numberOfFeedItems}/atom</b> &mdash; Returns
+                the ScholarlyWorks specified for the given contributor id in Atom 1.0</li>
+            <li><b>/{ScholarlyWork}/contributorEmail/{emailId}/{numberOfFeedItems}</b> &mdash; Returns
+                the ScholarlyWorks specified for the given contributor email id in default format</li>
+            <li><b>/{ScholarlyWork}/contributorEmail/{emailId}/{numberOfFeedItems}/rss</b>&mdash;
+                Returns the ScholarlyWorks specified for the given contributor email id in RSS 2.0</li>
+            <li><b>/{ScholarlyWork}/contributorEmail/{emailId}/{numberOfFeedItems}/atom</b> &mdash;
+                Returns the ScholarlyWorks specified for the given contributor email id in Atom
+                1.0</li>
+            <li><b>/{Resource}/dateAdded/{dateAdded}/{numberOfFeedItems}</b> &mdash; Returns the
+                Resources specified for the given dateAdded in default format</li>
+            <li><b>/{Resource}/dateAdded/{dateAdded}/{numberOfFeedItems}/rss</b>&mdash; Returns
+                the Resources specified for the given dateAdded in RSS 2.0</li>
+            <li><b>/{Resource}/dateAdded/{dateAdded}/{numberOfFeedItems}/atom</b> &mdash; Returns
+                the Resources specified for the given dateAdded in Atom 1.0</li>
+            <li><b>/{Resource}/dateModified/{dateModified}/{numberOfFeedItems}</b> &mdash; Returns
+                the Resources specified for the given dateModified in default format</li>
+            <li><b>/{Resource}/dateModified/{dateModified}/{numberOfFeedItems}/rss</b>&mdash; Returns
+                the Resources specified for the given dateModified in RSS 2.0</li>
+            <li><b>/{Resource}/dateModified/{dateModified}/{numberOfFeedItems}/atom</b> &mdash;
+                Returns the Resources specified for the given dateModified in Atom 1.0</li>
+            <li><b>/help</b> &mdash; Displays the service documentation</li>
+        </ul>
+    </div>
+</body>
+</html>

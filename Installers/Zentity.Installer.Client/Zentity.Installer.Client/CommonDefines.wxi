@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- CommonDefines.wxi includes all the common variables -->
+<Include xmlns="http://schemas.microsoft.com/wix/2006/wi">
+    <?if $(var.Platform) = x86 ?>
+    <?define ProgramFilesFolder="ProgramFilesFolder"?>
+    <?define RootRegistryKey="Software\Microsoft"?>
+    <?define Win64="no"?>
+    <?define SystemFilesFolder="SystemFolder"?>
+    <?else ?>
+    <?define ProgramFilesFolder="ProgramFiles64Folder"?>
+    <?define RootRegistryKey="Software\wow6432node\Microsoft"?>
+    <?define Win64="yes"?>
+    <?define SystemFilesFolder="System64Folder"?>
+    <?endif ?>
+
+    <!-- Zentity product description strings -->
+    <?define ProductManufacturer="Microsoft Research"?>
+    <?define ProductName="Zentity 2.0 Client"?>
+    <?define ProductDescription="Zentity Client 2.0"?>
+
+    <!-- RTM version number (To be done: RTM version number)-->
+    <?define RTMVersionNumber="2.0.0.0"?>
+  
+    <!-- Zentity Folder names -->
+    <?define ZentityInstallationFolder="Zentity"?>
+    <?define LicenseFolderName="License"?>
+    <?define DocumentFolderName="Documentation"?>
+    <?define ScriptsFolderName="PowerShell scripts"?>
+    <?define SamplesFolderName="Samples"?>
+    <?define RDFFolderName="RDF"?>  
+    <?define PowerShellFolderName="WindowsPowerShell"?>
+    <?define PowerShellVersionFolderName="v1.0"?>
+  
+    <!-- Folder Path for the binaries -->    
+    <?define PSScriptsPath="..\..\..\Build_Target\Client\Powershell Scripts"?>
+    <?define DocumentsPath="..\..\..\Build_Target\Client\Documentation"?>
+    <?define SamplesPath="..\..\..\Build_Target\Client\Samples"?>
+</Include>

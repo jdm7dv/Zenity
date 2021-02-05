@@ -1,0 +1,245 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{E141CAE2-FBAC-452A-81A9-C027CA9182BE}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Zentity</RootNamespace>
+    <AssemblyName>Zentity.Core</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <SignAssembly>false</SignAssembly>
+    <DelaySign>false</DelaySign>
+    <AssemblyOriginatorKeyFile>..\StrongNameKey\35MSSharedLib1024.snk</AssemblyOriginatorKeyFile>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+    <DocumentationFile>bin\Debug\Zentity.Core.xml</DocumentationFile>
+    <CodeAnalysisRules>
+    </CodeAnalysisRules>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Release\Zentity.Core.XML</DocumentationFile>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.Entity">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.Entity.Design">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.Services" />
+    <Reference Include="System.Data.Services.Client">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Administration\AdministrationContext.cs" />
+    <Compile Include="Administration\AdministrationResources.Designer.cs" />
+    <Compile Include="Administration\AssociationChange.cs" />
+    <Compile Include="Administration\ChangeSet.cs" />
+    <Compile Include="Administration\DataModelModuleChange.cs" />
+    <Compile Include="Administration\NavigationPropertyChange.cs" />
+    <Compile Include="Administration\ObjectLayer.cs" />
+    <Compile Include="Administration\Operation.cs" />
+    <Compile Include="Administration\PredicateChange.cs" />
+    <Compile Include="Administration\PredicatePropertyChange.cs" />
+    <Compile Include="Administration\PropertyChange.cs" />
+    <Compile Include="Administration\RelationshipChange.cs" />
+    <Compile Include="Administration\RelationshipPropertyChange.cs" />
+    <Compile Include="Administration\ResourceChange.cs" />
+    <Compile Include="Administration\ResourcePropertyChange.cs" />
+    <Compile Include="Administration\ResourceTypeChange.cs" />
+    <Compile Include="Administration\ScalarPropertyChange.cs" />
+    <Compile Include="Core\KatmaiContentStream.cs" />
+    <Compile Include="Core\ZentityFileStreamProvider.cs" />
+    <Compile Include="DataModelling\Association.cs" />
+    <Compile Include="DataModelling\AssociationEndMultiplicity.cs" />
+    <Compile Include="DataModelling\ColumnMapping.cs" />
+    <Compile Include="DataModelling\ColumnMappingCollection.cs" />
+    <Compile Include="DataModelling\DataModel.cs" />
+    <Compile Include="DataModelling\DataModelLoader.cs" />
+    <Compile Include="DataModelling\ModuleCollectionChange.cs" />
+    <Compile Include="DataModelling\DataModelComparisonHelpers.cs" />
+    <Compile Include="DataModelling\DataModelModule.cs" />
+    <Compile Include="DataModelling\DataModelModuleCollection.cs" />
+    <Compile Include="DataModelling\DataModelValidationHelpers.cs" />
+    <Compile Include="DataModelling\EFArtifactGenerationResults.cs" />
+    <Compile Include="DataModelling\IResourceTypeProperty.cs" />
+    <Compile Include="DataModelling\ModelItemValidationException.cs" />
+    <Compile Include="DataModelling\NavigationProperty.cs" />
+    <Compile Include="DataModelling\NavigationPropertyCollection.cs" />
+    <Compile Include="DataModelling\AssociationEndType.cs" />
+    <Compile Include="Core\MaxLengths.cs" />
+    <Compile Include="Core\PredicateProperty.cs" />
+    <Compile Include="DataModelling\ResourceType.cs" />
+    <Compile Include="DataModelling\ResourceTypeCollection.cs" />
+    <Compile Include="DataModelling\DataTypes.cs" />
+    <Compile Include="Core\InvalidPropertyValueException.cs" />
+    <Compile Include="Core\Resource.cs" />
+    <Compile Include="Core\ResourceProperty.cs" />
+    <Compile Include="Core\Relationship.cs" />
+    <Compile Include="Core\RelationshipProperty.cs" />
+    <Compile Include="Core\File.cs" />
+    <Compile Include="Core\SavingChangesHandler.cs" />
+    <Compile Include="DataModelling\SqlScriptGenerator.cs" />
+    <Compile Include="DataModelling\TableMapping.cs" />
+    <Compile Include="DataModelling\TableMappingCollection.cs" />
+    <Compile Include="Core\ZentityContext.cs" />
+    <Compile Include="DataModelling\ScalarProperty.cs" />
+    <Compile Include="DataModelling\ScalarPropertyCollection.cs" />
+    <Compile Include="Core\Predicate.cs" />
+    <Compile Include="Core\Property.cs" />
+    <Compile Include="Core\Utilities.cs" />
+    <Compile Include="Core\ZentityDataModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ZentityDataModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Core\ZentityException.cs" />
+    <Compile Include="DataModelling\Utilities.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Core\CoreResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CoreResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="DataModelling\Rdfs\Context.cs" />
+    <Compile Include="DataModelling\Rdfs\DomainRangeInterpreter.cs" />
+    <Compile Include="DataModelling\Rdfs\ExecutionMode.cs" />
+    <Compile Include="DataModelling\Rdfs\PredicateInterpreter.cs" />
+    <Compile Include="DataModelling\Rdfs\RdfsInterpreter.cs" />
+    <Compile Include="DataModelling\Rdfs\RdfsException.cs" />
+    <Compile Include="DataModelling\DataModellingResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataModellingResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="DataModelling\Rdfs\SubClassOfInterpreter.cs" />
+    <Compile Include="DataModelling\Rdfs\TypeInterpreter.cs" />
+    <Compile Include="DataModelling\Rdfs\XsdDataType.cs" />
+    <Compile Include="DataModelling\Rdfs\XsdDataTypeCollection.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="Core\ZentityDataModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ZentityDataModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Administration\AdministrationResources.resx" />
+    <EmbeddedResource Include="Core\CoreResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>CoreResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataModelling\DataModellingResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>DataModellingResources.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Zentity.Core</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="Administration\AdministrationDataModel.edmx">
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C8F2D6AC-F9F4-4E40-A399-22F9A9A5CBD2}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Zentity.Rdf\Zentity.Rdf.csproj">
+      <Project>{1005BEC2-5CE9-4734-908D-2328AED6C60F}</Project>
+      <Name>Zentity.Rdf</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+</Project>

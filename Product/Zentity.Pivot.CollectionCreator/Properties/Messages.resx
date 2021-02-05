@@ -1,0 +1,375 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AddUpdateResourceMessage" xml:space="preserve">
+    <value>Adding or Updating the Resource</value>
+  </data>
+  <data name="AssociationException" xml:space="preserve">
+    <value>Association</value>
+  </data>
+  <data name="AssociationFaultReason" xml:space="preserve">
+    <value>Duplicate Association found in the Data Model</value>
+  </data>
+  <data name="BaseResourceTypeFaultReason" xml:space="preserve">
+    <value>Could not get the Base Resource Type for the Model Namespace provided.</value>
+  </data>
+  <data name="ConfigXmlCreation" xml:space="preserve">
+    <value>Creating Configuratin Xml from the Resource Type's Properties.</value>
+  </data>
+  <data name="ConfigXmlDB" xml:space="preserve">
+    <value>Getting Configuration Xml from Database.</value>
+  </data>
+  <data name="ContextFaultReason" xml:space="preserve">
+    <value>Could not get the Data Model for the given context.</value>
+  </data>
+  <data name="CxmlForNavPropertiesFinishedMessage" xml:space="preserve">
+    <value>Generation of Cxml's for Navigation properties finished.</value>
+  </data>
+  <data name="CxmlForNavPropertiesStartedMessage" xml:space="preserve">
+    <value>Generation of Cxml's for Navigation properties started.</value>
+  </data>
+  <data name="DataModelFormat" xml:space="preserve">
+    <value>DataModel: {0}</value>
+  </data>
+  <data name="DeleteResourceMessage" xml:space="preserve">
+    <value>Deleting the Resource</value>
+  </data>
+  <data name="DestinationAssemblyFolderPathFaultReason" xml:space="preserve">
+    <value>The destination folder for the assemblies is null/empty or is not found. Check whether the folder exists and try again.</value>
+  </data>
+  <data name="DuplicateDataModelFaultReason" xml:space="preserve">
+    <value>The Data Model is already part of this Module.</value>
+  </data>
+  <data name="DuplicateScalarPropertyFaultReason" xml:space="preserve">
+    <value>Could not add Scalar Property since the Property is already part of the Resource Type.</value>
+  </data>
+  <data name="ErrorWarningTitle" xml:space="preserve">
+    <value>The Pivot Config section was not specified or required elements were not defined.</value>
+  </data>
+  <data name="ExceptionFaultReason" xml:space="preserve">
+    <value>Exeption was thrown, see inner exception for details.</value>
+  </data>
+  <data name="FailLoadAssemblyTitle" xml:space="preserve">
+    <value>Failed to Load Assemblies into ZentityContext.</value>
+  </data>
+  <data name="FinishedFunctionMessage" xml:space="preserve">
+    <value>Finished Function</value>
+  </data>
+  <data name="GenerateAssemblyFailedFaultReason" xml:space="preserve">
+    <value>Unable to generate assembly</value>
+  </data>
+  <data name="InvalidDataModelFaultReason" xml:space="preserve">
+    <value>The Data Model Namespace is invalid in the given context.</value>
+  </data>
+  <data name="InvalidFileNameFaultReason" xml:space="preserve">
+    <value>The outputAssemblyName provided contains some illegal characters.</value>
+  </data>
+  <data name="InvalidMetadataNamespaceFaultReason" xml:space="preserve">
+    <value>Invalid Metadata Namespaces provided.</value>
+  </data>
+  <data name="InvalidModelNamespaceFaultReason" xml:space="preserve">
+    <value>Invalid Model Namespaces provided.</value>
+  </data>
+  <data name="InvalidWebCaptureType" xml:space="preserve">
+    <value>WebCapture type information is invalid.</value>
+  </data>
+  <data name="ModelConfigurationParameter" xml:space="preserve">
+    <value>modelConfiguration</value>
+  </data>
+  <data name="ModelNamespaceParameter" xml:space="preserve">
+    <value>modelNamespace</value>
+  </data>
+  <data name="NavigationPropertyCollectionException" xml:space="preserve">
+    <value>NavigationPropertyCollection</value>
+  </data>
+  <data name="NavigationPropertyException" xml:space="preserve">
+    <value>Navigation Property</value>
+  </data>
+  <data name="NavigationPropertyFaultReason" xml:space="preserve">
+    <value>Could not add Navigation Property since the Property is already part of the Resource Type.</value>
+  </data>
+  <data name="NoResourceToDeleteMessage" xml:space="preserve">
+    <value>No resource to delete.</value>
+  </data>
+  <data name="NotFoundNavigationPropertyFaultReason" xml:space="preserve">
+    <value>Could not find Navigation Property for the Resource Type.</value>
+  </data>
+  <data name="NotFoundScalarPropertyFaultReason" xml:space="preserve">
+    <value>Could not find Scalar Property for the Resource Type.</value>
+  </data>
+  <data name="NullCollectionChildMessage" xml:space="preserve">
+    <value>The collection or its items are null or empty.</value>
+  </data>
+  <data name="NullCxmlFileListMessage" xml:space="preserve">
+    <value>The cxml file list was null.</value>
+  </data>
+  <data name="NullDataModelFaultReason" xml:space="preserve">
+    <value>No Data Model with the namespace provided exits in the current context.</value>
+  </data>
+  <data name="NullDestinationOuputMessage" xml:space="preserve">
+    <value>The destination output folder for the cxml generation is not specified.</value>
+  </data>
+  <data name="NullEmptyMessage" xml:space="preserve">
+    <value>One or more arguments for this method are null or empty.</value>
+  </data>
+  <data name="NullEmptyStringMessage" xml:space="preserve">
+    <value>The Method returned string.Empty or null.</value>
+  </data>
+  <data name="NullEmptyTitle" xml:space="preserve">
+    <value>Null/Empty Arguments</value>
+  </data>
+  <data name="NullFacetCategoriesMessage" xml:space="preserve">
+    <value>The cxmlFacetCategories is null or empty.</value>
+  </data>
+  <data name="NullItemExtensinTitle" xml:space="preserve">
+    <value>ItemExtension is null or empty.</value>
+  </data>
+  <data name="NullModelConfigurationMessage" xml:space="preserve">
+    <value>The modelConfiguration was null or empty.</value>
+  </data>
+  <data name="NullModelNamespaceMessage" xml:space="preserve">
+    <value>The modelNamespace is either null or not valid in the current context.</value>
+  </data>
+  <data name="NullNavigationPropertyCollectionFaultReason" xml:space="preserve">
+    <value>The navigation property collection is null or empty.</value>
+  </data>
+  <data name="NullNavigationPropertyFaultReason" xml:space="preserve">
+    <value>Exception during creation of Navigation Property.</value>
+  </data>
+  <data name="NullPivotConfigSectionMessage" xml:space="preserve">
+    <value>The Pivot Config section was not specifed in the Config file.</value>
+  </data>
+  <data name="NullResourceChangeMessage" xml:space="preserve">
+    <value>The resource change message list is null or does not have any messages on which processing is to be performed.</value>
+  </data>
+  <data name="NullResourcesInDBMessage" xml:space="preserve">
+    <value>Resource type does not contain any resources in the DataBase.</value>
+  </data>
+  <data name="NullResourceTypeFaultReason" xml:space="preserve">
+    <value>The mentioned resourceType is not present in the Data Model.</value>
+  </data>
+  <data name="NullResourceTypeInDBMessage" xml:space="preserve">
+    <value>The Database does not contain the Resource Type. Either the DataModelNamespace or ResourceType is invalid.</value>
+  </data>
+  <data name="NullResourceTypeSettingMessage" xml:space="preserve">
+    <value>The resource type setting is null. This is because the DataModelNamespace provided is not present in the Data Model or the ResourceType name provided does not exist in the Data Model.</value>
+  </data>
+  <data name="NullResourceTypesFaultReason" xml:space="preserve">
+    <value>No Resource Types are present in the Data Model Namespace.</value>
+  </data>
+  <data name="NullScalarPropertyCollectionFaultReason" xml:space="preserve">
+    <value>The scalar property collection is null or empty.</value>
+  </data>
+  <data name="NullScalarPropertyFaultReason" xml:space="preserve">
+    <value>No Scalar Properties for the Resource Type.</value>
+  </data>
+  <data name="NullSplitItemListMessage" xml:space="preserve">
+    <value>The Split Cxml Item List is null or empty.</value>
+  </data>
+  <data name="NullWebCaptureUrlMessage" xml:space="preserve">
+    <value>The WebCaptureUrl is null or empty.</value>
+  </data>
+  <data name="ResourceTypeFormat" xml:space="preserve">
+    <value>ResourceType: {0}</value>
+  </data>
+  <data name="ResourceTypeNameParameter" xml:space="preserve">
+    <value>resourceTypeName</value>
+  </data>
+  <data name="ScalarPropertyCollectionException" xml:space="preserve">
+    <value>ScalarPropertyCollection</value>
+  </data>
+  <data name="ScalarPropertyException" xml:space="preserve">
+    <value>Scalar Property</value>
+  </data>
+  <data name="SplitCopyCalledAfterUpdateMessage" xml:space="preserve">
+    <value>Update complete. Splitting and copying the collection.</value>
+  </data>
+  <data name="StartedFunctionMessage" xml:space="preserve">
+    <value>Started Function</value>
+  </data>
+  <data name="SubjectObjectResourceTypes" xml:space="preserve">
+    <value>SubjectResourceType: {0}, ObjectResourceType: {1}</value>
+  </data>
+  <data name="UpdateCollectionCopyToTempMessage" xml:space="preserve">
+    <value>Copying existing collection of resource type "{0}" to working folder.</value>
+  </data>
+  <data name="UpdateCollectionCreateCollectionMessage" xml:space="preserve">
+    <value>The pivot collection for the resource type "{0}" is not created. Complete collection generation will be initated.</value>
+  </data>
+  <data name="XmlParseFaultReason" xml:space="preserve">
+    <value>Cannot Parse the one of the xml files.</value>
+  </data>
+  <data name="ZentityContext" xml:space="preserve">
+    <value>Zentity Context</value>
+  </data>
+  <data name="DispatcherNull" xml:space="preserve">
+    <value>The dispatcher was null.</value>
+  </data>
+  <data name="ErrorMessage" xml:space="preserve">
+    <value>\nError Message :- \n{0}\n</value>
+  </data>
+  <data name="ExceptionInCreateImageThread" xml:space="preserve">
+    <value>Caught exception in create image thread: {0}</value>
+  </data>
+  <data name="ExceptionInRenderingThread" xml:space="preserve">
+    <value>Caught exception in rendering thread: {0}</value>
+  </data>
+  <data name="ExceptionInvokingBrowser" xml:space="preserve">
+    <value>Caught exception in web browser invoke method: {0}</value>
+  </data>
+  <data name="ExceptionOccured" xml:space="preserve">
+    <value>\nError   : Exception occurred. Check below for trace information</value>
+  </data>
+  <data name="FailedCreatingImageInTime" xml:space="preserve">
+    <value>Could not create an image for '{0}' in within {1} seconds</value>
+  </data>
+  <data name="HeightMustbeAtleastOne" xml:space="preserve">
+    <value>Height must be at least 1: {0}</value>
+  </data>
+  <data name="HeightMustBeLessThan" xml:space="preserve">
+    <value>Height must be less than {0} : {1}</value>
+  </data>
+  <data name="ImageRenderingFailure" xml:space="preserve">
+    <value>Image rendering failed: {0}</value>
+  </data>
+  <data name="InvalidOperation" xml:space="preserve">
+    <value>\nError : Invalid operation or operation not defined.\n</value>
+  </data>
+  <data name="InvalidSwitch" xml:space="preserve">
+    <value>\nError : Invalid switch '{0}'\n</value>
+  </data>
+  <data name="InvalidSwitchAndValuePattern" xml:space="preserve">
+    <value>\nError : Invalid switch and value pattern '{0}'.\n</value>
+  </data>
+  <data name="InvalidSwitchWithHelp" xml:space="preserve">
+    <value>\nError : Invalid switch '{0}'. Please check help for valid switches.\n</value>
+  </data>
+  <data name="Message" xml:space="preserve">
+    <value>\nMessage : {0}\n</value>
+  </data>
+  <data name="ThreadAlreadyCreatingImage" xml:space="preserve">
+    <value>This thread is already creating an image.</value>
+  </data>
+  <data name="WidthMustbeAtleastOne" xml:space="preserve">
+    <value>Width must be at least 1: {0}</value>
+  </data>
+  <data name="WidthMustBeLessThan" xml:space="preserve">
+    <value>Width must be less than {0} : {1}</value>
+  </data>
+</root>

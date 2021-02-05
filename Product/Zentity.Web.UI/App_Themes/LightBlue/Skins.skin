@@ -1,0 +1,6 @@
+<%-- Default textbox appearance --%>
+<asp:TextBox runat="server" CssClass="txtBox" />
+
+<%-- Default button appearance --%>
+<asp:Button runat="server" CssClass="Masterbutton"/>
+

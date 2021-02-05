@@ -1,0 +1,523 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{C59124DD-2AD6-4CF4-9364-B6F9B220300D}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Zentity.Web.UI</RootNamespace>
+    <AssemblyName>Zentity.Web.UI</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Zentity.Web.UI.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>..\..\StrongNameKey\35MSSharedLib1024.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <DelaySign>false</DelaySign>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="App_Themes\DarkBlue\Default.css" />
+    <Content Include="App_Themes\DarkBlue\Images\Collapsed.gif" />
+    <Content Include="App_Themes\DarkBlue\Images\CollapsedFrame.png" />
+    <Content Include="App_Themes\DarkBlue\Images\Expanded.gif" />
+    <Content Include="App_Themes\DarkBlue\Images\HomeBox.png" />
+    <Content Include="App_Themes\DarkBlue\Images\HomeBoxHeader.png" />
+    <Content Include="App_Themes\DarkBlue\Images\logo.png" />
+    <Content Include="App_Themes\DarkBlue\Images\NoImage.JPG" />
+    <Content Include="App_Themes\DarkBlue\Images\SelectedTab.PNG" />
+    <Content Include="App_Themes\DarkBlue\Images\SidebarBoxContent.png" />
+    <Content Include="App_Themes\DarkBlue\Images\SidebarBoxEmptyHeader.png" />
+    <Content Include="App_Themes\DarkBlue\Images\SidebarBoxFooter.png" />
+    <Content Include="App_Themes\DarkBlue\Images\SidebarBoxHeader.png" />
+    <Content Include="App_Themes\DarkBlue\Images\Tab.png" />
+    <Content Include="App_Themes\DarkBlue\Images\Wait.gif" />
+    <Content Include="App_Themes\LightBlue\Default.css" />
+    <Content Include="App_Themes\LightBlue\Images\Collapsed.gif" />
+    <Content Include="App_Themes\LightBlue\Images\CollapsedFrame.png" />
+    <Content Include="App_Themes\LightBlue\Images\Expanded.gif" />
+    <Content Include="App_Themes\LightBlue\Images\HomeBoxContentCenter.png" />
+    <Content Include="App_Themes\LightBlue\Images\HomeBoxContentLeft.png" />
+    <Content Include="App_Themes\LightBlue\Images\HomeBoxContentRight.png" />
+    <Content Include="App_Themes\LightBlue\Images\HomeBoxHeaderCenter.png" />
+    <Content Include="App_Themes\LightBlue\Images\HomeBoxHeaderLeft.png" />
+    <Content Include="App_Themes\LightBlue\Images\HomeBoxHeaderRight.png" />
+    <Content Include="App_Themes\LightBlue\Images\logo.png" />
+    <Content Include="App_Themes\LightBlue\Images\NoImage.JPG" />
+    <Content Include="App_Themes\LightBlue\Images\SelectedTab.PNG" />
+    <Content Include="App_Themes\LightBlue\Images\SidebarBoxContent.png" />
+    <Content Include="App_Themes\LightBlue\Images\SidebarBoxEmptyHeader.png" />
+    <Content Include="App_Themes\LightBlue\Images\SidebarBoxFooter.png" />
+    <Content Include="App_Themes\LightBlue\Images\SidebarBoxHeader.png" />
+    <Content Include="App_Themes\LightBlue\Images\Tab.png" />
+    <Content Include="Default.aspx" />
+    <Content Include="Error.aspx" />
+    <Content Include="Error.htm" />
+    <Content Include="Global.asax" />
+    <Content Include="Help\About.aspx" />
+    <Content Include="Help\Help.aspx" />
+    <Content Include="Help\Services.aspx" />
+    <Content Include="ResourceManagement\BasicSearch.aspx" />
+    <Content Include="ResourceManagement\BrowsableViews.aspx" />
+    <Content Include="ResourceManagement\Browse.aspx" />
+    <Content Include="ResourceManagement\FindSimilarResources.aspx" />
+    <Content Include="ResourceManagement\Manage.aspx" />
+    <Content Include="ResourceManagement\ManageCategories.aspx" />
+    <Content Include="ResourceManagement\ManageResource.aspx" />
+    <Content Include="ResourceManagement\RecentlyAddedResources.aspx" />
+    <Content Include="ResourceManagement\Resources.aspx" />
+    <Content Include="ResourceManagement\Search.aspx" />
+    <Content Include="ResourceManagement\Tags.aspx" />
+    <Content Include="ResourceManagement\TopAuthors.aspx" />
+    <Content Include="ResourceManagement\TopTags.aspx" />
+    <Content Include="Scripts\Script.js" />
+    <Content Include="Security\ChangePassword.aspx" />
+    <Content Include="Security\Groups.aspx" />
+    <Content Include="Security\Permissions.aspx" />
+    <Content Include="Security\Users.aspx" />
+    <Content Include="Services\BibTeXImport.aspx" />
+    <Content Include="UserControls\CategoryNodeAssociation.ascx" />
+    <Content Include="UserControls\ChangeHistory.ascx" />
+    <Content Include="UserControls\CreateAssociation.ascx" />
+    <Content Include="UserControls\CreateResource.ascx" />
+    <Content Include="UserControls\CreateScholarlyWorkItemTagging.ascx" />
+    <Content Include="UserControls\DisplayResourceDetails.ascx" />
+    <Content Include="UserControls\GrantAccess.ascx" />
+    <Content Include="UserControls\GroupAssignment.ascx" />
+    <Content Include="UserControls\Login.ascx" />
+    <Content Include="UserControls\NavigationMenu.ascx" />
+    <Content Include="UserControls\ResourcePermissions.ascx" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Error.aspx.designer.cs">
+      <DependentUpon>Error.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Help\About.aspx.cs">
+      <DependentUpon>About.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Help\About.aspx.designer.cs">
+      <DependentUpon>About.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Help\Help.aspx.cs">
+      <DependentUpon>Help.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Help\Help.aspx.designer.cs">
+      <DependentUpon>Help.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Help\Services.aspx.cs">
+      <DependentUpon>Services.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Help\Services.aspx.designer.cs">
+      <DependentUpon>Services.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Master.master.designer.cs">
+      <DependentUpon>Master.master</DependentUpon>
+    </Compile>
+    <Compile Include="AppCode\Constants.cs" />
+    <Compile Include="AppCode\DAL\PredicateDataAccess.cs" />
+    <Compile Include="AppCode\DAL\ResourceDataAccess.cs" />
+    <Compile Include="AppCode\GlobalSuppressions.cs" />
+    <Compile Include="AppCode\UIEnum.cs" />
+    <Compile Include="AppCode\Utility.cs" />
+    <Compile Include="AppCode\ZentityBasePage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_GlobalResources\Resources.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Error.aspx.cs">
+      <DependentUpon>Error.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Master.master.cs">
+      <DependentUpon>Master.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ResourceManagement\BasicSearch.aspx.cs">
+      <DependentUpon>BasicSearch.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ResourceManagement\BasicSearch.aspx.designer.cs">
+      <DependentUpon>BasicSearch.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ResourceManagement\BrowsableViews.aspx.cs">
+      <DependentUpon>BrowsableViews.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ResourceManagement\BrowsableViews.aspx.designer.cs">
+      <DependentUpon>BrowsableViews.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ResourceManagement\Browse.aspx.cs">
+      <DependentUpon>Browse.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ResourceManagement\Browse.aspx.designer.cs">
+      <DependentUpon>Browse.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ResourceManagement\FindSimilarResources.aspx.cs">
+      <DependentUpon>FindSimilarResources.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ResourceManagement\FindSimilarResources.aspx.designer.cs">
+      <DependentUpon>FindSimilarResources.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ResourceManagement\Manage.aspx.cs">
+      <DependentUpon>Manage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ResourceManagement\Manage.aspx.designer.cs">
+      <DependentUpon>Manage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ResourceManagement\ManageCategories.aspx.cs">
+      <DependentUpon>ManageCategories.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ResourceManagement\ManageCategories.aspx.designer.cs">
+      <DependentUpon>ManageCategories.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ResourceManagement\ManageResource.aspx.cs">
+      <DependentUpon>ManageResource.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ResourceManagement\ManageResource.aspx.designer.cs">
+      <DependentUpon>ManageResource.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ResourceManagement\RecentlyAddedResources.aspx.cs">
+      <DependentUpon>RecentlyAddedResources.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ResourceManagement\RecentlyAddedResources.aspx.designer.cs">
+      <DependentUpon>RecentlyAddedResources.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ResourceManagement\Resources.aspx.cs">
+      <DependentUpon>Resources.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ResourceManagement\Resources.aspx.designer.cs">
+      <DependentUpon>Resources.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ResourceManagement\Search.aspx.cs">
+      <DependentUpon>Search.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ResourceManagement\Search.aspx.designer.cs">
+      <DependentUpon>Search.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ResourceManagement\Tags.aspx.cs">
+      <DependentUpon>Tags.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ResourceManagement\Tags.aspx.designer.cs">
+      <DependentUpon>Tags.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ResourceManagement\TopAuthors.aspx.cs">
+      <DependentUpon>TopAuthors.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ResourceManagement\TopAuthors.aspx.designer.cs">
+      <DependentUpon>TopAuthors.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ResourceManagement\TopTags.aspx.cs">
+      <DependentUpon>TopTags.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ResourceManagement\TopTags.aspx.designer.cs">
+      <DependentUpon>TopTags.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Security\ChangePassword.aspx.cs">
+      <DependentUpon>ChangePassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Security\ChangePassword.aspx.designer.cs">
+      <DependentUpon>ChangePassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Security\Groups.aspx.cs">
+      <DependentUpon>Groups.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Security\Groups.aspx.designer.cs">
+      <DependentUpon>Groups.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Security\Permissions.aspx.cs">
+      <DependentUpon>Permissions.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Security\Permissions.aspx.designer.cs">
+      <DependentUpon>Permissions.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Security\Users.aspx.cs">
+      <DependentUpon>Users.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Security\Users.aspx.designer.cs">
+      <DependentUpon>Users.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Services\BibTeXImport.aspx.cs">
+      <DependentUpon>BibTeXImport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Services\BibTeXImport.aspx.designer.cs">
+      <DependentUpon>BibTeXImport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\CategoryNodeAssociation.ascx.cs">
+      <DependentUpon>CategoryNodeAssociation.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControls\CategoryNodeAssociation.ascx.designer.cs">
+      <DependentUpon>CategoryNodeAssociation.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ChangeHistory.ascx.cs">
+      <DependentUpon>ChangeHistory.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControls\ChangeHistory.ascx.designer.cs">
+      <DependentUpon>ChangeHistory.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\CreateAssociation.ascx.cs">
+      <DependentUpon>CreateAssociation.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControls\CreateAssociation.ascx.designer.cs">
+      <DependentUpon>CreateAssociation.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\CreateResource.ascx.cs">
+      <DependentUpon>CreateResource.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControls\CreateResource.ascx.designer.cs">
+      <DependentUpon>CreateResource.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\CreateScholarlyWorkItemTagging.ascx.cs">
+      <DependentUpon>CreateScholarlyWorkItemTagging.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControls\CreateScholarlyWorkItemTagging.ascx.designer.cs">
+      <DependentUpon>CreateScholarlyWorkItemTagging.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\DisplayResourceDetails.ascx.cs">
+      <DependentUpon>DisplayResourceDetails.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControls\DisplayResourceDetails.ascx.designer.cs">
+      <DependentUpon>DisplayResourceDetails.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\GrantAccess.ascx.cs">
+      <DependentUpon>GrantAccess.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControls\GrantAccess.ascx.designer.cs">
+      <DependentUpon>GrantAccess.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\GroupAssignment.ascx.cs">
+      <DependentUpon>GroupAssignment.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControls\GroupAssignment.ascx.designer.cs">
+      <DependentUpon>GroupAssignment.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Login.ascx.cs">
+      <DependentUpon>Login.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControls\Login.ascx.designer.cs">
+      <DependentUpon>Login.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\NavigationMenu.ascx.cs">
+      <DependentUpon>NavigationMenu.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControls\NavigationMenu.ascx.designer.cs">
+      <DependentUpon>NavigationMenu.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ResourcePermissions.ascx.cs">
+      <DependentUpon>ResourcePermissions.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControls\ResourcePermissions.ascx.designer.cs">
+      <DependentUpon>ResourcePermissions.ascx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Documents\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="App_GlobalResources\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App_Themes\DarkBlue\Default.css.exclude" />
+    <Content Include="App_Themes\DarkBlue\Skins.skin" />
+    <None Include="App_Themes\DarkBlue\ToolKit.css.exclude" />
+    <Content Include="App_Themes\LightBlue\Skins.skin" />
+    <Content Include="Master.master" />
+    <Content Include="Search\ExcludedPredicates.config" />
+    <Content Include="Search\ExcludedResourceTypes.config" />
+    <Content Include="Search\ImplicitProperties.config" />
+    <Content Include="Search\PredicateTokens.config" />
+    <Content Include="Search\SpecialTokens.config" />
+    <Content Include="_web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Caching">
+      <HintPath>..\..\ExternalLibraries\Microsoft.Practices.EnterpriseLibrary.Caching.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common">
+      <HintPath>..\..\ExternalLibraries\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Data">
+      <HintPath>..\..\ExternalLibraries\Microsoft.Practices.EnterpriseLibrary.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Logging">
+      <HintPath>..\..\ExternalLibraries\Microsoft.Practices.EnterpriseLibrary.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation">
+      <HintPath>..\..\ExternalLibraries\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity">
+      <HintPath>..\..\ExternalLibraries\Microsoft.Practices.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Interception">
+      <HintPath>..\..\ExternalLibraries\Microsoft.Practices.Unity.Interception.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Data">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data.Entity">
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.IdentityModel" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Extensions.Design" />
+    <Reference Include="System.XML" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="Zentity.Zip">
+      <HintPath>..\..\ExternalLibraries\Zentity.Zip.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Zentity.Core\Zentity.csproj">
+      <Project>{E141CAE2-FBAC-452A-81A9-C027CA9182BE}</Project>
+      <Name>Zentity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Zentity.ScholarlyWorksAndAuthorization\Zentity.ScholarlyWorksAndAuthorization\Zentity.ScholarlyWorksAndAuthorization.csproj">
+      <Project>{4012CC1B-5200-4FBA-865A-7A5FD5AB5FB5}</Project>
+      <Name>Zentity.ScholarlyWorksAndAuthorization</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Zentity.ScholarlyWorks\Zentity.ScholarlyWorks.csproj">
+      <Project>{1EA9F927-E9CA-417D-946C-83A957A18B99}</Project>
+      <Name>Zentity.ScholarlyWorks</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Zentity.Security\Zentity.Security.AuthenticationProvider\Zentity.Security.AuthenticationProvider.csproj">
+      <Project>{5E14B8B7-C9AB-4B02-840B-D2C4829079FA}</Project>
+      <Name>Zentity.Security.AuthenticationProvider</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Zentity.Security\Zentity.Security.Authentication\Zentity.Security.Authentication.csproj">
+      <Project>{3822E9FB-5E57-4099-8CFD-0C78CDC3EDCF}</Project>
+      <Name>Zentity.Security.Authentication</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Zentity.Security\Zentity.Security.AuthorizationHelper\Zentity.Security.AuthorizationHelper.csproj">
+      <Project>{C8600CA3-C0FD-41BA-A710-5A05571C5DAF}</Project>
+      <Name>Zentity.Security.AuthorizationHelper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Zentity.Security\Zentity.Security.Authorization\Zentity.Security.Authorization.csproj">
+      <Project>{D344B44A-C269-4E91-AEDC-740ED095C1C3}</Project>
+      <Name>Zentity.Security.Authorization</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Zentity.Services\Zentity.Platform\Zentity.Platform.csproj">
+      <Project>{6E6F2C21-4CD4-46C5-BD94-FA3C5FC17DB9}</Project>
+      <Name>Zentity.Platform</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Zentity.Web.UI.ToolKit\Zentity.Web.UI.ToolKit.csproj">
+      <Project>{E13A7E15-6F5E-4BD8-8677-74BA51F02990}</Project>
+      <Name>Zentity.Web.UI.ToolKit</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>42225</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

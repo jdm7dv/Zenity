@@ -1,0 +1,1235 @@
+/* Sets element margins, padding, and border to 0 to even out browser differences when adding desired values later. */
+html, body, div, p, h1, h2, h3, h4, h5, h6, blockquote, ol, ul, li, dl, dt, dd, td, form, fieldset, a, img, button
+{
+    margin: 0px;
+    padding: 0px;
+    border: 0px;
+}
+
+html, body, div, p, h1, h2, h3, h4, h5, h6, blockquote, ol, ul, li, dl, dt, dd, td, form, fieldset, a, img, button, textarea, input, select
+{
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 12px;
+}
+
+body
+{
+    background-color: White;
+}
+
+/* Master page CSS starts */
+
+.ZentityTopBanner
+{
+    width: 1000px;
+    height: 150px;
+    background-image: url('Images/logo.png');
+    background-repeat: no-repeat;
+}
+
+.LoginPanel
+{
+    text-align: right;
+    padding-right: 10px;
+}
+
+.LoginPanel a:link
+{
+    color: Orange;
+    text-decoration: none;
+}
+
+/* visited link */
+.LoginPanel a:visited
+{
+    color: Orange;
+    text-decoration: none;
+}
+
+/* mouse over link */
+.LoginPanel a:hover
+{
+    color: White;
+    text-decoration: none;
+}
+
+/* selected link */
+.LoginPanel a:active
+{
+    color: White;
+    text-decoration: none;
+}
+
+/*.ZentityTitle
+{
+    font-size: 18px;
+    width: 100%;
+    text-align: left;
+    margin-left: 60px;
+}*/
+
+.LeftNavigationMenu
+{
+    font: 12px;
+    float: left;
+    width: 205px;
+    overflow: hidden;
+}
+
+.RightContentPane
+{
+    float: left;
+}
+
+/* Master page CSS ends */
+
+.RightContentInnerPane
+{
+    width: 780px;
+    margin-left: 10px;
+    margin-right: 5px;
+    text-align: left;
+}
+
+/* Home page CSS starts */
+
+.HomeBoxContainer
+{
+    font: 12px;
+    width: 100%;
+    margin-left: 40px;
+}
+
+.HomeBoxContent
+{
+    width: 100%;
+    margin: 5px;
+}
+
+.HomeBoxSection
+{
+    float: left;
+    width: 307px;
+    height: 271px;
+}
+
+.HomeBoxSection a
+{
+    margin-top: 10px;
+}
+
+.HomeBoxSection a:link
+{
+    color: #002471;
+    text-decoration: none;
+}
+
+/* visited link */
+.HomeBoxSection a:visited
+{
+    color: #002471;
+    text-decoration: none;
+}
+
+/* mouse over link */
+.HomeBoxSection a:hover
+{
+    color: orange;
+    text-decoration: none;
+}
+
+/* selected link */
+.HomeBoxSection a:active
+{
+    color: orange;
+    text-decoration: none;
+}
+
+.HomeBoxBrowseHeader, .HomeBoxSearchHeader, .HomeBoxHelpHeader, .HomeBoxManageHeader, .HomeBoxServicesHeader, .HomeBoxTagsHeader
+{
+    background-repeat: no-repeat;
+    padding-top: 10px;
+    height: 33px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.HomeBoxBrowseHeader
+{
+    background-image: url('Images/HomeBoxHeaderLeft.png');
+}
+
+.HomeBoxSearchHeader
+{
+    background-image: url('Images/HomeBoxHeaderCenter.png');
+}
+
+.HomeBoxHelpHeader
+{
+    background-image: url('Images/HomeBoxHeaderRight.png');
+}
+
+.HomeBoxManageHeader
+{
+    background-image: url('Images/HomeBoxHeaderLeft.png');
+}
+
+.HomeBoxServicesHeader
+{
+    background-image: url('Images/HomeBoxHeaderCenter.png');
+}
+
+.HomeBoxTagsHeader
+{
+    background-image: url('Images/HomeBoxHeaderRight.png');
+}
+
+a.HomeBoxHeaderLink
+{
+    font-size: 18px;
+    text-align: center;
+    vertical-align: text-bottom;
+    font-weight: bold;
+    background-repeat: no-repeat;
+}
+
+a:link.HomeBoxHeaderLink
+{
+    color: orange;
+    text-decoration: none;
+}
+
+/* visited link */
+a:visited.HomeBoxHeaderLink
+{
+    color: orange;
+    text-decoration: none;
+}
+
+/* mouse over link */
+a:hover.HomeBoxHeaderLink
+{
+    color: #002471;
+    text-decoration: none;
+}
+
+/* selected link */
+a:active.HomeBoxHeaderLink
+{
+    color: #002471;
+    text-decoration: none;
+}
+
+.HomeBoxBrowseContent, .HomeBoxSearchContent, .HomeBoxHelpContent, .HomeBoxManageContent, .HomeBoxServicesContent, .HomeBoxTagsContent
+{
+    color: #002471;
+    padding-left: 20px;
+    height: 228px;
+    background-repeat: no-repeat;
+    padding-right: 20px;
+}
+
+.HomeBoxBrowseContent
+{
+    background-image: url('Images/HomeBoxContentLeft.png');
+}
+
+.HomeBoxSearchContent
+{
+    background-image: url('Images/HomeBoxContentCenter.png');
+}
+
+.HomeBoxHelpContent
+{
+    background-image: url('Images/HomeBoxContentRight.png');
+}
+
+.HomeBoxManageContent
+{
+    background-image: url('Images/HomeBoxContentLeft.png');
+}
+
+.HomeBoxServicesContent
+{
+    background-image: url('Images/HomeBoxContentCenter.png');
+}
+
+.HomeBoxTagsContent
+{
+    background-image: url('Images/HomeBoxContentRight.png');
+    text-align: center;
+    padding-top: 5px;
+}
+
+.HomeBoxSummary
+{
+    color: black;
+    min-height: 590px;
+}
+
+.HomeSearchExample
+{
+    font-size: 10px;
+    color: #777777;
+}
+
+.HomeTagCloud
+{
+    text-align: center;
+}
+
+.HomeTagCloud a:link
+{
+    color: #002471;
+    background-color: Transparent;
+    text-decoration: none;
+}
+
+/* visited link */
+.HomeTagCloud a:visited
+{
+    color: #002471;
+    background-color: Transparent;
+    text-decoration: none;
+}
+
+/* mouse over link */
+.HomeTagCloud a:hover
+{
+    color: orange;
+    background-color: #002471;
+    text-decoration: none;
+}
+
+/* selected link */
+.HomeTagCloud a:active
+{
+    color: orange;
+    background-color: #002471;
+    text-decoration: none;
+}
+
+/* Home page CSS ends */
+
+/* Sidebar CSS ends */
+
+.SidebarBoxSection
+{
+    margin-bottom: 5px;
+    width: 195px;
+}
+
+.SidebarBoxSection a:link
+{
+    color: #002471;
+    text-decoration: none;
+}
+
+/* visited link */
+.SidebarBoxSection a:visited
+{
+    color: #002471;
+    text-decoration: none;
+}
+
+/* mouse over link */
+.SidebarBoxSection a:hover
+{
+    color: orange;
+    text-decoration: none;
+}
+
+/* selected link */
+.SidebarBoxSection a:active
+{
+    color: orange;
+    text-decoration: none;
+}
+
+.SidebarBoxEmptyHeader
+{
+    background-image: url('Images/SidebarBoxEmptyHeader.png');
+    width: 194px;
+    padding-top: 10px;
+    height: 45px;
+    background-repeat: no-repeat;
+    text-align: center;
+}
+
+.SidebarBoxHeader
+{
+    background-image: url('Images/SidebarBoxHeader.png');
+    width: 194px;
+    padding-top: 10px;
+    height: 35px;
+    background-repeat: no-repeat;
+    text-align: center;
+}
+
+a.SideBarBoxHeaderLink
+{
+    font-size: 14px;
+    text-align: center;
+    vertical-align: text-bottom;
+    color: #FFFF00;
+    font-weight: bold;
+    background-repeat: no-repeat;
+}
+
+a:link.SideBarBoxHeaderLink
+{
+    color: orange;
+    text-decoration: none;
+}
+
+/* visited link */
+a:visited.SideBarBoxHeaderLink
+{
+    color: orange;
+    text-decoration: none;
+}
+
+/* mouse over link */
+a:hover.SideBarBoxHeaderLink
+{
+    color: #002471;
+    text-decoration: none;
+}
+
+/* selected link */
+a:active.SideBarBoxHeaderLink
+{
+    color: #002471;
+    text-decoration: none;
+}
+
+.SidebarBoxContent
+{
+    background-repeat: repeat-y;
+    padding: 10px;
+    background-image: url('Images/NavBarBrowseBody.png');
+}
+
+.SidebarBoxFooter
+{
+    background-image: url('Images/SidebarBoxFooter.png');
+    width: 194px;
+    height: 10px;
+    background-repeat: no-repeat;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.SidebarSeperator
+{
+    width: 2px;
+    vertical-align: top;
+}
+
+/* Sidebar page CSS ends */
+
+.txtBox
+{
+    border: 1px solid;
+}
+
+.ServiceInternalContainer
+{
+    width: 19%;
+    float: left;
+    text-align: left;
+    font-weight: bold;
+}
+
+.OverflowStretch
+{
+    width: 780px;
+    overflow: auto;
+}
+
+.ServiceMargin
+{
+    margin-top: 3px;
+    margin-left: 3px;
+}
+
+.Masterbutton
+{
+    border: 1px solid #FFFFFF;
+    color: #FFFFFF;
+    background-color: #133366;
+    height: 22px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.MasterContentHEAD
+{
+    text-align: left;
+    background-color: #133366;
+    height: 26px;
+    vertical-align: middle;
+    color: #CCCCCC;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-weight: bold;
+    margin-top: 5px;
+    width: 100%;
+}
+
+.TopAuthorsTable
+{
+    width: 100%;
+}
+
+.TopAuthorContainer
+{
+    width: 99%;
+    border: solid 1px #51698E;
+    margin: 3px;
+}
+
+.TopAuthorContainer td
+{
+    padding-bottom: 5px;
+    padding-left: 5px;
+    text-align: left;
+    color: #042679;
+    font-weight: bold;
+}
+
+.TopAuthorContainer span
+{
+    font-weight: normal;
+}
+
+.ResourceListViewItemContainer
+{
+    border: solid 1px white;
+    margin: 3px;
+}
+
+.ResourceListViewContainer
+{
+    color: #042679;
+    margin: 0px;
+}
+
+.PlainTextContainer
+{
+    border: solid 1px #51698E;
+    color: #042679;
+    margin: 0px;
+    min-height: 590px;
+    padding: 5px;
+}
+
+.SectionFont
+{
+    font-size: large;
+    text-decoration: underline;
+}
+
+.UsersBorder
+{
+    border: #51698E 2px solid;
+    vertical-align: top;
+}
+
+.titleStyle
+{
+    background-color: #2a66ae;
+    font-weight: bold;
+    color: White;
+    text-align: left;
+    padding-top: 5px;
+    padding-bottom: 3px;
+}
+
+.ResourceListViewContainer a:link, .PlainTextContainer a:link
+{
+    color: #042679;
+}
+
+.ResourceListViewContainer a:visited, .PlainTextContainer a:visited
+{
+    color: green;
+}
+
+.ResourceListViewContainer a:hover, .PlainTextContainer a:hover
+{
+    color: Blue;
+}
+
+.ResourceListViewItemContainer a:active, .PlainTextContainer a:active
+{
+    color: Maroon;
+}
+
+.TopAuthorInternalDynDiv, .HelpSectionInternalDiv
+{
+    background-color: #4579B8;
+    margin-top: 5px;
+    margin-right: 5px;
+    height: 2px;
+}
+
+.ResourceListViewInternalDynDiv
+{
+    background-color: #4579B8;
+    margin-top: 5px;
+    margin-right: 5px;
+    height: 2px;
+}
+
+.TitleStyle
+{
+    background-color: #133366;
+    font-weight: bold;
+    font-size: 14px;
+    color: White;
+    text-align: left;
+    padding-left: 2px;
+    padding-right: 5px;
+    padding-bottom: 2px;
+    padding-top: 2px;
+}
+
+.TopAuthorsTable th
+{
+    background-color: #133366;
+    font-weight: bold;
+    font-size: 14px;
+    color: White;
+    padding-left: 2px;
+    padding-right: 5px;
+    padding-bottom: 2px;
+    padding-top: 2px;
+    text-align: left;
+}
+
+.TopAuthorContainer a:link
+{
+    /*color: #5f7396;*/
+    color: #294675;
+    font-weight: normal;
+}
+.TopAuthorContainer a:visited
+{
+    color: green;
+    font-weight: normal;
+}
+
+.TopAuthorContainer a:hover
+{
+    color: Blue;
+    font-weight: normal;
+}
+
+.TopAuthorContainer a:active
+{
+    color: Maroon;
+    font-weight: normal;
+}
+
+.GridStyle
+{
+    border: solid 1px #51698E;
+    padding-left: 5px;
+}
+
+.ResourceGridStyle
+{
+    border: solid 1px #51698E;
+    padding-left: 5px;
+}
+
+.ResourceGridStyle td
+{
+    padding: 3px;
+}
+
+.hStyle
+{
+    background-color: #133366;
+    font-weight: bold;
+    text-align: center;
+}
+
+.hStyle th
+{
+    padding: 0px;
+    border-width: 0px;
+    color: White;
+}
+
+.hStyle a
+{
+    color: White;
+}
+
+.rStyle
+{
+    color: #042679;
+}
+
+.arStyle
+{
+    background-color: #EDF3FE;
+    color: #042679;
+}
+
+.main_container
+{
+    width: 1000px;
+    margin: 0px auto;
+    padding: 0px;
+    border: 0px;
+}
+
+.TopTags
+{
+    background-color: #dddddd;
+    min-height: 640px;
+    text-align: center;
+}
+
+.TopTags a
+{
+    margin-top: 10px;
+}
+
+.TopTags a:link
+{
+    color: #002471;
+    background-color: Transparent;
+    text-decoration: none;
+}
+
+/* visited link */
+.TopTags a:visited
+{
+    color: #002471;
+    background-color: Transparent;
+    text-decoration: none;
+}
+
+/* mouse over link */
+.TopTags a:hover
+{
+    color: orange;
+    background-color: #002471;
+    text-decoration: none;
+}
+
+/* selected link */
+.TopTags a:active
+{
+    color: orange;
+    background-color: #002471;
+    text-decoration: none;
+}
+
+.Space
+{
+    padding-top: 5px;
+}
+
+.RedText
+{
+    color: Red;
+}
+
+.divGroupList
+{
+    overflow: auto;
+    height: 250px;
+    width: 250px;
+}
+
+.ContentPageHeader
+{
+    font-size: 14px;
+    font-weight: bold;
+}
+
+textarea.resourceProperties
+{
+    height: 30px;
+}
+
+textarea.resourceProperties, input[type='text'].resourceProperties
+{
+    width: 450px;
+}
+
+.SelectedTab
+{
+    float: left;
+    text-align: center;
+    width: 60px;
+    height: 25px;
+    background-color: Yellow;
+    border-left: solid 1px black;
+    border-top: solid 1px black;
+    border-right: solid 1px black;
+    padding-top: 5px;
+}
+.UnSelectedTab
+{
+    float: left;
+    text-align: center;
+    width: 60px;
+    height: 25px;
+    background-color: Gray;
+    border: solid 1px black;
+    padding-top: 5px;
+}
+
+.TabSpace
+{
+    float: left;
+    border-bottom: solid 1px black;
+    height: 25px;
+    padding-top: 5px;
+}
+
+.BorderListBox
+{
+    border-left: solid 1px black;
+    border-bottom: solid 1px black;
+    border-right: solid 1px black;
+    width: 100%;
+}
+
+/**** CSS for Subject Area control START *****/
+
+.CategoryHierarchyContainer
+{
+    float: left;
+    border: solid 1px #51698E;
+    color: #042679;
+}
+
+.CategoryHierarchyLeftContainer
+{
+    float: left;
+    width: 45%;
+    padding: 10px;
+}
+
+.CategoryHierarchyRightContainer
+{
+    margin-top: 25px;
+    width: 45%;
+    padding: 10px;
+}
+
+.CategoryHierarchyTreeView
+{
+    background-color: white;
+    border: solid 1px #002471;
+    color: black;
+    overflow: auto;
+    height: 300px;
+    margin-top: 5px;
+}
+
+.CategoryHierarchyTreeView a:link
+{
+    color: black;
+}
+
+.CategoryHierarchyTreeView a:visited
+{
+    color: black;
+}
+
+.CategoryHierarchyTreeView a:hover
+{
+    color: orange;
+}
+
+.CategoryHierarchyTreeView a:active
+{
+    color: orange;
+}
+
+.ResourcePropertiesTitleStyle
+{
+    background-color: #2a66ae;
+    font-weight: bold;
+    color: White;
+    text-align: left;
+    padding-left: 2px;
+    padding-right: 5px;
+    padding-bottom: 2px;
+    padding-top: 2px;
+}
+
+.ContextButton
+{
+    border: 1px solid #FFFFFF;
+    color: #FFFFFF;
+    background-color: #133366;
+    height: 24px;
+}
+
+.SelectedContextButton
+{
+    border: 1px solid #FFFFFF;
+    color: #FFFFFF;
+    background-color: #130364;
+    height: 24px;
+}
+
+/**** CSS for Subject Area control END *****/
+
+.TreeViewContainer
+{
+    background-color: white;
+    border: 1px solid #2a66ae;
+    color: #002471;
+}
+
+.TreeViewContainer a:link
+{
+    color: black;
+    text-decoration: none;
+}
+
+/* visited link */
+.TreeViewContainer a:visited
+{
+    color: black;
+    text-decoration: none;
+}
+
+/* mouse over link */
+.TreeViewContainer a:hover
+{
+    color: orange;
+    text-decoration: none;
+}
+
+/* selected link */
+.TreeViewContainer a:active
+{
+    color: orange;
+    text-decoration: none;
+}
+
+.TreeViewPanel
+{
+    overflow: auto;
+    height: 200px;
+}
+
+.TreeViewSelectedNode
+{
+    background-color: #002471;
+}
+
+a:link.TreeViewSelectedNode
+{
+    color: orange;
+    text-decoration: none;
+}
+
+/* visited link */
+a:visited.TreeViewSelectedNode
+{
+    color: orange;
+    text-decoration: none;
+}
+
+/* mouse over link */
+a:hover.TreeViewSelectedNode
+{
+    color: white;
+    text-decoration: none;
+}
+
+/* selected link */
+a:active.TreeViewSelectedNode
+{
+    color: white;
+    text-decoration: none;
+}
+
+.ResourceInfoStyle
+{
+    border: solid 1px #51698E;
+    color: #042679;
+}
+
+.RelatedResourcesStyle
+{
+    border: solid 1px #51698E;
+    color: #042679;
+}
+
+/**** CSS for Manage Tabs START *****/
+.ManageTabTitleStyle
+{
+    background-color: #2a66ae;
+    font-weight: bold;
+    color: White;
+    text-align: left;
+    padding-left: 2px;
+    padding-right: 5px;
+    padding-bottom: 2px;
+    padding-top: 2px;
+}
+
+.ManageTabControlsContainer
+{
+    border: solid 1px #133366;
+    padding: 2px;
+}
+
+.ManageTab
+{
+    width: 100%;
+    font-size: 93%;
+    line-height: normal;
+}
+.ManageTab ul
+{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.ManageTab li
+{
+    float: left;
+    margin: 0;
+    padding: 0;
+}
+.ManageTab a
+{
+    text-align: center;
+    color: #002471;
+    padding: 5px 0px 6px 5px;
+    display: block;
+    background: url("Images/Tab.png") no-repeat center top;
+    width: 85px;
+    height: 25px;
+}
+
+.currentTab li
+{
+    float: left;
+    margin: 0;
+    padding: 0;
+}
+
+.currentTab a
+{
+    text-align: center;
+    color: #FFFFFF;
+    padding: 5px 0px 6px 2px;
+    display: block;
+    background: url("Images/SelectedTab.png") no-repeat left top;
+    width: 88px;
+    height: 25px;
+}
+
+/**** CSS for Manage Tabs END *****/
+
+/**** CSS for ResourceGridView START *****/
+
+.ResourceGridViewTitleStyle
+{
+    background-color: #2a66ae;
+    font-weight: bold;
+    font-size: 14px;
+    color: White;
+    text-align: left;
+    padding-left: 2px;
+    padding-right: 5px;
+    padding-bottom: 2px;
+    padding-top: 2px;
+}
+
+.ResourceGridViewItemContainer
+{
+    border: solid 2px #51698E;
+    margin: 3px;
+}
+
+.ResourceGridViewContainer
+{
+    border: solid 1px #51698E;
+    color: #042679;
+    margin: 0px;
+}
+
+.ResourceGridViewContainer a:link
+{
+    color: #042679;
+}
+
+.ResourceGridViewContainer a:visited
+{
+    color: green;
+}
+
+.ResourceGridViewContainer a:hover
+{
+    color: Blue;
+}
+
+.ResourceGridViewContainer a:active
+{
+    color: Maroon;
+}
+
+/**** CSS for ResourceGridView END *****/
+
+.Span
+{
+    color: #042679;
+}
+
+.BrowsableTreeContainer
+{
+    float: left;
+    margin: 5px;
+    width: 31%;
+}
+
+.BrowseFilterContainerStyle
+{
+    border: solid 1px #51698E;
+}
+
+.BrowseBoxTitleStyle
+{
+    background-image: url(Images/SidebarBoxHeader.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    font-weight: bold;
+    font-size: 14px;
+    color: orange;
+    text-align: center;
+    padding-left: 2px;
+    padding-right: 5px;
+    padding-bottom: 2px;
+    padding-top: 2px;
+    height: 33px;
+}
+
+.CategoryTreeViewPanel
+{
+    overflow: auto;
+    height: 180px;
+}
+
+.CollapsibleHeader
+{
+    background-image: url('Images/CollapsedFrame.png');
+    background-repeat: no-repeat;
+    vertical-align: middle;
+    padding-top: 3px;
+    padding-left: 10px;
+    width: 100px;
+    height: 25px;
+    color: orange;
+    font-weight: bold;
+}
+.FloatLeft
+{
+    float: left;
+    font-size: 13px;
+}
+
+.FloatRight
+{
+    float: right;
+    padding-top: 3px;
+    padding-right: 10px;
+}
+
+.PermissionPanel
+{
+    padding-bottom: 10px;
+}
+
+div.Collapsed
+{
+    display: none;
+}
+
+div.Expanded
+{
+    display: inherit;
+}
+
+img.ToggleImage
+{
+    width: 10px;
+    height: 10px;
+    cursor: pointer;
+}
+
+/* ChangeHistory Style START */
+
+.HistoryHeaderStyle
+{
+    background-color: #133366;
+    font-weight: bold;
+    color: White;
+}
+
+.HistoryHeaderStyle th
+{
+    padding: 0px;
+    border-width: 0px;
+    color: White;
+}
+
+.HistoryRowStyle
+{
+    color: #042679;
+}
+
+.HistoryInnerHeaderStyle
+{
+    background-color: #2a66ae;
+    font-weight: bold;
+    color: White;
+}
+
+.HistoryInnerRowStyle
+{
+    background-color: #EDF3FE;
+    color: #042679;
+}
+
+/* ChangeHistory Style END */
+
+.SearchExample
+{
+    font-size: 10px;
+    color: #777777;
+}
+
+.HighLightButton
+{
+    background-color: #AAC7E5;
+    border: 1px solid #FFFFFF;
+    height: 24px;
+}
+
+/* Resource list view */
+.titleTableId
+{
+	height: 30px;
+	padding: 1px;
+}
+
+.rssButtonCellId, .atomButtonCellId
+{
+	margin-right: 0px;
+}

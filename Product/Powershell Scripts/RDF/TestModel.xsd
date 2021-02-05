@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema
+    targetNamespace="http://TestModel.example.org"
+    elementFormDefault="qualified"
+    xmlns="http://TestModel.example.org"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+>
+  <xs:simpleType name="string">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="128" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="integer">
+    <xs:restriction base="xs:integer" />
+  </xs:simpleType>
+
+  <xs:simpleType name="datetime">
+    <xs:restriction base="xs:dateTime" />
+  </xs:simpleType>
+
+  <xs:simpleType name="float">
+    <xs:restriction base="xs:float" />
+  </xs:simpleType>
+</xs:schema>

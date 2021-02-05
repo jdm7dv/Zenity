@@ -1,0 +1,795 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="DeleteButtonText" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="DescriptionHeader" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="EditAssociationButtonText" xml:space="preserve">
+    <value>Edit Association</value>
+  </data>
+  <data name="EditButtonText" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="ScopeHeader" xml:space="preserve">
+    <value>Scope</value>
+  </data>
+  <data name="TagDeleteButtonText" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="TagDescriptionHeader" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="TagEditAssociationButtonText" xml:space="preserve">
+    <value>Edit Association</value>
+  </data>
+  <data name="TagEditButtonText" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="TagNameHeader" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="ResourceDateAddedDefaultHeader" xml:space="preserve">
+    <value>Date Added</value>
+  </data>
+  <data name="TagNameDefaultHeader" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="TagDescriptionDefaultHeader" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="RegularExpressionError" xml:space="preserve">
+    <value>Invalid characters in input.</value>
+  </data>
+  <data name="AssociationButtonTextMoveDown" xml:space="preserve">
+    <value>Down</value>
+  </data>
+  <data name="AssociationButtonTextMoveUp" xml:space="preserve">
+    <value>Up</value>
+  </data>
+  <data name="AssociationButtonTextMoveLeft" xml:space="preserve">
+    <value>&lt;&lt;</value>
+  </data>
+  <data name="AssociationButtonTextMoveRight" xml:space="preserve">
+    <value>&gt;&gt;</value>
+  </data>
+  <data name="DeleteButtonMessage" xml:space="preserve">
+    <value>Are you sure you wish to delete this record?</value>
+  </data>
+  <data name="ExceptionDatasourceContactGridView" xml:space="preserve">
+    <value>DataSource should be of type List of Contact/Organization.</value>
+  </data>
+  <data name="ExceptionDatasourcePersonGridView" xml:space="preserve">
+    <value>DataSource should be of type List of Person.</value>
+  </data>
+  <data name="ExceptionDataSourceResourceGridView" xml:space="preserve">
+    <value>DataSource should be of type List of Resource.</value>
+  </data>
+  <data name="ExceptionDataSourceTagGridView" xml:space="preserve">
+    <value>DataSource should be of type List of Tag.</value>
+  </data>
+  <data name="ExceptionSortExpressionZentityGridView" xml:space="preserve">
+    <value>Sort expression is not valid for selected column.</value>
+  </data>
+  <data name="InvalidDateErrorMessage" xml:space="preserve">
+    <value>Invalid date. Valid format: {0}.</value>
+  </data>
+  <data name="InvalidNumberErrorMessage" xml:space="preserve">
+    <value>Invalid number OR Number out of range</value>
+  </data>
+  <data name="NoImageUrl" xml:space="preserve">
+    <value>/App_Themes/Granite/Images/NoImage.JPG</value>
+  </data>
+  <data name="PersonEmailDefaultHeader" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="PersonFirstNameDefaultHeader" xml:space="preserve">
+    <value>First Name</value>
+  </data>
+  <data name="PersonLastNameDefaultHeader" xml:space="preserve">
+    <value>Last Name</value>
+  </data>
+  <data name="PersonMiddleNameDefaultHeader" xml:space="preserve">
+    <value>Middle Name</value>
+  </data>
+  <data name="ResourceAuthorsDefaultHeader" xml:space="preserve">
+    <value>Authors</value>
+  </data>
+  <data name="ResourceContributorsDefaultHeader" xml:space="preserve">
+    <value>Contributors</value>
+  </data>
+  <data name="ResourceTitleDefaultHeader" xml:space="preserve">
+    <value>Resource Title</value>
+  </data>
+  <data name="TagUriDefaultHeader" xml:space="preserve">
+    <value>Uri</value>
+  </data>
+  <data name="FilterAddButtonText" xml:space="preserve">
+    <value>Add</value>
+  </data>
+  <data name="FilterConditionColumnHeader" xml:space="preserve">
+    <value>Condition</value>
+  </data>
+  <data name="FilterOperatorColumnHeader" xml:space="preserve">
+    <value>Operator</value>
+  </data>
+  <data name="FilterPropertyColumnHeader" xml:space="preserve">
+    <value>Property</value>
+  </data>
+  <data name="FilterRemoveButtonText" xml:space="preserve">
+    <value>Remove</value>
+  </data>
+  <data name="FilterValueColumnHeader" xml:space="preserve">
+    <value>Value</value>
+  </data>
+  <data name="MaximumFontSizeGreaterThanMinFontSize" xml:space="preserve">
+    <value>Maximum font size must be greater than minimum font size and greater than zero</value>
+  </data>
+  <data name="MaximumTagsFetchException" xml:space="preserve">
+    <value>Maximum tags to be fetched must be greater zero</value>
+  </data>
+  <data name="MinimumFontSizeLessThanMaxFontSize" xml:space="preserve">
+    <value>Minimum font size must be less than maximum font size and greater than zero</value>
+  </data>
+  <data name="InvalidEmail" xml:space="preserve">
+    <value>Invalid email</value>
+  </data>
+  <data name="InvalidDateRangeErrorMessage" xml:space="preserve">
+    <value>should not be greater than</value>
+  </data>
+  <data name="Requiredproperty" xml:space="preserve">
+    <value>Please enter {0}</value>
+  </data>
+  <data name="AlternateThumbImageText" xml:space="preserve">
+    <value>Click to view full size image</value>
+  </data>
+  <data name="CalenderAltText" xml:space="preserve">
+    <value>Calendar</value>
+  </data>
+  <data name="InvalidFileUploadPath" xml:space="preserve">
+    <value>Invalid file path</value>
+  </data>
+  <data name="ControlNotRender" xml:space="preserve">
+    <value>Control is not render</value>
+  </data>
+  <data name="InvalidResourceType" xml:space="preserve">
+    <value>Resource type is not valid</value>
+  </data>
+  <data name="All" xml:space="preserve">
+    <value>All</value>
+  </data>
+  <data name="AssociationFilterButton" xml:space="preserve">
+    <value>Go</value>
+  </data>
+  <data name="AssociationObjectTypeLabel" xml:space="preserve">
+    <value>Object Type</value>
+  </data>
+  <data name="AssociationPredicateLabel" xml:space="preserve">
+    <value>Predicate</value>
+  </data>
+  <data name="AssociationSubjectLabel" xml:space="preserve">
+    <value>Subject</value>
+  </data>
+  <data name="Filter" xml:space="preserve">
+    <value>Filter</value>
+  </data>
+  <data name="InvalidFileType" xml:space="preserve">
+    <value>Invalid file type</value>
+  </data>
+  <data name="ButtonDeleteText" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="ButtonEditAssociationText" xml:space="preserve">
+    <value>Edit Association</value>
+  </data>
+  <data name="ButtonEditText" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="ButtonSubmitText" xml:space="preserve">
+    <value>GO</value>
+  </data>
+  <data name="LabelOfText" xml:space="preserve">
+    <value>Of</value>
+  </data>
+  <data name="LabelPageSizeListText" xml:space="preserve">
+    <value>Page Size</value>
+  </data>
+  <data name="LabelPageText" xml:space="preserve">
+    <value>Page</value>
+  </data>
+  <data name="LabelResourceTypeText" xml:space="preserve">
+    <value>Resource Type</value>
+  </data>
+  <data name="LinkButtonFirstText" xml:space="preserve">
+    <value>&lt;&lt;</value>
+  </data>
+  <data name="LinkButtonLastText" xml:space="preserve">
+    <value>&gt;&gt;</value>
+  </data>
+  <data name="LinkButtonNextText" xml:space="preserve">
+    <value>&gt;</value>
+  </data>
+  <data name="LinkButtonPreviousText" xml:space="preserve">
+    <value>&lt;</value>
+  </data>
+  <data name="MessageDeleteRecords" xml:space="preserve">
+    <value>Selected records and their respective associations will be deleted. \r\nAre you sure you wish to delete selected records?</value>
+  </data>
+  <data name="MessageEntityTypeNull" xml:space="preserve">
+    <value>EntityType cannot be null</value>
+  </data>
+  <data name="MessageNoRecordFound" xml:space="preserve">
+    <value>No records found</value>
+  </data>
+  <data name="MessageRecordNotSelected" xml:space="preserve">
+    <value>Please select at least one record!</value>
+  </data>
+  <data name="MessageViewColumnNotFound" xml:space="preserve">
+    <value>Could not find ViewColumn in the properties of selected EntityType</value>
+  </data>
+  <data name="MessageViewColumnNull" xml:space="preserve">
+    <value>ViewColumn cannot be null</value>
+  </data>
+  <data name="RadioButtonAllText" xml:space="preserve">
+    <value>All</value>
+  </data>
+  <data name="RadioButtonFilterText" xml:space="preserve">
+    <value>Filter</value>
+  </data>
+  <data name="MessageInvalidEntityType" xml:space="preserve">
+    <value>Invalid EntityType</value>
+  </data>
+  <data name="DesignTimeDummyDataString" xml:space="preserve">
+    <value>abc</value>
+  </data>
+  <data name="PredicateAssociationResourceTypeErrorMessage" xml:space="preserve">
+    <value>Resource type does not exist.</value>
+  </data>
+  <data name="PredicateAssociationSubjectEntityErrorMessage" xml:space="preserve">
+    <value>Subject entity does not exist. It might have been deleted.</value>
+  </data>
+  <data name="TitleMostActiveAuthors" xml:space="preserve">
+    <value>Most Active Authors</value>
+  </data>
+  <data name="TitleMostUsedTags" xml:space="preserve">
+    <value>Most Used Tags</value>
+  </data>
+  <data name="TitleRecentResources" xml:space="preserve">
+    <value>Recent Resources</value>
+  </data>
+  <data name="ResourcePropertiesTitle" xml:space="preserve">
+    <value>ResourceProperties</value>
+  </data>
+  <data name="PageSize10" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="PageSize15" xml:space="preserve">
+    <value>15</value>
+  </data>
+  <data name="PageSize25" xml:space="preserve">
+    <value>25</value>
+  </data>
+  <data name="PageSize50" xml:space="preserve">
+    <value>50</value>
+  </data>
+  <data name="SearchResultTitleText" xml:space="preserve">
+    <value>Search Results</value>
+  </data>
+  <data name="LabelMainTitleText" xml:space="preserve">
+    <value>Entity Search</value>
+  </data>
+  <data name="AssociationDefaultHeader" xml:space="preserve">
+    <value>Association</value>
+  </data>
+  <data name="SourceListSizeText" xml:space="preserve">
+    <value>Results</value>
+  </data>
+  <data name="validationSummaryHeader" xml:space="preserve">
+    <value>Please correct the following:</value>
+  </data>
+  <data name="InvalidCriteria" xml:space="preserve">
+    <value>Criteria  {0}: Invalid date for {1}. Valid format: {2}.</value>
+  </data>
+  <data name="DeleteFile" xml:space="preserve">
+    <value>Delete existing file</value>
+  </data>
+  <data name="InvalidCriteriaNumber" xml:space="preserve">
+    <value>Criteria  {0}:   Invalid number or Number out of range for {1}.</value>
+  </data>
+  <data name="TotalRecordCount" xml:space="preserve">
+    <value>Total Records</value>
+  </data>
+  <data name="TagCloudEntryToolTip" xml:space="preserve">
+    <value>{0} (Tagged resources: {1})</value>
+  </data>
+  <data name="MessageRefreshPage" xml:space="preserve">
+    <value>Please click on Go/Submit to get results for the modified criteria.</value>
+  </data>
+  <data name="ConcurrentAccessExceptionMessage" xml:space="preserve">
+    <value>Data has been updated by another user. It should be refreshed.</value>
+  </data>
+  <data name="EntityNotFoundExceptionMessage" xml:space="preserve">
+    <value>Entity could not be found.</value>
+  </data>
+  <data name="ResourceDateModifiedDefaultHeader" xml:space="preserve">
+    <value>Date Modified</value>
+  </data>
+  <data name="ResourceEmptyTitle" xml:space="preserve">
+    <value>&lt;no title&gt;</value>
+  </data>
+  <data name="AddCategoryNode" xml:space="preserve">
+    <value>Add Child Node</value>
+  </data>
+  <data name="AddedCategory" xml:space="preserve">
+    <value>CategoryNode '{0}' added successfully.</value>
+  </data>
+  <data name="CancelButton" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="ContextMenuStyle" xml:space="preserve">
+    <value>ContextStyle</value>
+  </data>
+  <data name="CutCategoryNode" xml:space="preserve">
+    <value>Cut</value>
+  </data>
+  <data name="CutPasteError" xml:space="preserve">
+    <value>CategoryNode cut/paste is cyclic</value>
+  </data>
+  <data name="CutPateCategory" xml:space="preserve">
+    <value>CategoryNode cut/paste successfully</value>
+  </data>
+  <data name="DefaultContextButtonStyle" xml:space="preserve">
+    <value>DefaultButton</value>
+  </data>
+  <data name="DeleteCategoryNode" xml:space="preserve">
+    <value>Delete Node</value>
+  </data>
+  <data name="MsgDeletedCategory" xml:space="preserve">
+    <value>Category Node deleted successfully</value>
+  </data>
+  <data name="EditCategoryNode" xml:space="preserve">
+    <value>Edit Node</value>
+  </data>
+  <data name="HighLightContextButtonStyle" xml:space="preserve">
+    <value>HighlightButton</value>
+  </data>
+  <data name="PasteCategoryNode" xml:space="preserve">
+    <value>Paste</value>
+  </data>
+  <data name="RootCategoryNode" xml:space="preserve">
+    <value>RootNode</value>
+  </data>
+  <data name="SaveButton" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="UpdateButton" xml:space="preserve">
+    <value>Update</value>
+  </data>
+  <data name="UpdatedCategory" xml:space="preserve">
+    <value>CategoryNode {0} updated successfully</value>
+  </data>
+  <data name="ChangeHistoryDesignerCateAssociation" xml:space="preserve">
+    <value>Category Association related change sets will  appear in this section.</value>
+  </data>
+  <data name="ChangeHistoryDesignerRelationship" xml:space="preserve">
+    <value>Relationship related change sets will appear in this section.</value>
+  </data>
+  <data name="ChangeHistoryDesignerResTagging" xml:space="preserve">
+    <value>Resource Tagging related change sets will  appear in this section.</value>
+  </data>
+  <data name="ChangeHistoryDesignerScalarProperty" xml:space="preserve">
+    <value>Scalar property related change sets will appear in this section</value>
+  </data>
+  <data name="ChangeHistoryEntityNotFound" xml:space="preserve">
+    <value>Entity might have been deleted</value>
+  </data>
+  <data name="ChangeHistoryFeatureNotEnabled" xml:space="preserve">
+    <value>Change History Logging features is not enabled. Please enable it to record the change history details.</value>
+  </data>
+  <data name="DeletecategoryNodeConfirmation" xml:space="preserve">
+    <value>Selected CategoryNode and its respective associations will be deleted. \r\nAre you sure you wish to delete selected CategoryNode?</value>
+  </data>
+  <data name="CategoryNodeProperty" xml:space="preserve">
+    <value>CategoryNode Properties</value>
+  </data>
+  <data name="TitleText" xml:space="preserve">
+    <value>Title</value>
+  </data>
+  <data name="CreateNewRootCategoryNode" xml:space="preserve">
+    <value>Create new root node...</value>
+  </data>
+  <data name="MsgCategoryNodeAssociationSuccessfull" xml:space="preserve">
+    <value>ScholarlyWorkItem to CategoryNode association updated successfully.</value>
+  </data>
+  <data name="MsgCategoryNodeNotFound" xml:space="preserve">
+    <value>CategoryNode not found.</value>
+  </data>
+  <data name="MsgDeleteCategoryOperationFailed" xml:space="preserve">
+    <value>Delete operation on CategoryNode failed.</value>
+  </data>
+  <data name="DefaultCategoryHierarchyCaption" xml:space="preserve">
+    <value>CategoryHierarchy</value>
+  </data>
+  <data name="TreeViewCollapseImageToolTip" xml:space="preserve">
+    <value>Collapse</value>
+  </data>
+  <data name="TreeViewExpandImageToolTip" xml:space="preserve">
+    <value>Expand</value>
+  </data>
+  <data name="MsgObjectAlreadyAssociated" xml:space="preserve">
+    <value>Object resource {1} can have at most one association as an object and since  it is already associated to another resource, subject resource {0} cannot be associated with it.</value>
+  </data>
+  <data name="MsgSubCannotAssociateWithMoreThanOneObj" xml:space="preserve">
+    <value>Subject resource {0} cannot be associated with more than one object resource.</value>
+  </data>
+  <data name="MsgCircularAssociationDetected" xml:space="preserve">
+    <value>Cyclic association detected for subject resource {0} to object resource {1} association.</value>
+  </data>
+  <data name="CategoryAssociationSubjectLabel" xml:space="preserve">
+    <value>Subject:</value>
+  </data>
+  <data name="LengthValidatorMessage" xml:space="preserve">
+    <value>{0} exceeds max text length.</value>
+  </data>
+  <data name="AssociationAvailableResources" xml:space="preserve">
+    <value>Available Resource(s)</value>
+  </data>
+  <data name="AssociationAvailableTags" xml:space="preserve">
+    <value>Available {0}(s)</value>
+  </data>
+  <data name="AssociationSelectedResources" xml:space="preserve">
+    <value>Selected Resource(s)</value>
+  </data>
+  <data name="AssociationSelectedTags" xml:space="preserve">
+    <value>Selected {0}(s)</value>
+  </data>
+  <data name="ResourceTypeFullNameRequired" xml:space="preserve">
+    <value>Resource type full name is required.</value>
+  </data>
+  <data name="MsgCategoriesNotPresent" xml:space="preserve">
+    <value>There are no categories present.</value>
+  </data>
+  <data name="ResourceTypeDefaultHeader" xml:space="preserve">
+    <value>Resource Type</value>
+  </data>
+  <data name="AuthorsText" xml:space="preserve">
+    <value>Authors</value>
+  </data>
+  <data name="DateAddedText" xml:space="preserve">
+    <value>Date Added</value>
+  </data>
+  <data name="DefaultRelatedResourceCloudText" xml:space="preserve">
+    <value>Resource Cloud</value>
+  </data>
+  <data name="DefaultRelatedResourcesText" xml:space="preserve">
+    <value>Related Resources</value>
+  </data>
+  <data name="DefaultResourceInfoText" xml:space="preserve">
+    <value>Resource Info</value>
+  </data>
+  <data name="DescriptionText" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="EditResourceInfoLinkText" xml:space="preserve">
+    <value>Edit Resource Info</value>
+  </data>
+  <data name="FilesText" xml:space="preserve">
+    <value>Files</value>
+  </data>
+  <data name="MsgPageSizeLessThanZero" xml:space="preserve">
+    <value>Page size should be greater than or equal 0.</value>
+  </data>
+  <data name="MsgTotalRecordLessThanZero" xml:space="preserve">
+    <value>Total records should be greater than or equal to 0.</value>
+  </data>
+  <data name="SelectDeselectLabelText" xml:space="preserve">
+    <value>Select/Deselect All</value>
+  </data>
+  <data name="SortByLabelText" xml:space="preserve">
+    <value>SortBy : </value>
+  </data>
+  <data name="ViewChangeHistoryLinkText" xml:space="preserve">
+    <value>View Change History</value>
+  </data>
+  <data name="MsgPageIndexLessThanZero" xml:space="preserve">
+    <value>Page index should be greater than or equal to 0.</value>
+  </data>
+  <data name="MsgTotalPagesLessThanZero" xml:space="preserve">
+    <value>Total pages should be greater than or equal to 0.</value>
+  </data>
+  <data name="MsgResourceNotFound" xml:space="preserve">
+    <value>Resource not found.</value>
+  </data>
+  <data name="MsgResourceNotFoundOrNoViewPermission" xml:space="preserve">
+    <value>Resource not found. Or user is not having enough permissions to view the resource.</value>
+  </data>
+  <data name="UnauthorizedAccessException" xml:space="preserve">
+    <value>You do not have {0} access to the resource.</value>
+  </data>
+  <data name="BibTexExportLabel" xml:space="preserve">
+    <value>Export as BibTeX</value>
+  </data>
+  <data name="BibTexImportLabel" xml:space="preserve">
+    <value>Import as BibTeX</value>
+  </data>
+  <data name="DateModifiedText" xml:space="preserve">
+    <value>Date Modified</value>
+  </data>
+  <data name="RelatedResourceEditLinkText" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="InvalidDownloadFile" xml:space="preserve">
+    <value>Invalid File</value>
+  </data>
+  <data name="NoFileDownload" xml:space="preserve">
+    <value>No file to download. It might have been deleted.</value>
+  </data>
+  <data name="UnableDownload" xml:space="preserve">
+    <value>Unable to download file.Try again.</value>
+  </data>
+  <data name="RelatedDownloadsLabelText" xml:space="preserve">
+    <value>Related Downloads</value>
+  </data>
+  <data name="UploadedFileLabelText" xml:space="preserve">
+    <value>Uploaded File</value>
+  </data>
+  <data name="UnauthorizedAccessExceptionMultipleResources" xml:space="preserve">
+    <value>You do not have {0} access to one or more resources on the page. Please try again.</value>
+  </data>
+  <data name="UnauthorizedAccessExceptionCreate" xml:space="preserve">
+    <value>You do not have {0} access.</value>
+  </data>
+  <data name="ButtonPermisstionText" xml:space="preserve">
+    <value>Permission</value>
+  </data>
+  <data name="YearText" xml:space="preserve">
+    <value>Year</value>
+  </data>
+  <data name="A_EText" xml:space="preserve">
+    <value>A-E</value>
+  </data>
+  <data name="F_JText" xml:space="preserve">
+    <value>F-J</value>
+  </data>
+  <data name="K_OText" xml:space="preserve">
+    <value>K-O</value>
+  </data>
+  <data name="OthersText" xml:space="preserve">
+    <value>Others</value>
+  </data>
+  <data name="P_TText" xml:space="preserve">
+    <value>P-T</value>
+  </data>
+  <data name="U_ZText" xml:space="preserve">
+    <value>U-Z</value>
+  </data>
+  <data name="UnauthorizedAccessExceptionCategoryDelete" xml:space="preserve">
+    <value>You do not have Delete access to the selected category or its child categories.</value>
+  </data>
+  <data name="UnauthorizedAccessExceptionUpdateParentCategory" xml:space="preserve">
+    <value>You do not have Update access on the parent category node.</value>
+  </data>
+  <data name="ImageScalarProperpty" xml:space="preserve">
+    <value>Image</value>
+  </data>
+  <data name="BinaryDataText" xml:space="preserve">
+    <value>&lt;Binary Data&gt;</value>
+  </data>
+  <data name="CategoryAssociationChangesText" xml:space="preserve">
+    <value>Category Association Changes</value>
+  </data>
+  <data name="RelationshipChangesText" xml:space="preserve">
+    <value>Relationship Changes</value>
+  </data>
+  <data name="ResourceTaggingChangesText" xml:space="preserve">
+    <value>Resource Tagging Changes</value>
+  </data>
+  <data name="ScalarPropertyChangeText" xml:space="preserve">
+    <value>Scalar Property Changes</value>
+  </data>
+  <data name="DesignModecategoryNodeText" xml:space="preserve">
+    <value>Node1</value>
+  </data>
+  <data name="ResourceText" xml:space="preserve">
+    <value>Resource</value>
+  </data>
+  <data name="AtomTooltip" xml:space="preserve">
+    <value>Atom Feed</value>
+  </data>
+  <data name="RSSTooltip" xml:space="preserve">
+    <value>RSS Feed</value>
+  </data>
+  <data name="SetIsFeedSupportedMessage" xml:space="preserve">
+    <value>Set IsFeedSupported to true at the time of creation of this control instance.</value>
+  </data>
+  <data name="ButtonNextText" xml:space="preserve">
+    <value>Next</value>
+  </data>
+  <data name="ButtonPrevText" xml:space="preserve">
+    <value>Prev</value>
+  </data>
+  <data name="CssButtonTextAlignCenter" xml:space="preserve">
+    <value>center</value>
+  </data>
+  <data name="CssCheckBoxListStyle" xml:space="preserve">
+    <value>white-space:nowrap</value>
+  </data>
+  <data name="CssDivAssociationOverflow" xml:space="preserve">
+    <value>auto</value>
+  </data>
+  <data name="CssDivBorder" xml:space="preserve">
+    <value>1px #888888 solid</value>
+  </data>
+  <data name="CssListAuthorWidth" xml:space="preserve">
+    <value>100px</value>
+  </data>
+  <data name="CssControlWidth100Percent" xml:space="preserve">
+    <value>100%</value>
+  </data>
+  <data name="CssPanelDisplayNone" xml:space="preserve">
+    <value>none</value>
+  </data>
+  <data name="CssPanelPadding" xml:space="preserve">
+    <value>2px</value>
+  </data>
+  <data name="CssScrollableContainerWidth" xml:space="preserve">
+    <value>65%</value>
+  </data>
+  <data name="CssSubjectLinkPanelMargin" xml:space="preserve">
+    <value>10px</value>
+  </data>
+  <data name="CssTextFilterWidth" xml:space="preserve">
+    <value>200px</value>
+  </data>
+  <data name="CssVerticalAlignBottom" xml:space="preserve">
+    <value>bottom</value>
+  </data>
+  <data name="MonthsOfYear" xml:space="preserve">
+    <value>Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sept,Oct,Nov,Dec</value>
+  </data>
+  <data name="ResourceDescription" xml:space="preserve">
+    <value>Description here</value>
+  </data>
+  <data name="ResourceTitle" xml:space="preserve">
+    <value>abcd</value>
+  </data>
+  <data name="TagNameCollection" xml:space="preserve">
+    <value>Tag1,Tag2,Tag3,Tag4,Tag5,Tag6,Tag7,Tag8,Tag9,Tag10</value>
+  </data>
+  <data name="RenderingOrder1" xml:space="preserve">
+    <value>Title,DateAdded,DateModified,Description,Uri</value>
+  </data>
+  <data name="RenderingOrder2" xml:space="preserve">
+    <value>Title,Description,Uri</value>
+  </data>
+  <data name="ResourceContactTitle1" xml:space="preserve">
+    <value>Author1</value>
+  </data>
+  <data name="ResourceDescription1" xml:space="preserve">
+    <value>Some description goes here..</value>
+  </data>
+  <data name="ResourceFileTitle1" xml:space="preserve">
+    <value>File1</value>
+  </data>
+  <data name="ResourceTitle1" xml:space="preserve">
+    <value>resource Title</value>
+  </data>
+</root>

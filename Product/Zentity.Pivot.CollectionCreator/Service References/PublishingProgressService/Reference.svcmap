@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="a72e1266-355a-4cf0-b73f-9e3392b14fd8" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="net.tcp://localhost:9091/Pivot/PublishingProgressService/mex" Protocol="mex" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="service1.wsdl" MetadataType="Wsdl" ID="aa96200e-c756-4ffc-91ae-d165e8457317" SourceId="1" SourceUrl="net.tcp://localhost:9091/Pivot/PublishingProgressService/mex" />
+    <MetadataFile FileName="service2.xsd" MetadataType="Schema" ID="b4b2c16c-437a-4df5-b665-dfeafadff6a4" SourceId="1" SourceUrl="net.tcp://localhost:9091/Pivot/PublishingProgressService/mex" />
+    <MetadataFile FileName="service21.xsd" MetadataType="Schema" ID="16aaabe0-a3fb-463e-817e-1147353e12c0" SourceId="1" SourceUrl="net.tcp://localhost:9091/Pivot/PublishingProgressService/mex" />
+    <MetadataFile FileName="Zentity.Services.Web1.xsd" MetadataType="Schema" ID="f16f50de-326b-4a88-9421-af12421f371c" SourceId="1" SourceUrl="net.tcp://localhost:9091/Pivot/PublishingProgressService/mex" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

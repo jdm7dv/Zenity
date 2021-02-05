@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi" xmlns:iis="http://schemas.microsoft.com/wix/IIsExtension" xmlns:util="http://schemas.microsoft.com/wix/UtilExtension" xmlns:sql="http://schemas.microsoft.com/wix/SqlExtension">
+
+  <?include Properties.wxi?>
+
+  <Product Id="$(var.ProductCode)" Name="$(var.ProductName)" Language="!(loc.LCID)" Codepage="1252" Version="$(var.ProductVersion)" Manufacturer="$(var.ProductManufacturer)" UpgradeCode="$(var.UpgradeCode)">
+    <Package Id="$(var.PackageCode)" InstallPrivileges="elevated" Description="$(var.ProductDescription)" Manufacturer="$(var.ProductManufacturer)" ShortNames="no" InstallerVersion="200" Compressed="yes" Comments="$(var.ProductComments)" Languages="!(loc.LCID)" />
+
+    <Media Id="1" Cabinet="media1.cab" EmbedCab="yes" CompressionLevel="high" />
+    
+    <!-- Include install launch conditions -->
+    <?include PrerequisiteCheck.wxi?>
+
+    <!-- Include product properties -->
+    <?include ProductProperties.wxi?>
+
+    <!-- Include the product components -->
+    <?include ProductComponents.wxi?>    
+
+    <!--Detect older and newer versions of the product for Upgrade support-->
+    <Upgrade Id="$(var.UpgradeCode)">
+      <UpgradeVersion Minimum="$(var.ProductVersion)" IncludeMinimum="no" OnlyDetect="yes" Property="NEWVERSIONDETECTED" />
+      <!--<UpgradeVersion Maximum="$(var.ProductVersion)" IncludeMaximum="no" MigrateFeatures="yes" Property="OLDERVERSIONDETECTED"/>-->
+    </Upgrade>
+
+    <!-- Define the target directory structure -->
+    <Directory Id="TARGETDIR" Name="SourceDir">
+
+      <!-- System folder that corresponds to the program files folder -->
+      <Directory Id="ProgramFilesFolder" Name="PFiles">
+
+        <!-- Folder for Zentity files -->
+        <Directory Id="INSTALLLOCATION" Name="Zentity">
+
+          <!-- Documentation -->
+          <Directory Id="WebUIDocuments" Name="Documentation" />
+          
+          <!-- Zentity Web Site Folder -->
+          <Directory Id="ZentityWebSite" Name="ZentityWebSite">
+
+            <!-- AtomPub App Directory -->
+            <Directory Id="ZentityAtomPubVirutalDirectory" Name="AtomPub">
+              <Directory Id="AtomPubBin" Name="bin" />
+              <Directory Id="AtomPubSword" Name='sword' />
+            </Directory>
+
+            <!-- OaiPmh App Directory -->
+            <Directory Id="ZentityOaiPmhVirtualDirectory" Name="OaiPmh">
+              <Directory Id="OaiPmhBin" Name="bin" />
+            </Directory>
+
+            <!-- OaiOre App Directory -->
+            <Directory Id="ZentityOaiOreVirtualDirectory" Name="OaiOre">
+              <Directory Id="OaiOreBin" Name="bin" />
+            </Directory>
+
+            <!-- Syndication App Directory -->
+            <Directory Id="ZentitySyndicationVirtualDirectory" Name="Syndication">
+              <Directory Id="SyndicationSearch" Name="Search" />
+              <Directory Id="SyndicationBin" Name='bin' />
+            </Directory>
+
+            <!-- WebUI App Directory -->
+            <Directory Id="ZentityWebUIVirtualDirectory" Name="WebUI">
+              <Directory Id="WebUIAppCode" Name="AppCode">
+                <Directory Id="WebUIDAL" Name="DAL"/>
+              </Directory>
+              <Directory Id="WebUIApp_GlobalResources" Name="App_GlobalResources"/>
+              <Directory Id="WebUIApp_Themes" Name="App_Themes">
+                <Directory Id="WebUIDarkBlue" Name="DarkBlue">
+                  <Directory Id="WebUI.DarkBlue.Images" Name="Images"/>
+                </Directory>
+                <Directory Id="WebUILightBlue" Name="LightBlue">
+                  <Directory Id="WebUI.LightBlue.Images" Name="Images"/>
+                </Directory>
+              </Directory>
+
+              <Directory Id="WebUIBin" Name="bin"/>
+              <Directory Id="WebUIHelp" Name="Help"/>
+              <Directory Id="WebUIResourceManagement" Name="ResourceManagement"/>
+              <Directory Id="WebUIScripts" Name="Scripts"/>
+              <Directory Id="WebUISearch" Name="Search"/>
+              <Directory Id="WebUISecurity" Name="Security"/>
+              <Directory Id="WebUIServices" Name="Services"/>
+              <Directory Id="WebUIUserControls" Name="UserControls"/>
+            </Directory>
+            
+            <!-- ODataToCXmlTranslator App Directory-->
+            <Directory Id="ZentityODataVirtualDirectory" Name="OData">
+              <Directory Id="ODataBin" Name="bin" />
+            </Directory>
+            
+            <!-- Visual Explorer App Directory-->
+            <Directory Id="ZentityVisualExplorerVirtualDirectory" Name="VisualExplorer">
+              <Directory Id="VisualExplorerBin" Name="bin" />
+              <Directory Id="VisualExplorerClientBin" Name="ClientBin" />
+              <Directory Id="VisualExplorerImages" Name="images" />
+              <Directory Id="VisualExplorerPivot" Name="Pivot" />
+              <Directory Id="VisualExplorerPivotSearch" Name="Search" />
+              <Directory Id="VisualExplorerScripts" Name="Scripts" />
+              <Directory Id="VisualExplorerServices" Name="Services" />
+              <Directory Id="VisualExplorerStyles" Name="Styles" />
+            </Directory>
+
+            <!-- Zentity Data Service App Directory -->
+            <Directory Id="ZentityDataServiceVirtualDirectory" Name="DataService">
+              <Directory Id="DataServiceBin" Name="bin" />
+            </Directory>
+
+            <!-- Zentity Web Site folder End -->
+          </Directory>
+
+          <!-- Folder for Windows Services -->
+          <Directory Id="ZentityServices" Name="Pivot">
+            <Directory Id="NotificationServices" Name="Notification" />
+            <Directory Id="PublishingServices" Name="Publishing" />
+          </Directory>
+
+          <!-- Database scripts -->
+          <Directory Id="Scripts" Name="Scripts"></Directory>
+          <!-- Zentity Folder End -->
+        </Directory>
+
+        <!-- Program Files End -->
+      </Directory>
+
+      <!--<Directory Id="ProgramMenuFolder" Name="Programs">
+        <Directory Id="ProgramMenuDir" Name="Zentity" >
+          <Directory Id="ProgramMenuDocDir" Name="Documentation" />
+        </Directory>
+      </Directory>-->
+
+      <!-- Target directory end -->
+    </Directory>
+
+    <!-- Custom Actions -->
+    <CustomAction Id="PreventDowngrade" Error="!(loc.MsgNewerVersionFoundError)" />
+    <CustomAction Id='INSTALLDIRSAVE' Property='INSTALLDIR' Value='[INSTALLDIRSAVE]' Return='check' />
+    <CustomAction Id='CUSTOMSETUPTYPESELECTEDSAVE' Property='CUSTOMSETUPTYPE' Value='[CUSTOMSETUPTYPESELECTEDSAVE]' Return='check' />
+
+    <Binary Id="CLRHosting" SourceFile="$(var.SOLUTIONDIR)\Zentity.Installer.Server.CustomAction\Bin\$(var.Configuration)\Zentity.Installer.CustomAction.CA.dll" />
+    
+    
+    <!--Execute managed CA-->
+    <CustomAction Id="ExecuteManagedCA" BinaryKey="CLRHosting" DllEntry="Run" Return="ignore" Execute="immediate" />
+    <CustomAction Id="ExecuteManagedCAForCopyWebConfig" BinaryKey="CLRHosting" DllEntry="Run" Return="ignore" Execute="immediate" />
+    <CustomAction Id="CopyWebConfigToCollectionsVDIR" Property="CATOEXECUTE" Value="CopyWebConfigToCollectionsVirtualDirectory" Return="check" />
+    
+    <!-- Create Local User Groups -->
+    <CustomAction Id="CreateLocalGroupsCASetData" Property="CreateLocalUserGroups" Value="adminGroup=[ZENTITYADMINUSERGROUP];userGroup=[ZENTITYUSERGROUP]" Execute="immediate" />
+    <CustomAction Id="CreateLocalUserGroups" BinaryKey="CLRHosting" DllEntry="CreateLocalUserGroups" Return="check" Execute="deferred" Impersonate="no" />
+
+    <!-- Add Users to groups -->
+    <CustomAction Id="AddUsersToGroupsCASetData" Property="AddUsersToGroups" Value="adminGroup=[ZENTITYADMINUSERGROUP];userGroup=[ZENTITYUSERGROUP];appPoolUser=[ZENTITYAPPPOOLIDENTITYUSER];appPoolUserPassword=[ZENTITYAPPPOOLIDENTITYPASSWORD];pivotUser=[PIVOTSERVICESUSER];pivotUserPassword=[PIVOTSERVICESPASSWORD];notificationUser=[NOTIFICATIONSERVICEUSER];notificationUserPassword=[NOTIFICATIONSERVICEPASSWORD]" Execute="immediate" />
+    <CustomAction Id="AddUsersToGroups" BinaryKey="CLRHosting" DllEntry="AddUsersToGroups" Return="check" Execute="deferred" Impersonate="no" />
+
+    <!--Update the connection string for Zentity Context-->
+    <CustomAction Id='OAIPMHCONTEXTCONNSTRINGUPDATE' Property='OAIPMHCONTEXTCONNSTRING' Value="[OAIPMHCONTEXTCONNSTRINGPREFIX]Data Source=[CORESQLSERVERINSTANCENAME];Initial Catalog=[CORESQLSERVERDATABASENAME];[OAIPMHCONTEXTCONNSTRINGSUFFIX]Connection Timeout=120;&quot;" Return='check' />
+    
+    <!-- Update connection string for DataService -->
+    <CustomAction Id='DATASERVICECONTEXTCONNSTRINGUPDATE' Property='DATASERVICECONTEXTCONNSTRING' Value="[DATASERVICECONNSTRINGPREFIX]Data Source=[CORESQLSERVERINSTANCENAME];Initial Catalog=[CORESQLSERVERDATABASENAME];[OAIPMHCONTEXTCONNSTRINGSUFFIX]Connection Timeout=120;&quot;" Return='check' />
+    
+    <!-- Update connection string for Visual Explorer -->
+    <CustomAction Id='VISUALEXPLORERCONTEXTCONNSTRINGUPDATE' Property='VISUALEXPLORERCONTEXTCONNSTRING' Value="[VISUALEXPLORERCONNSTRINGPREFIX]Data Source=[CORESQLSERVERINSTANCENAME];Initial Catalog=[CORESQLSERVERDATABASENAME];[VISUALEXPLORERCONNSTRINGSUFFIX]Connection Timeout=120;&quot;" Return='check' />
+
+    <!-- Update connection string for Windows Service -->
+    <CustomAction Id='PIVOTSERVICERCONTEXTCONNSTRINGUPDATE' Property='PIVOTSERVICECONTEXTCONNSTRING' Value="[VISUALEXPLORERCONNSTRINGPREFIX]Data Source=[CORESQLSERVERINSTANCENAME];Initial Catalog=[CORESQLSERVERDATABASENAME];[OAIPMHCONTEXTCONNSTRINGSUFFIX]Connection Timeout=120;&quot;" Return='check' />
+    
+    <!--Update the connection string for OAI - PMH-->
+    <CustomAction Id='ATOMPUBSQLCONNSTRINGUPDATE' Property='ATOMPUBSQLCONNSTRING' Value='Data Source=[CORESQLSERVERINSTANCENAME];Initial Catalog=[CORESQLSERVERDATABASENAME];[VISUALEXPLORERCONNSTRINGSUFFIX]Connection Timeout=120;' Return='check' />
+
+    <!--Update the connection string for OAI - PMH-->
+    <CustomAction Id='OAIPMHCONNSTRINGUPDATE' Property='OAIPMHCONNSTRING' Value='Data Source=[OAIPMHSQLSERVERINSTANCENAME];Initial Catalog=[OAIPMHSQLSERVERDATABASENAME];[OAIPMHCONNSTRINGSUFFIX]Connection Timeout=120;' Return='check' />
+
+    <!--Update the connection string for Authentication connection-->
+    <CustomAction Id='AUTHENTICATIONCONNSTRINGUPDATE' Property='AUTHENTICATIONCONNSTRING' Value="Data Source=[AUTHENTICATIONSQLSERVERINSTANCENAME];Initial Catalog=[AUTHENTICATIONSQLSERVERDATABASENAME];integrated security=true;Connection Timeout=120;" Return='check' />
+
+    <!--Update the connection string for Zentity Context-->
+    <CustomAction Id='FILESTREAMFOLDERUPDATE' Property='FILESTREAMFOLDER' Value="[FILESTREAMFOLDER][FILESTREAMFOLDERNAME]" Return='check' />
+
+    <!--Update the connection string for Zentity Context-->
+    <CustomAction Id='COREADMINCONTEXTCONNSTRINGUPDATE' Property='COREADMINCONTEXTCONNSTRING' Value="[COREADMINCONTEXTCONNSTRINGPREFIX]Data Source=[CORESQLSERVERINSTANCENAME];Initial Catalog=[CORESQLSERVERDATABASENAME];[COREADMINCONTEXTCONNSTRINGSUFFIX]Connection Timeout=120;&quot;" Return='check' />
+
+    <!--Update Visual Explorer site with the collections target path-->
+    <CustomAction Id="CreateVD_Cmd" Property="CreateVD" Execute="immediate" Value="&quot;[WindowsFolder]system32\inetsrv\APPCMD.EXE&quot; ADD VDIR /app.name:&quot;[ZENTITYIISWEBSITENAME]/VisualExplorer&quot; /path:/collections /physicalPath:&quot;[PIVOTSERVICESSHAREPATH]&quot;" />
+
+    <CustomAction Id="CreateVD" BinaryKey="WixCA" DllEntry="CAQuietExec" Execute="deferred" Return="ignore" Impersonate="no" />
+
+    <!--<CustomAction
+  Id="CreateAppPool_Cmd"
+  Property="CreateAppPool"
+  Execute="immediate"
+  Value="&quot;[WindowsFolder]system32\inetsrv\APPCMD.EXE&quot; add apppool /name:&quot;ZentityApplicationPool&quot; /managedRuntimeVersion:&quot;v4.0&quot;" />
+
+    <CustomAction
+  Id="CreateAppPool"
+  BinaryKey="WixCA"
+  DllEntry="CAQuietExec"
+  Execute="deferred"
+  Return="ignore"
+  Impersonate="no"/>-->
+
+    <!-- Set the default db folder path -->
+    <CustomAction Id="FetchDbFolderPath" Property="CATOEXECUTE" Value="FetchDbDefaultFolderPath" Execute="immediate"></CustomAction>
+    
+    <!-- The Feature Tree -->		
+    <Feature Id="Zentity" Title="Zentity" Description="An Institutional Repository platform to store scholarly works, and metadata about the scholarly works." Level="1" Display="expand" AllowAdvertise='no' ConfigurableDirectory='INSTALLLOCATION' Absent="disallow">
+
+      <Feature Id="CoreDb" Title="Core Database" Description="Core Database Component" Level="1" Display="collapse" AllowAdvertise='no' Absent="disallow">
+        <ComponentRef Id="CoreDbComponent" />
+        <ComponentRef Id="AuthenticationDBScript" />
+        <ComponentRef Id="ZentityV2" />
+      </Feature>
+
+      <Feature Id="Platform" Title="Platform" Description="The Institutional Repository platform with features like services and default Web UI." Level="1" Display="expand" AllowAdvertise='no' Absent="disallow">
+        <Feature Id="Services" Title="Services" Description="Group of services built on top of Core." Level="1" Display="expand" AllowAdvertise='no' Absent="disallow">
+          <Feature Id="Oaimh" Title="OAI - PMH Data Provider" Description="Support for Metadata Harvesting through the OAI - PMH (Open Archives Initiative Protocol for Metadata Harvesting) Protocol Version 2.0." Level="1" Display="collapse" AllowAdvertise='no' Absent="disallow">
+            <Feature Id="OaiPmhDb" Title="OAI - PMH Database" Description="Database for the OAI - PMH service." Level="1" Display="collapse" AllowAdvertise='no' Absent="disallow">
+              <ComponentRef Id="PlatformDBScript" />
+            </Feature>
+          </Feature>
+          <Feature Id="Pivot" Title="Pivot Services" Description="Pivot services create collections viewable in Pivot Viewer" Display="collapse" Absent="disallow" Level="1"></Feature>
+          <Feature Id="DataService" Title="Data Service" Description="Expose data within Zentity over OData in a RESTful manner" Level="1" Display="collapse" Absent="disallow"></Feature>
+        </Feature>
+      </Feature>
+
+      <Feature Id="Security" Title="Security" Description="Provides APIs for authentication, authorization and user management." Level="1" Display="collapse" AllowAdvertise='no' Absent="disallow">
+        <!--<ComponentRef Id='SecurityComponent'/>-->
+        <ComponentRef Id='AuthorizationDBScript' />
+        <ComponentRef Id='AuthorizationHelperDBScript' />
+        <ComponentRef Id='SearchTSQLDBScript' />
+      </Feature>
+
+      <ComponentGroupRef Id="MainWebsiteComponents" />
+    </Feature>
+
+    <UIRef Id="WixInstallerUI" />
+
+    <InstallUISequence>
+      <Custom Action="PreventDowngrade" After="FindRelatedProducts">NEWVERSIONDETECTED</Custom>
+      <Custom Action='INSTALLDIRSAVE' After='AppSearch'><![CDATA[Installed And INSTALLDIRSAVE]]></Custom>
+      <Custom Action='CUSTOMSETUPTYPESELECTEDSAVE' After='INSTALLDIRSAVE'><![CDATA[Installed And INSTALLDIRSAVE]]></Custom>
+    </InstallUISequence>
+
+    <InstallExecuteSequence>
+      <Custom Action="PreventDowngrade" After="FindRelatedProducts">NEWVERSIONDETECTED</Custom>
+      <!--<RemoveExistingProducts After="InstallFinalize"/>-->
+      <Custom Action='INSTALLDIRSAVE' After='AppSearch'><![CDATA[Installed And INSTALLDIRSAVE]]></Custom>
+      <Custom Action='CUSTOMSETUPTYPESELECTEDSAVE' After='INSTALLDIRSAVE'><![CDATA[Installed And INSTALLDIRSAVE]]></Custom>
+      <Custom Action='OAIPMHCONTEXTCONNSTRINGUPDATE' After='CUSTOMSETUPTYPESELECTEDSAVE'>1</Custom>
+      <Custom Action='COREADMINCONTEXTCONNSTRINGUPDATE' After='OAIPMHCONTEXTCONNSTRINGUPDATE'>1</Custom>
+      <Custom Action='FILESTREAMFOLDERUPDATE' After='COREADMINCONTEXTCONNSTRINGUPDATE'>1</Custom>
+      <Custom Action='AUTHENTICATIONCONNSTRINGUPDATE' After='FILESTREAMFOLDERUPDATE'>1</Custom>
+      <Custom Action='OAIPMHCONNSTRINGUPDATE' After='AUTHENTICATIONCONNSTRINGUPDATE'>1</Custom>
+      <Custom Action='ATOMPUBSQLCONNSTRINGUPDATE' After='OAIPMHCONNSTRINGUPDATE'>1</Custom>
+      <Custom Action='DATASERVICECONTEXTCONNSTRINGUPDATE' After='ATOMPUBSQLCONNSTRINGUPDATE'>1</Custom>
+      <Custom Action='VISUALEXPLORERCONTEXTCONNSTRINGUPDATE' After='DATASERVICECONTEXTCONNSTRINGUPDATE'>1</Custom>
+      <Custom Action='PIVOTSERVICERCONTEXTCONNSTRINGUPDATE' After='VISUALEXPLORERCONTEXTCONNSTRINGUPDATE'>1</Custom>
+      <Custom Action='FetchDbFolderPath' After='InstallFiles'>Not Installed</Custom>
+      <Custom Action='ExecuteManagedCA' After='FetchDbFolderPath'>Not Installed</Custom>
+      <Custom Action="CreateVD_Cmd" After="InstallFiles">1</Custom>
+      <!--<Custom Action="CreateAppPool_Cmd" After="CreateVD_Cmd">IISINSTALLED = "#7"</Custom>-->
+      <Custom Action="CreateVD" Before="InstallFinalize">1</Custom>
+      <!--<Custom Action="CreateAppPool" After="CreateAppPool_Cmd">IISINSTALLED = "#7"</Custom>-->
+      <Custom Action="CopyWebConfigToCollectionsVDIR" After="CreateVD">Not Installed</Custom>
+      <Custom Action='ExecuteManagedCAForCopyWebConfig' After='CopyWebConfigToCollectionsVDIR'>Not Installed</Custom>
+      <Custom Action='CreateLocalGroupsCASetData' After='InstallInitialize'>Not Installed</Custom>
+      <Custom Action='CreateLocalUserGroups' After='CreateLocalGroupsCASetData'>Not Installed</Custom>
+      <Custom Action='AddUsersToGroupsCASetData' After='CreateLocalUserGroups'>Not Installed</Custom>
+      <Custom Action='AddUsersToGroups' After='AddUsersToGroupsCASetData'>Not Installed</Custom>
+    </InstallExecuteSequence>
+
+    <Property Id="COREADMINCONTEXTCONNSTRINGPREFIX" Value="provider=System.Data.SqlClient;metadata=res://Zentity.Core;provider connection string=&quot;"></Property>
+    <Property Id="OAIPMHCONTEXTCONNSTRINGPREFIX" Value="provider=System.Data.SqlClient;metadata=res://Zentity.ScholarlyWorksAndAuthorization;provider connection string=&quot;"></Property>
+    <Property Id="OAIPMHCONTEXTCONNSTRINGSUFFIX" Value="Integrated Security=True;MultipleActiveResultSets=True;"></Property>
+    <Property Id="COREADMINCONTEXTCONNSTRINGSUFFIX" Value="Integrated Security=True;MultipleActiveResultSets=True;"></Property>
+    <Property Id="DATASERVICECONNSTRINGPREFIX" Value="provider=System.Data.SqlClient;metadata=res://Zentity.Metadata;provider connection string=&quot;"></Property>
+    <Property Id="VISUALEXPLORERCONNSTRINGPREFIX" Value="provider=System.Data.SqlClient; metadata=res://Zentity.ScholarlyWorks;provider connection string=&quot;"></Property>
+    <Property Id="VISUALEXPLORERCONNSTRINGSUFFIX" Value="Integrated Security=True;"></Property>
+    <Property Id="ZENTITYADMINUSERGROUP" Value="ZentityAdministrators"></Property>
+    <Property Id="ZENTITYUSERGROUP" Value="ZentityUsers"></Property>
+
+    <SetProperty Id="ZENTITYAPPPOOLIDENTITYUSER" Value="[%USERDOMAIN]\[%USERNAME]" Before="AppSearch" Sequence="ui" />
+    <SetProperty Id="PIVOTSERVICESUSER" Value="[%USERDOMAIN]\[%USERNAME]" Before="AppSearch" Sequence="ui" />
+    <SetProperty Id="NOTIFICATIONSERVICEUSER" Value="[%USERDOMAIN]\[%USERNAME]" Before="AppSearch" Sequence="ui" />
+  </Product>
+</Wix>

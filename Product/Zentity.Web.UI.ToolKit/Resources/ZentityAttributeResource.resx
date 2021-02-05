@@ -1,0 +1,531 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="CategoryAppearance" xml:space="preserve">
+    <value>Appearance</value>
+  </data>
+  <data name="CategoryBehavior" xml:space="preserve">
+    <value>Behavior</value>
+  </data>
+  <data name="CategoryMisc" xml:space="preserve">
+    <value>Misc</value>
+  </data>
+  <data name="CategoryPaging" xml:space="preserve">
+    <value>Paging</value>
+  </data>
+  <data name="CategoryLayout" xml:space="preserve">
+    <value>Layout</value>
+  </data>
+  <data name="DescriptionAssociationFilterBy" xml:space="preserve">
+    <value>Gets or sets FilterBy property.</value>
+  </data>
+  <data name="DescriptionAssociationFilterValue" xml:space="preserve">
+    <value>Gets or sets filter value for the selected FilterBy property.</value>
+  </data>
+  <data name="DescriptionAssociationMoveDownButton" xml:space="preserve">
+    <value>Gets or sets properties of the button which move the selected items in the destination list in downward direction.</value>
+  </data>
+  <data name="DescriptionAssociationMoveLeftButton" xml:space="preserve">
+    <value>Gets or sets properties of the button which move the selected items from destination list to source list.</value>
+  </data>
+  <data name="DescriptionAssociationMoveRightButton" xml:space="preserve">
+    <value>Gets or sets properties of the button which move the selected items from source list to destination list.</value>
+  </data>
+  <data name="DescriptionAssociationMoveUpButton" xml:space="preserve">
+    <value>Gets or sets properties of the button which move the selected items  in the destination list in upward direction.</value>
+  </data>
+  <data name="DescriptionContactGridViewViewClicked" xml:space="preserve">
+    <value>Gets or sets ViewClicked event which is raised when user clicks on the link provided on Email column.</value>
+  </data>
+  <data name="DescriptionResourceCss" xml:space="preserve">
+    <value>Style sheet to be applied to Generic resource property control</value>
+  </data>
+  <data name="DescriptionResourceValidationCharsRegex" xml:space="preserve">
+    <value>regular expression string for child regular expression validator</value>
+  </data>
+  <data name="DescriptionResourceValidationGroup" xml:space="preserve">
+    <value>determines on which validation group child validator will fire.</value>
+  </data>
+  <data name="DescriptionResourceValidationRequired" xml:space="preserve">
+    <value>Determines whether child control validator are activated</value>
+  </data>
+  <data name="DescriptionZentityTableAlternateItemStyle" xml:space="preserve">
+    <value>Gets Style defined for Alternate Item Row.</value>
+  </data>
+  <data name="DescriptionZentityTableHeaderStyle" xml:space="preserve">
+    <value>Gets Style defined for Header Row.</value>
+  </data>
+  <data name="DescriptionZentityTableItemStyle" xml:space="preserve">
+    <value>Gets Style defined for Item Row.</value>
+  </data>
+  <data name="DescriptionZentityTablePageSize" xml:space="preserve">
+    <value>Gets or sets the maximum records to be fetched.</value>
+  </data>
+  <data name="DescriptionGridViewAutoBindMode" xml:space="preserve">
+    <value>Indicate whether the Grid view should be automatically populated with the available record set.</value>
+  </data>
+  <data name="DescriptionGridViewDeleteClicked" xml:space="preserve">
+    <value>Gets or sets DeleteClicked event which is raised when user clicks on the Delete link button.</value>
+  </data>
+  <data name="DescriptionGridViewEditAssociationClicked" xml:space="preserve">
+    <value>Gets or sets EditAssociationClicked event which is raised when user clicks on the Edit Association link button.</value>
+  </data>
+  <data name="DescriptionGridViewEditClicked" xml:space="preserve">
+    <value>Gets or sets EditClicked event raised is fired when user clicks on the Edit link button.</value>
+  </data>
+  <data name="DescriptionGridViewViewClicked" xml:space="preserve">
+    <value>Gets or sets ViewClicked event which is raised when user clicks on the link provided on column.</value>
+  </data>
+  <data name="DescriptionPersonGridViewViewClicked" xml:space="preserve">
+    <value>Gets or sets ViewClicked event which is raised when user clicks on the link provided on First Name column.</value>
+  </data>
+  <data name="DescriptionMostActiveAuthorsEmailHeader" xml:space="preserve">
+    <value>Gets or sets the email column header.</value>
+  </data>
+  <data name="DescriptionMostActiveAuthorsFirstNameHeader" xml:space="preserve">
+    <value>Gets or sets the first name column header.</value>
+  </data>
+  <data name="DescriptionMostActiveAuthorsTitleUrl" xml:space="preserve">
+    <value>Gets or sets the url to be provided in title column.</value>
+  </data>
+  <data name="DescriptionMostActiveAuthorsLastNameHeader" xml:space="preserve">
+    <value>Gets or sets the last name column header.</value>
+  </data>
+  <data name="DescriptionMostActiveAuthorsMiddleNameHeader" xml:space="preserve">
+    <value>Gets or sets the middle name column header.</value>
+  </data>
+  <data name="DescriptionResourceTableAuthorsHeader" xml:space="preserve">
+    <value>Gets or sets Authors column header.</value>
+  </data>
+  <data name="DescriptionResourceTableContributorsHeader" xml:space="preserve">
+    <value>Gets or sets Contributor column header.</value>
+  </data>
+  <data name="DescriptionResourceTableDateAddedHeader" xml:space="preserve">
+    <value>Gets or sets DateAdded column header.</value>
+  </data>
+  <data name="DescriptionResourceTableGetResourceBy" xml:space="preserve">
+    <value>Gets or sets the Resource Filter.</value>
+  </data>
+  <data name="DescriptionResourceTableTitleHeader" xml:space="preserve">
+    <value>Get/set Title column header.</value>
+  </data>
+  <data name="DescriptionResourceTableTitleUrl" xml:space="preserve">
+    <value>Gets or sets the url to be provided in Title column.</value>
+  </data>
+  <data name="DescriptionTagCloudMaxTagDisplayCount" xml:space="preserve">
+    <value>Gets or sets count of maximum tags to be displayed.</value>
+  </data>
+  <data name="DescriptionTagCloudNavigationPath" xml:space="preserve">
+    <value>Gets or sets navigation path.</value>
+  </data>
+  <data name="DescriptionTagGridViewViewClicked" xml:space="preserve">
+    <value>Gets or sets ViewClicked event which is raised when user clicks on the link provided on Name column.</value>
+  </data>
+  <data name="DescriptionMostUsedTagsDescriptionHeader" xml:space="preserve">
+    <value>Gets or sets the description column header.</value>
+  </data>
+  <data name="DescriptionMostUsedTagsNameHeader" xml:space="preserve">
+    <value>Gets or sets the name column header.</value>
+  </data>
+  <data name="DescriptionMostUsedTagsNameUrl" xml:space="preserve">
+    <value>Gets or sets the url to be provided in Name column.</value>
+  </data>
+  <data name="DescriptionMostUsedTagsUriHeader" xml:space="preserve">
+    <value>Gets or sets the Uri column header.</value>
+  </data>
+  <data name="DescriptionResourceUploadFileControl" xml:space="preserve">
+    <value>Gets file upload  control rendered with file resource type.</value>
+  </data>
+  <data name="DescriptionZentityTableTitleStyle" xml:space="preserve">
+    <value>Gets Style defined for controls title.</value>
+  </data>
+  <data name="DescriptionTableTitle" xml:space="preserve">
+    <value>Gets or sets the title of the control.</value>
+  </data>
+  <data name="DescriptionFilterCriteriaEnityType" xml:space="preserve">
+    <value>Gets or sets the Resource Entity type</value>
+  </data>
+  <data name="DescriptionConnectionString" xml:space="preserve">
+    <value>Gets or sets the connection string.</value>
+  </data>
+  <data name="DescriptionMostActiveAuthorsTitleHeader" xml:space="preserve">
+    <value>Gets or sets the title column header.</value>
+  </data>
+  <data name="CategoryStyles" xml:space="preserve">
+    <value>Styles</value>
+  </data>
+  <data name="DescriptionEntitySearchButtonStyle" xml:space="preserve">
+    <value>Gets Style defined for Buttons.</value>
+  </data>
+  <data name="DescriptionEntitySearchEntityType" xml:space="preserve">
+    <value>Gets or sets Entity type.</value>
+  </data>
+  <data name="DescriptionEntitySearchLabelStyle" xml:space="preserve">
+    <value>Gets Style defined for Labels.</value>
+  </data>
+  <data name="DescriptionZentityGridViewAlternateStyle" xml:space="preserve">
+    <value>Gets Style defined for search result alternate row.</value>
+  </data>
+  <data name="DescriptionZentityGridViewDisplayColumns" xml:space="preserve">
+    <value>Gets of sets Columns to be displayed.</value>
+  </data>
+  <data name="DescriptionZentityGridViewEditAssociationUrl" xml:space="preserve">
+    <value>Gets or sets EditAssociation link url. Url format will change based on Entity Type. If EntityType is Tag/Category then Format is Url?Id={0}&amp;EntityType={1}.{0} will be replaced by actual entity id and {1} will be replaced by actual EntityType. If EntityType is Resource then Format is Url?Id={0}&amp;ResourceType={1}&amp;EntityType={2}. {0} will be replaced by actual entity id and {1} will be replaced by EntityType and {2} will be replaced by base type of EntityType.</value>
+  </data>
+  <data name="DescriptionZentityGridViewEditUrl" xml:space="preserve">
+    <value>Gets or sets edit link url. Url format should be Url?Id={0}. {0} will be replaced by actual entity id.</value>
+  </data>
+  <data name="DescriptionZentityGridViewEnableDelete" xml:space="preserve">
+    <value>Gets or sets flag to display or hide delete column.</value>
+  </data>
+  <data name="DescriptionZentityGridViewEntityType" xml:space="preserve">
+    <value>Gets or sets Entity type.</value>
+  </data>
+  <data name="DescriptionZentityGridViewFooterStyle" xml:space="preserve">
+    <value>Gets Style defined for search result footer row.</value>
+  </data>
+  <data name="DescriptionZentityGridViewHeaderStyle" xml:space="preserve">
+    <value>Gets Style defined for search result header row.</value>
+  </data>
+  <data name="DescriptionZentityGridViewPagerRowStyle" xml:space="preserve">
+    <value>Gets Style defined for search result pager row.</value>
+  </data>
+  <data name="DescriptionZentityGridViewRowStyle" xml:space="preserve">
+    <value>Gets Style defined for search result row.</value>
+  </data>
+  <data name="DescriptionZentityGridViewSelectedRowStyle" xml:space="preserve">
+    <value>Gets Style defined for search result selected row.</value>
+  </data>
+  <data name="DescriptionZentityGridViewTitleStyle" xml:space="preserve">
+    <value>Gets Style defined for title row.</value>
+  </data>
+  <data name="DescriptionZentityGridViewViewColumnName" xml:space="preserve">
+    <value>Gets or sets column name to have a view link.</value>
+  </data>
+  <data name="DescriptionZentityGridViewViewUrl" xml:space="preserve">
+    <value>Gets or sets view link url. Url format should be Url?Id={0}. {0} will be replaced by actual entity id.</value>
+  </data>
+  <data name="DescriptionFilterCriteriaAlternateRowStyle" xml:space="preserve">
+    <value>Gets Style defined for FilterCriteria alternate row.</value>
+  </data>
+  <data name="DescriptionFilterCriteriaButtonStyle" xml:space="preserve">
+    <value>Gets Style defined for Buttons.</value>
+  </data>
+  <data name="DescriptionFilterCriteriaControlStyle" xml:space="preserve">
+    <value>Gets Style defined for input controls.</value>
+  </data>
+  <data name="DescriptionFilterCriteriaFooterRowStyle" xml:space="preserve">
+    <value>Gets Style defined for FilterCriteria footer row.</value>
+  </data>
+  <data name="DescriptionFilterCriteriaHeaderStyle" xml:space="preserve">
+    <value>Gets Style defined for FilterCriteria header row.</value>
+  </data>
+  <data name="DescriptionFilterCriteriaLabelStyle" xml:space="preserve">
+    <value>Gets Style defined for Labels.</value>
+  </data>
+  <data name="DescriptionFilterCriteriaRowStyle" xml:space="preserve">
+    <value>Gets Style defined for FilterCriteria row.</value>
+  </data>
+  <data name="DescriptionFilterCriteriaSelectedRowStyle" xml:space="preserve">
+    <value>Gets Style defined for FilterCriteria selected row.</value>
+  </data>
+  <data name="DescriptionZentityButtonStyle" xml:space="preserve">
+    <value>Gets Style defined for Labels.</value>
+  </data>
+  <data name="DescriptionZentityControlStyle" xml:space="preserve">
+    <value>Gets Style defined for Controls.</value>
+  </data>
+  <data name="DescriptionZentityLabelStyle" xml:space="preserve">
+    <value>Gets Style defined for Labels.</value>
+  </data>
+  <data name="DescriptionPredicateAssociationResourceType" xml:space="preserve">
+    <value>Gets or sets type of resource</value>
+  </data>
+  <data name="DescriptionPredicateAssociationSubjectType" xml:space="preserve">
+    <value>Gets or sets type of subject entity</value>
+  </data>
+  <data name="DescriptionResourceResourceType" xml:space="preserve">
+    <value>Gets or sets resource type in Add mode</value>
+  </data>
+  <data name="DescriptionZentityGridViewSearchResultTitleText" xml:space="preserve">
+    <value>Gets or sets title of search result grid.</value>
+  </data>
+  <data name="DescriptionAssociationListHeight" xml:space="preserve">
+    <value>Gets or sets the height for check box lists.</value>
+  </data>
+  <data name="DescriptionAssociationListSizes" xml:space="preserve">
+    <value>Gets or sets the maximum items to be displayed in source list box.</value>
+  </data>
+  <data name="DescriptionPredicateAssociationValidationGroup" xml:space="preserve">
+    <value>Gets or sets validation group on which child validator will fire.</value>
+  </data>
+  <data name="DescriptionContextDefaultStyle" xml:space="preserve">
+    <value>Get or set default context button style</value>
+  </data>
+  <data name="DescriptionContextHighLightStyle" xml:space="preserve">
+    <value>Get or set highlight context button style</value>
+  </data>
+  <data name="DescriptionContextMenuStyle" xml:space="preserve">
+    <value>Get or set context menu style</value>
+  </data>
+  <data name="DescriptionZentityTreeViewNodeStyle" xml:space="preserve">
+    <value>Get tree view node style</value>
+  </data>
+  <data name="DescriptionCategoryAssociationChangeSetStyle" xml:space="preserve">
+    <value>Gets Style defined for category association change sets.</value>
+  </data>
+  <data name="DescriptionEntityId" xml:space="preserve">
+    <value>Gets or sets id of entity.</value>
+  </data>
+  <data name="DescriptionMaximumChangeSetToFetch" xml:space="preserve">
+    <value>Gets or sets count of maximum change sets to be displayed for each entity.</value>
+  </data>
+  <data name="DescriptionNavigateUrlForCategory" xml:space="preserve">
+    <value>Gets or sets navigation path for category.</value>
+  </data>
+  <data name="DescriptionNavigateUrlForResource" xml:space="preserve">
+    <value>Gets or sets navigation path for resource.</value>
+  </data>
+  <data name="DescriptionNavigateUrlForTag" xml:space="preserve">
+    <value>Gets or sets navigation path for tag.</value>
+  </data>
+  <data name="DescriptionRelationshipChangeSetStyle" xml:space="preserve">
+    <value>Gets Style defined for relationship change sets.</value>
+  </data>
+  <data name="DescriptionResourceTaggingChangeSetStyle" xml:space="preserve">
+    <value>Gets Style defined for resource tagging change sets.</value>
+  </data>
+  <data name="DescriptionScalarPropertyChangeSetStyle" xml:space="preserve">
+    <value>Gets Style defined for scalar properties change sets.</value>
+  </data>
+  <data name="DescriptionAssociationListWidth" xml:space="preserve">
+    <value>Gets or sets the width for check box lists.</value>
+  </data>
+  <data name="DescriptionResourceTableTypeHeader" xml:space="preserve">
+    <value>Gets or sets Resource Type column header.</value>
+  </data>
+  <data name="DescriptionResourceListViewAlternateItemStyle" xml:space="preserve">
+    <value>Gets or sets style to be applied to the alternate resource items.</value>
+  </data>
+  <data name="DescriptionResourceListViewButtonStyle" xml:space="preserve">
+    <value>Gets or sets style to be applied to the buttons.</value>
+  </data>
+  <data name="DescriptionResourceListViewContainerStyle" xml:space="preserve">
+    <value>Gets or sets style to be applied to this control.</value>
+  </data>
+  <data name="DescriptionResourceListViewDataSource" xml:space="preserve">
+    <value>Gets or sets data source.</value>
+  </data>
+  <data name="DescriptionResourceListViewEnableDeleteOption" xml:space="preserve">
+    <value>Gets or sets flag to enable or disable delete option.</value>
+  </data>
+  <data name="DescriptionResourceListViewItemStyle" xml:space="preserve">
+    <value>Gets or sets style to be applied to the All Items.</value>
+  </data>
+  <data name="DescriptionResourceListViewPageIndex" xml:space="preserve">
+    <value>Gets or sets current page index.</value>
+  </data>
+  <data name="DescriptionResourceListViewPageSize" xml:space="preserve">
+    <value>Gets or sets page size.</value>
+  </data>
+  <data name="DescriptionResourceListViewShowFooter" xml:space="preserve">
+    <value>Gets or sets visibility of footer</value>
+  </data>
+  <data name="DescriptionResourceListViewShowHeader" xml:space="preserve">
+    <value>Gets or sets visibility of header.</value>
+  </data>
+  <data name="DescriptionResourceListViewSortDirection" xml:space="preserve">
+    <value>Gets or sets sort direction.</value>
+  </data>
+  <data name="DescriptionResourceListViewSortExpression" xml:space="preserve">
+    <value>Gets or sets sort expression.</value>
+  </data>
+  <data name="DescriptionResourceListViewTitle" xml:space="preserve">
+    <value>Gets or sets title of the control.</value>
+  </data>
+  <data name="DescriptionResourceListViewTitleStyle" xml:space="preserve">
+    <value>Gets or sets style to be applied to the Title.</value>
+  </data>
+  <data name="DescriptionResourceListViewTotalRecords" xml:space="preserve">
+    <value>Gets or sets total records.</value>
+  </data>
+  <data name="DescriptionResourceListViewViewUrl" xml:space="preserve">
+    <value>Gets or sets view link url. Url format should be Url?Id={0}. {0} will be replaced by actual entity id.</value>
+  </data>
+  <data name="DescriptionResourceViewAuthorsLink" xml:space="preserve">
+    <value>Gets or sets resource authors link.</value>
+  </data>
+  <data name="DescriptionResourceViewDataSource" xml:space="preserve">
+    <value>Gets or sets data source.</value>
+  </data>
+  <data name="DescriptionResourceViewFilesLink" xml:space="preserve">
+    <value>Gets or sets resource files link.</value>
+  </data>
+  <data name="DescriptionResourceViewTitleLink" xml:space="preserve">
+    <value>Gets or sets resource title link.</value>
+  </data>
+  <data name="DescriptionResourceDetailsViewRelatedResourcesTitle" xml:space="preserve">
+    <value>Gets or sets title of related resources panel.</value>
+  </data>
+  <data name="DescriptionResourceDetailViewResourceInfoContainerStyle" xml:space="preserve">
+    <value>Gets or sets ResourceInfo panel style.</value>
+  </data>
+  <data name="DescriptionResourceDetailViewResourceInfoTitleStyle" xml:space="preserve">
+    <value>Gets or sets ResourceInfo title style.</value>
+  </data>
+  <data name="DescriptionResourceDetailViewRelatedResourcesContainerStyle" xml:space="preserve">
+    <value>Gets or sets RelatedResources panel style.</value>
+  </data>
+  <data name="DescriptionResourceDetailViewRelatedResourcesTitleStyle" xml:space="preserve">
+    <value>Gets or sets RelatedResources title style.</value>
+  </data>
+  <data name="DescriptionResourceDetailViewRelatedResourcesHeaderStyle" xml:space="preserve">
+    <value>Gets or sets RelatedResources header style.</value>
+  </data>
+  <data name="DescriptionResourceDetailViewRelatedResourcesItemStyle" xml:space="preserve">
+    <value>Gets or sets RelatedResources item style.</value>
+  </data>
+  <data name="DescriptionResourceDetailViewEditResourceAssociationUrl" xml:space="preserve">
+    <value>Gets or sets edit resource association url.</value>
+  </data>
+  <data name="DescriptionResourceDetailViewEditResourceInfoUrl" xml:space="preserve">
+    <value>Gets or sets edit resource information url.</value>
+  </data>
+  <data name="DescriptionResourceDetailViewReourceId" xml:space="preserve">
+    <value>Gets or set resource ID.</value>
+  </data>
+  <data name="DescriptionResourceDetailViewResourceInfoTitle" xml:space="preserve">
+    <value>Gets or sets title of Resource Info panel.</value>
+  </data>
+  <data name="DescriptionResourceDetailViewViewChangeHistoryUrl" xml:space="preserve">
+    <value>Gets or sets view change history url.</value>
+  </data>
+  <data name="DescriptionResourceDetailViewViewUrl" xml:space="preserve">
+    <value>Gets or sets resource detail view url.</value>
+  </data>
+  <data name="DescriptionResourceListViewSeparatorStyle" xml:space="preserve">
+    <value>Gets or sets style to be applied to the record separator.</value>
+  </data>
+  <data name="AttributePredicateToolBoxData" xml:space="preserve">
+    <value>&lt;{0}:PredicateAssociation runat=\"server\"&gt;&lt;MoveRightButton Text =\"&gt;&gt;\"/&gt;&lt;MoveLeftButton Text =\"&lt;&lt;\"/&gt;&lt;MoveUpButton Text =\"Up\"/&gt;&lt;MoveDownButton Text =\"Down\"/&gt;&lt;/{0}:PredicateAssociation&gt;</value>
+  </data>
+  <data name="AttributeScholarlyWorkToolBoxData" xml:space="preserve">
+    <value>&lt;{0}:ScholarlyWorkItemTagging runat=\"server\"&gt;&lt;MoveRightButton Text =\"&gt;&gt;\"/&gt;&lt;MoveLeftButton Text =\"&lt;&lt;\"/&gt;&lt;/{0}:ScholarlyWorkItemTagging&gt;</value>
+  </data>
+</root>

@@ -1,0 +1,70 @@
+﻿<?xml version="1.0"?>
+<!DOCTYPE rdf:RDF [
+  <!ENTITY sch "http://scholarsample.example.org" >
+]>
+<rdf:RDF
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+   xmlns:sch="http://scholarsample.example.org"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xml:base="http://scholarsample.example.org">
+  
+   <!-- Scholar Sample -->
+  <rdfs:Class rdf:about="ScholarSample" />
+
+  <!-- Author -->
+  <rdfs:Class rdf:about="Author">
+    <rdfs:subClassOf rdf:resource="ScholarSample" />
+  </rdfs:Class>
+  
+  <rdf:Property rdf:about="FirstName">
+    <rdfs:range rdf:resource="&sch;string"/>
+    <rdfs:domain rdf:resource="Author"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="LastName">
+    <rdfs:range rdf:resource="&sch;string"/>
+    <rdfs:domain rdf:resource="Author"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="Age">
+    <rdfs:range rdf:resource="&sch;integer"/>
+    <rdfs:domain rdf:resource="Author"/>
+  </rdf:Property>
+  
+  <!-- Research Document -->
+  <rdfs:Class rdf:about="ResearchDocument">
+    <rdfs:subClassOf rdf:resource="ScholarSample" />
+  </rdfs:Class>
+  
+  <rdf:Property rdf:about="Authors">
+    <rdfs:range rdf:resource="Author"/>
+    <rdfs:domain rdf:resource="ResearchDocument"/>
+  </rdf:Property>
+  
+  <rdf:Property rdf:about="PublishedDate">
+    <rdfs:range rdf:resource="&sch;datetime"/>
+    <rdfs:domain rdf:resource="ResearchDocument"/>
+  </rdf:Property>
+  
+  <rdf:Property rdf:about="Abstract">
+    <rdfs:range rdf:resource="&sch;string"/>
+    <rdfs:domain rdf:resource="ResearchDocument"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="Primary">
+    <rdfs:range rdf:resource="&sch;string"/>
+    <rdfs:domain rdf:resource="ResearchDocument"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="License">
+    <rdfs:range rdf:resource="&sch;string"/>
+    <rdfs:domain rdf:resource="ResearchDocument"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="Comments">
+    <rdfs:range rdf:resource="&sch;string"/>
+    <rdfs:domain rdf:resource="ResearchDocument"/>
+  </rdf:Property>
+  
+</rdf:RDF>

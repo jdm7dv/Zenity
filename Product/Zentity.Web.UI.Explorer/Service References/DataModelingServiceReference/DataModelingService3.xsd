@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://aditidt486:9090/Services/DataModelingService?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:element name="CreateDataModel">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="rdfsXml" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="schemaXml" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="modelNamespace" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateDataModelResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteDataModel">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="modelNamespace" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteDataModelResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GenerateHierarchicalAssemblies">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="outputAssemblyName" nillable="true" type="xs:string" />
+        <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="metadataModelNamespaces" nillable="true" type="q1:ArrayOfstring" />
+        <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="assemblyModelNamespaces" nillable="true" type="q2:ArrayOfstring" />
+        <xs:element minOccurs="0" name="storageLocation" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GenerateHierarchicalAssembliesResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GenerateFlattenedAssemblies">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="outputAssemblyName" nillable="true" type="xs:string" />
+        <xs:element xmlns:q3="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="metadataModelNamespaces" nillable="true" type="q3:ArrayOfstring" />
+        <xs:element xmlns:q4="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="assemblyModelNamespaces" nillable="true" type="q4:ArrayOfstring" />
+        <xs:element minOccurs="0" name="storageLocation" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GenerateFlattenedAssembliesResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllDataModels">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllDataModelsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GetAllDataModelsResult" nillable="true" type="q5:ArrayOfstring" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GenerateHierarchicalMetadataAssembly">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="metadataModelNamespaces" nillable="true" type="q6:ArrayOfstring" />
+        <xs:element minOccurs="0" name="storageLocation" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GenerateHierarchicalMetadataAssemblyResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GenerateFlattenedMetadataAssembly">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="metadataModelNamespaces" nillable="true" type="q7:ArrayOfstring" />
+        <xs:element minOccurs="0" name="storageLocation" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GenerateFlattenedMetadataAssemblyResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

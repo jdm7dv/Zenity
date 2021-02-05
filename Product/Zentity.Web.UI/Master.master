@@ -1,0 +1,35 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" Inherits="Master" Codebehind="Master.master.cs" %>
+
+<%@ Register Src="UserControls/NavigationMenu.ascx" TagName="NavigationMenu" TagPrefix="uc1" %>
+<%@ Register Src="UserControls/Login.ascx" TagName="Login" TagPrefix="uc2" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head" runat="server">
+    <title>
+        <%= ConfigurationManager.AppSettings["ZentityTitle"] %></title>
+
+    <script type="text/javascript" language="javascript" src='<%# ResolveUrl("~/Scripts/Script.js") %>'></script>
+
+</head>
+<body>
+    <form id="mainForm" runat="server">
+    <div id="main_container" class="main_container">
+        <div class="ZentityTopBanner">
+            <br />
+            <uc2:Login ID="Login1" runat="server" />
+        </div>
+        <%-- <div>
+            <asp:Label ID="ZentityTitleLabel" CssClass="ZentityTitle" runat="server" Text="<%$ appSettings:ZentityTitle %>"></asp:Label>
+            <br />
+        </div>--%>
+        <div runat="server" class="LeftNavigationMenu" id="LeftNavigationMenu">
+            <uc1:NavigationMenu ID="NavigationMenu1" runat="server" />
+        </div>
+        <div class="RightContentPane">
+            <asp:ContentPlaceHolder ID="mainCopy" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+    </div>
+    </form>
+</body>
+</html>

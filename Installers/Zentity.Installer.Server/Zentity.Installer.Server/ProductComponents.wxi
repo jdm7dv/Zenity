@@ -1,0 +1,1952 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<Include xmlns="http://schemas.microsoft.com/wix/2006/wi" xmlns:iis="http://schemas.microsoft.com/wix/IIsExtension" xmlns:util="http://schemas.microsoft.com/wix/UtilExtension" xmlns:sql="http://schemas.microsoft.com/wix/SqlExtension">
+
+  <sql:SqlDatabase Id="CoreMaster" Database="master" Server="[CORESQLSERVERINSTANCENAME]" />
+  <sql:SqlDatabase Id="PlatformMaster" Database="master" Server="[OAIPMHSQLSERVERINSTANCENAME]" />
+  <sql:SqlDatabase Id="AuthenticationMaster" Database="master" Server="[AUTHENTICATIONSQLSERVERINSTANCENAME]" />
+  <Binary Id="Zentity.Authorization.sql" SourceFile="$(var.ZENTITYSCRIPTS)\AuthorizationScript.sql" />
+  <Binary Id="Database.sql" SourceFile="$(var.ZENTITYSCRIPTS)\Database.sql" />
+  <Binary Id="Zentity.AuthorizationHelper.sql" SourceFile="$(var.ZENTITYSCRIPTS)\BuiltInDataInsertion.sql" />
+  <Binary Id="Zentity.SearchTSQL.sql" SourceFile="$(var.ZENTITYSCRIPTS)\TSQLAuthorizationScript.sql" />
+  <Binary Id="Zentity.Platform.sql" SourceFile="$(var.ZENTITYSCRIPTS)\Zentity.Platform.sql" />
+  <Binary Id="Zentity.Authentication.sql" SourceFile="$(var.ZENTITYSCRIPTS)\AuthenticationScript.sql" />
+  <Binary Id="Zentity.V2ModificationScript.sql" SourceFile="$(var.ZENTITYSCRIPTS)\Zentity Services Modification Script - v2.sql" />
+
+  <DirectoryRef Id="Scripts">
+
+    <Component Id="CoreDbComponent" Guid="25E7FDD9-DD3B-4885-A58A-99EDA7DAEE85">
+
+      <File Id='CodeDBScript' LongName='Database.sql' DiskId='1' Source='$(var.ZENTITYSCRIPTS)\Database.sql' Vital='yes' />
+
+      <!--Create the Database on Install-->
+      <sql:SqlDatabase Id='Zentity' Database='[CORESQLSERVERDATABASENAME]' Server='[CORESQLSERVERINSTANCENAME]' ConfirmOverwrite='yes' ContinueOnError='no' CreateOnInstall='yes' CreateOnReinstall='no' DropOnUninstall='no' DropOnReinstall='no' DropOnInstall='no'>
+
+        <!--Enable FileStream-->
+        <sql:SqlString Id="EnableFileStream" ContinueOnError="no" ExecuteOnInstall="yes" Sequence="1" SQL="DECLARE @Version NVARCHAR(4000); SELECT @Version = CAST( SERVERPROPERTY('productversion') AS NVARCHAR(4000)); DECLARE @MajorVersion INT; SELECT @MajorVersion = CAST(LEFT(@Version, CHARINDEX('.', @Version, 0)-1) AS INT); IF @MajorVersion >= 10 BEGIN EXEC sp_configure filestream_access_level, 2; RECONFIGURE END" />
+
+        <!--Map FileStream to the user specified folder-->
+        <sql:SqlString Id="MapFileStream" ContinueOnError="no" ExecuteOnInstall="yes" Sequence="2" SQL="DECLARE @Version NVARCHAR(4000); SELECT @Version = CAST( SERVERPROPERTY('productversion') AS NVARCHAR(4000)); DECLARE @MajorVersion INT; SELECT @MajorVersion = CAST(LEFT(@Version, CHARINDEX('.', @Version, 0)-1) AS INT); IF @MajorVersion >= 10 BEGIN DECLARE @AddFileGroupCmd nvarchar(4000); SELECT @AddFileGroupCmd = N'ALTER DATABASE [CORESQLSERVERDATABASENAME] ADD FILEGROUP [\[]DataFiles[\]] CONTAINS FILESTREAM ALTER DATABASE [CORESQLSERVERDATABASENAME] ADD FILE  (NAME = [\[]DataFilesPath[\]], FILENAME = N''[FILESTREAMFOLDER]'') TO FILEGROUP [\[]DataFiles[\]]' EXEC(@AddFileGroupCmd); END" />
+
+        <!--Create the database objects-->
+        <sql:SqlScript Id="CreateDbObjects" ExecuteOnInstall="yes" ContinueOnError="no" ExecuteOnReinstall="no" ExecuteOnUninstall="no" Sequence="3" BinaryKey="Database.sql" />
+
+        <!--Create login, grant permissions on Core, and grant permissions on schema.-->
+        <sql:SqlString Id="CreateLoginForAppPoolIdentity" ContinueOnError="no" ExecuteOnInstall="yes" Sequence="5" SQL="IF NOT EXISTS (SELECT * FROM master.dbo.syslogins WHERE loginname='[ZENTITYAPPPOOLIDENTITYUSER]') 
+                   BEGIN USE [\[]master[\]]; CREATE LOGIN [\[][ZENTITYAPPPOOLIDENTITYUSER][\]] 
+                   FROM WINDOWS WITH DEFAULT_DATABASE=[\[][CORESQLSERVERDATABASENAME][\]]; END" />
+
+        <sql:SqlString Id="AddAppPoolIdentityToCoreDb" ContinueOnError="no" ExecuteOnInstall="yes" Sequence="6" SQL="USE [\[][CORESQLSERVERDATABASENAME][\]]; 
+                   IF NOT EXISTS (
+                        SELECT * FROM sys.sysusers U INNER JOIN sys.syslogins L ON U.sid = L.sid 
+                        WHERE L.loginname='[ZENTITYAPPPOOLIDENTITYUSER]') 
+                        BEGIN CREATE USER [\[][ZENTITYAPPPOOLIDENTITYUSER][\]] FOR LOGIN [\[][ZENTITYAPPPOOLIDENTITYUSER][\]]; END " />
+
+        <sql:SqlString Id="GrantPermsToAppPoolIdentityOnCoreDb" ContinueOnError="no" ExecuteOnInstall="yes" Sequence="7" SQL="USE [\[][CORESQLSERVERDATABASENAME][\]]; DECLARE @name NVARCHAR(100); SELECT @name = U.name FROM sys.sysusers U INNER JOIN sys.syslogins L ON U.sid = L.sid WHERE L.loginname='[ZENTITYAPPPOOLIDENTITYUSER]'; IF (@name = 'dbo') BEGIN PRINT @name END ELSE BEGIN EXEC sp_addrolemember N'db_owner', N'[ZENTITYAPPPOOLIDENTITYUSER]'; END" />
+
+        <sql:SqlString Id="AddAppPoolIdentityToSchemaCore" ContinueOnError="no" ExecuteOnInstall="yes" Sequence="8" SQL="USE [\[][CORESQLSERVERDATABASENAME][\]]; ALTER AUTHORIZATION ON SCHEMA::[\[]Core[\]] TO [\[][ZENTITYAPPPOOLIDENTITYUSER][\]];" />
+
+        <sql:SqlString Id="AddAppPoolIdentityToSchemaAdmin" ContinueOnError="no" ExecuteOnInstall="yes" Sequence="9" SQL="USE [\[][CORESQLSERVERDATABASENAME][\]]; ALTER AUTHORIZATION ON SCHEMA::[\[]Administration[\]] TO [\[][ZENTITYAPPPOOLIDENTITYUSER][\]];" />
+
+        <sql:SqlString Id="VarDecimalStorageFormat" ContinueOnError="no" ExecuteOnInstall="yes" Sequence="10" SQL="USE [\[][CORESQLSERVERDATABASENAME][\]]; DECLARE @VarDecimalSupported AS BIT; SELECT @VarDecimalSupported = 0; IF ((ServerProperty(N'EngineEdition') = 3) AND (((@@microsoftversion / power(2, 24) = 9) AND (@@microsoftversion &amp; 0xffff &gt;= 3024)) OR ((@@microsoftversion / power(2, 24) = 10) AND (@@microsoftversion &amp; 0xffff &gt;= 1600)))) SELECT @VarDecimalSupported = 1; IF (@VarDecimalSupported &gt; 0) BEGIN EXECUTE sp_db_vardecimal_storage_format N'[CORESQLSERVERDATABASENAME]'; END" />
+
+        <sql:SqlString Id="MultiUserDatabase" ContinueOnError="no" ExecuteOnInstall="yes" Sequence="11" SQL="ALTER DATABASE  [\[][CORESQLSERVERDATABASENAME][\]]  SET MULTI_USER  WITH ROLLBACK IMMEDIATE;" />
+
+        <sql:SqlScript Id="AuthCreate" ExecuteOnInstall="yes" ContinueOnError="no" ExecuteOnReinstall="no" ExecuteOnUninstall="no" Sequence="12" BinaryKey="Zentity.Authorization.sql" />
+
+        <sql:SqlScript Id="AuthHelper" ExecuteOnInstall="yes" ContinueOnError="no" ExecuteOnReinstall="no" ExecuteOnUninstall="no" Sequence="13" BinaryKey="Zentity.AuthorizationHelper.sql" />
+
+        <sql:SqlScript Id="SearchTSQL" ExecuteOnInstall="yes" ContinueOnError="no" ExecuteOnReinstall="no" ExecuteOnUninstall="no" Sequence="14" BinaryKey="Zentity.SearchTSQL.sql" />
+
+        <sql:SqlScript Id="Version2Update" ExecuteOnInstall="yes" ContinueOnError="no" ExecuteOnReinstall="no" ExecuteOnUninstall="no" Sequence="15" BinaryKey="Zentity.V2ModificationScript.sql" />
+
+        <sql:SqlString Id="EnableFullTextSearch" ExecuteOnInstall="yes" ContinueOnError="no" ExecuteOnReinstall="no" Sequence="16" ExecuteOnUninstall="no" SQL="exec Administration.EnableFullTextSearch '[SQLSERVERFILEPATHS]ZentityFT.mdf'" />
+
+      </sql:SqlDatabase>
+
+      <sql:SqlString Id="UninstallCoreDB" SqlDb="CoreMaster" ExecuteOnUninstall="yes" ContinueOnError="yes" SQL="IF ('[REMOVEDATABASES]' = '1') AND EXISTS 
+                      (SELECT [\[]name[\]] FROM [\[]sys[\]].[\[]databases[\]] WHERE [\[]name[\]] = '[CORESQLSERVERDATABASENAME]')
+                      BEGIN
+                          ALTER DATABASE [\[][CORESQLSERVERDATABASENAME][\]] SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
+                          DROP DATABASE [\[][CORESQLSERVERDATABASENAME][\]];
+                      END" />
+
+    </Component>
+
+    <Component Id="PlatformDBScript" Guid="{61C47F82-6E47-4bcd-AD59-4C3B820C501B}">
+
+      <File Id='PlatformDBScript' LongName='Zentity.Platform.sql' DiskId='1' Source='$(var.ZENTITYSCRIPTS)\Zentity.Platform.sql' Vital='yes' />
+
+      <sql:SqlDatabase Id='Zentity.Platform' Database='[OAIPMHSQLSERVERDATABASENAME]' Server='[OAIPMHSQLSERVERINSTANCENAME]' ConfirmOverwrite='yes' ContinueOnError='no' CreateOnInstall='yes' CreateOnReinstall='no' DropOnUninstall='no' DropOnReinstall='no' DropOnInstall='no'>
+
+        <!--Create the database objects-->
+
+        <sql:SqlScript Id="OaiPmhCreateDbObjects" ExecuteOnInstall="yes" ContinueOnError="no" ExecuteOnReinstall="no" ExecuteOnUninstall="no" Sequence="1" BinaryKey="Zentity.Platform.sql" />
+
+        <!--Grant permissions on Platform, and grant permissions on schema.-->
+        <sql:SqlString Id="AddAppPoolIdentityToPlatformDb" ContinueOnError="no" ExecuteOnInstall="yes" Sequence="6" SQL="USE [\[][OAIPMHSQLSERVERDATABASENAME][\]]; IF NOT EXISTS (SELECT * FROM sys.sysusers U INNER JOIN sys.syslogins L ON U.sid = L.sid WHERE L.loginname='[ZENTITYAPPPOOLIDENTITYUSER]') BEGIN CREATE USER [\[][ZENTITYAPPPOOLIDENTITYUSER][\]] FOR LOGIN [\[][ZENTITYAPPPOOLIDENTITYUSER][\]]; END " />
+
+        <sql:SqlString Id="GrantPermsToAppPoolIdentityOnPlatformDb" ContinueOnError="no" ExecuteOnInstall="yes" Sequence="7" SQL="USE [\[][OAIPMHSQLSERVERDATABASENAME][\]]; DECLARE @name NVARCHAR(100); SELECT @name = U.name FROM sys.sysusers U INNER JOIN sys.syslogins L ON U.sid = L.sid WHERE L.loginname='[ZENTITYAPPPOOLIDENTITYUSER]'; IF (@name = 'dbo') BEGIN PRINT @name END ELSE BEGIN EXEC sp_addrolemember N'db_owner', N'[ZENTITYAPPPOOLIDENTITYUSER]'; END" />
+
+      </sql:SqlDatabase>
+
+      <sql:SqlString Id="UninstallPlatformDB" SqlDb="PlatformMaster" ExecuteOnUninstall="yes" ContinueOnError="yes" SQL="IF ('[REMOVEDATABASES]' = '1') AND EXISTS 
+                      (SELECT [\[]name[\]] FROM [\[]sys[\]].[\[]databases[\]] WHERE [\[]name[\]] = '[OAIPMHSQLSERVERDATABASENAME]')
+                      BEGIN
+                          ALTER DATABASE [\[][OAIPMHSQLSERVERDATABASENAME][\]] SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
+                          DROP DATABASE [\[][OAIPMHSQLSERVERDATABASENAME][\]];
+                      END" />
+
+    </Component>
+
+    <Component Id="AuthenticationDBScript" Guid="{F2E5006B-6DDA-4afa-A330-143A9EEF893E}">
+
+      <File Id='AuthenticationScript' LongName='AuthenticationScript.sql' DiskId='1' Source='$(var.ZENTITYSCRIPTS)\AuthenticationScript.sql' Vital='yes' />
+
+      <sql:SqlDatabase Id='Authentication' Database='[AUTHENTICATIONSQLSERVERDATABASENAME]' Server='[AUTHENTICATIONSQLSERVERINSTANCENAME]' ConfirmOverwrite='yes' ContinueOnError='no' CreateOnInstall='yes' CreateOnReinstall='no' DropOnUninstall='no' DropOnReinstall='no' DropOnInstall='no'>
+
+        <!--Create the database objects-->
+
+        <sql:SqlScript Id="AuthCreateDbObjects" ExecuteOnInstall="yes" ContinueOnError="no" ExecuteOnReinstall="no" ExecuteOnUninstall="no" Sequence="1" BinaryKey="Zentity.Authentication.sql" />
+
+        <!--Grant permissions on Platform, and grant permissions on schema.-->
+        <sql:SqlString Id="AddAppPoolIdentityToAuthDb" ContinueOnError="no" ExecuteOnInstall="yes" Sequence="6" SQL="USE [\[][AUTHENTICATIONSQLSERVERDATABASENAME][\]]; IF NOT EXISTS (SELECT * FROM sys.sysusers U INNER JOIN sys.syslogins L ON U.sid = L.sid WHERE L.loginname='[ZENTITYAPPPOOLIDENTITYUSER]') BEGIN CREATE USER [\[][ZENTITYAPPPOOLIDENTITYUSER][\]] FOR LOGIN [\[][ZENTITYAPPPOOLIDENTITYUSER][\]]; END " />
+
+        <sql:SqlString Id="GrantPermsToAppPoolIdentityOnAuthDb" ContinueOnError="no" ExecuteOnInstall="yes" Sequence="7" SQL="USE [\[][AUTHENTICATIONSQLSERVERDATABASENAME][\]]; DECLARE @name NVARCHAR(100); SELECT @name = U.name FROM sys.sysusers U INNER JOIN sys.syslogins L ON U.sid = L.sid WHERE L.loginname='[ZENTITYAPPPOOLIDENTITYUSER]'; IF (@name = 'dbo') BEGIN PRINT @name END ELSE BEGIN EXEC sp_addrolemember N'db_owner', N'[ZENTITYAPPPOOLIDENTITYUSER]'; END" />
+
+      </sql:SqlDatabase>
+
+      <Registry Root="HKLM" Key="SOFTWARE\Zentity\Authentication">
+        <Registry Name="AuthenticationSqlServerInstanceName" Value="[AUTHENTICATIONSQLSERVERINSTANCENAME]" Type="string" />
+        <Registry Name="AuthenticationSqlServerDatabaseName" Value="[AUTHENTICATIONSQLSERVERDATABASENAME]" Type="string" />
+      </Registry>
+
+      <sql:SqlString Id="UninstallAuthenticationDB" SqlDb="AuthenticationMaster" ExecuteOnUninstall="yes" ContinueOnError="yes" SQL="IF ('[REMOVEDATABASES]' = '1') AND EXISTS 
+                      (SELECT [\[]name[\]] FROM [\[]sys[\]].[\[]databases[\]] WHERE [\[]name[\]] = '[AUTHENTICATIONSQLSERVERDATABASENAME]')
+                      BEGIN
+                          ALTER DATABASE [\[][AUTHENTICATIONSQLSERVERDATABASENAME][\]] SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
+                          DROP DATABASE [\[][AUTHENTICATIONSQLSERVERDATABASENAME][\]];
+                      END" />
+
+    </Component>
+
+    <Component Id="AuthorizationDBScript" Guid="{938C00B7-C5C5-4870-8B8E-BBE13CAFFB17}">
+      <File Id='AuthorizationScript' LongName='AuthorizationScript.sql' DiskId='1' Source='$(var.ZENTITYSCRIPTS)\AuthorizationScript.sql' Vital='yes' />
+    </Component>
+
+    <Component Id="AuthorizationHelperDBScript" Guid="{B3F95EAA-F71C-45c2-AADB-11F9F8B67148}">
+      <File Id='AuthorizationHelperScript' LongName='BuiltInDataInsertion.sql' DiskId='1' Source='$(var.ZENTITYSCRIPTS)\BuiltInDataInsertion.sql' Vital='yes' />
+    </Component>
+
+    <Component Id="SearchTSQLDBScript" Guid="{0B2DC9B1-ACE0-46c5-A267-67F3726460FD}">
+      <File Id='SearchTSQL' LongName='TSQLAuthorizationScript.sql' DiskId='1' Source='$(var.ZENTITYSCRIPTS)\TSQLAuthorizationScript.sql' Vital='yes' />
+    </Component>
+
+    <Component Id="ZentityV2" Guid="{3F4ED479-25E2-4b2b-86B2-F9BF8D3C6F19}">
+      <File Id='ZentityV2SQL' LongName='Zentity.V2ModificationScript.sql' DiskId='1' Source='$(var.ZENTITYSCRIPTS)\Zentity Services Modification Script - v2.sql' Vital='yes' />
+    </Component>
+
+  </DirectoryRef>
+  
+  <DirectoryRef Id="TARGETDIR">
+
+    <!-- Save the selected Website details to the registry -->
+    <Component Id="SaveWebsiteDetails" Guid="{0e8fa6d1-444c-43e4-b259-90ff997f02f3}">
+      <RegistryKey Root="HKLM" Key="SOFTWARE\$(var.ProductName)\$(var.ProductWebAppName)\Install">
+        <RegistryValue Name="ZentityWebSiteDescription" Type="string" Value="[ZENTITYIISWEBSITENAME]" />
+        <RegistryValue Name="ZentityWebSitePort" Type="string" Value="[ZENTITYIISWEBSITEPORT]" />
+        <RegistryValue Name="ZentityCallbackPort" Type="string" Value="[ZENTITYCALLBACKPORT]" />
+      </RegistryKey>
+      <RegistryKey Root="HKLM" Key="SOFTWARE\$(var.ProductName)">
+        <RegistryValue Name="InstalledDirectory" Value="[INSTALLLOCATION]" Type="string" />
+      </RegistryKey>
+    </Component>
+
+    <!-- Zentity Web Site -->
+    <Component Id="WebSite" Guid="{D87834A2-E4D8-4fd4-AC0F-63326F50F008}">
+      <iis:WebSite Id="ZentityWebSite" Description="[ZENTITYIISWEBSITENAME]" Directory="ZentityWebSite">
+        <iis:WebAddress Id="AllUnassigned" Port="[ZENTITYIISWEBSITEPORT]" />
+      </iis:WebSite>
+    </Component>
+
+    <!--About components ZentityAppPool & ConfigureIIS-->
+    <!--If IIS version is 6, we use the ZentityAppPool component to create the app pools.-->
+    <!--If IIS version is 7, we also run the IISSevenConfigureAppPool CA to configure the App Pool for IIS 7 properties.-->
+
+    <Component Id="ZentityAppPool" Guid="{9CACEA86-C2B3-4401-A41A-7F5CFAF19E08}">
+      <!--Create the App Pool. This App Pool is used by all the virtual directories.-->
+      <!-- Account under which Zentity App Pool runs -->
+      <util:User Id="ZentityUser" CreateUser="no" Name="[ZENTITYAPPPOOLIDENTITYUSER]" Password="[ZENTITYAPPPOOLIDENTITYPASSWORD]" RemoveOnUninstall="no" />
+
+      <!-- Zentity Application Pool -->
+      <iis:WebAppPool Id="ZentityAppPool" Name="ZentityApplicationPool" Identity="other" User="ZentityUser" ManagedPipelineMode="integrated" ManagedRuntimeVersion="v4.0" />
+
+    </Component>
+
+    <!--Create the App Pool. This App Pool is used by all the virtual directories.-->
+    <Component Id="ConfigureIIS" Guid="{20DFC3A3-806E-414e-8E53-7A8C16B551C3}">
+      <Condition>IISINSTALLED = "#7"</Condition>
+    </Component>
+
+    <!-- AtomPub Application -->
+    <Component Id="AtomPubComponent" Guid="{0C39B749-9C4E-44eb-8F36-324AEBBE0CE7}">
+      <!-- AtomPub Virtual Directory -->
+      <iis:WebVirtualDir Id="AtomPubVirtualDirectory" Alias="AtomPub" Directory="ZentityAtomPubVirutalDirectory" WebSite="ZentityWebSite">
+        <iis:WebApplication Id="AtomPubWebApp" Name="AtomPubWebApp" WebAppPool="ZentityAppPool">
+          <!--<iis:WebApplicationExtension Extension="ad" CheckPath="yes"
+                      Script="yes" Executable="[FRAMEWORKROOT]v2.0.50727\aspnet_isapi.dll"
+                      Verbs="GET,HEAD,POST,DEBUG,PUT,DELETE" />
+          <iis:WebApplicationExtension Extension="adprototype"
+              CheckPath="yes" Script="yes"
+              Executable="[FRAMEWORKROOT]v2.0.50727\aspnet_isapi.dll"
+              Verbs="GET,HEAD,POST,DEBUG,PUT,DELETE" />
+          <iis:WebApplicationExtension Extension="asax" CheckPath="yes"
+              Script="yes" Executable="[FRAMEWORKROOT]v2.0.50727\aspnet_isapi.dll"
+              Verbs="GET,HEAD,POST,DEBUG,PUT,DELETE" />
+          <iis:WebApplicationExtension Extension="ascx" CheckPath="yes"
+              Script="yes" Executable="[FRAMEWORKROOT]v2.0.50727\aspnet_isapi.dll"
+              Verbs="GET,HEAD,POST,DEBUG,PUT,DELETE" />
+          <iis:WebApplicationExtension Extension="ashx" CheckPath="no"
+              Script="yes" Executable="[FRAMEWORKROOT]v2.0.50727\aspnet_isapi.dll"
+              Verbs="GET,HEAD,POST,DEBUG,PUT,DELETE" />
+          <iis:WebApplicationExtension Extension="asmx" CheckPath="no"
+              Script="yes" Executable="[FRAMEWORKROOT]v2.0.50727\aspnet_isapi.dll"
+              Verbs="GET,HEAD,POST,DEBUG,PUT,DELETE" />
+          <iis:WebApplicationExtension Extension="aspx" CheckPath="no"
+              Script="yes" Executable="[FRAMEWORKROOT]v2.0.50727\aspnet_isapi.dll"
+              Verbs="GET,HEAD,POST,DEBUG,PUT,DELETE" />
+          <iis:WebApplicationExtension Extension="axd" CheckPath="no"
+              Script="yes" Executable="[FRAMEWORKROOT]v2.0.50727\aspnet_isapi.dll"
+              Verbs="GET,HEAD,POST,DEBUG,PUT,DELETE" />
+          <iis:WebApplicationExtension Extension="browser" CheckPath="yes"
+              Script="yes" Executable="[FRAMEWORKROOT]v2.0.50727\aspnet_isapi.dll"
+              Verbs="GET,HEAD,POST,DEBUG,PUT,DELETE" />
+          <iis:WebApplicationExtension Extension="cd" CheckPath="yes"
+              Script="yes" Executable="[FRAMEWORKROOT]v2.0.50727\aspnet_isapi.dll"
+              Verbs="GET,HEAD,POST,DEBUG,PUT,DELETE" />
+          <iis:WebApplicationExtension Extension="compiled" CheckPath="yes"
+              Script="yes" Executable="[FRAMEWORKROOT]v2.0.50727\aspnet_isapi.dll"
+              Verbs="GET,HEAD,POST,DEBUG,PUT,DELETE" />
+          <iis:WebApplicationExtension Extension="config" CheckPath="yes"
+              Script="yes" Executable="[FRAMEWORKROOT]v2.0.50727\aspnet_isapi.dll"
+              Verbs="GET,HEAD,POST,DEBUG,PUT,DELETE" />
+          <iis:WebApplicationExtension Extension="csproj" CheckPath="yes"
+              Script="yes" Executable="[FRAMEWORKROOT]v2.0.50727\aspnet_isapi.dll"
+              Verbs="GET,HEAD,POST,DEBUG,PUT,DELETE" />
+          <iis:WebApplicationExtension Extension="dd" CheckPath="yes"
+              Script="yes" Executable="[FRAMEWORKROOT]v2.0.50727\aspnet_isapi.dll"
+              Verbs="GET,HEAD,POST,DEBUG,PUT,DELETE" />
+          <iis:WebApplicationExtension Extension="exclude" CheckPath="yes"
+              Script="yes" Executable="[FRAMEWORKROOT]v2.0.50727\aspnet_isapi.dll"
+              Verbs="GET,HEAD,POST,DEBUG,PUT,DELETE" />
+          <iis:WebApplicationExtension Extension="java" CheckPath="yes"
+              Script="yes" Executable="[FRAMEWORKROOT]v2.0.50727\aspnet_isapi.dll"
+              Verbs="GET,HEAD,POST,DEBUG,PUT,DELETE" />
+          <iis:WebApplicationExtension Extension="jsl" CheckPath="yes"
+              Script="yes" Executable="[FRAMEWORKROOT]v2.0.50727\aspnet_isapi.dll"
+              Verbs="GET,HEAD,POST,DEBUG,PUT,DELETE" />
+          <iis:WebApplicationExtension Extension="ldb" CheckPath="yes"
+              Script="yes" Executable="[FRAMEWORKROOT]v2.0.50727\aspnet_isapi.dll"
+              Verbs="GET,HEAD,POST,DEBUG,PUT,DELETE" />
+          <iis:WebApplicationExtension Extension="ldd" CheckPath="yes"
+              Script="yes" Executable="[FRAMEWORKROOT]v2.0.50727\aspnet_isapi.dll"
+              Verbs="GET,HEAD,POST,DEBUG,PUT,DELETE" />
+          <iis:WebApplicationExtension Extension="lddprototype"
+              CheckPath="yes" Script="yes"
+              Executable="[FRAMEWORKROOT]v2.0.50727\aspnet_isapi.dll"
+              Verbs="GET,HEAD,POST,DEBUG,PUT,DELETE" />
+          <iis:WebApplicationExtension Extension="ldf" CheckPath="yes"
+              Script="yes" Executable="[FRAMEWORKROOT]v2.0.50727\aspnet_isapi.dll"
+              Verbs="GET,HEAD,POST,DEBUG,PUT,DELETE" />
+          <iis:WebApplicationExtension Extension="licx" CheckPath="yes"
+              Script="yes" Executable="[FRAMEWORKROOT]v2.0.50727\aspnet_isapi.dll"
+              Verbs="GET,HEAD,POST,DEBUG,PUT,DELETE" />
+          <iis:WebApplicationExtension Extension="master" CheckPath="yes"
+              Script="yes" Executable="[FRAMEWORKROOT]v2.0.50727\aspnet_isapi.dll"
+              Verbs="GET,HEAD,POST,DEBUG,PUT,DELETE" />
+          <iis:WebApplicationExtension Extension="mdb" CheckPath="yes"
+              Script="yes" Executable="[FRAMEWORKROOT]v2.0.50727\aspnet_isapi.dll"
+              Verbs="GET,HEAD,POST,DEBUG,PUT,DELETE" />
+          <iis:WebApplicationExtension Extension="mdf" CheckPath="yes"
+              Script="yes" Executable="[FRAMEWORKROOT]v2.0.50727\aspnet_isapi.dll"
+              Verbs="GET,HEAD,POST,DEBUG,PUT,DELETE" />
+          <iis:WebApplicationExtension Extension="msgx" CheckPath="no"
+              Script="yes" Executable="[FRAMEWORKROOT]v2.0.50727\aspnet_isapi.dll"
+              Verbs="GET,HEAD,POST,DEBUG,PUT,DELETE" />
+          <iis:WebApplicationExtension Extension="refresh" CheckPath="yes"
+              Script="yes" Executable="[FRAMEWORKROOT]v2.0.50727\aspnet_isapi.dll"
+              Verbs="GET,HEAD,POST,DEBUG,PUT,DELETE" />
+          <iis:WebApplicationExtension Extension="rem" CheckPath="no"
+              Script="yes" Executable="[FRAMEWORKROOT]v2.0.50727\aspnet_isapi.dll"
+              Verbs="GET,HEAD,POST,DEBUG,PUT,DELETE" />
+          <iis:WebApplicationExtension Extension="resources" CheckPath="yes"
+              Script="yes" Executable="[FRAMEWORKROOT]v2.0.50727\aspnet_isapi.dll"
+              Verbs="GET,HEAD,POST,DEBUG,PUT,DELETE" />
+          <iis:WebApplicationExtension Extension="resx" CheckPath="yes"
+              Script="yes" Executable="[FRAMEWORKROOT]v2.0.50727\aspnet_isapi.dll"
+              Verbs="GET,HEAD,POST,DEBUG,PUT,DELETE" />
+          <iis:WebApplicationExtension Extension="sd" CheckPath="yes"
+              Script="yes" Executable="[FRAMEWORKROOT]v2.0.50727\aspnet_isapi.dll"
+              Verbs="GET,HEAD,POST,DEBUG,PUT,DELETE" />
+          <iis:WebApplicationExtension Extension="sdm" CheckPath="yes"
+              Script="yes" Executable="[FRAMEWORKROOT]v2.0.50727\aspnet_isapi.dll"
+              Verbs="GET,HEAD,POST,DEBUG,PUT,DELETE" />
+          <iis:WebApplicationExtension Extension="sdmDocument" CheckPath="yes"
+              Script="yes" Executable="[FRAMEWORKROOT]v2.0.50727\aspnet_isapi.dll"
+              Verbs="GET,HEAD,POST,DEBUG,PUT,DELETE" />
+          <iis:WebApplicationExtension Extension="sitemap" CheckPath="yes"
+              Script="yes" Executable="[FRAMEWORKROOT]v2.0.50727\aspnet_isapi.dll"
+              Verbs="GET,HEAD,POST,DEBUG,PUT,DELETE" />
+          <iis:WebApplicationExtension Extension="skin" CheckPath="yes"
+              Script="yes" Executable="[FRAMEWORKROOT]v2.0.50727\aspnet_isapi.dll"
+              Verbs="GET,HEAD,POST,DEBUG,PUT,DELETE" />
+          <iis:WebApplicationExtension Extension="soap" CheckPath="no"
+              Script="yes" Executable="[FRAMEWORKROOT]v2.0.50727\aspnet_isapi.dll"
+              Verbs="GET,HEAD,POST,DEBUG,PUT,DELETE" />
+          <iis:WebApplicationExtension Extension="svc" CheckPath="no"
+              Script="yes" Executable="[FRAMEWORKROOT]v2.0.50727\aspnet_isapi.dll"
+              Verbs="GET,HEAD,POST,DEBUG,PUT,DELETE" />
+          <iis:WebApplicationExtension Extension="vb" CheckPath="yes"
+              Script="yes" Executable="[FRAMEWORKROOT]v2.0.50727\aspnet_isapi.dll"
+              Verbs="GET,HEAD,POST,DEBUG,PUT,DELETE" />
+          <iis:WebApplicationExtension Extension="vbproj" CheckPath="yes"
+              Script="yes" Executable="[FRAMEWORKROOT]v2.0.50727\aspnet_isapi.dll"
+              Verbs="GET,HEAD,POST,DEBUG,PUT,DELETE" />
+          <iis:WebApplicationExtension Extension="vjsproj" CheckPath="yes"
+              Script="yes" Executable="[FRAMEWORKROOT]v2.0.50727\aspnet_isapi.dll"
+              Verbs="GET,HEAD,POST,DEBUG,PUT,DELETE" />
+          <iis:WebApplicationExtension Extension="vsdisco" CheckPath="no"
+              Script="yes" Executable="[FRAMEWORKROOT]v2.0.50727\aspnet_isapi.dll"
+              Verbs="GET,HEAD,POST,DEBUG,PUT,DELETE" />
+          <iis:WebApplicationExtension Extension="webinfo" CheckPath="yes"
+              Script="yes" Executable="[FRAMEWORKROOT]v2.0.50727\aspnet_isapi.dll"
+              Verbs="GET,HEAD,POST,DEBUG,PUT,DELETE" />-->
+        </iis:WebApplication>
+      </iis:WebVirtualDir>
+    </Component>
+
+    <!-- OaiPmh Application -->
+    <Component Id="OaiPmhComponent" Guid="{144318B4-2849-49c7-A414-21F253A7D4CD}">
+      <!-- OaiPmh Virtual Directory -->
+      <iis:WebVirtualDir Id="OaiPmhVirtualDirectory" Alias="OaiPmh" Directory="ZentityOaiPmhVirtualDirectory" WebSite="ZentityWebSite">
+        <iis:WebApplication Id="OaiPmhWebApp" Name="OaiPmhWebApp" WebAppPool="ZentityAppPool">
+
+          <!--<iis:WebApplicationExtension Extension="ad" CheckPath="yes"
+              Script="yes" Executable="[FRAMEWORKROOT]v2.0.50727\aspnet_isapi.dll"
+              Verbs="GET,HEAD,POST" />
+          <iis:WebApplicationExtension Extension="adprototype"
+              CheckPath="yes" Script="yes"
+              Executable="[FRAMEWORKROOT]v2.0.50727\aspnet_isapi.dll"
+              Verbs="GET,HEAD,POST" />
+          <iis:WebApplicationExtension Extension="asax" CheckPath="yes"
+              Script="yes" Executable="[FRAMEWORKROOT]v2.0.50727\aspnet_isapi.dll"
+              Verbs="GET,HEAD,POST" />
+          <iis:WebApplicationExtension Extension="ascx" CheckPath="yes"
+              Script="yes" Executable="[FRAMEWORKROOT]v2.0.50727\aspnet_isapi.dll"
+              Verbs="GET,HEAD,POST" />
+          <iis:WebApplicationExtension Extension="ashx" CheckPath="no"
+              Script="yes" Executable="[FRAMEWORKROOT]v2.0.50727\aspnet_isapi.dll"
+              Verbs="GET,HEAD,POST" />
+          <iis:WebApplicationExtension Extension="asmx" CheckPath="no"
+              Script="yes" Executable="[FRAMEWORKROOT]v2.0.50727\aspnet_isapi.dll"
+              Verbs="GET,HEAD,POST" />
+          <iis:WebApplicationExtension Extension="aspx" CheckPath="no"
+              Script="yes" Executable="[FRAMEWORKROOT]v2.0.50727\aspnet_isapi.dll"
+              Verbs="GET,HEAD,POST" />
+          <iis:WebApplicationExtension Extension="axd" CheckPath="no"
+              Script="yes" Executable="[FRAMEWORKROOT]v2.0.50727\aspnet_isapi.dll"
+              Verbs="GET,HEAD,POST" />
+          <iis:WebApplicationExtension Extension="browser" CheckPath="yes"
+              Script="yes" Executable="[FRAMEWORKROOT]v2.0.50727\aspnet_isapi.dll"
+              Verbs="GET,HEAD,POST" />
+          <iis:WebApplicationExtension Extension="cd" CheckPath="yes"
+              Script="yes" Executable="[FRAMEWORKROOT]v2.0.50727\aspnet_isapi.dll"
+              Verbs="GET,HEAD,POST" />
+          <iis:WebApplicationExtension Extension="compiled" CheckPath="yes"
+              Script="yes" Executable="[FRAMEWORKROOT]v2.0.50727\aspnet_isapi.dll"
+              Verbs="GET,HEAD,POST" />
+          <iis:WebApplicationExtension Extension="config" CheckPath="yes"
+              Script="yes" Executable="[FRAMEWORKROOT]v2.0.50727\aspnet_isapi.dll"
+              Verbs="GET,HEAD,POST" />
+          <iis:WebApplicationExtension Extension="csproj" CheckPath="yes"
+              Script="yes" Executable="[FRAMEWORKROOT]v2.0.50727\aspnet_isapi.dll"
+              Verbs="GET,HEAD,POST" />
+          <iis:WebApplicationExtension Extension="dd" CheckPath="yes"
+              Script="yes" Executable="[FRAMEWORKROOT]v2.0.50727\aspnet_isapi.dll"
+              Verbs="GET,HEAD,POST" />
+          <iis:WebApplicationExtension Extension="exclude" CheckPath="yes"
+              Script="yes" Executable="[FRAMEWORKROOT]v2.0.50727\aspnet_isapi.dll"
+              Verbs="GET,HEAD,POST" />
+          <iis:WebApplicationExtension Extension="java" CheckPath="yes"
+              Script="yes" Executable="[FRAMEWORKROOT]v2.0.50727\aspnet_isapi.dll"
+              Verbs="GET,HEAD,POST" />
+          <iis:WebApplicationExtension Extension="jsl" CheckPath="yes"
+              Script="yes" Executable="[FRAMEWORKROOT]v2.0.50727\aspnet_isapi.dll"
+              Verbs="GET,HEAD,POST" />
+          <iis:WebApplicationExtension Extension="ldb" CheckPath="yes"
+              Script="yes" Executable="[FRAMEWORKROOT]v2.0.50727\aspnet_isapi.dll"
+              Verbs="GET,HEAD,POST" />
+          <iis:WebApplicationExtension Extension="ldd" CheckPath="yes"
+              Script="yes" Executable="[FRAMEWORKROOT]v2.0.50727\aspnet_isapi.dll"
+              Verbs="GET,HEAD,POST" />
+          <iis:WebApplicationExtension Extension="lddprototype"
+              CheckPath="yes" Script="yes"
+              Executable="[FRAMEWORKROOT]v2.0.50727\aspnet_isapi.dll"
+              Verbs="GET,HEAD,POST" />
+          <iis:WebApplicationExtension Extension="ldf" CheckPath="yes"
+              Script="yes" Executable="[FRAMEWORKROOT]v2.0.50727\aspnet_isapi.dll"
+              Verbs="GET,HEAD,POST" />
+          <iis:WebApplicationExtension Extension="licx" CheckPath="yes"
+              Script="yes" Executable="[FRAMEWORKROOT]v2.0.50727\aspnet_isapi.dll"
+              Verbs="GET,HEAD,POST" />
+          <iis:WebApplicationExtension Extension="master" CheckPath="yes"
+              Script="yes" Executable="[FRAMEWORKROOT]v2.0.50727\aspnet_isapi.dll"
+              Verbs="GET,HEAD,POST" />
+          <iis:WebApplicationExtension Extension="mdb" CheckPath="yes"
+              Script="yes" Executable="[FRAMEWORKROOT]v2.0.50727\aspnet_isapi.dll"
+              Verbs="GET,HEAD,POST" />
+          <iis:WebApplicationExtension Extension="mdf" CheckPath="yes"
+              Script="yes" Executable="[FRAMEWORKROOT]v2.0.50727\aspnet_isapi.dll"
+              Verbs="GET,HEAD,POST" />
+          <iis:WebApplicationExtension Extension="msgx" CheckPath="no"
+              Script="yes" Executable="[FRAMEWORKROOT]v2.0.50727\aspnet_isapi.dll"
+              Verbs="GET,HEAD,POST" />
+          <iis:WebApplicationExtension Extension="refresh" CheckPath="yes"
+              Script="yes" Executable="[FRAMEWORKROOT]v2.0.50727\aspnet_isapi.dll"
+              Verbs="GET,HEAD,POST" />
+          <iis:WebApplicationExtension Extension="rem" CheckPath="no"
+              Script="yes" Executable="[FRAMEWORKROOT]v2.0.50727\aspnet_isapi.dll"
+              Verbs="GET,HEAD,POST" />
+          <iis:WebApplicationExtension Extension="resources" CheckPath="yes"
+              Script="yes" Executable="[FRAMEWORKROOT]v2.0.50727\aspnet_isapi.dll"
+              Verbs="GET,HEAD,POST" />
+          <iis:WebApplicationExtension Extension="resx" CheckPath="yes"
+              Script="yes" Executable="[FRAMEWORKROOT]v2.0.50727\aspnet_isapi.dll"
+              Verbs="GET,HEAD,POST" />
+          <iis:WebApplicationExtension Extension="sd" CheckPath="yes"
+              Script="yes" Executable="[FRAMEWORKROOT]v2.0.50727\aspnet_isapi.dll"
+              Verbs="GET,HEAD,POST" />
+          <iis:WebApplicationExtension Extension="sdm" CheckPath="yes"
+              Script="yes" Executable="[FRAMEWORKROOT]v2.0.50727\aspnet_isapi.dll"
+              Verbs="GET,HEAD,POST" />
+          <iis:WebApplicationExtension Extension="sdmDocument" CheckPath="yes"
+              Script="yes" Executable="[FRAMEWORKROOT]v2.0.50727\aspnet_isapi.dll"
+              Verbs="GET,HEAD,POST" />
+          <iis:WebApplicationExtension Extension="sitemap" CheckPath="yes"
+              Script="yes" Executable="[FRAMEWORKROOT]v2.0.50727\aspnet_isapi.dll"
+              Verbs="GET,HEAD,POST" />
+          <iis:WebApplicationExtension Extension="skin" CheckPath="yes"
+              Script="yes" Executable="[FRAMEWORKROOT]v2.0.50727\aspnet_isapi.dll"
+              Verbs="GET,HEAD,POST" />
+          <iis:WebApplicationExtension Extension="soap" CheckPath="no"
+              Script="yes" Executable="[FRAMEWORKROOT]v2.0.50727\aspnet_isapi.dll"
+              Verbs="GET,HEAD,POST" />
+          <iis:WebApplicationExtension Extension="svc" CheckPath="no"
+              Script="yes" Executable="[FRAMEWORKROOT]v2.0.50727\aspnet_isapi.dll"
+              Verbs="GET,HEAD,POST" />
+          <iis:WebApplicationExtension Extension="vb" CheckPath="yes"
+              Script="yes" Executable="[FRAMEWORKROOT]v2.0.50727\aspnet_isapi.dll"
+              Verbs="GET,HEAD,POST" />
+          <iis:WebApplicationExtension Extension="vbproj" CheckPath="yes"
+              Script="yes" Executable="[FRAMEWORKROOT]v2.0.50727\aspnet_isapi.dll"
+              Verbs="GET,HEAD,POST" />
+          <iis:WebApplicationExtension Extension="vjsproj" CheckPath="yes"
+              Script="yes" Executable="[FRAMEWORKROOT]v2.0.50727\aspnet_isapi.dll"
+              Verbs="GET,HEAD,POST" />
+          <iis:WebApplicationExtension Extension="vsdisco" CheckPath="no"
+              Script="yes" Executable="[FRAMEWORKROOT]v2.0.50727\aspnet_isapi.dll"
+              Verbs="GET,HEAD,POST" />
+          <iis:WebApplicationExtension Extension="webinfo" CheckPath="yes"
+              Script="yes" Executable="[FRAMEWORKROOT]v2.0.50727\aspnet_isapi.dll"
+              Verbs="GET,HEAD,POST" />-->
+        </iis:WebApplication>
+      </iis:WebVirtualDir>
+    </Component>
+
+    <!-- OaiOre Application -->
+    <Component Id="OaiOreComponent" Guid="{9A8BFF4F-B1E2-4615-9A4B-D555DAD29F9B}">
+      <!-- OaiOre Virtual Directory -->
+      <iis:WebVirtualDir Id="OaiOreVirtualDirectory" Alias="OaiOre" Directory="ZentityOaiOreVirtualDirectory" WebSite="ZentityWebSite">
+        <iis:WebApplication Id="OaiOreWebApp" Name="OaiOreWebApp" WebAppPool="ZentityAppPool"></iis:WebApplication>
+      </iis:WebVirtualDir>
+    </Component>
+
+    <!-- Syndication Application -->
+    <Component Id="SyndicationComponent" Guid="{637EB294-A7A8-4d38-9A9C-7331CAA57C27}">
+      <iis:WebVirtualDir Id="SyndicationVirtualDirectory" Alias="Syndication" Directory="ZentitySyndicationVirtualDirectory" WebSite="ZentityWebSite">
+        <iis:WebApplication Id="SyndicationWebApp" Name="SyndicationWebApp" WebAppPool="ZentityAppPool"></iis:WebApplication>
+      </iis:WebVirtualDir>
+    </Component>
+
+    <!-- Web UI Application-->
+    <Component Id="WebUIComponent" Guid="{8F84FD9B-9FDD-485E-87BE-AC39B69E7D3A}">
+      <!-- WebUI Virtual Directory -->
+      <iis:WebVirtualDir Id="WebUIVirtualDirectory" Alias="WebUI" Directory="ZentityWebUIVirtualDirectory" WebSite="ZentityWebSite" >
+        <iis:WebApplication Id="WebUIWebApp" Name="WebUIWebApp" WebAppPool="ZentityAppPool" >
+        </iis:WebApplication>
+      </iis:WebVirtualDir>
+    </Component>
+
+    <!-- ODataToCXmlTranslator Application -->
+    <Component Id="ODataComponent" Guid="{69DFAA8A-2FB5-4b3a-B229-5D56EAF63368}">
+      <!-- OData Virtual Directory -->
+      <iis:WebVirtualDir Id="ODataVirtualDirectory" Alias="OData" Directory="ZentityODataVirtualDirectory" WebSite="ZentityWebSite">
+        <iis:WebApplication Id="ODataWebApp" Name="ODataWebApp" WebAppPool="ZentityAppPool"></iis:WebApplication>
+      </iis:WebVirtualDir>
+    </Component>
+
+    <!-- Visual Explorer Application -->
+    <Component Id="VisualExplorerComponent" Guid="{1A036EE4-956B-425d-AE81-E3BB479DAABE}">
+      <!-- Visual Explorer Virtual Directory -->
+      <iis:WebVirtualDir Id="VisualExplorerVirtualDirectory" Alias="VisualExplorer" Directory="ZentityVisualExplorerVirtualDirectory" WebSite="ZentityWebSite">
+        <iis:WebDirProperties Id="VisualExplorerDirProperties" WindowsAuthentication="yes" AnonymousAccess="yes" BasicAuthentication="no" DigestAuthentication="no" />
+        <iis:WebApplication Id="VisualExplorerWebApp" Name="VisualExplorerWebApp" WebAppPool="ZentityAppPool"></iis:WebApplication>
+      </iis:WebVirtualDir>
+    </Component>
+
+    <!-- Data Service Application -->
+    <Component Id="DataServiceComponent" Guid="{39A91F44-787D-4aa2-9871-B297617A38CC}">
+      <!-- Data Service Virtual Directory -->
+      <iis:WebVirtualDir Id="DataServiceVirtualDirectory" Alias="DataService" Directory="ZentityDataServiceVirtualDirectory" WebSite="ZentityWebSite">
+        <iis:WebDirProperties Id="DataServiceDirProperties" WindowsAuthentication="yes" AnonymousAccess="no" BasicAuthentication="no" DigestAuthentication="no" />
+        <iis:WebApplication Id="DataServiceWebApp" Name="DataServiceWebApp" WebAppPool="ZentityAppPool"></iis:WebApplication>
+      </iis:WebVirtualDir>
+    </Component>
+
+  </DirectoryRef>
+
+  <DirectoryRef Id="ZentityAtomPubVirutalDirectory">
+    <!--Files that go into the root of the AtomPub virtual directory.-->
+    <Component Id="AtomPubRootFilesComponent" Guid="{4EC0695D-1E33-4b33-9177-5D00681B4CE9}">
+
+      <File Id='AtomPub.ashx' LongName='AtomPub.ashx' DiskId='1' Source='$(var.ZENTITYATOMPUB)\AtomPub.ashx' Vital='yes'></File>
+
+      <File Id='AtomPub.Global.asax' LongName='Global.asax' DiskId='1' Source='$(var.ZENTITYATOMPUB)\Global.asax' Vital='yes'></File>
+
+      <File Id='AtomPub.web.config' LongName='web.config' DiskId='1' Source='$(var.ZENTITYATOMPUB)\web.config' Vital='yes' />
+
+      <!--Update the config file with the Core connection string. This one is for ZentityContext-->
+      <util:XmlFile Id="AtomPubConfigCoreConnString" File="[ZentityAtomPubVirutalDirectory]web.config" Action="setValue" ElementPath="/configuration/appSettings/add[\[]@key='CoreConnectionString'[\]]/@value" Value="[OAIPMHCONTEXTCONNSTRING]" />
+
+      <!--Update the config file with the Core connection string. This one is for direct SQL connections-->
+      <util:XmlFile Id="AtomPubConfigSqlConnString" File="[ZentityAtomPubVirutalDirectory]web.config" Action="setValue" ElementPath="/configuration/appSettings/add[\[]@key='SqlConnectionString'[\]]/@value" Value="[ATOMPUBSQLCONNSTRING]" />
+
+      <!--Update the config file with the ServiceHost base Uri-->
+      <util:XmlFile Id="AtomPubConfigServiceHostBaseUri" File="[ZentityAtomPubVirutalDirectory]web.config" Action="setValue" ElementPath="/configuration/appSettings/add[\[]@key='ServiceHost'[\]]/@value" Value="http://[ComputerName]:[ZENTITYIISWEBSITEPORT]/" />
+
+      <!--Number of feed items-->
+      <!--<XmlFile Id="AtomPubConfigNumFeedItems" File="[ZentityAtomPubVirutalDirectory]web.config" Action="setValue"
+                      ElementPath="/configuration/appSettings/add[\[]@key='FeedPageSize'[\]]/@value"
+                      Value="[ATOMPUBSERVICENUMFEEDITEMS]" />-->
+
+      <!--AtomPub Base Uri-->
+      <util:XmlFile Id="AtomPubConfigAtomPubBaseUri" File="[ZentityAtomPubVirutalDirectory]web.config" Action="setValue" ElementPath="/configuration/appSettings/add[\[]@key='AtomPubBaseUri'[\]]/@value" Value="AtomPub/AtomPub.ashx" />
+
+      <!--Sword Base Uri-->
+      <util:XmlFile Id="AtomPubConfigSwordBaseUri" File="[ZentityAtomPubVirutalDirectory]web.config" Action="setValue" ElementPath="/configuration/appSettings/add[\[]@key='SwordBaseUri'[\]]/@value" Value="AtomPub/Sword/Sword.ashx" />
+
+      <!--Update the config file with the authentication connection string-->
+      <util:XmlFile Id="AtomPubConfigAuthConnString" File="[ZentityAtomPubVirutalDirectory]web.config" Action="setValue" ElementPath="/configuration/connectionStrings/add[\[]@name='AuthenticationConnection'[\]]/@connectionString" Value="[AUTHENTICATIONCONNSTRING]" />
+
+    </Component>
+  </DirectoryRef>
+
+  <DirectoryRef Id="AtomPubBin">
+
+    <!--Files that go into the bin folder of the AtomPub virtual directory.-->
+    <Component Id="AtomPubBinComponent" Guid="{7370DA71-D384-42cb-84F5-253149E62495}">
+
+      <!-- Rdf assembly -->
+      <File Id='AtomPubZentityRdf' LongName='Zentity.Rdf.dll' DiskId='1' Source='$(var.ZENTITYCORE)\Zentity.Rdf.dll' Vital='yes' />
+
+      <!--Core assembly-->
+      <File Id='AtomPubZentityCore' LongName='Zentity.Core.dll' DiskId='1' Source='$(var.ZENTITYCORE)\Zentity.Core.dll' Vital='yes' />
+
+      <!--ScholarlyWorks assembly-->
+      <File Id='AtomPubZentityScholarlyWorks' LongName='Zentity.ScholarlyWorks.dll' DiskId='1' Source='$(var.ZENTITYCORE)\Zentity.ScholarlyWorks.dll' Vital='yes' />
+
+      <!--Platform assembly-->
+      <File Id='AtomPub.Zentity.Platform.dll' LongName='Zentity.Platform.dll' DiskId='1' Source='$(var.ZENTITYPLATFORM)\Zentity.Platform.dll' Vital='yes' />
+
+      <!--Services assembly-->
+      <File Id='AtomPub.Zentity.Services.dll' LongName='Zentity.Services.dll' DiskId='1' Source='$(var.ZENTITYPLATFORM)\Zentity.Services.dll' Vital='yes' />
+
+      <!--Zip library-->
+      <File Id='Zentity.Zip.dll' LongName='Zentity.Zip.dll' DiskId='1' Source='$(var.ZENTITYPLATFORM)\Zentity.Zip.dll' Vital='yes' />
+
+      <!--Enterprise Library assemblies-->
+      <File Id='AtomPub.Microsoft.Practices.EntLib.Caching.dll' LongName='Microsoft.Practices.EnterpriseLibrary.Caching.dll' DiskId='1' Source='$(var.ZENTITYEXTERNALDEPENDENCIES)\Microsoft.Practices.EnterpriseLibrary.Caching.dll' Vital='yes' />
+
+      <File Id='AtomPub.Microsoft.Practices.EntLib.Common.dll' LongName='Microsoft.Practices.EnterpriseLibrary.Common.dll' DiskId='1' Source='$(var.ZENTITYEXTERNALDEPENDENCIES)\Microsoft.Practices.EnterpriseLibrary.Common.dll' Vital='yes' />
+
+      <File Id='AtomPub.Microsoft.Practices.EntLib.Data.dll' LongName='Microsoft.Practices.EnterpriseLibrary.Data.dll' DiskId='1' Source='$(var.ZENTITYEXTERNALDEPENDENCIES)\Microsoft.Practices.EnterpriseLibrary.Data.dll' Vital='yes' />
+
+      <!-- Security files -->
+      <File Id='AtomPub.ZentityAuthentication' LongName='Zentity.Security.Authentication.dll' DiskId='1' Source='$(var.ZENTITYPLATFORM)\Zentity.Security.Authentication.dll' Vital='no' />
+
+      <File Id='AtomPub.ZentityAuthenticationProvider' LongName='Zentity.Security.AuthenticationProvider.dll' DiskId='1' Source='$(var.ZENTITYPLATFORM)\Zentity.Security.AuthenticationProvider.dll' Vital='no' />
+
+      <File Id='AtomPub.ZentityAuthorization' LongName='Zentity.Security.Authorization.dll' DiskId='1' Source='$(var.ZENTITYPLATFORM)\Zentity.Security.Authorization.dll' Vital='no' />
+
+      <File Id='AtomPub.ZentityAuthorizationHelper' LongName='Zentity.Security.AuthorizationHelper.dll' DiskId='1' Source='$(var.ZENTITYPLATFORM)\Zentity.Security.AuthorizationHelper.dll' Vital='no' />
+
+      <File Id='AtomPub.ZentityScholarlyWorksAndAuthorization' LongName='Zentity.ScholarlyWorksAndAuthorization.dll' DiskId='1' Source='$(var.ZENTITYPLATFORM)\Zentity.ScholarlyWorksAndAuthorization.dll' Vital='no' />
+
+    </Component>
+
+  </DirectoryRef>
+
+  <DirectoryRef Id="AtomPubSword">
+
+    <!--Files that go into the sword folder of the AtomPub virtual directory.-->
+    <Component Id="SwordFilesComponent" Guid="{A1BD2FC0-3D6C-4d9a-AF53-B53E6EFA8802}">
+      <File Id='Sword.ashx' LongName='Sword.ashx' DiskId='1' Source='$(var.ZENTITYATOMPUB)\Sword\Sword.ashx' Vital='yes'></File>
+
+    </Component>
+
+  </DirectoryRef>
+
+  <DirectoryRef Id="ZentityOaiPmhVirtualDirectory">
+
+    <!--Files that go into the root of the OaiPmh virtual directory.-->
+    <Component Id="OaiPmhRootFilesComponent" Guid="{6ECBFB7D-A3DB-42bc-903A-710DBFF9CCF6}">
+
+      <File Id='OaiPmhService.ashx' LongName='OaiPmhService.ashx' DiskId='1' Source='$(var.ZENTITYOAIPMH)\OaiPmhService.ashx' Vital='yes'></File>
+
+      <File Id='OaiPmh.web.config' LongName='web.config' DiskId='1' Source='$(var.ZENTITYOAIPMH)\web.config' Vital='yes' />
+
+      <File Id='OaiPmh.Global.asax' LongName='Global.asax' DiskId='1' Source='$(var.ZENTITYOAIPMH)\Global.asax' Vital='yes'></File>
+
+      <!--Update the config file with the Core connection string. This one is for ZentityContext-->
+      <util:XmlFile Id="OaiPmhConfigCoreConnString" File="[ZentityOaiPmhVirtualDirectory]web.config" Action="setValue" ElementPath="/configuration/appSettings/add[\[]@key='CoreConnectionString'[\]]/@value" Value="[OAIPMHCONTEXTCONNSTRING]" />
+
+      <!--Update the config file with the OAI - PMH connection string-->
+      <util:XmlFile Id="OaiWebConfigConnString" File="[ZentityOaiPmhVirtualDirectory]web.config" Action="setValue" ElementPath="/configuration/connectionStrings/add[\[]@name='ZentityPlatform'[\]]/@connectionString" Value="[OAIPMHCONNSTRING]" />
+
+      <!--Update the config file with the response execution timeout-->
+      <util:XmlFile Id="OaiPmhWebConfigExecutionTimeout" File="[ZentityOaiPmhVirtualDirectory]web.config" Action="setValue" ElementPath="/configuration/system.web/httpRuntime/@executionTimeout" Value="[OAIPMHWEBEXECUTIONTIMEOUT]" />
+
+      <!--Update the config file with the ServiceHost base Uri-->
+      <util:XmlFile Id="OaiPmhConfigServiceHostBaseUri" File="[ZentityOaiPmhVirtualDirectory]web.config" Action="setValue" ElementPath="/configuration/appSettings/add[\[]@key='ServiceHost'[\]]/@value" Value="http://[ComputerName]:[ZENTITYIISWEBSITEPORT]/" />
+
+      <!--Update the config file with the authentication connection string-->
+      <util:XmlFile Id="OaiPmhConfigAuthConnString" File="[ZentityOaiPmhVirtualDirectory]web.config" Action="setValue" ElementPath="/configuration/connectionStrings/add[\[]@name='AuthenticationConnection'[\]]/@connectionString" Value="[AUTHENTICATIONCONNSTRING]" />
+
+    </Component>
+
+  </DirectoryRef>
+
+  <DirectoryRef Id="OaiPmhBin">
+    <!--Files that go into the bin folder of the OaiPmh virtual directory.-->
+    <Component Id="OaiPmhBinComponent" Guid="{B7807097-73A3-4e76-8021-BFB9CED9496A}">
+
+      <!-- Rdf assembly -->
+      <File Id='OaiPmh.ZentityRdf' LongName='Zentity.Rdf.dll' DiskId='1' Source='$(var.ZENTITYCORE)\Zentity.Rdf.dll' Vital='yes' />
+
+      <!--Core assembly-->
+      <File Id='OaiPmh.ZentityCore' LongName='Zentity.Core.dll' DiskId='1' Source='$(var.ZENTITYCORE)\Zentity.Core.dll' Vital='yes' />
+
+      <!--ScholarlyWorks assembly-->
+      <File Id='OaiPmh.ZentityScholarlyWorks' LongName='Zentity.ScholarlyWorks.dll' DiskId='1' Source='$(var.ZENTITYCORE)\Zentity.ScholarlyWorks.dll' Vital='yes' />
+
+      <!--Platform assembly-->
+      <File Id='OaiPmh.Zentity.Platform.dll' LongName='Zentity.Platform.dll' DiskId='1' Source='$(var.ZENTITYPLATFORM)\Zentity.Platform.dll' Vital='yes' />
+
+      <!--Services assembly-->
+      <File Id='OaiPmh.Zentity.Services.dll' LongName='Zentity.Services.dll' DiskId='1' Source='$(var.ZENTITYPLATFORM)\Zentity.Services.dll' Vital='yes' />
+
+      <!--Enterprise Library assemblies-->
+      <File Id='OaiPmh.Microsoft.Practices.EntLib.Caching.dll' LongName='Microsoft.Practices.EnterpriseLibrary.Caching.dll' DiskId='1' Source='$(var.ZENTITYEXTERNALDEPENDENCIES)\Microsoft.Practices.EnterpriseLibrary.Caching.dll' Vital='yes' />
+
+      <File Id='OaiPmh.Microsoft.Practices.EntLib.Common.dll' LongName='Microsoft.Practices.EnterpriseLibrary.Common.dll' DiskId='1' Source='$(var.ZENTITYEXTERNALDEPENDENCIES)\Microsoft.Practices.EnterpriseLibrary.Common.dll' Vital='yes' />
+
+      <File Id='OaiPmh.Microsoft.Practices.EntLib.Data.dll' LongName='Microsoft.Practices.EnterpriseLibrary.Data.dll' DiskId='1' Source='$(var.ZENTITYEXTERNALDEPENDENCIES)\Microsoft.Practices.EnterpriseLibrary.Data.dll' Vital='yes' />
+
+      <!-- Security files -->
+      <File Id='OaiPmh.ZentityAuthentication' LongName='Zentity.Security.Authentication.dll' DiskId='1' Source='$(var.ZENTITYPLATFORM)\Zentity.Security.Authentication.dll' Vital='no' />
+
+      <File Id='OaiPmh.ZentityAuthenticationProvider' LongName='Zentity.Security.AuthenticationProvider.dll' DiskId='1' Source='$(var.ZENTITYPLATFORM)\Zentity.Security.AuthenticationProvider.dll' Vital='no' />
+
+      <File Id='OaiPmh.ZentityAuthorization' LongName='Zentity.Security.Authorization.dll' DiskId='1' Source='$(var.ZENTITYPLATFORM)\Zentity.Security.Authorization.dll' Vital='no' />
+
+      <File Id='OaiPmh.ZentityAuthorizationHelper' LongName='Zentity.Security.AuthorizationHelper.dll' DiskId='1' Source='$(var.ZENTITYPLATFORM)\Zentity.Security.AuthorizationHelper.dll' Vital='no' />
+
+      <File Id='OaiPmh.ZentityScholarlyWorksAndAuthorization' LongName='Zentity.ScholarlyWorksAndAuthorization.dll' DiskId='1' Source='$(var.ZENTITYPLATFORM)\Zentity.ScholarlyWorksAndAuthorization.dll' Vital='no' />
+
+    </Component>
+  </DirectoryRef>
+
+  <DirectoryRef Id="ZentityOaiOreVirtualDirectory">
+
+    <!--Files that go into the root of the OaiOre virtual directory.-->
+    <Component Id="OaiOreRootFilesComponent" Guid="{8A95ACB0-0C86-4cf5-8EA1-401D21363516}">
+      <File Id='Ore.ashx' LongName='Ore.ashx' DiskId='1' Source='$(var.ZENTITYOAIORE)\Ore.ashx' Vital='yes'></File>
+      <File Id='OaiOre.web.config' LongName='web.config' DiskId='1' Source='$(var.ZENTITYOAIORE)\web.config' Vital='yes' />
+
+      <File Id='OaiOre.Global.asax' LongName='Global.asax' DiskId='1' Source='$(var.ZENTITYOAIORE)\Global.asax' Vital='yes' />
+
+      <!--Update the config file with the Core connection string. This one is for ZentityContext-->
+      <util:XmlFile Id="OaiOreConfigCoreConnString" File="[ZentityOaiOreVirtualDirectory]web.config" Action="setValue" ElementPath="/configuration/appSettings/add[\[]@key='CoreConnectionString'[\]]/@value" Value="[OAIPMHCONTEXTCONNSTRING]" />
+
+      <!--Update the config file with the ServiceHost base Uri-->
+      <util:XmlFile Id="OaiOreConfigServiceHostBaseUri" File="[ZentityOaiOreVirtualDirectory]web.config" Action="setValue" ElementPath="/configuration/appSettings/add[\[]@key='ServiceHost'[\]]/@value" Value="http://[ComputerName]:[ZENTITYIISWEBSITEPORT]/" />
+
+      <!--Update the config file with the authentication connection string-->
+      <util:XmlFile Id="OaiOreConfigAuthConnString" File="[ZentityOaiOreVirtualDirectory]web.config" Action="setValue" ElementPath="/configuration/connectionStrings/add[\[]@name='AuthenticationConnection'[\]]/@connectionString" Value="[AUTHENTICATIONCONNSTRING]" />
+    </Component>
+
+  </DirectoryRef>
+
+  <DirectoryRef Id="OaiOreBin">
+
+    <!--Files that go into the bin folder of the OaiOre virtual directory.-->
+    <Component Id="OaiOreBinComponent" Guid="{9F756448-F31A-4abf-B79B-74523858B334}">
+      <!-- Rdf assembly -->
+      <File Id='OaiOre.ZentityRdf' LongName='Zentity.Rdf.dll' DiskId='1' Source='$(var.ZENTITYCORE)\Zentity.Rdf.dll' Vital='yes' />
+
+      <!--Core assembly-->
+      <File Id='OaiOre.ZentityCore' LongName='Zentity.Core.dll' DiskId='1' Source='$(var.ZENTITYCORE)\Zentity.Core.dll' Vital='yes' />
+
+      <!--ScholarlyWorks assembly-->
+      <File Id='OaiOre.ZentityScholarlyWorks' LongName='Zentity.ScholarlyWorks.dll' DiskId='1' Source='$(var.ZENTITYCORE)\Zentity.ScholarlyWorks.dll' Vital='yes' />
+
+      <!--Platform assembly-->
+      <File Id='OaiOre.Zentity.Platform.dll' LongName='Zentity.Platform.dll' DiskId='1' Source='$(var.ZENTITYPLATFORM)\Zentity.Platform.dll' Vital='yes' />
+
+      <!--Services assembly-->
+      <File Id='OaiOre.Zentity.Services.dll' LongName='Zentity.Services.dll' DiskId='1' Source='$(var.ZENTITYPLATFORM)\Zentity.Services.dll' Vital='yes' />
+
+      <!--Enterprise Library assemblies-->
+      <File Id='OaiOre.Microsoft.Practices.EntLib.Caching.dll' LongName='Microsoft.Practices.EnterpriseLibrary.Caching.dll' DiskId='1' Source='$(var.ZENTITYEXTERNALDEPENDENCIES)\Microsoft.Practices.EnterpriseLibrary.Caching.dll' Vital='yes' />
+
+      <File Id='OaiOre.Microsoft.Practices.EntLib.Common.dll' LongName='Microsoft.Practices.EnterpriseLibrary.Common.dll' DiskId='1' Source='$(var.ZENTITYEXTERNALDEPENDENCIES)\Microsoft.Practices.EnterpriseLibrary.Common.dll' Vital='yes' />
+
+      <File Id='OaiOre.Microsoft.Practices.EntLib.Data.dll' LongName='Microsoft.Practices.EnterpriseLibrary.Data.dll' DiskId='1' Source='$(var.ZENTITYEXTERNALDEPENDENCIES)\Microsoft.Practices.EnterpriseLibrary.Data.dll' Vital='yes' />
+
+      <!-- Security files -->
+      <File Id='OaiOre.ZentityAuthentication' LongName='Zentity.Security.Authentication.dll' DiskId='1' Source='$(var.ZENTITYPLATFORM)\Zentity.Security.Authentication.dll' Vital='no' />
+
+      <File Id='OaiOre.ZentityAuthenticationProvider' LongName='Zentity.Security.AuthenticationProvider.dll' DiskId='1' Source='$(var.ZENTITYPLATFORM)\Zentity.Security.AuthenticationProvider.dll' Vital='no' />
+
+      <File Id='OaiOre.ZentityAuthorization' LongName='Zentity.Security.Authorization.dll' DiskId='1' Source='$(var.ZENTITYPLATFORM)\Zentity.Security.Authorization.dll' Vital='no' />
+
+      <File Id='OaiOre.ZentityAuthorizationHelper' LongName='Zentity.Security.AuthorizationHelper.dll' DiskId='1' Source='$(var.ZENTITYPLATFORM)\Zentity.Security.AuthorizationHelper.dll' Vital='no' />
+
+      <File Id='OaiOre.ZentityScholarlyWorksAndAuthorization' LongName='Zentity.ScholarlyWorksAndAuthorization.dll' DiskId='1' Source='$(var.ZENTITYPLATFORM)\Zentity.ScholarlyWorksAndAuthorization.dll' Vital='no' />
+    </Component>
+
+  </DirectoryRef>
+
+  <DirectoryRef Id="ZentitySyndicationVirtualDirectory">
+
+    <!--Files that go into the root of the Syndication virtual directory.-->
+    <Component Id="SyndicationRootFilesComponent" Guid="{E2399C1E-A293-4b1a-B632-39ED8D95D394}">
+
+      <File Id='Syndication.ashx' LongName='Syndication.ashx' DiskId='1' Source='$(var.ZENTITYSYNDICATION)\Syndication.ashx' Vital='yes'></File>
+
+      <File Id='Syndication.Global.asax' LongName='Global.asax' DiskId='1' Source='$(var.ZENTITYSYNDICATION)\Global.asax' Vital='yes'></File>
+
+
+      <File Id='Syndication.web.config' LongName='web.config' DiskId='1' Source='$(var.ZENTITYSYNDICATION)\web.config' Vital='yes' />
+
+      <!--Update the config file with the Core connection string. This one is for ZentityContext-->
+      <util:XmlFile Id="SyndicationConfigCoreConnString" File="[ZentitySyndicationVirtualDirectory]web.config" Action="setValue" ElementPath="/configuration/appSettings/add[\[]@key='CoreConnectionString'[\]]/@value" Value="[OAIPMHCONTEXTCONNSTRING]" />
+
+      <!--Update the config file with the ServiceHost base Uri-->
+      <util:XmlFile Id="SyndicationConfigServiceHostBaseUri" File="[ZentitySyndicationVirtualDirectory]web.config" Action="setValue" ElementPath="/configuration/appSettings/add[\[]@key='ServiceHost'[\]]/@value" Value="http://[ComputerName]:[ZENTITYIISWEBSITEPORT]/" />
+
+      <!--Syndication Base Uri-->
+      <util:XmlFile Id="SyndicationConfigSyndicationBaseUri" File="[ZentitySyndicationVirtualDirectory]web.config" Action="setValue" ElementPath="/configuration/appSettings/add[\[]@key='SyndicationBaseUri'[\]]/@value" Value="Syndication/Syndication.ashx" />
+
+      <!--Update the config file with the authentication connection string-->
+      <util:XmlFile Id="SyndicationConfigAuthConnString" File="[ZentitySyndicationVirtualDirectory]web.config" Action="setValue" ElementPath="/configuration/connectionStrings/add[\[]@name='AuthenticationConnection'[\]]/@connectionString" Value="[AUTHENTICATIONCONNSTRING]" />
+
+    </Component>
+
+  </DirectoryRef>
+
+  <DirectoryRef Id="SyndicationSearch">
+
+    <Component Id="SyndicationSearchComponent" Guid="{534249AE-4879-4cbe-8B65-AADFDF8EB165}">
+      <File Id='Syndication.ImplicitProperties.config' LongName='ImplicitProperties.config' DiskId='1' Source='$(var.ZENTITYSYNDICATION)\search\ImplicitProperties.config' Vital='yes' />
+
+      <File Id='Syndication.PredicateTokens.config' LongName='PredicateTokens.config' DiskId='1' Source='$(var.ZENTITYSYNDICATION)\search\PredicateTokens.config' Vital='yes' />
+
+      <File Id='Syndication.SpecialTokens.config' LongName='SpecialTokens.config' DiskId='1' Source='$(var.ZENTITYSYNDICATION)\search\SpecialTokens.config' Vital='yes' />
+
+      <File Id='Syndication.ExcludedPredicates.config' LongName='ExcludedPredicates.config' DiskId='1' Source='$(var.ZENTITYSYNDICATION)\search\ExcludedPredicates.config' Vital='yes' />
+
+      <File Id='Syndication.ExcludedResourceTypes.config' LongName='ExcludedResourceTypes.config' DiskId='1' Source='$(var.ZENTITYSYNDICATION)\search\ExcludedResourceTypes.config' Vital='yes' />
+    </Component>
+
+  </DirectoryRef>
+
+  <DirectoryRef Id="SyndicationBin">
+
+    <!--Files that go into the bin folder of the Syndication virtual directory.-->
+    <Component Id="SyndicationBinComponent" Guid="{5BF87DFD-53B6-4e31-93F3-1CC1B0603DB4}">
+      <!-- Rdf assembly -->
+      <File Id='SyndicationZentityRdf' LongName='Zentity.Rdf.dll' DiskId='1' Source='$(var.ZENTITYCORE)\Zentity.Rdf.dll' Vital='yes' />
+
+      <!--Core assembly-->
+      <File Id='SyndicationZentityCore' LongName='Zentity.Core.dll' DiskId='1' Source='$(var.ZENTITYCORE)\Zentity.Core.dll' Vital='yes' />
+
+      <!--ScholarlyWorks assembly-->
+      <File Id='SyndicationZentityScholarlyWorks' LongName='Zentity.ScholarlyWorks.dll' DiskId='1' Source='$(var.ZENTITYCORE)\Zentity.ScholarlyWorks.dll' Vital='yes' />
+
+      <!--Platform assembly-->
+      <File Id='Syndication.Zentity.Platform.dll' LongName='Zentity.Platform.dll' DiskId='1' Source='$(var.ZENTITYPLATFORM)\Zentity.Platform.dll' Vital='yes' />
+
+      <!--Services assembly-->
+      <File Id='Syndication.Zentity.Services.dll' LongName='Zentity.Services.dll' DiskId='1' Source='$(var.ZENTITYPLATFORM)\Zentity.Services.dll' Vital='yes' />
+
+      <!--Enterprise Library assemblies-->
+      <File Id='Syndication.Microsoft.Practices.EntLib.Caching.dll' LongName='Microsoft.Practices.EnterpriseLibrary.Caching.dll' DiskId='1' Source='$(var.ZENTITYEXTERNALDEPENDENCIES)\Microsoft.Practices.EnterpriseLibrary.Caching.dll' Vital='yes' />
+
+      <File Id='Syndication.Microsoft.Practices.EntLib.Common.dll' LongName='Microsoft.Practices.EnterpriseLibrary.Common.dll' DiskId='1' Source='$(var.ZENTITYEXTERNALDEPENDENCIES)\Microsoft.Practices.EnterpriseLibrary.Common.dll' Vital='yes' />
+
+      <File Id='Syndication.Microsoft.Practices.EntLib.Data.dll' LongName='Microsoft.Practices.EnterpriseLibrary.Data.dll' DiskId='1' Source='$(var.ZENTITYEXTERNALDEPENDENCIES)\Microsoft.Practices.EnterpriseLibrary.Data.dll' Vital='yes' />
+
+      <!-- Security files -->
+      <File Id='Syndication.ZentityAuthentication' LongName='Zentity.Security.Authentication.dll' DiskId='1' Source='$(var.ZENTITYPLATFORM)\Zentity.Security.Authentication.dll' Vital='no' />
+
+      <File Id='Syndication.ZentityAuthenticationProvider' LongName='Zentity.Security.AuthenticationProvider.dll' DiskId='1' Source='$(var.ZENTITYPLATFORM)\Zentity.Security.AuthenticationProvider.dll' Vital='no' />
+
+      <File Id='Syndication.ZentityAuthorization' LongName='Zentity.Security.Authorization.dll' DiskId='1' Source='$(var.ZENTITYPLATFORM)\Zentity.Security.Authorization.dll' Vital='no' />
+
+      <File Id='Syndication.ZentityAuthorizationHelper' LongName='Zentity.Security.AuthorizationHelper.dll' DiskId='1' Source='$(var.ZENTITYPLATFORM)\Zentity.Security.AuthorizationHelper.dll' Vital='no' />
+
+      <File Id='Syndication.ZentityScholarlyWorksAndAuthorization' LongName='Zentity.ScholarlyWorksAndAuthorization.dll' DiskId='1' Source='$(var.ZENTITYPLATFORM)\Zentity.ScholarlyWorksAndAuthorization.dll' Vital='no' />
+    </Component>
+
+  </DirectoryRef>
+
+  <DirectoryRef Id="ZentityWebUIVirtualDirectory">
+
+    <Component Id="WebUIFilesComponent" Guid="{42051955-D069-4f1d-9A72-5428121D84E5}">
+      <File Id='WebUI.Error.aspx' LongName='Error.aspx' DiskId='1'
+                        Source='$(var.ZENTITYWEBUI)\Error.aspx' Vital='yes' />
+
+      <File Id='WebUI.Error.htm' LongName='Error.htm' DiskId='1'
+                        Source='$(var.ZENTITYWEBUI)\Error.htm' Vital='yes' />
+
+      <File Id='WebUI.Default.aspx' LongName='Default.aspx' DiskId='1'
+                Source='$(var.ZENTITYWEBUI)\Default.aspx' Vital='yes' />
+
+      <File Id='WebUI.Global.asax' LongName='Global.asax' DiskId='1'
+                Source='$(var.ZENTITYWEBUI)\Global.asax' Vital='yes' />
+
+      <File Id='WebUI.Master.master' LongName='Master.master' DiskId='1'
+                Source='$(var.ZENTITYWEBUI)\Master.master' Vital='yes' />
+
+      <File Id='WebUI.web.config' LongName='web.config' DiskId='1'
+                Source='$(var.ZENTITYWEBUI)\web.config' Vital='yes' />
+    </Component>
+
+  </DirectoryRef>
+
+  <DirectoryRef Id="WebUIApp_GlobalResources">
+
+    <Component Id="WebUIApp_GlobalResourcesFilesComponent" Guid="{CAF887CC-C320-4038-83D8-7B5778E1CF8C}">
+      <File Id='WebUI.Resources.resx' LongName='Resources.resx' DiskId='1'
+                        Source='$(var.ZENTITYWEBUI)\App_GlobalResources\Resources.resx' Vital='yes' />
+    </Component>
+
+  </DirectoryRef>
+
+  <DirectoryRef Id="WebUIDarkBlue">
+
+    <Component Id="WebUIDarkBlueFilesComponent" Guid="{8854598D-720C-43e2-9CFD-636307AF83B9}">
+
+      <File Id='WebUI.DarkBlue.Default.css' LongName='Default.css' DiskId='1'
+                        Source='$(var.ZENTITYWEBUI)\App_Themes\DarkBlue\Default.css' Vital='yes' />
+
+      <File Id='WebUI.DarkBlue.Skins.skin' LongName='Skins.skin' DiskId='1'
+              Source='$(var.ZENTITYWEBUI)\App_Themes\DarkBlue\Skins.skin' Vital='yes' />
+
+    </Component>
+
+  </DirectoryRef>
+
+  <DirectoryRef Id="WebUI.DarkBlue.Images">
+
+    <Component Id="WebUIDarkBlueImagesFilesComponent" Guid="{C6A906C3-CE85-4c37-A778-07775271EDF6}">
+
+      <File Id='WebUI.DarkBlue.Collapsed.gif' LongName='Collapsed.gif' DiskId='1'
+                          Source='$(var.ZENTITYWEBUI)\App_Themes\DarkBlue\Images\Collapsed.gif' Vital='yes' />
+
+      <File Id='WebUI.DarkBlue.CollapsedFrame.png' LongName='CollapsedFrame.png' DiskId='1'
+            Source='$(var.ZENTITYWEBUI)\App_Themes\DarkBlue\Images\CollapsedFrame.png' Vital='yes' />
+
+      <File Id='WebUI.DarkBlue.Expanded.gif' LongName='Expanded.gif' DiskId='1'
+            Source='$(var.ZENTITYWEBUI)\App_Themes\DarkBlue\Images\Expanded.gif' Vital='yes' />
+
+      <File Id='WebUI.DarkBlue.HomeBox.png' LongName='HomeBox.png' DiskId='1'
+            Source='$(var.ZENTITYWEBUI)\App_Themes\DarkBlue\Images\HomeBox.png' Vital='yes' />
+
+      <File Id='WebUI.DarkBlue.HomeBoxHeader.png' LongName='HomeBoxHeader.png' DiskId='1'
+            Source='$(var.ZENTITYWEBUI)\App_Themes\DarkBlue\Images\HomeBoxHeader.png' Vital='yes' />
+
+      <File Id='WebUI.DarkBlue.logo.png' LongName='logo.png' DiskId='1'
+            Source='$(var.ZENTITYWEBUI)\App_Themes\DarkBlue\Images\logo.png' Vital='yes' />
+
+      <File Id='WebUI.DarkBlue.NoImage1.JPG' LongName='NoImage.JPG' DiskId='1'
+            Source='$(var.ZENTITYWEBUI)\App_Themes\DarkBlue\Images\NoImage.JPG' Vital='yes' />
+
+      <File Id='WebUI.DarkBlue.SelectedTab.PNG' LongName='SelectedTab.PNG' DiskId='1'
+            Source='$(var.ZENTITYWEBUI)\App_Themes\DarkBlue\Images\SelectedTab.PNG' Vital='yes' />
+
+      <File Id='WebUI.DarkBlue.SidebarBoxContent.png' LongName='SidebarBoxContent.png' DiskId='1'
+            Source='$(var.ZENTITYWEBUI)\App_Themes\DarkBlue\Images\SidebarBoxContent.png' Vital='yes' />
+
+      <File Id='WebUI.DarkBlue.SidebarBoxEmptyHeader.png' LongName='SidebarBoxEmptyHeader.png' DiskId='1'
+            Source='$(var.ZENTITYWEBUI)\App_Themes\DarkBlue\Images\SidebarBoxEmptyHeader.png' Vital='yes' />
+
+      <File Id='WebUI.DarkBlue.SidebarBoxFooter.png' LongName='SidebarBoxFooter.png' DiskId='1'
+            Source='$(var.ZENTITYWEBUI)\App_Themes\DarkBlue\Images\SidebarBoxFooter.png' Vital='yes' />
+
+      <File Id='WebUI.DarkBlue.SidebarBoxHeader.png' LongName='SidebarBoxHeader.png' DiskId='1'
+            Source='$(var.ZENTITYWEBUI)\App_Themes\DarkBlue\Images\SidebarBoxHeader.png' Vital='yes' />
+
+      <File Id='WebUI.DarkBlue.Tab.PNG' LongName='Tab.PNG' DiskId='1'
+            Source='$(var.ZENTITYWEBUI)\App_Themes\DarkBlue\Images\Tab.PNG' Vital='yes' />
+
+      <File Id='WebUI.DarkBlue.Wait.gif' LongName='Wait.gif' DiskId='1'
+            Source='$(var.ZENTITYWEBUI)\App_Themes\DarkBlue\Images\Wait.gif' Vital='yes' />
+
+    </Component>
+
+  </DirectoryRef>
+
+  <DirectoryRef Id="WebUILightBlue">
+
+    <Component Id="WebUILightBlueFilesComponent" Guid="{C3F64EFA-D713-4b9b-87BA-BD041C8B1661}">
+
+      <File Id='WebUI.LightBlue.Default.css' LongName='Default.css' DiskId='1'
+            Source='$(var.ZENTITYWEBUI)\App_Themes\LightBlue\Default.css' Vital='yes' />
+
+      <File Id='WebUI.LightBlue.Skins.skin' LongName='Skins.skin' DiskId='1'
+              Source='$(var.ZENTITYWEBUI)\App_Themes\LightBlue\Skins.skin' Vital='yes' />
+
+    </Component>
+
+  </DirectoryRef>
+
+  <DirectoryRef Id="WebUI.LightBlue.Images">
+    <Component Id="WebUILightBlueImagesFilesComponent" Guid="{B33B1DBB-A2FC-4f25-B0F2-9B8E930DD143}">
+
+      <File Id='WebUI.LightBlue.Collapsed.gif' LongName='Collapsed.gif' DiskId='1'
+            Source='$(var.ZENTITYWEBUI)\App_Themes\LightBlue\Images\Collapsed.gif' Vital='yes' />
+
+      <File Id='WebUI.LightBlue.CollapsedFrame.png' LongName='CollapsedFrame.png' DiskId='1'
+            Source='$(var.ZENTITYWEBUI)\App_Themes\LightBlue\Images\CollapsedFrame.png' Vital='yes' />
+
+      <File Id='WebUI.LightBlue.Expanded.gif' LongName='Expanded.gif' DiskId='1'
+            Source='$(var.ZENTITYWEBUI)\App_Themes\LightBlue\Images\Expanded.gif' Vital='yes' />
+
+      <File Id='WebUI.LightBlue.HomeBoxContentCenter.png' LongName='HomeBoxContentCenter.png' DiskId='1'
+            Source='$(var.ZENTITYWEBUI)\App_Themes\LightBlue\Images\HomeBoxContentCenter.png' Vital='yes' />
+
+      <File Id='WebUI.LightBlue.HomeBoxContentLeft.png' LongName='HomeBoxContentLeft.png' DiskId='1'
+            Source='$(var.ZENTITYWEBUI)\App_Themes\LightBlue\Images\HomeBoxContentLeft.png' Vital='yes' />
+
+      <File Id='WebUI.LightBlue.HomeBoxContentRight.png' LongName='HomeBoxContentRight.png' DiskId='1'
+            Source='$(var.ZENTITYWEBUI)\App_Themes\LightBlue\Images\HomeBoxContentRight.png' Vital='yes' />
+
+      <File Id='WebUI.LightBlue.HomeBoxHeaderCenter.png' LongName='HomeBoxHeaderCenter.png' DiskId='1'
+            Source='$(var.ZENTITYWEBUI)\App_Themes\LightBlue\Images\HomeBoxHeaderCenter.png' Vital='yes' />
+
+      <File Id='WebUI.LightBlue.HomeBoxHeaderLeft.png' LongName='HomeBoxHeaderLeft.png' DiskId='1'
+            Source='$(var.ZENTITYWEBUI)\App_Themes\LightBlue\Images\HomeBoxHeaderLeft.png' Vital='yes' />
+
+      <File Id='WebUI.LightBlue.HomeBoxHeaderRight.png' LongName='HomeBoxHeaderRight.png' DiskId='1'
+            Source='$(var.ZENTITYWEBUI)\App_Themes\LightBlue\Images\HomeBoxHeaderRight.png' Vital='yes' />
+
+      <File Id='WebUI.LightBlue.logo.png' LongName='logo.png' DiskId='1'
+            Source='$(var.ZENTITYWEBUI)\App_Themes\LightBlue\Images\logo.png' Vital='yes' />
+
+      <File Id='WebUI.LightBlue.NoImage1.JPG' LongName='NoImage.JPG' DiskId='1'
+            Source='$(var.ZENTITYWEBUI)\App_Themes\LightBlue\Images\NoImage.JPG' Vital='yes' />
+
+      <File Id='WebUI.LightBlue.SelectedTab.PNG' LongName='SelectedTab.PNG' DiskId='1'
+            Source='$(var.ZENTITYWEBUI)\App_Themes\LightBlue\Images\SelectedTab.PNG' Vital='yes' />
+
+      <File Id='WebUI.LightBlue.SidebarBoxContent.png' LongName='SidebarBoxContent.png' DiskId='1'
+            Source='$(var.ZENTITYWEBUI)\App_Themes\LightBlue\Images\SidebarBoxContent.png' Vital='yes' />
+
+      <File Id='WebUI.LightBlue.SidebarBoxEmptyHeader.png' LongName='SidebarBoxEmptyHeader.png' DiskId='1'
+            Source='$(var.ZENTITYWEBUI)\App_Themes\LightBlue\Images\SidebarBoxEmptyHeader.png' Vital='yes' />
+
+      <File Id='WebUI.LightBlue.SidebarBoxFooter.png' LongName='SidebarBoxFooter.png' DiskId='1'
+            Source='$(var.ZENTITYWEBUI)\App_Themes\LightBlue\Images\SidebarBoxFooter.png' Vital='yes' />
+
+      <File Id='WebUI.LightBlue.SidebarBoxHeader.png' LongName='SidebarBoxHeader.png' DiskId='1'
+            Source='$(var.ZENTITYWEBUI)\App_Themes\LightBlue\Images\SidebarBoxHeader.png' Vital='yes' />
+
+      <File Id='WebUI.LightBlue.Tab.PNG' LongName='Tab.PNG' DiskId='1'
+            Source='$(var.ZENTITYWEBUI)\App_Themes\LightBlue\Images\Tab.PNG' Vital='yes' />
+
+    </Component>
+  </DirectoryRef>
+
+  <DirectoryRef Id="WebUIBin">
+    <Component Id="WebUIWebConfigAtomPubEndPoint" Guid="{1FD3F507-8A91-4f4d-B7E4-232E8DC29822}">
+      <Condition><![CDATA[ATOMPUBFEATUREINSTALLED="True"]]></Condition>
+      <util:XmlFile Id="WebUIWebConfigAtomPubEndPoint" File="[ZentityWebUIVirtualDirectory]web.config" Action="setValue"
+            ElementPath="/configuration/appSettings/add[\[]@key='AtomPubEndPoint'[\]]/@value"
+            Value="http://[ComputerName]:[ZENTITYIISWEBSITEPORT]/[ATOMPUBURLPATH]" />
+      <CreateFolder/>
+    </Component>
+
+    <Component Id="WebUIWebConfigSwordEndPoint" Guid="{0E9A1327-86F2-4aa1-AD90-775BE3068A30}">
+      <Condition><![CDATA[SWORDFEATUREINSTALLED="True"]]></Condition>
+      <util:XmlFile Id="WebUIWebConfigSwordEndPoint" File="[ZentityWebUIVirtualDirectory]web.config" Action="setValue"
+            ElementPath="/configuration/appSettings/add[\[]@key='SWORDEndPoint'[\]]/@value"
+            Value="http://[ComputerName]:[ZENTITYIISWEBSITEPORT]/[SWORDURLPATH]" />
+      <CreateFolder/>
+    </Component>
+
+    <Component Id="WebUIWebConfigSyndicationEndPoint" Guid="{CE14DD24-BE4D-4118-925A-4A31793617DC}">
+      <Condition><![CDATA[SYNDICATIONFEATUREINSTALLED="True"]]></Condition>
+      <util:XmlFile Id="WebUIWebConfigSyndicationEndPoint" File="[ZentityWebUIVirtualDirectory]web.config" Action="setValue"
+            ElementPath="/configuration/appSettings/add[\[]@key='SyndicationEndPoint'[\]]/@value"
+            Value="http://[ComputerName]:[ZENTITYIISWEBSITEPORT]/[SYNDICATIONURLPATH]" />
+      <CreateFolder/>
+    </Component>
+
+    <Component Id="WebUIWebConfigOaiPmhEndPoint" Guid="{022F390E-84C8-4d4c-A5C1-99809A491E01}">
+      <Condition><![CDATA[OAIPMHFEATUREINSTALLED="True"]]></Condition>
+      <util:XmlFile Id="WebUIWebConfigOaiPmhEndPoint" File="[ZentityWebUIVirtualDirectory]web.config" Action="setValue"
+            ElementPath="/configuration/appSettings/add[\[]@key='OaiPmhEndPoint'[\]]/@value"
+            Value="http://[ComputerName]:[ZENTITYIISWEBSITEPORT]/[OAIPMHURLPATH]" />
+      <CreateFolder/>
+    </Component>
+
+    <Component Id="WebUIWebConfigOaiOreEndPoint" Guid="{FE472636-E091-408b-832D-1AACAA547E9B}">
+      <Condition><![CDATA[OAIOREFEATUREINSTALLED="True"]]></Condition>
+      <util:XmlFile Id="WebUIWebConfigOaiOreEndPoint" File="[ZentityWebUIVirtualDirectory]web.config" Action="setValue"
+            ElementPath="/configuration/appSettings/add[\[]@key='OaiOreEndPoint'[\]]/@value"
+            Value="http://[ComputerName]:[ZENTITYIISWEBSITEPORT]/[OAIOREURLPATH]" />
+      <CreateFolder/>
+    </Component>
+
+    <Component Id="WebUIBinComponent" Guid="{0CE4A8B8-730F-470c-9EF0-444E3BCB5D84}">
+
+      <!--Update the config file with the Core connection string-->
+      <util:XmlFile Id="WebUIWebConfigCoreConnString" File="[ZentityWebUIVirtualDirectory]web.config" Action="setValue"
+            ElementPath="/configuration/connectionStrings/add[\[]@name='ZentityContext'[\]]/@connectionString"
+            Value="[OAIPMHCONTEXTCONNSTRING]" />
+
+      <!--Update the config file with the administration connection string-->
+      <util:XmlFile Id="WebUIWebConfigAdminConnString" File="[ZentityWebUIVirtualDirectory]web.config" Action="setValue"
+            ElementPath="/configuration/connectionStrings/add[\[]@name='AdministrationContext'[\]]/@connectionString"
+            Value="[COREADMINCONTEXTCONNSTRING]" />
+
+      <!--Update the config file with the authentication connection string-->
+      <util:XmlFile Id="WebUIWebConfigAuthConnString" File="[ZentityWebUIVirtualDirectory]web.config" Action="setValue"
+            ElementPath="/configuration/connectionStrings/add[\[]@name='AuthenticationConnection'[\]]/@connectionString"
+            Value="[AUTHENTICATIONCONNSTRING]" />
+
+      <File Id='WebUI.Microsoft.Practices.EnterpriseLibrary.Caching.dll' LongName='Microsoft.Practices.EnterpriseLibrary.Caching.dll' DiskId='1'
+              Source='$(var.ZENTITYWEBUI)\bin\Microsoft.Practices.EnterpriseLibrary.Caching.dll' Vital='yes' />
+
+      <File Id='WebUI.Microsoft.Practices.EnterpriseLibrary.Common.dll' LongName='Microsoft.Practices.EnterpriseLibrary.Common.dll' DiskId='1'
+              Source='$(var.ZENTITYWEBUI)\bin\Microsoft.Practices.EnterpriseLibrary.Common.dll' Vital='yes' />
+
+      <File Id='WebUI.Microsoft.Practices.EnterpriseLibrary.Data.dll' LongName='Microsoft.Practices.EnterpriseLibrary.Data.dll' DiskId='1'
+              Source='$(var.ZENTITYWEBUI)\bin\Microsoft.Practices.EnterpriseLibrary.Data.dll' Vital='yes' />
+
+      <File Id='WebUI.Microsoft.Practices.EnterpriseLibrary.Logging.dll' LongName='Microsoft.Practices.EnterpriseLibrary.Logging.dll' DiskId='1'
+              Source='$(var.ZENTITYWEBUI)\bin\Microsoft.Practices.EnterpriseLibrary.Logging.dll' Vital='yes' />
+
+      <File Id='WebUI.Microsoft.Practices.ServiceLocation.dll' LongName='Microsoft.Practices.ServiceLocation.dll' DiskId='1'
+              Source='$(var.ZENTITYWEBUI)\bin\Microsoft.Practices.ServiceLocation.dll' Vital='yes' />
+
+      <File Id='WebUI.Microsoft.Practices.Unity.Interception.dll' LongName='Microsoft.Practices.Unity.Interception.dll' DiskId='1'
+              Source='$(var.ZENTITYWEBUI)\bin\Microsoft.Practices.Unity.Interception.dll' Vital='yes' />
+
+      <File Id='WebUI.Microsoft.Practices.Unity.dll' LongName='Microsoft.Practices.Unity.dll' DiskId='1'
+              Source='$(var.ZENTITYWEBUI)\bin\Microsoft.Practices.Unity.dll' Vital='yes' />
+
+      <File Id='WebUI.System.Data.dll' LongName='System.Data.dll' DiskId='1'
+              Source='$(var.ZENTITYWEBUI)\bin\System.Data.dll' Vital='yes' />
+
+      <File Id='WebUI.System.Data.Entity.dll' LongName='System.Data.Entity.dll' DiskId='1'
+              Source='$(var.ZENTITYWEBUI)\bin\System.Data.Entity.dll' Vital='yes' />
+
+      <File Id='WebUI.Zentity.Core.dll' LongName='Zentity.Core.dll' DiskId='1'
+              Source='$(var.ZENTITYWEBUI)\bin\Zentity.Core.dll' Vital='yes' />
+
+      <File Id='WebUI.Zentity.Platform.dll' LongName='Zentity.Platform.dll' DiskId='1'
+              Source='$(var.ZENTITYWEBUI)\bin\Zentity.Platform.dll' Vital='yes' />
+
+      <File Id='WebUI.ZentityRdf' LongName='Zentity.Rdf.dll' DiskId='1'
+              Source='$(var.ZENTITYWEBUI)\bin\Zentity.Rdf.dll' Vital='yes' />
+
+      <File Id='WebUI.Zentity.ScholarlyWorks.dll' LongName='Zentity.ScholarlyWorks.dll' DiskId='1'
+              Source='$(var.ZENTITYWEBUI)\bin\Zentity.ScholarlyWorks.dll' Vital='yes' />
+
+      <File Id='WebUI.ZentityScholarlyWorksAndAuthorization'
+            LongName='Zentity.ScholarlyWorksAndAuthorization.dll' DiskId='1'
+           Source='$(var.ZENTITYWEBUI)\bin\Zentity.ScholarlyWorksAndAuthorization.dll' Vital='no' />
+
+      <!-- Security files -->
+      <File Id='WebUI.ZentityAuthentication' LongName='Zentity.Security.Authentication.dll' DiskId='1'
+           Source='$(var.ZENTITYWEBUI)\bin\Zentity.Security.Authentication.dll' Vital='no' />
+
+      <File Id='WebUI.ZentityAuthenticationProvider'
+            LongName='Zentity.Security.AuthenticationProvider.dll' DiskId='1'
+           Source='$(var.ZENTITYWEBUI)\bin\Zentity.Security.AuthenticationProvider.dll' Vital='no' />
+
+      <File Id='WebUI.ZentityAuthorization'
+            LongName='Zentity.Security.Authorization.dll' DiskId='1'
+           Source='$(var.ZENTITYWEBUI)\bin\Zentity.Security.Authorization.dll' Vital='no' />
+
+      <File Id='WebUI.ZentityAuthorizationHelper'
+            LongName='Zentity.Security.AuthorizationHelper.dll' DiskId='1'
+           Source='$(var.ZENTITYWEBUI)\bin\Zentity.Security.AuthorizationHelper.dll' Vital='no' />
+
+      <File Id='WebUI.ZentityWebUI'
+            LongName='Zentity.Web.UI.dll' DiskId='1'
+           Source='$(var.ZENTITYWEBUI)\bin\Zentity.Web.UI.dll' Vital='yes' />
+
+      <File Id='WebUI.Zentity.Web.UI.ToolKit.dll' LongName='Zentity.Web.UI.ToolKit.dll' DiskId='1'
+              Source='$(var.ZENTITYWEBUI)\bin\Zentity.Web.UI.ToolKit.dll' Vital='yes' />
+
+      <File Id='WebUI.Zentity.Services.dll' LongName='Zentity.Services.dll' DiskId='1'
+              Source='$(var.ZENTITYWEBUI)\bin\Zentity.Services.dll' Vital='yes' />
+
+      <File Id='WebUI.Zentity.Zip.dll' LongName='Zentity.Zip.dll' DiskId='1'
+              Source='$(var.ZENTITYWEBUI)\bin\Zentity.Zip.dll' Vital='yes' />      
+    </Component>
+
+  </DirectoryRef>
+
+  <DirectoryRef Id="WebUIDocuments">
+
+    <Component Id="WebUIDocumentFilesComponent" Guid="{35006835-7CF8-4c20-84F6-16C221A986E0}">
+
+      <RegistryValue Id="RegShortcutWebUI" Root="HKCU" Key="SOFTWARE\$(var.ProductName)\$(var.ProductWebAppName)\Settings" Name="WebUIShortcuts" Value="1" Type="integer" KeyPath="yes" />
+
+      <File Id='WebUI.QuickGuide.docx' LongName='Zentity Quick Guide - Version 1.docx' DiskId='1' Source='$(var.ZENTITYDOCUMENTS)\Zentity Quick Guide - Version 1.docx' Vital='no'></File>
+
+      <File Id='WebUI.ZentityChangeHistoryLogging.docx' LongName='Zentity Change History Logging User Guide - Version 1.docx' DiskId='1' Source='$(var.ZENTITYDOCUMENTS)\Zentity Change History Logging User Guide - Version 1.docx' Vital='no'></File>
+
+      <File Id='WebUI.ZentityDataModelExtensibility.docx' LongName='Zentity Data Model Extensibility User Guide - Version 1.docx' DiskId='1' Source='$(var.ZENTITYDOCUMENTS)\Zentity Data Model Extensibility User Guide - Version 1.docx' Vital='no'></File>
+
+      <File Id='WebUI.ZentitySearch.docx' LongName='Zentity Search User Guide - Version 1.docx' DiskId='1'
+                  Source='$(var.ZENTITYDOCUMENTS)\Zentity Search User Guide - Version 1.docx' Vital='no'>
+      </File>
+
+      <File Id='WebUI.ZentitySecurity.docx' LongName='Zentity Security User Guide - Version 1.docx' DiskId='1' Source='$(var.ZENTITYDOCUMENTS)\Zentity Security User Guide - Version 1.docx' Vital='no'></File>
+
+      <File Id='WebUI.Zentity.Core.chm' LongName='Zentity.Core.chm' DiskId='1' Source='$(var.ZENTITYDOCUMENTS)\Zentity.Core.chm' Vital='no' />
+
+      <File Id='WebUI.Zentity.Platform.chm' LongName='Zentity.Platform.chm' DiskId='1' Source='$(var.ZENTITYDOCUMENTS)\Zentity.Platform.chm' Vital='no' />
+
+      <File Id='WebUI.Zentity.Services.chm' LongName='Zentity.Services.chm' DiskId='1' Source='$(var.ZENTITYDOCUMENTS)\Zentity.Services.chm' Vital='no' />
+
+      <File Id='WebUI.Zentity.Security.chm' LongName='Zentity.Security.chm' DiskId='1'
+                  Source='$(var.ZENTITYDOCUMENTS)\Zentity.Security.chm' Vital='no' />
+
+    </Component>
+
+  </DirectoryRef>
+
+  <DirectoryRef Id="WebUIHelp">
+    <Component Id="WebUIHelpComponent" Guid="{1B847043-7676-4d08-ABBF-BFB105089D78}">
+
+      <File Id='WebUI.About.aspx' LongName='About.aspx' DiskId='1'
+              Source='$(var.ZENTITYWEBUI)\Help\About.aspx' Vital='yes' />
+
+      <File Id='WebUI.Help.aspx' LongName='Help.aspx' DiskId='1'
+              Source='$(var.ZENTITYWEBUI)\Help\Help.aspx' Vital='yes' />
+
+      <File Id='WebUI.Services.aspx' LongName='Services.aspx' DiskId='1'
+              Source='$(var.ZENTITYWEBUI)\Help\Services.aspx' Vital='yes' />
+
+    </Component>
+  </DirectoryRef>
+
+  <DirectoryRef Id="WebUIResourceManagement">
+    <Component Id="WebUIResourceManagementComponent" Guid="{56FF3FAE-6A6C-4c1b-B2CB-44A1459B60BC}">
+
+      <File Id='WebUI.BasicSearch.aspx' LongName='BasicSearch.aspx' DiskId='1'
+              Source='$(var.ZENTITYWEBUI)\ResourceManagement\BasicSearch.aspx' Vital='yes' />
+
+      <File Id='WebUI.BrowsableViews.aspx' LongName='BrowsableViews.aspx' DiskId='1'
+              Source='$(var.ZENTITYWEBUI)\ResourceManagement\BrowsableViews.aspx' Vital='yes' />
+
+      <File Id='WebUI.Browse.aspx' LongName='Browse.aspx' DiskId='1'
+              Source='$(var.ZENTITYWEBUI)\ResourceManagement\Browse.aspx' Vital='yes' />
+
+      <File Id='WebUI.FindSimilarResources.aspx' LongName='FindSimilarResources.aspx' DiskId='1'
+              Source='$(var.ZENTITYWEBUI)\ResourceManagement\FindSimilarResources.aspx' Vital='yes' />
+
+      <File Id='WebUI.Manage.aspx' LongName='Manage.aspx' DiskId='1'
+              Source='$(var.ZENTITYWEBUI)\ResourceManagement\Manage.aspx' Vital='yes' />
+
+      <File Id='WebUI.ManageResource.aspx' LongName='ManageResource.aspx' DiskId='1'
+              Source='$(var.ZENTITYWEBUI)\ResourceManagement\ManageResource.aspx' Vital='yes' />
+
+      <File Id='WebUI.ManageCategories.aspx' LongName='ManageCategories.aspx' DiskId='1'
+              Source='$(var.ZENTITYWEBUI)\ResourceManagement\ManageCategories.aspx' Vital='yes' />
+
+      <File Id='WebUI.RecentlyAddedResources.aspx' LongName='RecentlyAddedResources.aspx' DiskId='1'
+              Source='$(var.ZENTITYWEBUI)\ResourceManagement\RecentlyAddedResources.aspx' Vital='yes' />
+
+      <File Id='WebUI.Resources.aspx' LongName='Resources.aspx' DiskId='1'
+              Source='$(var.ZENTITYWEBUI)\ResourceManagement\Resources.aspx' Vital='yes' />
+
+      <File Id='WebUI.Search.aspx' LongName='Search.aspx' DiskId='1'
+              Source='$(var.ZENTITYWEBUI)\ResourceManagement\Search.aspx' Vital='yes' />
+
+      <File Id='WebUI.Tags.aspx' LongName='Tags.aspx' DiskId='1'
+              Source='$(var.ZENTITYWEBUI)\ResourceManagement\Tags.aspx' Vital='yes' />
+
+      <File Id='WebUI.TopAuthors.aspx' LongName='TopAuthors.aspx' DiskId='1'
+              Source='$(var.ZENTITYWEBUI)\ResourceManagement\TopAuthors.aspx' Vital='yes' />
+
+      <File Id='WebUI.TopTags.aspx' LongName='TopTags.aspx' DiskId='1'
+              Source='$(var.ZENTITYWEBUI)\ResourceManagement\TopTags.aspx' Vital='yes' />
+
+    </Component>
+  </DirectoryRef>
+
+  <DirectoryRef Id="WebUIScripts">
+    <Component Id="WebUIScriptsComponent" Guid="{DAA0E3D5-7FF9-4016-B751-75C9F73ECF28}">
+
+      <File Id='WebUI.Script.js' LongName='Script.js' DiskId='1'
+              Source='$(var.ZENTITYWEBUI)\Scripts\Script.js' Vital='yes' />
+
+    </Component>
+  </DirectoryRef>
+
+  <DirectoryRef Id="WebUISearch">
+    <Component Id="WebUISearchComponent" Guid="{37CC5003-7286-48a5-8B9D-D629A4EABCB1}">
+
+      <File Id='WebUI.ImplicitProperties.config' LongName='ImplicitProperties.config' DiskId='1'
+              Source='$(var.ZENTITYWEBUI)\Search\ImplicitProperties.config' Vital='yes' />
+
+      <File Id='WebUI.PredicateTokens.config' LongName='PredicateTokens.config' DiskId='1'
+              Source='$(var.ZENTITYWEBUI)\Search\PredicateTokens.config' Vital='yes' />
+
+      <File Id='WebUI.SpecialTokens.config' LongName='SpecialTokens.config' DiskId='1'
+              Source='$(var.ZENTITYWEBUI)\Search\SpecialTokens.config' Vital='yes' />
+
+      <File Id='WebUI.ExcludedPredicates.config' LongName='ExcludedPredicates.config' DiskId='1'
+              Source='$(var.ZENTITYWEBUI)\Search\ExcludedPredicates.config' Vital='yes' />
+
+      <File Id='WebUI.ExcludedResourceTypes.config' LongName='ExcludedResourceTypes.config' DiskId='1'
+              Source='$(var.ZENTITYWEBUI)\Search\ExcludedResourceTypes.config' Vital='yes' />
+
+    </Component>
+  </DirectoryRef>
+
+  <DirectoryRef Id="WebUISecurity">
+    <Component Id="WebUISecurityComponent" Guid="{E010DF27-6B99-48b7-97ED-08F10F38A00C}">
+
+      <File Id='WebUI.ChangePassword.aspx' LongName='ChangePassword.aspx' DiskId='1'
+              Source='$(var.ZENTITYWEBUI)\Security\ChangePassword.aspx' Vital='yes' />
+
+      <File Id='WebUI.Groups.aspx' LongName='Groups.aspx' DiskId='1'
+              Source='$(var.ZENTITYWEBUI)\Security\Groups.aspx' Vital='yes' />
+
+      <File Id='WebUI.Permissions.aspx' LongName='Permissions.aspx' DiskId='1'
+              Source='$(var.ZENTITYWEBUI)\Security\Permissions.aspx' Vital='yes' />
+
+      <File Id='WebUI.Users.aspx' LongName='Users.aspx' DiskId='1'
+              Source='$(var.ZENTITYWEBUI)\Security\Users.aspx' Vital='yes' />
+
+    </Component>
+  </DirectoryRef>
+
+  <DirectoryRef Id="WebUIServices">
+    <Component Id="WebUIServicesComponent" Guid="{3F044CC6-E027-431d-860A-CCB71E1C9169}">
+
+      <File Id='WebUI.BibTeXImport.aspx' LongName='BibTeXImport.aspx' DiskId='1'
+              Source='$(var.ZENTITYWEBUI)\Services\BibTeXImport.aspx' Vital='yes' />
+
+    </Component>
+  </DirectoryRef>
+
+  <DirectoryRef Id="WebUIUserControls">
+    <Component Id="WebUI_UserControlsFilesComponent" Guid="{1D7B27CC-5099-406f-BE9A-81D40745919F}">
+
+      <File Id='WebUI.CategoryNodeAssociation.ascx' LongName='CategoryNodeAssociation.ascx' DiskId='1'
+                Source='$(var.ZENTITYWEBUI)\UserControls\CategoryNodeAssociation.ascx' Vital='yes' />
+
+      <File Id='WebUI.ChangeHistory.ascx' LongName='ChangeHistory.ascx' DiskId='1'
+                Source='$(var.ZENTITYWEBUI)\UserControls\ChangeHistory.ascx' Vital='yes' />
+
+      <File Id='WebUI.CreateAssociation.ascx' LongName='CreateAssociation.ascx' DiskId='1'
+                Source='$(var.ZENTITYWEBUI)\UserControls\CreateAssociation.ascx' Vital='yes' />
+
+      <File Id='WebUI.CreateResource.ascx' LongName='CreateResource.ascx' DiskId='1'
+                Source='$(var.ZENTITYWEBUI)\UserControls\CreateResource.ascx' Vital='yes' />
+
+      <File Id='WebUI.CreateScholarlyWorkItemTagging.ascx' LongName='CreateScholarlyWorkItemTagging.ascx' DiskId='1'
+                Source='$(var.ZENTITYWEBUI)\UserControls\CreateScholarlyWorkItemTagging.ascx' Vital='yes' />
+
+      <File Id='WebUI.DisplayResourceDetails.ascx' LongName='DisplayResourceDetails.ascx' DiskId='1'
+                Source='$(var.ZENTITYWEBUI)\UserControls\DisplayResourceDetails.ascx' Vital='yes' />
+
+      <File Id='WebUI.GrantAccess.ascx' LongName='GrantAccess.ascx' DiskId='1'
+                Source='$(var.ZENTITYWEBUI)\UserControls\GrantAccess.ascx' Vital='yes' />
+
+      <File Id='WebUI.GroupAssignment.ascx' LongName='GroupAssignment.ascx' DiskId='1'
+                Source='$(var.ZENTITYWEBUI)\UserControls\GroupAssignment.ascx' Vital='yes' />
+
+      <File Id='WebUI.Login.ascx' LongName='Login.ascx' DiskId='1'
+                Source='$(var.ZENTITYWEBUI)\UserControls\Login.ascx' Vital='yes' />
+
+      <File Id='WebUI.NavigationMenu.ascx' LongName='NavigationMenu.ascx' DiskId='1'
+                Source='$(var.ZENTITYWEBUI)\UserControls\NavigationMenu.ascx' Vital='yes' />
+
+      <File Id='WebUI.ResourcePermissions.ascx' LongName='ResourcePermissions.ascx' DiskId='1'
+                Source='$(var.ZENTITYWEBUI)\UserControls\ResourcePermissions.ascx' Vital='yes' />
+
+      <!--<File Id='WebUI.SelectResourceType.ascx' Name='SELECT~1.ASC' LongName='SelectResourceType.ascx' DiskId='1'
+                          Source='$(var.ZENTITYWEBUI)\UserControls\SelectResourceType.ascx' Vital='yes' />
+
+                <File Id='WebUI.SelectResourceType.ascx.cs' Name='SELECT~1.CS' LongName='SelectResourceType.ascx.cs' DiskId='1'
+                          Source='$(var.ZENTITYWEBUI)\UserControls\SelectResourceType.ascx.cs' Vital='yes' />-->
+
+    </Component>
+  </DirectoryRef>
+
+  <DirectoryRef Id="ZentityODataVirtualDirectory">
+
+    <Component Id="OData_WebAppComponent" Guid="{68008EE2-C96D-41ff-8E7C-B821F6401A13}">
+
+      <File Id='OData.ClientAccessPolicy.Xml' LongName='clientaccesspolicy.xml' DiskId='1' Source='$(var.ZENTITYODATA)\ODataToCXmlTranslator\clientaccesspolicy.xml' Vital='yes' />
+
+      <File Id='OData.CrossDomain.Xml' LongName='crossdomain.xml' DiskId='1' Source='$(var.ZENTITYODATA)\ODataToCXmlTranslator\crossdomain.xml' Vital='yes' />
+
+      <File Id='OData.Web.config' LongName='Web.config' DiskId='1' Source='$(var.ZENTITYODATA)\ODataToCXmlTranslator\Web.config' KeyPath='yes' Vital='yes' />
+
+    </Component>
+
+  </DirectoryRef>
+
+  <DirectoryRef Id="ODataBin">
+
+    <Component Id="OData_Bin" Guid="{D9D70442-EAEE-4f7c-98F2-88033BFF7B8E}">
+
+      <File Id='OData.Bin.Microsoft.Practices.EnterpriseLibrary.Common.dll' LongName='Microsoft.Practices.EnterpriseLibrary.Common.dll' DiskId='1' Source='$(var.ZENTITYODATA)\ODataToCXmlTranslator\bin\Microsoft.Practices.EnterpriseLibrary.Common.dll' Vital='yes' />
+
+      <File Id='OData.Bin.Microsoft.Practices.EnterpriseLibrary.Logging.dll' LongName='Microsoft.Practices.EnterpriseLibrary.Logging.dll' DiskId='1' Source='$(var.ZENTITYODATA)\ODataToCXmlTranslator\bin\Microsoft.Practices.EnterpriseLibrary.Logging.dll' Vital='yes' />
+
+      <File Id='Microsoft.Bin.Practices.ServiceLocation.dll' LongName='Microsoft.Practices.ServiceLocation.dll' DiskId='1' Source='$(var.ZENTITYODATA)\ODataToCXmlTranslator\bin\Microsoft.Practices.ServiceLocation.dll' Vital='yes' />
+
+      <File Id='OData.Bin.Microsoft.Practices.Unity.dll' LongName='Microsoft.Practices.Unity.dll' DiskId='1' Source='$(var.ZENTITYODATA)\ODataToCXmlTranslator\bin\Microsoft.Practices.Unity.dll' Vital='yes' />
+
+      <File Id='OData.Bin.Microsoft.Practices.Unity.Interception.dll' LongName='Microsoft.Practices.Unity.Interception.dll' DiskId='1' Source='$(var.ZENTITYODATA)\ODataToCXmlTranslator\bin\Microsoft.Practices.Unity.Interception.dll' Vital='yes' />
+
+      <File Id='OData.Bin.ODataToCxmlTranslator.dll' LongName='ODataToCxmlTranslator.dll' DiskId='1' Source='$(var.ZENTITYODATA)\ODataToCXmlTranslator\bin\ODataToCxmlTranslator.dll' KeyPath='yes' Vital='yes' />
+
+    </Component>
+
+  </DirectoryRef>
+
+  <DirectoryRef Id="ZentityVisualExplorerVirtualDirectory">
+
+    <Component Id="VisualExplorer_WebAppComponent" Guid="{76546954-A6C8-48e6-B6F3-0685A331B482}">
+
+      <File Id='VisualExplorer.ClientAccessPolicy.Xml' LongName='clientaccesspolicy.xml' DiskId='1' Source='$(var.ZENTITYVISUALEXPLORER)\VisualExplorer\clientaccesspolicy.xml' Vital='yes' />
+
+      <File Id='VisualExplorer.CrossDomain.Xml' LongName='crossdomain.xml' DiskId='1' Source='$(var.ZENTITYVISUALEXPLORER)\VisualExplorer\crossdomain.xml' Vital='yes' />
+
+      <File Id='VisualExplorer.Default.Aspx' LongName='Default.aspx' DiskId='1' Source='$(var.ZENTITYVISUALEXPLORER)\VisualExplorer\Default.aspx' Vital='yes' />
+
+      <File Id='VisualExplorer.Default.Master' LongName='Default.Master' DiskId='1' Source='$(var.ZENTITYVISUALEXPLORER)\VisualExplorer\Default.Master' Vital='yes' />
+
+      <File Id='VisualExplorer.Redirect.Aspx' LongName='Redirect.aspx' DiskId='1' Source='$(var.ZENTITYVISUALEXPLORER)\VisualExplorer\Redirect.aspx' Vital='yes' />
+
+      <File Id='VisualExplorer.Web.Config' LongName='Web.config' DiskId='1' KeyPath='yes' Source='$(var.ZENTITYVISUALEXPLORER)\VisualExplorer\Web.config' Vital='yes' />
+
+      <util:XmlFile Id="SetZentityWebUIUri" File="[ZentityVisualExplorerVirtualDirectory]web.config" Action="setValue" ElementPath="/configuration/appSettings/add[\[]@key='ZentityWebUIUri'[\]]/@value" Value="http://[ComputerName]:[ZENTITYIISWEBSITEPORT]/webui" />
+
+      <util:XmlFile Id="SetZentityDataServiceUri" File="[ZentityVisualExplorerVirtualDirectory]web.config" Action="setValue" ElementPath="/configuration/appSettings/add[\[]@key='ZentityDataServiceUri'[\]]/@value" Value="http://[ComputerName]:[ZENTITYIISWEBSITEPORT]/Dataservice/ZentityDataService.svc" />
+
+      <util:XmlFile Id="SetZentityCollectionFilePath" File="[ZentityVisualExplorerVirtualDirectory]web.config" Action="setValue" ElementPath="/configuration/appSettings/add[\[]@key='CollectionFilePath'[\]]/@value" Value="[PIVOTSERVICESSHAREPATH]" />
+
+      <!--Update the config file with the Core connection string. This one is for ZentityContext-->
+      <util:XmlFile Id="VisualExplorerConfigCoreConnString" File="[ZentityVisualExplorerVirtualDirectory]web.config" Action="setValue" ElementPath="/configuration/connectionStrings/add[\[]@name='ZentityContext'[\]]/@connectionString" Value="[VISUALEXPLORERCONTEXTCONNSTRING]" />
+
+      <util:XmlFile Id="VisualExplorerDataModelingService" File="[ZentityVisualExplorerVirtualDirectory]web.config" Action="setValue" ElementPath="/configuration/system.serviceModel/client/endpoint[\[]@name='WSHttpBinding_IDataModelService'[\]]/@address" Value="http://[ComputerName]:[ZENTITYIISWEBSITEPORT]/Services/DataModelingService" />
+
+      <util:XmlFile Id="VisualExplorerDataModelingServiceUPN" File="[ZentityVisualExplorerVirtualDirectory]web.config" Action="setValue" ElementPath="/configuration/system.serviceModel/client/endpoint[\[]@name='WSHttpBinding_IDataModelService'[\]]/identity/userPrincipalName/@value" Value="[PIVOTSERVICESUSER]" />
+
+      <util:XmlFile Id="VisualExplorerResourceTypeService" File="[ZentityVisualExplorerVirtualDirectory]web.config" Action="setValue" ElementPath="/configuration/system.serviceModel/client/endpoint[\[]@name='WSHttpBinding_IResourceTypeService'[\]]/@address" Value="http://[ComputerName]:[ZENTITYIISWEBSITEPORT]/Services/ResourceTypeService" />
+
+      <util:XmlFile Id="VisualExplorerResourceTypeServiceUPN" File="[ZentityVisualExplorerVirtualDirectory]web.config" Action="setValue" ElementPath="/configuration/system.serviceModel/client/endpoint[\[]@name='WSHttpBinding_IResourceTypeService'[\]]/identity/userPrincipalName/@value" Value="[PIVOTSERVICESUSER]" />
+
+      <util:XmlFile Id="VisualExplorerPublishingService" File="[ZentityVisualExplorerVirtualDirectory]web.config" Action="setValue" ElementPath="/configuration/system.serviceModel/client/endpoint[\[]@name='WSHttpBinding_IPublishingService'[\]]/@address" Value="http://[ComputerName]:[ZENTITYIISWEBSITEPORT]/Pivot/PublishingService" />
+
+      <util:XmlFile Id="VisualExplorerPublishingServiceUPN" File="[ZentityVisualExplorerVirtualDirectory]web.config" Action="setValue" ElementPath="/configuration/system.serviceModel/client/endpoint[\[]@name='WSHttpBinding_IPublishingService'[\]]/identity/userPrincipalName/@value" Value="[PIVOTSERVICESUSER]" />
+
+    </Component>
+
+  </DirectoryRef>
+
+  <DirectoryRef Id='VisualExplorerBin'>
+
+    <Component Id='VisualExplorer_BinComponent' Guid='{DFCBCB7E-C8FD-4631-B6BE-B49B78BCFA38}'>
+
+      <File Id='VisualExplorer.Bin.GuanxiMapCore.dll' LongName='GuanxiMapCore.dll' DiskId='1' Source='$(var.ZENTITYVISUALEXPLORER)\VisualExplorer\bin\GuanxiMapCore.dll' Vital='yes' />
+
+      <File Id='VisualExplorer.Bin.Microsoft.Practices.EnterpriseLibrary.Caching.dll' LongName='Microsoft.Practices.EnterpriseLibrary.Caching.dll' DiskId='1' Source='$(var.ZENTITYVISUALEXPLORER)\VisualExplorer\bin\Microsoft.Practices.EnterpriseLibrary.Caching.dll' Vital='yes' />
+
+      <File Id='VisualExplorer.Bin.Microsoft.Practices.EnterpriseLibrary.Common.dll' LongName='Microsoft.Practices.EnterpriseLibrary.Common.dll' DiskId='1' Source='$(var.ZENTITYVISUALEXPLORER)\VisualExplorer\bin\Microsoft.Practices.EnterpriseLibrary.Common.dll' Vital='yes' />
+
+      <File Id='VisualExplorer.Bin.Microsoft.Practices.EnterpriseLibrary.Data.dll' LongName='Microsoft.Practices.EnterpriseLibrary.Data.dll' DiskId='1' Source='$(var.ZENTITYVISUALEXPLORER)\VisualExplorer\bin\Microsoft.Practices.EnterpriseLibrary.Data.dll' Vital='yes' />
+
+      <File Id='VisualExplorer.Bin.Microsoft.Practices.EnterpriseLibrary.Logging.dll' LongName='Microsoft.Practices.EnterpriseLibrary.Logging.dll' DiskId='1' Source='$(var.ZENTITYVISUALEXPLORER)\VisualExplorer\bin\Microsoft.Practices.EnterpriseLibrary.Logging.dll' Vital='yes' />
+
+      <File Id='VisualExplorer.Bin.Microsoft.Practices.ServiceLocation.dll' LongName='Microsoft.Practices.ServiceLocation.dll' DiskId='1' Source='$(var.ZENTITYVISUALEXPLORER)\VisualExplorer\bin\Microsoft.Practices.ServiceLocation.dll' Vital='yes' />
+
+      <File Id='VisualExplorer.Bin.Microsoft.Practices.Unity.dll' LongName='Microsoft.Practices.Unity.dll' DiskId='1' Source='$(var.ZENTITYVISUALEXPLORER)\VisualExplorer\bin\Microsoft.Practices.Unity.dll' Vital='yes' />
+
+      <File Id='VisualExplorer.Bin.Microsoft.Practices.Unity.Interception.dll' LongName='Microsoft.Practices.Unity.Interception.dll' DiskId='1' Source='$(var.ZENTITYVISUALEXPLORER)\VisualExplorer\bin\Microsoft.Practices.Unity.Interception.dll' Vital='yes' />
+
+      <File Id='VisualExplorer.Bin.guanximap.dll' LongName='guanximap.dll' DiskId='1' Source='$(var.ZENTITYVISUALEXPLORER)\VisualExplorer\bin\guanximap.dll' Vital='yes' />
+
+      <!--<File Id='VisualExplorer.Bin.System.Json.dll' LongName='System.Json.dll' DiskId='1'
+                    Source='$(var.ZENTITYVISUALEXPLORER)\VisualExplorer\bin\System.Json.dll' Vital='yes' />-->
+
+      <!--<File Id='VisualExplorer.Bin.System.Net.dll' LongName='System.Net.dll' DiskId='1'
+                    Source='$(var.ZENTITYVISUALEXPLORER)\VisualExplorer\bin\System.Net.dll' Vital='yes' />-->
+
+      <!--<File Id='VisualExplorer.Bin.System.Windows.Browser.dll' LongName='System.Windows.Browser.dll' DiskId='1'
+                    Source='$(var.ZENTITYVISUALEXPLORER)\VisualExplorer\bin\System.Windows.Browser.dll' Vital='yes' />-->
+
+      <!--<File Id='VisualExplorer.Bin.System.Windows.dll' LongName='System.Windows.dll' DiskId='1'
+                    Source='$(var.ZENTITYVISUALEXPLORER)\VisualExplorer\bin\System.Windows.dll' Vital='yes' />-->
+
+      <File Id='VisualExplorer.Bin.Zentity.Core.dll' LongName='Zentity.Core.dll' DiskId='1' Source='$(var.ZENTITYVISUALEXPLORER)\VisualExplorer\bin\Zentity.Core.dll' Vital='yes' />
+
+      <File Id='VisualExplorer.Bin.Zentity.Platform.dll' LongName='Zentity.Platform.dll' DiskId='1' Source='$(var.ZENTITYVISUALEXPLORER)\VisualExplorer\bin\Zentity.Platform.dll' Vital='yes' />
+
+      <File Id='VisualExplorer.Bin.Zentity.ScholarlyWorks.dll' LongName='Zentity.ScholarlyWorks.dll' DiskId='1' Source='$(var.ZENTITYVISUALEXPLORER)\VisualExplorer\bin\Zentity.ScholarlyWorks.dll' Vital='yes' />
+
+      <File Id='VisualExplorer.Bin.Zentity.Security.Authentication.dll' LongName='Zentity.Security.Authentication.dll' DiskId='1' Source='$(var.ZENTITYVISUALEXPLORER)\VisualExplorer\bin\Zentity.Security.Authentication.dll' Vital='yes' />
+
+      <File Id='VisualExplorer.Bin.Zentity.Security.AuthenticationProvider.dll' LongName='Zentity.Security.AuthenticationProvider.dll' DiskId='1' Source='$(var.ZENTITYVISUALEXPLORER)\VisualExplorer\bin\Zentity.Security.AuthenticationProvider.dll' Vital='yes' />
+
+      <File Id='VisualExplorer.Bin.Zentity.Security.Authorization.dll' LongName='Zentity.Security.Authorization.dll' DiskId='1' Source='$(var.ZENTITYVISUALEXPLORER)\VisualExplorer\bin\Zentity.Security.Authorization.dll' Vital='yes' />
+
+      <File Id='VisualExplorer.Bin.Zentity.Security.AuthorizationHelper.dll' LongName='Zentity.Security.AuthorizationHelper.dll' DiskId='1' Source='$(var.ZENTITYVISUALEXPLORER)\VisualExplorer\bin\Zentity.Security.AuthorizationHelper.dll' Vital='yes' />
+
+      <File Id='VisualExplorer.Bin.Zentity.Services.Web.dll' LongName='Zentity.Services.Web.dll' DiskId='1' Source='$(var.ZENTITYVISUALEXPLORER)\VisualExplorer\bin\Zentity.Services.Web.dll' Vital='yes' />
+
+      <File Id='VisualExplorer.Bin.Zentity.Web.UI.Explorer.dll' LongName='Zentity.Web.UI.Explorer.dll' DiskId='1' Source='$(var.ZENTITYVISUALEXPLORER)\VisualExplorer\bin\Zentity.Web.UI.Explorer.dll' Vital='yes' />
+
+      <File Id='VisualExplorer.Bin.Zentity.Zip.dll' LongName='Zentity.Zip.dll' DiskId='1' Source='$(var.ZENTITYVISUALEXPLORER)\VisualExplorer\bin\Zentity.Zip.dll' Vital='yes' />
+
+    </Component>
+
+  </DirectoryRef>
+
+  <DirectoryRef Id='VisualExplorerClientBin'>
+
+    <Component Id='VisualExplorer_ClientBin' Guid='{1C5B91BA-399E-4398-9C8A-87F20083D47F}'>
+
+      <!--<File Id='VisualExplorer.ClientBin.System.Json.zip' LongName='System.Json.zip' DiskId='1'
+                    Source='$(var.ZENTITYVISUALEXPLORER)\VisualExplorer\ClientBin\System.Json.zip' Vital='yes' />-->
+
+      <!--<File Id='VisualExplorer.ClientBin.System.Windows.Controls.Input.zip' LongName='System.Windows.Controls.Input.zip' DiskId='1'
+                    Source='$(var.ZENTITYVISUALEXPLORER)\VisualExplorer\ClientBin\System.Windows.Controls.Input.zip' Vital='yes' />-->
+
+      <!--<File Id='VisualExplorer.ClientBin.System.Windows.Controls.Layout.Toolkit.zip' LongName='System.Windows.Controls.Layout.Toolkit.zip' DiskId='1' 
+                    Source='$(var.ZENTITYVISUALEXPLORER)\VisualExplorer\ClientBin\System.Windows.Controls.Layout.Toolkit.zip' Vital='yes' />-->
+
+      <!--<File Id='VisualExplorer.ClientBin.System.Windows.Controls.Toolkit.zip' LongName='System.Windows.Controls.Toolkit.zip' DiskId='1'
+                    Source='$(var.ZENTITYVISUALEXPLORER)\VisualExplorer\ClientBin\System.Windows.Controls.Toolkit.zip' Vital='yes' />-->
+
+      <!--<File Id='VisualExplorer.ClientBin.System.Windows.Controls.zip' LongName='System.Windows.Controls.zip' DiskId='1'
+                    Source='$(var.ZENTITYVISUALEXPLORER)\VisualExplorer\ClientBin\System.Windows.Controls.zip' Vital='yes' />-->
+
+      <!--<File Id='VisualExplorer.ClientBin.System.Xml.Linq.zip' LongName='System.Xml.Linq.zip' DiskId='1'
+                    Source='$(var.ZENTITYVISUALEXPLORER)\VisualExplorer\ClientBin\System.Xml.Linq.zip' Vital='yes' />-->
+
+      <!--<File Id='VisualExplorer.ClientBin.System.Xml.Serialization.zip' LongName='System.Xml.Serialization.zip' DiskId='1'
+                    Source='$(var.ZENTITYVISUALEXPLORER)\VisualExplorer\ClientBin\System.Xml.Serialization.zip' Vital='yes' />-->
+
+      <File Id='VisualExplorer.ClientBin.Zentity.Pivot.Web.Viewer.xap' LongName='Zentity.Pivot.Web.Viewer.xap' DiskId='1' Source='$(var.ZENTITYVISUALEXPLORER)\VisualExplorer\ClientBin\Zentity.Pivot.Web.Viewer.xap' Vital='yes' />
+
+      <File Id='VisualExplorer.ClientBin.Zentity.VisualExplorer.xap' LongName='Zentity.VisualExplorer.xap' DiskId='1' Source='$(var.ZENTITYVISUALEXPLORER)\VisualExplorer\ClientBin\Zentity.VisualExplorer.xap' Vital='yes' />
+
+    </Component>
+
+  </DirectoryRef>
+
+  <DirectoryRef Id='VisualExplorerImages'>
+
+    <Component Id='VisualExplorer_Images' Guid='{C77D6D82-BE53-467d-AC97-9AD380F59583}'>
+
+      <File Id='VisualExplorer.Images.default.logo.png' LongName='default-logo.png' DiskId='1' Source='$(var.ZENTITYVISUALEXPLORER)\VisualExplorer\images\default-logo.png' Vital='yes' />
+
+      <File Id='VisualExplorer.Images.no_horizon_bg.jpg' LongName='no-horizon-bg.jpg' DiskId='1' Source='$(var.ZENTITYVISUALEXPLORER)\VisualExplorer\images\no-horizon-bg.jpg' Vital='yes' />
+
+    </Component>
+
+  </DirectoryRef>
+
+  <DirectoryRef Id='VisualExplorerPivot'>
+
+    <Component Id='VisualExplorer_Pivot' Guid='{C0A8C9FB-66B0-44bd-BECD-4FBAF28EAAC5}'>
+
+      <File Id='VisualExplorer.Pivot.Gallery.aspx' LongName='Gallery.aspx' DiskId='1' Source='$(var.ZENTITYVISUALEXPLORER)\VisualExplorer\Pivot\Gallery.aspx' Vital='yes' />
+
+      <File Id='VisualExplorer.Pivot.ODataViewer.aspx' LongName='ODataViewer.aspx' DiskId='1' Source='$(var.ZENTITYVISUALEXPLORER)\VisualExplorer\Pivot\ODataViewer.aspx' Vital='yes' />
+
+      <File Id='VisualExplorer.Pivot.Viewer.aspx' LongName='Viewer.aspx' DiskId='1' Source='$(var.ZENTITYVISUALEXPLORER)\VisualExplorer\Pivot\Viewer.aspx' Vital='yes' />
+
+    </Component>
+
+  </DirectoryRef>
+
+  <DirectoryRef Id="VisualExplorerPivotSearch">
+
+    <Component Id="VisualExplorerPivotSearchComponent" Guid="{BD893B96-8BFE-42d0-8756-235396354647}">
+      <File Id='VisualExplorerPivot.ImplicitProperties.config' LongName='ImplicitProperties.config' DiskId='1' Source='$(var.ZENTITYVISUALEXPLORER)\VisualExplorer\search\ImplicitProperties.config' Vital='yes' />
+
+      <File Id='VisualExplorerPivot.PredicateTokens.config' LongName='PredicateTokens.config' DiskId='1' Source='$(var.ZENTITYVISUALEXPLORER)\VisualExplorer\search\PredicateTokens.config' Vital='yes' />
+
+      <File Id='VisualExplorerPivot.SpecialTokens.config' LongName='SpecialTokens.config' DiskId='1' Source='$(var.ZENTITYVISUALEXPLORER)\VisualExplorer\search\SpecialTokens.config' Vital='yes' />
+
+      <File Id='VisualExplorerPivot.ExcludedPredicates.config' LongName='ExcludedPredicates.config' DiskId='1' Source='$(var.ZENTITYVISUALEXPLORER)\VisualExplorer\search\ExcludedPredicates.config' Vital='yes' />
+
+      <File Id='VisualExplorerPivot.ExcludedResourceTypes.config' LongName='ExcludedResourceTypes.config' DiskId='1' Source='$(var.ZENTITYVISUALEXPLORER)\VisualExplorer\search\ExcludedResourceTypes.config' Vital='yes' />
+    </Component>
+
+  </DirectoryRef>
+
+  <DirectoryRef Id='VisualExplorerServices'>
+
+    <Component Id='VisualExplorer_Services' Guid='{EAD59DA3-A0AE-4c46-915B-0944D18E9B46}'>
+
+      <File Id='VisualExplorer.Services.VisualExplorer.svc' LongName='VisualExplorer.svc' DiskId='1' Source='$(var.ZENTITYVISUALEXPLORER)\VisualExplorer\Services\VisualExplorer.svc' Vital='yes' />
+
+    </Component>
+
+  </DirectoryRef>
+
+  <DirectoryRef Id='VisualExplorerStyles'>
+
+    <Component Id='VisualExplorer_Styles' Guid='{DCC1FEEB-1685-46bd-B732-5BB2372855A9}'>
+
+      <File Id='VisualExplorer.Styles.body.css' LongName='body.css' DiskId='1' Source='$(var.ZENTITYVISUALEXPLORER)\VisualExplorer\Styles\body.css' Vital='yes' />
+
+      <File Id='VisualExplorer.Styles.chrome.css' LongName='chrome.css' DiskId='1' Source='$(var.ZENTITYVISUALEXPLORER)\VisualExplorer\Styles\chrome.css' Vital='yes' />
+
+      <File Id='VisualExplorer.Styles.Site.css' LongName='Site.css' DiskId='1' Source='$(var.ZENTITYVISUALEXPLORER)\VisualExplorer\Styles\Site.css' Vital='yes' />
+
+      <File Id='VisualExplorer.Styles.templates.css' LongName='templates.css' DiskId='1' Source='$(var.ZENTITYVISUALEXPLORER)\VisualExplorer\Styles\templates.css' Vital='yes' />
+
+    </Component>
+
+  </DirectoryRef>
+
+  <DirectoryRef Id='ZentityDataServiceVirtualDirectory'>
+
+    <Component Id='DataService_WebAppComponent' Guid='{11131FD1-78FD-45c0-9235-20F9337EBD1D}'>
+
+      <File Id='DataService.Web.config' LongName='Web.config' DiskId='1' Source='$(var.ZENTITYDATASERVICE)\DataService\Web.config' Vital='yes' />
+
+      <!--Update the config file with the Core connection string. This one is for ZentityContext-->
+      <util:XmlFile Id="DataServiceConfigCoreConnString" File="[ZentityDataServiceVirtualDirectory]web.config" Action="setValue" ElementPath="/configuration/connectionStrings/add[\[]@name='ZentityContext'[\]]/@connectionString" Value="[DATASERVICECONTEXTCONNSTRING]" />
+
+      <File Id='DataService.ZentityDataService.svc' LongName='ZentityDataService.svc' DiskId='1' Source='$(var.ZENTITYDATASERVICE)\DataService\ZentityDataService.svc' Vital='yes'>
+        <util:PermissionEx User='Users' GenericAll='yes' />
+      </File>
+
+    </Component>
+
+  </DirectoryRef>
+
+  <DirectoryRef Id='DataServiceBin'>
+
+    <Component Id='DataService_Bin' Guid='{E07497CA-DD54-4df0-93E3-58DF67D6F432}'>
+
+      <File Id='DataService.Bin.Zentity.Core.dll' LongName='Zentity.Core.dll' DiskId='1' Source='$(var.ZENTITYDATASERVICE)\DataService\bin\Zentity.Core.dll' Vital='yes' />
+
+      <File Id='DataService.Bin.Zentity.Rdf.dll' LongName='Zentity.Rdf.dll' DiskId='1' Source='$(var.ZENTITYDATASERVICE)\DataService\bin\Zentity.Rdf.dll' Vital='yes' />
+
+      <File Id='DataService.Bin.Zentity.Services.Data.dll' LongName='Zentity.Services.Data.dll' DiskId='1' Source='$(var.ZENTITYDATASERVICE)\DataService\bin\Zentity.Services.Data.dll' Vital='yes' />
+
+      <File Id='DataService.Bin.Zentity.Metadata.dll' LongName='Zentity.Metadata.dll' DiskId='1' Source='$(var.ZENTITYDATASERVICE)\DataService\bin\Zentity.Metadata.dll' Vital='yes' />
+
+      <File Id='DataService.Bin.Zentity.ScholarlyWorks.dll' LongName='Zentity.ScholarlyWorks.dll' DiskId='1' Source='$(var.ZENTITYDATASERVICE)\DataService\bin\Zentity.ScholarlyWorks.dll' Vital='yes' />
+
+      <File Id='DataService.Bin.Microsoft.Practices.EnterpriseLibrary.Common.dll' LongName='Microsoft.Practices.EnterpriseLibrary.Common.dll' DiskId='1' Source='$(var.ZENTITYDATASERVICE)\DataService\bin\Microsoft.Practices.EnterpriseLibrary.Common.dll' Vital='yes' />
+
+      <File Id='DataService.Bin.Microsoft.Practices.EnterpriseLibrary.Logging.dll' LongName='Microsoft.Practices.EnterpriseLibrary.Logging.dll' DiskId='1' Source='$(var.ZENTITYDATASERVICE)\DataService\bin\Microsoft.Practices.EnterpriseLibrary.Logging.dll' Vital='yes' />
+
+      <File Id='DataService.Bin.Microsoft.Practices.ServiceLocation.dll' LongName='Microsoft.Practices.ServiceLocation.dll' DiskId='1' Source='$(var.ZENTITYDATASERVICE)\DataService\bin\Microsoft.Practices.ServiceLocation.dll' Vital='yes' />
+
+      <File Id='DataService.Bin.Microsoft.Practices.Unity.dll' LongName='Microsoft.Practices.Unity.dll' DiskId='1' Source='$(var.ZENTITYDATASERVICE)\DataService\bin\Microsoft.Practices.Unity.dll' Vital='yes' />
+
+      <File Id='DataService.Bin.Microsoft.Practices.Unity.Interception.dll' LongName='Microsoft.Practices.Unity.Interception.dll' DiskId='1' Source='$(var.ZENTITYDATASERVICE)\DataService\bin\Microsoft.Practices.Unity.Interception.dll' Vital='yes' />
+
+    </Component>
+
+  </DirectoryRef>
+
+  <DirectoryRef Id="NotificationServices">
+
+    <!-- Notification Service -->
+    <Component Id="NotificationServiceComponent" Guid="{9F693B3D-692A-4d69-8220-AA425048D2CC}">
+
+      <File Id='NotificationServiceExe' Name='Zentity.Services.Windows.exe' DiskId='1' Source='$(var.ZENTITYPIVOTNOTIFICATION)\Zentity.Services.Windows.exe' KeyPath='yes' Vital='yes' />
+
+      <File Id='NotificationService.Microsoft.Practices.EnterpriseLibrary.Common' LongName='Microsoft.Practices.EnterpriseLibrary.Common.dll' DiskId='1' Source='$(var.ZENTITYEXTERNALDEPENDENCIES)\Microsoft.Practices.EnterpriseLibrary.Common.dll' Vital='yes' />
+
+      <File Id='NotificationService.Microsoft.Practices.EnterpriseLibrary.Logging' Name='Microsoft.Practices.EnterpriseLibrary.Logging.dll' DiskId='1' Source='$(var.ZENTITYPIVOTNOTIFICATION)\Microsoft.Practices.EnterpriseLibrary.Logging.dll' Vital='yes' />
+
+      <File Id='NotificationService.Microsoft.Practices.ServiceLocation' Name='Microsoft.Practices.ServiceLocation.dll' DiskId='1' Source='$(var.ZENTITYPIVOTNOTIFICATION)\Microsoft.Practices.ServiceLocation.dll' Vital='yes' />
+
+      <File Id='NotificationService.Microsoft.Practices.Unity' Name='Microsoft.Practices.Unity.dll' DiskId='1' Source='$(var.ZENTITYPIVOTNOTIFICATION)\Microsoft.Practices.Unity.dll' Vital='yes' />
+
+      <File Id='NotificationService.Microsoft.Practices.Unity.Interception' Name='Microsoft.Practices.Unity.Interception.dll' DiskId='1' Source='$(var.ZENTITYPIVOTNOTIFICATION)\Microsoft.Practices.Unity.Interception.dll' Vital='yes' />
+
+      <File Id="NotificationServiceConfig" LongName="Zentity.Services.Windows.exe.config" Source="$(var.ZENTITYPIVOTNOTIFICATION)\Zentity.Services.Windows.exe.config" Vital="yes" DiskId="1" />
+
+      <util:XmlFile Id="NotificationServiceBatchSize" File="[NotificationServices]Zentity.Services.Windows.exe.config" Action="setValue" ElementPath="/configuration/appSettings/add[\[]@key='BatchSize'[\]]/@value" Value="[BATCHSIZE]" />
+
+      <util:XmlFile Id="NotificationServiceTimeOut" File="[NotificationServices]Zentity.Services.Windows.exe.config" Action="setValue" ElementPath="/configuration/appSettings/add[\[]@key='Timeout'[\]]/@value" Value="[TIMEOUT]" />
+
+      <util:XmlFile Id="NotificationServiceConnectionString" File="[NotificationServices]Zentity.Services.Windows.exe.config" Action="setValue" ElementPath="/configuration/connectionStrings/add[\[]@name='ZentityConnection'[\]]/@connectionString" Value="[ATOMPUBSQLCONNSTRING]" />
+
+      <util:XmlFile Id="NotificationServiceEndpoint" File="[NotificationServices]Zentity.Services.Windows.exe.config" Action="setValue" ElementPath="/configuration/system.serviceModel/client/endpoint[\[]@name='WSHttpBinding_IPublishingService'[\]]/@address" Value="http://[ComputerName]:[ZENTITYIISWEBSITEPORT]/Pivot/PublishingService" />
+
+      <util:XmlFile Id="NotificationServiceEndpointUPN" File="[NotificationServices]Zentity.Services.Windows.exe.config" Action="setValue" ElementPath="/configuration/system.serviceModel/client/endpoint[\[]@name='WSHttpBinding_IPublishingService'[\]]/identity/userPrincipalName/@value" Value="[PIVOTSERVICESUSER]" />
+
+      <util:User Id="NotificationUserLogonAsService" UpdateIfExists="yes" CreateUser="no" Name="[PIVOTSERVICESUSER]" LogonAsService="yes" />
+
+      <ServiceInstall Id="NotificationServiceInstaller" Type="ownProcess" Vital="yes" Name="NotificationService" DisplayName="Zentity Notification Service" Description="Notification service keeps track of changes in Zentity." Start="auto" Account="[NOTIFICATIONSERVICEUSER]" Password="[NOTIFICATIONSERVICEPASSWORD]" ErrorControl="ignore" Interactive="no">
+        <util:ServiceConfig FirstFailureActionType="restart" SecondFailureActionType="restart" ThirdFailureActionType="restart" RestartServiceDelayInSeconds="5" ResetPeriodInDays="1" ServiceName="NotificationService" />
+      </ServiceInstall>
+
+      <ServiceControl Id="StartNotificationService" Start="install" Stop="uninstall" Remove="uninstall" Name="NotificationService" Wait="yes" />
+    </Component>
+
+  </DirectoryRef>
+
+  <DirectoryRef Id="PublishingServices">
+    <Directory Id="dir45D061C49C1E1F84512538049641829F" Name="DefaultDeepZoom">
+      <Component Id="cmp5107B48B34E2FB0EF5B948E14E150765" Guid="{08BD58DE-642B-4B84-8FD4-1A5625681958}">
+        <File Id="fil9300CBEF10316A58574AF15D2E6A23E9" KeyPath="yes" Source="$(var.ZENTITYPIVOTPUBLISHING)\DefaultDeepZoom\Default.dzi" />
+      </Component>
+      <Directory Id="dir1F67D3B107EBAF287F3BA0608E3D0961" Name="Default_files">
+        <Directory Id="dirA5353303686F08584B022579506402ED" Name="0">
+          <Component Id="cmp66B1C1F2F8327F0235408F8294C2A4AC" Guid="{BB29632D-8828-42FB-B694-B07CF351F8C4}">
+            <File Id="fil420BCD756BD0CE223245FC67D9DF68B8" KeyPath="yes" Source="$(var.ZENTITYPIVOTPUBLISHING)\DefaultDeepZoom\Default_files\0\0_0.jpg" />
+          </Component>
+        </Directory>
+        <Directory Id="dir92AFD3DECE87DB81402B24252FDB7255" Name="1">
+          <Component Id="cmp7B08F5534DFA8ECD51B919561D461A40" Guid="{61C69118-B0FC-449E-AEC3-1EC196AAEEC7}">
+            <File Id="fil16791B4803C92AB1355EEA8447B45ABF" KeyPath="yes" Source="$(var.ZENTITYPIVOTPUBLISHING)\DefaultDeepZoom\Default_files\1\0_0.jpg" />
+          </Component>
+        </Directory>
+        <Directory Id="dir018BA480BC8C4E35657394A28D4B133B" Name="10">
+          <Component Id="cmp154B31A27C9C75BB2F5FB511A2842839" Guid="{BDD750AC-F181-4F60-B846-4C49E2E080C4}">
+            <File Id="fil3DF4BC05778179FD0FD2EB3F7D69C331" KeyPath="yes" Source="$(var.ZENTITYPIVOTPUBLISHING)\DefaultDeepZoom\Default_files\10\0_0.jpg" />
+          </Component>
+          <Component Id="cmp8478B8A56581F724182975B152BE82CC" Guid="{73F2ED3B-572E-42AE-803D-EF1316C73DAD}">
+            <File Id="fil75B84B16EBCF9C7CFDB4121D115CD783" KeyPath="yes" Source="$(var.ZENTITYPIVOTPUBLISHING)\DefaultDeepZoom\Default_files\10\0_1.jpg" />
+          </Component>
+          <Component Id="cmp66104392404451831E4BBC866AD16863" Guid="{40D894D5-DB70-44C7-A1D2-88E886EAEC56}">
+            <File Id="filF794D16FE7DF7F3403EC3FFC160FEE9A" KeyPath="yes" Source="$(var.ZENTITYPIVOTPUBLISHING)\DefaultDeepZoom\Default_files\10\1_0.jpg" />
+          </Component>
+          <Component Id="cmpFCF4D01BE0114C1A0822BE884B3153C3" Guid="{3A284F17-E721-4E87-9646-28DB23B2DDA8}">
+            <File Id="fil613B369BC042478FF037F85E1E55431E" KeyPath="yes" Source="$(var.ZENTITYPIVOTPUBLISHING)\DefaultDeepZoom\Default_files\10\1_1.jpg" />
+          </Component>
+          <Component Id="cmpAA85E8C096FCDDF4ED6EA3EF6B021520" Guid="{0AC589E1-4730-475D-ACAD-74736AF283BC}">
+            <File Id="fil1CC2F127D60599C4FCC76755BA3ECF80" KeyPath="yes" Source="$(var.ZENTITYPIVOTPUBLISHING)\DefaultDeepZoom\Default_files\10\2_0.jpg" />
+          </Component>
+          <Component Id="cmpBB9E8C45C711DDE454451F8BDEC8DD1E" Guid="{47D7E657-B092-46B6-B531-13A3E900F503}">
+            <File Id="filF1649E9BB8A1B3218B3CB6BE5E1B3EE9" KeyPath="yes" Source="$(var.ZENTITYPIVOTPUBLISHING)\DefaultDeepZoom\Default_files\10\2_1.jpg" />
+          </Component>
+        </Directory>
+        <Directory Id="dirFF878F68F3F4139E29F861757EC848C5" Name="11">
+          <Component Id="cmp666A17BCAE64099CD70D5AC10D0C7B1F" Guid="{B43043B1-679E-4DA8-9BFD-F7AB9E430A43}">
+            <File Id="fil65863A049118EFF75FA7260900A58A13" KeyPath="yes" Source="$(var.ZENTITYPIVOTPUBLISHING)\DefaultDeepZoom\Default_files\11\0_0.jpg" />
+          </Component>
+          <Component Id="cmp27A0B45C97054AD9439D9FDD891834D7" Guid="{23716D88-8A54-42CA-9707-7A8F41FAB3B3}">
+            <File Id="fil6A92F05EB65AABB0622F2D14C9331C44" KeyPath="yes" Source="$(var.ZENTITYPIVOTPUBLISHING)\DefaultDeepZoom\Default_files\11\0_1.jpg" />
+          </Component>
+          <Component Id="cmpD102B26F582F1C345C4567885B8E2A71" Guid="{CFCD3FBA-F99B-424E-B144-CBADAC42249F}">
+            <File Id="fil0F6F8E02762281DA38138662274E1687" KeyPath="yes" Source="$(var.ZENTITYPIVOTPUBLISHING)\DefaultDeepZoom\Default_files\11\0_2.jpg" />
+          </Component>
+          <Component Id="cmpBB32E4692D62BD7EE7EC24D586BDCC1A" Guid="{8CA6C237-5739-49D6-810B-79892D7174F7}">
+            <File Id="fil51FC720145FDE25F9384D46734DBAB72" KeyPath="yes" Source="$(var.ZENTITYPIVOTPUBLISHING)\DefaultDeepZoom\Default_files\11\0_3.jpg" />
+          </Component>
+          <Component Id="cmpCBBA1066BDBAE7FB8A5044A72FCF9485" Guid="{86115451-EC7B-490A-B9E1-5822C33F72A1}">
+            <File Id="fil528B979EAEAAD85294B35CC602521C77" KeyPath="yes" Source="$(var.ZENTITYPIVOTPUBLISHING)\DefaultDeepZoom\Default_files\11\1_0.jpg" />
+          </Component>
+          <Component Id="cmpFBC8DB89D95052F61CB38FF72BD4BC77" Guid="{BF3F7B4F-6FD2-42B5-BE5D-9A4763412E93}">
+            <File Id="filA4A7E658F2D82145C92B5FD51D73B7B6" KeyPath="yes" Source="$(var.ZENTITYPIVOTPUBLISHING)\DefaultDeepZoom\Default_files\11\1_1.jpg" />
+          </Component>
+          <Component Id="cmp546321CF48B5B624EDDEC492C98292EE" Guid="{7A9FC4C1-D68D-43B3-95FB-1AA111C7A4E4}">
+            <File Id="filE90B61BE8F086DA38635BEF91BBAF39D" KeyPath="yes" Source="$(var.ZENTITYPIVOTPUBLISHING)\DefaultDeepZoom\Default_files\11\1_2.jpg" />
+          </Component>
+          <Component Id="cmp7B90451C2B915D02C5FA4CE39F999092" Guid="{A5F76239-C21C-4C19-BFB5-980A0172FA2B}">
+            <File Id="fil16C5F74603EE7209F9D4043F48AA7A5D" KeyPath="yes" Source="$(var.ZENTITYPIVOTPUBLISHING)\DefaultDeepZoom\Default_files\11\1_3.jpg" />
+          </Component>
+          <Component Id="cmp44E08C5B32715AA83D51DA6E15267FF7" Guid="{1CE3988B-167F-41C4-888A-E5598CB9F066}">
+            <File Id="fil0E68ACDC42B4A32285BABD8929181929" KeyPath="yes" Source="$(var.ZENTITYPIVOTPUBLISHING)\DefaultDeepZoom\Default_files\11\2_0.jpg" />
+          </Component>
+          <Component Id="cmpBEB813F6BCD688FB86FB75E279A58AEE" Guid="{3BAF2108-99A0-487A-9A37-FD3B15941FE6}">
+            <File Id="fil5CE385EEF40431A69DCD0EF24607431D" KeyPath="yes" Source="$(var.ZENTITYPIVOTPUBLISHING)\DefaultDeepZoom\Default_files\11\2_1.jpg" />
+          </Component>
+          <Component Id="cmp663314EC80D52A4BC448C3FBCE49F549" Guid="{9370BBC7-C2C5-4988-B42D-D0C5C0C8C95A}">
+            <File Id="filD5C067F5F5BF11A316CAB4ECE510ACA4" KeyPath="yes" Source="$(var.ZENTITYPIVOTPUBLISHING)\DefaultDeepZoom\Default_files\11\2_2.jpg" />
+          </Component>
+          <Component Id="cmp630F110F8359BA717B915696408E74C5" Guid="{2E66888A-3FC7-402C-9E05-CCF4A5CB8130}">
+            <File Id="fil7B1D66BD9AB374BB876D8D7A5037829B" KeyPath="yes" Source="$(var.ZENTITYPIVOTPUBLISHING)\DefaultDeepZoom\Default_files\11\2_3.jpg" />
+          </Component>
+          <Component Id="cmp7B4321C62818B0B665B4EEBA92C09D99" Guid="{11F0CB04-926D-452F-81FC-C370BCCFA0E0}">
+            <File Id="fil26233CF21FC179BB0080CD8C58589DC2" KeyPath="yes" Source="$(var.ZENTITYPIVOTPUBLISHING)\DefaultDeepZoom\Default_files\11\3_0.jpg" />
+          </Component>
+          <Component Id="cmp6C0E6A6726800678C661BB68190B8B29" Guid="{CC82E7AD-F87C-4E1D-82EF-EA29C4208F84}">
+            <File Id="filFFA41F1E6B417FB2CBA51686CA66959A" KeyPath="yes" Source="$(var.ZENTITYPIVOTPUBLISHING)\DefaultDeepZoom\Default_files\11\3_1.jpg" />
+          </Component>
+          <Component Id="cmp23F56C5BAC08FFB6ED2719DF78B3319B" Guid="{36237EBB-D9F3-490B-91B1-54DB942AA1B9}">
+            <File Id="fil229CE3FF9D98D524484B9EC349616ED7" KeyPath="yes" Source="$(var.ZENTITYPIVOTPUBLISHING)\DefaultDeepZoom\Default_files\11\3_2.jpg" />
+          </Component>
+          <Component Id="cmp58EDE69FC99A6ABB4312114D8C446C8B" Guid="{66B38FDD-CE49-4141-A0E2-68C9288BFF57}">
+            <File Id="fil3EE0C6A1B23262B9119137C1B920A5F7" KeyPath="yes" Source="$(var.ZENTITYPIVOTPUBLISHING)\DefaultDeepZoom\Default_files\11\3_3.jpg" />
+          </Component>
+          <Component Id="cmp1A88A9F7067B4CB2C86A88227B9EFEF7" Guid="{FAF7A670-55FC-4D91-B606-6FA5B423F5DF}">
+            <File Id="fil7BC2913C27134B54B153C8DF959E82E3" KeyPath="yes" Source="$(var.ZENTITYPIVOTPUBLISHING)\DefaultDeepZoom\Default_files\11\4_0.jpg" />
+          </Component>
+          <Component Id="cmp243C47262337003124488848ACA4E5F6" Guid="{20D986CF-E240-4842-8881-8CB41428B4A1}">
+            <File Id="filC0D83B75F5FE10E46CA43537F73A4A9D" KeyPath="yes" Source="$(var.ZENTITYPIVOTPUBLISHING)\DefaultDeepZoom\Default_files\11\4_1.jpg" />
+          </Component>
+          <Component Id="cmp541E6FDBC011742588B22CB1B866A23A" Guid="{E2C794F0-C0B8-46E9-A073-938DE47267D1}">
+            <File Id="filFE07F54E36836D4EDE1B21178DCC838F" KeyPath="yes" Source="$(var.ZENTITYPIVOTPUBLISHING)\DefaultDeepZoom\Default_files\11\4_2.jpg" />
+          </Component>
+          <Component Id="cmp02613F6015AB7F72447D295D5BAC033B" Guid="{375E16CF-7FC7-459A-92DE-5DEAB310ECD9}">
+            <File Id="fil56BF10CEAC12BB4714F628758D151684" KeyPath="yes" Source="$(var.ZENTITYPIVOTPUBLISHING)\DefaultDeepZoom\Default_files\11\4_3.jpg" />
+          </Component>
+        </Directory>
+        <Directory Id="dir2CF4EA217272F60CD6601F2A157196A3" Name="2">
+          <Component Id="cmp0CF1F13FD386B30915A9791E8326A204" Guid="{9A4E81F7-2302-4F9A-A4AF-E1BF6BCA14C0}">
+            <File Id="filE355F027F6A133280DCDA066FBE28E6C" KeyPath="yes" Source="$(var.ZENTITYPIVOTPUBLISHING)\DefaultDeepZoom\Default_files\2\0_0.jpg" />
+          </Component>
+        </Directory>
+        <Directory Id="dirB93D5919186646860171C390044D00D4" Name="3">
+          <Component Id="cmp2E673CD18A50482BAC732594911F95B8" Guid="{89D21123-F60C-4E7D-B452-7FF618BE7E30}">
+            <File Id="filF802391F605ED5A33D5CFA9D19FCE34C" KeyPath="yes" Source="$(var.ZENTITYPIVOTPUBLISHING)\DefaultDeepZoom\Default_files\3\0_0.jpg" />
+          </Component>
+        </Directory>
+        <Directory Id="dir4C6ABA283847DAD2CF06223ECDE3CD0C" Name="4">
+          <Component Id="cmp0CD7EB615D0F795DC9438F446FC3BC14" Guid="{F05A0A9D-DBB8-42A5-BAD5-76B31C092E8B}">
+            <File Id="fil69FE7FB92DCA9E4B7F32DD8C2AD31E31" KeyPath="yes" Source="$(var.ZENTITYPIVOTPUBLISHING)\DefaultDeepZoom\Default_files\4\0_0.jpg" />
+          </Component>
+        </Directory>
+        <Directory Id="dirC8427F4C95126F399DB96A79806CDC4E" Name="5">
+          <Component Id="cmp83209413620C576420CB60F6FE962660" Guid="{4A102997-D72D-4D1B-9FA9-63DC8469811A}">
+            <File Id="fil247FD07E365DDAFAA1150A473FA0AA9E" KeyPath="yes" Source="$(var.ZENTITYPIVOTPUBLISHING)\DefaultDeepZoom\Default_files\5\0_0.jpg" />
+          </Component>
+        </Directory>
+        <Directory Id="dirA76225A881A2260801391BC6F0E31753" Name="6">
+          <Component Id="cmp2D3F4076EC69B8DCCBCD1E508B00215F" Guid="{AF5DD903-577A-4219-ABAB-F4D2B9EE37D7}">
+            <File Id="fil08B2D4CCD934CE5DFC24158EDFD25A75" KeyPath="yes" Source="$(var.ZENTITYPIVOTPUBLISHING)\DefaultDeepZoom\Default_files\6\0_0.jpg" />
+          </Component>
+        </Directory>
+        <Directory Id="dirAE0E418C68C61C653DC56C11461FB847" Name="7">
+          <Component Id="cmp3124CFDA8883BAC9FDE8C9D48D40CFC8" Guid="{486AC5CD-6549-47C0-AA14-57783A1C5A80}">
+            <File Id="filD567C41C374ABFCC0037EB4E9E2F2CEE" KeyPath="yes" Source="$(var.ZENTITYPIVOTPUBLISHING)\DefaultDeepZoom\Default_files\7\0_0.jpg" />
+          </Component>
+        </Directory>
+        <Directory Id="dirA2F7EDDAABFB0E5F465801CBBE791268" Name="8">
+          <Component Id="cmp67571FFEB5FEAD2C93674C84FFFA36F7" Guid="{7E8C448A-06D0-4A6A-8816-A08C6C234C7D}">
+            <File Id="filB4DCAC8EA99DC46C8B80B23870592A18" KeyPath="yes" Source="$(var.ZENTITYPIVOTPUBLISHING)\DefaultDeepZoom\Default_files\8\0_0.jpg" />
+          </Component>
+        </Directory>
+        <Directory Id="dirFD586CD98F84951CA4216794E7CD38D9" Name="9">
+          <Component Id="cmp477BE2490D7E06BEE99897F26A3E08D5" Guid="{26CB8A1A-5572-4DDF-A38D-B3E1F735E43F}">
+            <File Id="filFAAA1066922688BF49AF6556AD780158" KeyPath="yes" Source="$(var.ZENTITYPIVOTPUBLISHING)\DefaultDeepZoom\Default_files\9\0_0.jpg" />
+          </Component>
+          <Component Id="cmp5350738557A2186CCC9AD758FB5C4296" Guid="{803F1B6C-2676-4BDB-BF52-89D64345E028}">
+            <File Id="filCE509A68A847E6935E25369DCF6A3916" KeyPath="yes" Source="$(var.ZENTITYPIVOTPUBLISHING)\DefaultDeepZoom\Default_files\9\1_0.jpg" />
+          </Component>
+        </Directory>
+      </Directory>
+    </Directory>
+
+    <!-- Publishing Service -->
+    <Component Id="PublishingServiceComponent" Guid="{915ABD9C-EF91-4ea0-8191-A13145D0DEC8}">
+
+      <File Id="PublishingServiceDeepZoom" LongName="DeepZoomTools.dll" Source="$(var.ZENTITYPIVOTPUBLISHING)\DeepZoomTools.dll" Vital="yes" DiskId="1" />
+
+      <File Id="PublishingServiceEntLibCmn" LongName="Microsoft.Practices.EnterpriseLibrary.Common.dll" Source="$(var.ZENTITYPIVOTPUBLISHING)\Microsoft.Practices.EnterpriseLibrary.Common.dll" Vital="yes" DiskId="1" />
+
+      <File Id="PublishingServiceEnyLibLog" LongName="Microsoft.Practices.EnterpriseLibrary.Logging.dll" Source="$(var.ZENTITYPIVOTPUBLISHING)\Microsoft.Practices.EnterpriseLibrary.Logging.dll" Vital="yes" DiskId="1" />
+
+      <File Id="PublishingServiceSvrLoc" LongName="Microsoft.Practices.ServiceLocation.dll" Source="$(var.ZENTITYPIVOTPUBLISHING)\Microsoft.Practices.ServiceLocation.dll" Vital="yes" DiskId="1" />
+
+      <File Id="PublishingServiceUnity" LongName="Microsoft.Practices.Unity.dll" Source="$(var.ZENTITYPIVOTPUBLISHING)\Microsoft.Practices.Unity.dll" Vital="yes" DiskId="1" />
+
+      <File Id="PublishingServiceUnityInt" LongName="Microsoft.Practices.Unity.Interception.dll" Source="$(var.ZENTITYPIVOTPUBLISHING)\Microsoft.Practices.Unity.Interception.dll" Vital="yes" DiskId="1" />
+
+      <File Id="PublishingServiceCore" LongName="Zentity.Core.dll" Source="$(var.ZENTITYPIVOTPUBLISHING)\Zentity.Core.dll" Vital="yes" DiskId="1" />
+
+      <File Id="PublishingServiceRDF" LongName="Zentity.Rdf.dll" Source="$(var.ZENTITYPIVOTPUBLISHING)\Zentity.Rdf.dll" Vital="yes" DiskId="1" />
+
+      <File Id="PublishingServiceExt" LongName="Zentity.Services.External.dll" Source="$(var.ZENTITYPIVOTPUBLISHING)\Zentity.Services.External.dll" Vital="yes" DiskId="1" />
+
+      <File Id="PublishingServiceSvrHost" LongName="Zentity.Services.ServiceHost.exe" KeyPath="yes" Source="$(var.ZENTITYPIVOTPUBLISHING)\Zentity.Services.ServiceHost.exe" Vital="yes" DiskId="1" />
+
+      <File Id="PublishingServiceConfig" LongName="Zentity.Services.ServiceHost.exe.config" Source="$(var.ZENTITYPIVOTPUBLISHING)\Zentity.Services.ServiceHost.exe.config" Vital="yes" DiskId="1" />
+
+      <File Id="PublishingServiceWeb" LongName="Zentity.Services.Web.dll" Source="$(var.ZENTITYPIVOTPUBLISHING)\Zentity.Services.Web.dll" Vital="yes" DiskId="1" />
+
+      <File Id="PublishingServiceScholarlyWorks" LongName="Zentity.ScholarlyWorks.dll" Source="$(var.ZENTITYPIVOTPUBLISHING)\Zentity.ScholarlyWorks.dll" Vital="yes" DiskId="1" />
+
+      <File Id="PublishingServiceCXMLCreator" LongName="Zentity.Pivot.CollectionCreator.exe" Source="$(var.ZENTITYPIVOTPUBLISHING)\Zentity.Pivot.CollectionCreator.exe" Vital="yes" DiskId="1" />
+
+      <File Id="PublishingServiceCXMLCreatorConfig" LongName="Zentity.Pivot.CollectionCreator.exe.config" Source="$(var.ZENTITYPIVOTPUBLISHING)\Zentity.Pivot.CollectionCreator.exe.config" Vital="yes" DiskId="1" />
+
+      <File Id="PublishingServiceDZCreator" LongName="Zentity.Pivot.DeepZoomCreator.exe" Source="$(var.ZENTITYPIVOTPUBLISHING)\Zentity.Pivot.DeepZoomCreator.exe" Vital="yes" DiskId="1" />
+
+      <File Id="PublishingServiceDZCreatorConfig" LongName="Zentity.Pivot.DeepZoomCreator.exe.config" Source="$(var.ZENTITYPIVOTPUBLISHING)\Zentity.Pivot.DeepZoomCreator.exe.config" Vital="yes" DiskId="1" />
+
+      <util:User Id="PublishingUserLogonAsService" UpdateIfExists="yes" CreateUser="no" Name="[PIVOTSERVICESUSER]" LogonAsService="yes" />
+
+      <util:XmlFile Id="PublishingServiceConnectionString" File="[PublishingServices]Zentity.Services.ServiceHost.exe.config" Action="setValue" ElementPath="/configuration/connectionStrings/add[\[]@name='ZentityContext'[\]]/@connectionString" Value="[PIVOTSERVICECONTEXTCONNSTRING]" />
+
+      <util:XmlFile Id="CXMLCreatorConnectionString" File="[PublishingServices]Zentity.Pivot.CollectionCreator.exe.config" Action="setValue" ElementPath="/configuration/connectionStrings/add[\[]@name='ZentityContext'[\]]/@connectionString" Value="[PIVOTSERVICECONTEXTCONNSTRING]" />
+
+      <util:XmlFile Id="PublishingServiceOutputFolder" File="[PublishingServices]Zentity.Pivot.CollectionCreator.exe.config" Action="setValue" ElementPath="/configuration/PivotConfig/GlobalSettings/OutputSettings/OutputFolder/@location" Value="[PIVOTSERVICESSHAREPATH]" />
+
+      <util:XmlFile Id="PublishingServiceAdminAddress" File="[PublishingServices]Zentity.Services.ServiceHost.exe.config" Action="setValue" ElementPath="/configuration/system.serviceModel/services/service[\[]@name='Zentity.Services.Web.Admin.ConfigurationService'[\]]/host/baseAddresses/add/@baseAddress" Value="http://[ComputerName]:[ZENTITYIISWEBSITEPORT]/Services/AdminConfigurationService" />
+
+      <util:XmlFile Id="PublishingServicePivotAddress" File="[PublishingServices]Zentity.Services.ServiceHost.exe.config" Action="setValue" ElementPath="/configuration/system.serviceModel/services/service[\[]@name='Zentity.Services.Web.Pivot.ConfigurationService'[\]]/host/baseAddresses/add/@baseAddress" Value="http://[ComputerName]:[ZENTITYIISWEBSITEPORT]/Pivot/ConfigurationService" />
+
+      <util:XmlFile Id="PublishingServicePublishingServiceAddress" File="[PublishingServices]Zentity.Services.ServiceHost.exe.config" Action="setValue" ElementPath="/configuration/system.serviceModel/services/service[\[]@name='Zentity.Services.Web.Pivot.PublishingService'[\]]/host/baseAddresses/add/@baseAddress" Value="http://[ComputerName]:[ZENTITYIISWEBSITEPORT]/Pivot/PublishingService" />
+
+      <util:XmlFile Id="PublishingServiceDataModelingServiceAddress" File="[PublishingServices]Zentity.Services.ServiceHost.exe.config" Action="setValue" ElementPath="/configuration/system.serviceModel/services/service[\[]@name='Zentity.Services.Web.Data.DataModelService'[\]]/host/baseAddresses/add/@baseAddress" Value="http://[ComputerName]:[ZENTITYIISWEBSITEPORT]/Services/DataModelingService" />
+
+      <util:XmlFile Id="PublishingServiceResourceTypeServiceAddress" File="[PublishingServices]Zentity.Services.ServiceHost.exe.config" Action="setValue" ElementPath="/configuration/system.serviceModel/services/service[\[]@name='Zentity.Services.Web.Data.ResourceTypeService'[\]]/host/baseAddresses/add/@baseAddress" Value="http://[ComputerName]:[ZENTITYIISWEBSITEPORT]/Services/ResourceTypeService" />
+
+      <util:XmlFile Id="PublishingServicePublishingProgressServiceAddress" File="[PublishingServices]Zentity.Services.ServiceHost.exe.config" Action="setValue" ElementPath="/configuration/system.serviceModel/services/service[\[]@name='Zentity.Services.Web.Pivot.PublishingProgressService'[\]]/host/baseAddresses/add/@baseAddress" Value="net.tcp://[ComputerName]:[ZENTITYCALLBACKPORT]/Pivot/PublishingProgressService" />
+
+      <util:XmlFile Id="DZCreatorPublishingProgressServiceAddress" File="[PublishingServices]Zentity.Pivot.DeepZoomCreator.exe.config" Action="setValue" ElementPath="/configuration/system.serviceModel/client/endpoint[\[]@name='NetTcpBinding_IPublishingProgressService'[\]]/@address" Value="net.tcp://[ComputerName]:[ZENTITYCALLBACKPORT]/Pivot/PublishingProgressService" />
+
+      <util:XmlFile Id="CXMLCreatorPublishingProgressServiceAddress" File="[PublishingServices]Zentity.Pivot.CollectionCreator.exe.config" Action="setValue" ElementPath="/configuration/system.serviceModel/client/endpoint[\[]@name='NetTcpBinding_IPublishingProgressService'[\]]/@address" Value="net.tcp://[ComputerName]:[ZENTITYCALLBACKPORT]/Pivot/PublishingProgressService" />
+
+      <ServiceInstall Id="PublishingServiceInstaller" Type="ownProcess" Vital="yes" Name="PublishingService" DisplayName="Zentity Publishing Service" Description="Pivot service offers services to create and manage collections." Start="auto" Account="[PIVOTSERVICESUSER]" Password="[PIVOTSERVICESPASSWORD]" ErrorControl="ignore" Interactive="no">
+        <util:ServiceConfig FirstFailureActionType="restart" SecondFailureActionType="restart" ThirdFailureActionType="restart" RestartServiceDelayInSeconds="5" ResetPeriodInDays="1" ServiceName="PublishingService" />
+      </ServiceInstall>
+      <ServiceControl Id="StartPublishingService" Start="install" Stop="uninstall" Remove="uninstall" Name="PublishingService" Wait="yes" />
+
+    </Component>
+
+  </DirectoryRef>
+
+  <!-- Security and access properties of the Virtual Directory -->
+  <iis:WebDirProperties Id="ZentityWebDirProperties" DefaultDocuments="Default.aspx" Read="yes" Write="no" Script="yes" Execute="no" WindowsAuthentication="yes" AnonymousAccess="no" BasicAuthentication="no" />
+
+  <!-- Group the components -->
+  <ComponentGroup Id="MainWebsiteComponents">
+    <ComponentRef Id="WebSite" />
+    <ComponentRef Id="ZentityAppPool" />
+    <ComponentRef Id="ConfigureIIS" />
+    <ComponentRef Id="AtomPubComponent" />
+    <ComponentRef Id="AtomPubRootFilesComponent" />
+    <ComponentRef Id="AtomPubBinComponent" />
+    <ComponentRef Id="SwordFilesComponent" />
+    <ComponentRef Id="OaiPmhComponent" />
+    <ComponentRef Id="OaiPmhRootFilesComponent" />
+    <ComponentRef Id="OaiPmhBinComponent" />
+    <ComponentRef Id="OaiOreComponent" />
+    <ComponentRef Id="OaiOreRootFilesComponent" />
+    <ComponentRef Id="OaiOreBinComponent" />
+    <ComponentRef Id="SyndicationComponent" />
+    <ComponentRef Id="SyndicationBinComponent" />
+    <ComponentRef Id="SyndicationRootFilesComponent" />
+    <ComponentRef Id="SyndicationSearchComponent" />
+    <ComponentRef Id="WebUIFilesComponent"/>
+    <ComponentRef Id="WebUIDarkBlueFilesComponent"/>
+    <ComponentRef Id="WebUIDarkBlueImagesFilesComponent"/>
+    <ComponentRef Id="WebUILightBlueFilesComponent"/>
+    <ComponentRef Id="WebUILightBlueImagesFilesComponent"/>
+    <ComponentRef Id="WebUIWebConfigAtomPubEndPoint"/>
+    <ComponentRef Id="WebUIWebConfigSwordEndPoint"/>
+    <ComponentRef Id="WebUIWebConfigSyndicationEndPoint"/>
+    <ComponentRef Id="WebUIWebConfigOaiPmhEndPoint"/>
+    <ComponentRef Id="WebUIWebConfigOaiOreEndPoint"/>
+    <ComponentRef Id="WebUIBinComponent"/>
+    <ComponentRef Id="WebUIHelpComponent"/>
+    <ComponentRef Id="WebUIResourceManagementComponent"/>
+    <ComponentRef Id="WebUIDocumentFilesComponent" />
+    <ComponentRef Id="WebUIScriptsComponent"/>
+    <ComponentRef Id="WebUISearchComponent"/>
+    <ComponentRef Id="WebUISecurityComponent"/>
+    <ComponentRef Id="WebUIServicesComponent"/>
+    <ComponentRef Id="WebUI_UserControlsFilesComponent"/>
+    <ComponentRef Id="WebUIApp_GlobalResourcesFilesComponent"/>
+    <ComponentRef Id="WebUIComponent"/>
+    <ComponentRef Id="ODataComponent" />
+    <ComponentRef Id="OData_WebAppComponent" />
+    <ComponentRef Id="OData_Bin" />
+    <ComponentRef Id="VisualExplorerComponent" />
+    <ComponentRef Id="VisualExplorer_WebAppComponent" />
+    <ComponentRef Id="VisualExplorer_BinComponent" />
+    <ComponentRef Id="VisualExplorer_ClientBin" />
+    <ComponentRef Id="VisualExplorer_Images" />
+    <ComponentRef Id="VisualExplorer_Pivot" />
+    <ComponentRef Id="VisualExplorerPivotSearchComponent" />
+    <ComponentRef Id="VisualExplorer_Services" />
+    <ComponentRef Id="VisualExplorer_Styles" />
+    <ComponentRef Id="DataServiceComponent" />
+    <ComponentRef Id="DataService_WebAppComponent" />
+    <ComponentRef Id="DataService_Bin" />
+    <ComponentRef Id="SaveWebsiteDetails" />
+    <ComponentRef Id="NotificationServiceComponent" />
+    <ComponentRef Id="cmp5107B48B34E2FB0EF5B948E14E150765" />
+    <ComponentRef Id="cmp66B1C1F2F8327F0235408F8294C2A4AC" />
+    <ComponentRef Id="cmp7B08F5534DFA8ECD51B919561D461A40" />
+    <ComponentRef Id="cmp154B31A27C9C75BB2F5FB511A2842839" />
+    <ComponentRef Id="cmp8478B8A56581F724182975B152BE82CC" />
+    <ComponentRef Id="cmp66104392404451831E4BBC866AD16863" />
+    <ComponentRef Id="cmpFCF4D01BE0114C1A0822BE884B3153C3" />
+    <ComponentRef Id="cmpAA85E8C096FCDDF4ED6EA3EF6B021520" />
+    <ComponentRef Id="cmpBB9E8C45C711DDE454451F8BDEC8DD1E" />
+    <ComponentRef Id="cmp666A17BCAE64099CD70D5AC10D0C7B1F" />
+    <ComponentRef Id="cmp27A0B45C97054AD9439D9FDD891834D7" />
+    <ComponentRef Id="cmpD102B26F582F1C345C4567885B8E2A71" />
+    <ComponentRef Id="cmpBB32E4692D62BD7EE7EC24D586BDCC1A" />
+    <ComponentRef Id="cmpCBBA1066BDBAE7FB8A5044A72FCF9485" />
+    <ComponentRef Id="cmpFBC8DB89D95052F61CB38FF72BD4BC77" />
+    <ComponentRef Id="cmp546321CF48B5B624EDDEC492C98292EE" />
+    <ComponentRef Id="cmp7B90451C2B915D02C5FA4CE39F999092" />
+    <ComponentRef Id="cmp44E08C5B32715AA83D51DA6E15267FF7" />
+    <ComponentRef Id="cmpBEB813F6BCD688FB86FB75E279A58AEE" />
+    <ComponentRef Id="cmp663314EC80D52A4BC448C3FBCE49F549" />
+    <ComponentRef Id="cmp630F110F8359BA717B915696408E74C5" />
+    <ComponentRef Id="cmp7B4321C62818B0B665B4EEBA92C09D99" />
+    <ComponentRef Id="cmp6C0E6A6726800678C661BB68190B8B29" />
+    <ComponentRef Id="cmp23F56C5BAC08FFB6ED2719DF78B3319B" />
+    <ComponentRef Id="cmp58EDE69FC99A6ABB4312114D8C446C8B" />
+    <ComponentRef Id="cmp1A88A9F7067B4CB2C86A88227B9EFEF7" />
+    <ComponentRef Id="cmp243C47262337003124488848ACA4E5F6" />
+    <ComponentRef Id="cmp541E6FDBC011742588B22CB1B866A23A" />
+    <ComponentRef Id="cmp02613F6015AB7F72447D295D5BAC033B" />
+    <ComponentRef Id="cmp0CF1F13FD386B30915A9791E8326A204" />
+    <ComponentRef Id="cmp2E673CD18A50482BAC732594911F95B8" />
+    <ComponentRef Id="cmp0CD7EB615D0F795DC9438F446FC3BC14" />
+    <ComponentRef Id="cmp83209413620C576420CB60F6FE962660" />
+    <ComponentRef Id="cmp2D3F4076EC69B8DCCBCD1E508B00215F" />
+    <ComponentRef Id="cmp3124CFDA8883BAC9FDE8C9D48D40CFC8" />
+    <ComponentRef Id="cmp67571FFEB5FEAD2C93674C84FFFA36F7" />
+    <ComponentRef Id="cmp477BE2490D7E06BEE99897F26A3E08D5" />
+    <ComponentRef Id="cmp5350738557A2186CCC9AD758FB5C4296" />
+    <ComponentRef Id="PublishingServiceComponent" />
+  </ComponentGroup>
+
+</Include>

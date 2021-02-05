@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="ZentityAdministration">
+  <DataContextMoniker Name="/ZentityAdministrationDataContext" />
+  <nestedChildShapes>
+    <classShape Id="2b8eeb10-df8b-4ceb-a57c-e9913eed3617" absoluteBounds="0.5, 0.5, 2, 2.5401025390625">
+      <DataClassMoniker Name="/ZentityAdministrationDataContext/ChangeMessageRecovery" />
+      <nestedChildShapes>
+        <elementListCompartment Id="e090c3ca-44a5-4b5c-a688-9167abc771f7" absoluteBounds="0.51500000000000012, 0.96, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="f3e3dea6-1db5-41bf-bc15-c5444a3219cd" absoluteBounds="0.5, 3.25, 2, 1.3862939453125">
+      <DataClassMoniker Name="/ZentityAdministrationDataContext/MessageQueueRecovery" />
+      <nestedChildShapes>
+        <elementListCompartment Id="5b27f1bc-1f64-47dc-bb64-98106f61c718" absoluteBounds="0.51500000000000012, 3.71, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

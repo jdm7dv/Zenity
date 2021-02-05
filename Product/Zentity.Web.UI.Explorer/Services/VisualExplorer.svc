@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="Zentity.Services.Explorer.VisualExplorer" CodeBehind="VisualExplorer.svc.cs" %>

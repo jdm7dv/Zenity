@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Database Name="Zentity" Class="ZentityAdministrationDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Table Name="Administration.PublishRequestRecovery" Member="PublishRequestRecoveries">
+    <Type Name="PublishRequestRecovery">
+      <Column Name="InstanceId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="IsQueuedRequest" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="QueueOrder" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="DataModelNamespace" Type="System.String" DbType="NVarChar(150) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="ResourceTypeName" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="ObjectData" Type="System.Xml.Linq.XElement" DbType="Xml" CanBeNull="true" UpdateCheck="Never" />
+    </Type>
+  </Table>
+</Database>

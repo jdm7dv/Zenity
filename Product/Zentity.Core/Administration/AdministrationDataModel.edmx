@@ -1,0 +1,2591 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Zentity.Administration.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="Administration">
+          <EntitySet Name="AssociationChange" EntityType="Zentity.Administration.Store.AssociationChange" store:Type="Tables" Schema="Administration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="ChangeSet" EntityType="Zentity.Administration.Store.ChangeSet" store:Type="Tables" Schema="Administration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="DataModelModuleChange" EntityType="Zentity.Administration.Store.DataModelModuleChange" store:Type="Tables" Schema="Administration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="NavigationPropertyChange" EntityType="Zentity.Administration.Store.NavigationPropertyChange" store:Type="Tables" Schema="Administration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="Operation" EntityType="Zentity.Administration.Store.Operation" store:Type="Tables" Schema="Administration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="PredicateChange" EntityType="Zentity.Administration.Store.PredicateChange" store:Type="Tables" Schema="Administration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="PropertyChange" EntityType="Zentity.Administration.Store.PropertyChange" store:Type="Tables" Schema="Administration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="RelationshipChange" EntityType="Zentity.Administration.Store.RelationshipChange" store:Type="Tables" Schema="Administration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="RelationshipPropertyChange" EntityType="Zentity.Administration.Store.RelationshipPropertyChange" store:Type="Tables" Schema="Administration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="ResourceChange" EntityType="Zentity.Administration.Store.ResourceChange" store:Type="Tables" Schema="Administration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="ResourcePropertyChange" EntityType="Zentity.Administration.Store.ResourcePropertyChange" store:Type="Tables" Schema="Administration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="PredicatePropertyChange" EntityType="Zentity.Administration.Store.PredicatePropertyChange" store:Type="Tables" Schema="Administration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="ResourceTypeChange" EntityType="Zentity.Administration.Store.ResourceTypeChange" store:Type="Tables" Schema="Administration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="ScalarPropertyChange" EntityType="Zentity.Administration.Store.ScalarPropertyChange" store:Type="Tables" Schema="Administration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <AssociationSet Name="AssociationChangeBelongsToChangeSet" Association="Zentity.Administration.Store.AssociationChangeBelongsToChangeSet">
+            <End Role="ChangeSet" EntitySet="ChangeSet" />
+            <End Role="AssociationChange" EntitySet="AssociationChange" />
+          </AssociationSet>
+          <AssociationSet Name="AssociationChangeIsCausedByOperation" Association="Zentity.Administration.Store.AssociationChangeIsCausedByOperation">
+            <End Role="Operation" EntitySet="Operation" />
+            <End Role="AssociationChange" EntitySet="AssociationChange" />
+          </AssociationSet>
+          <AssociationSet Name="DataModelModuleChangeBelongsToChangeSet" Association="Zentity.Administration.Store.DataModelModuleChangeBelongsToChangeSet">
+            <End Role="ChangeSet" EntitySet="ChangeSet" />
+            <End Role="DataModelModuleChange" EntitySet="DataModelModuleChange" />
+          </AssociationSet>
+          <AssociationSet Name="DataModelModuleChangeIsCausedByOperation" Association="Zentity.Administration.Store.DataModelModuleChangeIsCausedByOperation">
+            <End Role="Operation" EntitySet="Operation" />
+            <End Role="DataModelModuleChange" EntitySet="DataModelModuleChange" />
+          </AssociationSet>
+          <AssociationSet Name="NavigationPropertyChangeBelongsToChangeSet" Association="Zentity.Administration.Store.NavigationPropertyChangeBelongsToChangeSet">
+            <End Role="ChangeSet" EntitySet="ChangeSet" />
+            <End Role="NavigationPropertyChange" EntitySet="NavigationPropertyChange" />
+          </AssociationSet>
+          <AssociationSet Name="NavigationPropertyChangeIsCausedByOperation" Association="Zentity.Administration.Store.NavigationPropertyChangeIsCausedByOperation">
+            <End Role="Operation" EntitySet="Operation" />
+            <End Role="NavigationPropertyChange" EntitySet="NavigationPropertyChange" />
+          </AssociationSet>
+          <AssociationSet Name="PredicateChangeBelongsToChangeSet" Association="Zentity.Administration.Store.PredicateChangeBelongsToChangeSet">
+            <End Role="ChangeSet" EntitySet="ChangeSet" />
+            <End Role="PredicateChange" EntitySet="PredicateChange" />
+          </AssociationSet>
+          <AssociationSet Name="PredicateChangeIsCausedByOperation" Association="Zentity.Administration.Store.PredicateChangeIsCausedByOperation">
+            <End Role="Operation" EntitySet="Operation" />
+            <End Role="PredicateChange" EntitySet="PredicateChange" />
+          </AssociationSet>
+          <AssociationSet Name="PropertyChangeBelongsToChangeSet" Association="Zentity.Administration.Store.PropertyChangeBelongsToChangeSet">
+            <End Role="ChangeSet" EntitySet="ChangeSet" />
+            <End Role="PropertyChange" EntitySet="PropertyChange" />
+          </AssociationSet>
+          <AssociationSet Name="PropertyChangeIsCausedByOperation" Association="Zentity.Administration.Store.PropertyChangeIsCausedByOperation">
+            <End Role="Operation" EntitySet="Operation" />
+            <End Role="PropertyChange" EntitySet="PropertyChange" />
+          </AssociationSet>
+          <AssociationSet Name="RelationshipChangeBelongsToChangeSet" Association="Zentity.Administration.Store.RelationshipChangeBelongsToChangeSet">
+            <End Role="ChangeSet" EntitySet="ChangeSet" />
+            <End Role="RelationshipChange" EntitySet="RelationshipChange" />
+          </AssociationSet>
+          <AssociationSet Name="RelationshipChangeIsCausedByOperation" Association="Zentity.Administration.Store.RelationshipChangeIsCausedByOperation">
+            <End Role="Operation" EntitySet="Operation" />
+            <End Role="RelationshipChange" EntitySet="RelationshipChange" />
+          </AssociationSet>
+          <AssociationSet Name="RelationshipPropertyChangeBelongsToChangeSet" Association="Zentity.Administration.Store.RelationshipPropertyChangeBelongsToChangeSet">
+            <End Role="ChangeSet" EntitySet="ChangeSet" />
+            <End Role="RelationshipPropertyChange" EntitySet="RelationshipPropertyChange" />
+          </AssociationSet>
+          <AssociationSet Name="RelationshipPropertyChangeIsCausedByOperation" Association="Zentity.Administration.Store.RelationshipPropertyChangeIsCausedByOperation">
+            <End Role="Operation" EntitySet="Operation" />
+            <End Role="RelationshipPropertyChange" EntitySet="RelationshipPropertyChange" />
+          </AssociationSet>
+          <AssociationSet Name="ResourceChangeBelongsToChangeSet" Association="Zentity.Administration.Store.ResourceChangeBelongsToChangeSet">
+            <End Role="ChangeSet" EntitySet="ChangeSet" />
+            <End Role="ResourceChange" EntitySet="ResourceChange" />
+          </AssociationSet>
+          <AssociationSet Name="ResourceChangeIsCausedByOperation" Association="Zentity.Administration.Store.ResourceChangeIsCausedByOperation">
+            <End Role="Operation" EntitySet="Operation" />
+            <End Role="ResourceChange" EntitySet="ResourceChange" />
+          </AssociationSet>
+          <AssociationSet Name="ResourcePropertyChangeBelongsToChangeSet" Association="Zentity.Administration.Store.ResourcePropertyChangeBelongsToChangeSet">
+            <End Role="ChangeSet" EntitySet="ChangeSet" />
+            <End Role="ResourcePropertyChange" EntitySet="ResourcePropertyChange" />
+          </AssociationSet>
+          <AssociationSet Name="ResourcePropertyChangeIsCausedByOperation" Association="Zentity.Administration.Store.ResourcePropertyChangeIsCausedByOperation">
+            <End Role="Operation" EntitySet="Operation" />
+            <End Role="ResourcePropertyChange" EntitySet="ResourcePropertyChange" />
+          </AssociationSet>
+          <AssociationSet Name="PredicatePropertyChangeBelongsToChangeSet" Association="Zentity.Administration.Store.PredicatePropertyChangeBelongsToChangeSet">
+            <End Role="ChangeSet" EntitySet="ChangeSet" />
+            <End Role="PredicatePropertyChange" EntitySet="PredicatePropertyChange" />
+          </AssociationSet>
+          <AssociationSet Name="PredicatePropertyChangeIsCausedByOperation" Association="Zentity.Administration.Store.PredicatePropertyChangeIsCausedByOperation">
+            <End Role="Operation" EntitySet="Operation" />
+            <End Role="PredicatePropertyChange" EntitySet="PredicatePropertyChange" />
+          </AssociationSet>
+          <AssociationSet Name="ResourceTypeChangeBelongsToChangeSet" Association="Zentity.Administration.Store.ResourceTypeChangeBelongsToChangeSet">
+            <End Role="ChangeSet" EntitySet="ChangeSet" />
+            <End Role="ResourceTypeChange" EntitySet="ResourceTypeChange" />
+          </AssociationSet>
+          <AssociationSet Name="ResourceTypeChangeIsCausedByOperation" Association="Zentity.Administration.Store.ResourceTypeChangeIsCausedByOperation">
+            <End Role="Operation" EntitySet="Operation" />
+            <End Role="ResourceTypeChange" EntitySet="ResourceTypeChange" />
+          </AssociationSet>
+          <AssociationSet Name="ScalarPropertyChangeBelongsToChangeSet" Association="Zentity.Administration.Store.ScalarPropertyChangeBelongsToChangeSet">
+            <End Role="ChangeSet" EntitySet="ChangeSet" />
+            <End Role="ScalarPropertyChange" EntitySet="ScalarPropertyChange" />
+          </AssociationSet>
+          <AssociationSet Name="ScalarPropertyChangeIsCausedByOperation" Association="Zentity.Administration.Store.ScalarPropertyChangeIsCausedByOperation">
+            <End Role="Operation" EntitySet="Operation" />
+            <End Role="ScalarPropertyChange" EntitySet="ScalarPropertyChange" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="AssociationChange">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ChangeSetId" Type="nvarchar" Nullable="false" MaxLength="64" />
+          <Property Name="SequenceNumber" Type="nvarchar" Nullable="false" MaxLength="64" />
+          <Property Name="OperationId" Type="int" Nullable="false" />
+          <Property Name="AssociationId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="PreviousName" Type="nvarchar" MaxLength="100" />
+          <Property Name="NextName" Type="nvarchar" MaxLength="100" />
+          <Property Name="PreviousUri" Type="nvarchar" MaxLength="1024" />
+          <Property Name="NextUri" Type="nvarchar" MaxLength="1024" />
+          <Property Name="PreviousSubjectNavigationPropertyId" Type="uniqueidentifier" />
+          <Property Name="NextSubjectNavigationPropertyId" Type="uniqueidentifier" />
+          <Property Name="PreviousObjectNavigationPropertyId" Type="uniqueidentifier" />
+          <Property Name="NextObjectNavigationPropertyId" Type="uniqueidentifier" />
+          <Property Name="PreviousPredicateId" Type="uniqueidentifier" />
+          <Property Name="NextPredicateId" Type="uniqueidentifier" />
+          <Property Name="PreviousSubjectMultiplicity" Type="nvarchar" MaxLength="32" />
+          <Property Name="NextSubjectMultiplicity" Type="nvarchar" MaxLength="32" />
+          <Property Name="PreviousObjectMultiplicity" Type="nvarchar" MaxLength="32" />
+          <Property Name="NextObjectMultiplicity" Type="nvarchar" MaxLength="32" />
+        </EntityType>
+        <EntityType Name="ChangeSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" Nullable="false" MaxLength="64" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DataModelModuleChange">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ChangeSetId" Type="nvarchar" Nullable="false" MaxLength="64" />
+          <Property Name="SequenceNumber" Type="nvarchar" Nullable="false" MaxLength="64" />
+          <Property Name="OperationId" Type="int" Nullable="false" />
+          <Property Name="DataModelModuleId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="PreviousNamespace" Type="nvarchar" MaxLength="150" />
+          <Property Name="NextNamespace" Type="nvarchar" MaxLength="150" />
+          <Property Name="PreviousUri" Type="nvarchar" MaxLength="1024" />
+          <Property Name="NextUri" Type="nvarchar" MaxLength="1024" />
+          <Property Name="PreviousDescription" Type="nvarchar(max)" />
+          <Property Name="NextDescription" Type="nvarchar(max)" />
+          <Property Name="IsMsShipped" Type="bit" />
+        </EntityType>
+        <EntityType Name="NavigationPropertyChange">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ChangeSetId" Type="nvarchar" Nullable="false" MaxLength="64" />
+          <Property Name="SequenceNumber" Type="nvarchar" Nullable="false" MaxLength="64" />
+          <Property Name="OperationId" Type="int" Nullable="false" />
+          <Property Name="NavigationPropertyId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="PreviousResourceTypeId" Type="uniqueidentifier" />
+          <Property Name="NextResourceTypeId" Type="uniqueidentifier" />
+          <Property Name="PreviousName" Type="nvarchar" MaxLength="100" />
+          <Property Name="NextName" Type="nvarchar" MaxLength="100" />
+          <Property Name="PreviousUri" Type="nvarchar" MaxLength="1024" />
+          <Property Name="NextUri" Type="nvarchar" MaxLength="1024" />
+          <Property Name="PreviousDescription" Type="nvarchar(max)" />
+          <Property Name="NextDescription" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Operation">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="Description" Type="nvarchar" />
+        </EntityType>
+        <EntityType Name="PredicateChange">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ChangeSetId" Type="nvarchar" Nullable="false" MaxLength="64" />
+          <Property Name="SequenceNumber" Type="nvarchar" Nullable="false" MaxLength="64" />
+          <Property Name="OperationId" Type="int" Nullable="false" />
+          <Property Name="PredicateId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="PreviousName" Type="nvarchar" MaxLength="128" />
+          <Property Name="NextName" Type="nvarchar" MaxLength="128" />
+          <Property Name="PreviousUri" Type="nvarchar" MaxLength="1024" />
+          <Property Name="NextUri" Type="nvarchar" MaxLength="1024" />
+        </EntityType>
+        <EntityType Name="PropertyChange">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ChangeSetId" Type="nvarchar" Nullable="false" MaxLength="64" />
+          <Property Name="SequenceNumber" Type="nvarchar" Nullable="false" MaxLength="64" />
+          <Property Name="OperationId" Type="int" Nullable="false" />
+          <Property Name="PropertyId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="PreviousName" Type="nvarchar" MaxLength="50" />
+          <Property Name="NextName" Type="nvarchar" MaxLength="50" />
+          <Property Name="PreviousUri" Type="nvarchar" MaxLength="1024" />
+          <Property Name="NextUri" Type="nvarchar" MaxLength="1024" />
+        </EntityType>
+        <EntityType Name="RelationshipChange">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ChangeSetId" Type="nvarchar" Nullable="false" MaxLength="64" />
+          <Property Name="SequenceNumber" Type="nvarchar" Nullable="false" MaxLength="64" />
+          <Property Name="OperationId" Type="int" Nullable="false" />
+          <Property Name="RelationshipId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="PreviousSubjectResourceId" Type="uniqueidentifier" />
+          <Property Name="NextSubjectResourceId" Type="uniqueidentifier" />
+          <Property Name="PreviousObjectResourceId" Type="uniqueidentifier" />
+          <Property Name="NextObjectResourceId" Type="uniqueidentifier" />
+          <Property Name="PreviousPredicateId" Type="uniqueidentifier" />
+          <Property Name="NextPredicateId" Type="uniqueidentifier" />
+          <Property Name="PreviousOrdinalPosition" Type="int" />
+          <Property Name="NextOrdinalPosition" Type="int" />
+          <Property Name="PreviousDateAdded" Type="datetime" />
+          <Property Name="NextDateAdded" Type="datetime" />
+        </EntityType>
+        <EntityType Name="RelationshipPropertyChange">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ChangeSetId" Type="nvarchar" Nullable="false" MaxLength="64" />
+          <Property Name="SequenceNumber" Type="nvarchar" Nullable="false" MaxLength="64" />
+          <Property Name="OperationId" Type="int" Nullable="false" />
+          <Property Name="RelationshipPropertyId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="PreviousTripletId" Type="uniqueidentifier" />
+          <Property Name="NextTripletId" Type="uniqueidentifier" />
+          <Property Name="PreviousPropertyId" Type="uniqueidentifier" />
+          <Property Name="NextPropertyId" Type="uniqueidentifier" />
+          <Property Name="PreviousValue" Type="nvarchar(max)" />
+          <Property Name="NextValue" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="ResourceChange">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ChangeSetId" Type="nvarchar" Nullable="false" MaxLength="64" />
+          <Property Name="SequenceNumber" Type="nvarchar" Nullable="false" MaxLength="64" />
+          <Property Name="OperationId" Type="int" Nullable="false" />
+          <Property Name="ResourceId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ResourceTypeId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ResourceTypeFullName" Type="nvarchar" Nullable="false" MaxLength="512" />
+          <Property Name="PropertyChanges" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PredicatePropertyChange">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ChangeSetId" Type="nvarchar" Nullable="false" MaxLength="64" />
+          <Property Name="SequenceNumber" Type="nvarchar" Nullable="false" MaxLength="64" />
+          <Property Name="OperationId" Type="int" Nullable="false" />
+          <Property Name="PredicatePropertyId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="PreviousPredicateId" Type="uniqueidentifier" />
+          <Property Name="NextPredicateId" Type="uniqueidentifier" />
+          <Property Name="PreviousPropertyId" Type="uniqueidentifier" />
+          <Property Name="NextPropertyId" Type="uniqueidentifier" />
+          <Property Name="PreviousValue" Type="nvarchar(max)" />
+          <Property Name="NextValue" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="ResourcePropertyChange">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ChangeSetId" Type="nvarchar" Nullable="false" MaxLength="64" />
+          <Property Name="SequenceNumber" Type="nvarchar" Nullable="false" MaxLength="64" />
+          <Property Name="OperationId" Type="int" Nullable="false" />
+          <Property Name="ResourcePropertyId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="PreviousResourceId" Type="uniqueidentifier" />
+          <Property Name="NextResourceId" Type="uniqueidentifier" />
+          <Property Name="PreviousPropertyId" Type="uniqueidentifier" />
+          <Property Name="NextPropertyId" Type="uniqueidentifier" />
+          <Property Name="PreviousValue" Type="nvarchar(max)" />
+          <Property Name="NextValue" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="ResourceTypeChange">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ChangeSetId" Type="nvarchar" Nullable="false" MaxLength="64" />
+          <Property Name="SequenceNumber" Type="nvarchar" Nullable="false" MaxLength="64" />
+          <Property Name="OperationId" Type="int" Nullable="false" />
+          <Property Name="ResourceTypeId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="PreviousDataModelModuleId" Type="uniqueidentifier" />
+          <Property Name="NextDataModelModuleId" Type="uniqueidentifier" />
+          <Property Name="PreviousBaseTypeId" Type="uniqueidentifier" />
+          <Property Name="NextBaseTypeId" Type="uniqueidentifier" />
+          <Property Name="PreviousName" Type="nvarchar" MaxLength="100" />
+          <Property Name="NextName" Type="nvarchar" MaxLength="100" />
+          <Property Name="PreviousUri" Type="nvarchar" MaxLength="1024" />
+          <Property Name="NextUri" Type="nvarchar" MaxLength="1024" />
+          <Property Name="PreviousDescription" Type="nvarchar" />
+          <Property Name="NextDescription" Type="nvarchar" />
+        </EntityType>
+        <EntityType Name="ScalarPropertyChange">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ChangeSetId" Type="nvarchar" Nullable="false" MaxLength="64" />
+          <Property Name="SequenceNumber" Type="nvarchar" Nullable="false" MaxLength="64" />
+          <Property Name="OperationId" Type="int" Nullable="false" />
+          <Property Name="ScalarPropertyId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="PreviousResourceTypeId" Type="uniqueidentifier" />
+          <Property Name="NextResourceTypeId" Type="uniqueidentifier" />
+          <Property Name="PreviousName" Type="nvarchar" MaxLength="100" />
+          <Property Name="NextName" Type="nvarchar" MaxLength="100" />
+          <Property Name="PreviousUri" Type="nvarchar" MaxLength="1024" />
+          <Property Name="NextUri" Type="nvarchar" MaxLength="1024" />
+          <Property Name="PreviousDescription" Type="nvarchar(max)" />
+          <Property Name="NextDescription" Type="nvarchar(max)" />
+          <Property Name="PreviousDataType" Type="nvarchar" MaxLength="100" />
+          <Property Name="NextDataType" Type="nvarchar" MaxLength="100" />
+          <Property Name="PreviousNullable" Type="bit" />
+          <Property Name="NextNullable" Type="bit" />
+          <Property Name="PreviousMaxLength" Type="int" />
+          <Property Name="NextMaxLength" Type="int" />
+          <Property Name="PreviousScale" Type="int" />
+          <Property Name="NextScale" Type="int" />
+          <Property Name="PreviousPrecision" Type="int" />
+          <Property Name="NextPrecision" Type="int" />
+        </EntityType>
+        <Association Name="AssociationChangeBelongsToChangeSet">
+          <End Role="ChangeSet" Type="Zentity.Administration.Store.ChangeSet" Multiplicity="1" />
+          <End Role="AssociationChange" Type="Zentity.Administration.Store.AssociationChange" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ChangeSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AssociationChange">
+              <PropertyRef Name="ChangeSetId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AssociationChangeIsCausedByOperation">
+          <End Role="Operation" Type="Zentity.Administration.Store.Operation" Multiplicity="1" />
+          <End Role="AssociationChange" Type="Zentity.Administration.Store.AssociationChange" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Operation">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AssociationChange">
+              <PropertyRef Name="OperationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="DataModelModuleChangeBelongsToChangeSet">
+          <End Role="ChangeSet" Type="Zentity.Administration.Store.ChangeSet" Multiplicity="1" />
+          <End Role="DataModelModuleChange" Type="Zentity.Administration.Store.DataModelModuleChange" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ChangeSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DataModelModuleChange">
+              <PropertyRef Name="ChangeSetId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="DataModelModuleChangeIsCausedByOperation">
+          <End Role="Operation" Type="Zentity.Administration.Store.Operation" Multiplicity="1" />
+          <End Role="DataModelModuleChange" Type="Zentity.Administration.Store.DataModelModuleChange" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Operation">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DataModelModuleChange">
+              <PropertyRef Name="OperationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="NavigationPropertyChangeBelongsToChangeSet">
+          <End Role="ChangeSet" Type="Zentity.Administration.Store.ChangeSet" Multiplicity="1" />
+          <End Role="NavigationPropertyChange" Type="Zentity.Administration.Store.NavigationPropertyChange" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ChangeSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="NavigationPropertyChange">
+              <PropertyRef Name="ChangeSetId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="NavigationPropertyChangeIsCausedByOperation">
+          <End Role="Operation" Type="Zentity.Administration.Store.Operation" Multiplicity="1" />
+          <End Role="NavigationPropertyChange" Type="Zentity.Administration.Store.NavigationPropertyChange" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Operation">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="NavigationPropertyChange">
+              <PropertyRef Name="OperationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PredicateChangeBelongsToChangeSet">
+          <End Role="ChangeSet" Type="Zentity.Administration.Store.ChangeSet" Multiplicity="1" />
+          <End Role="PredicateChange" Type="Zentity.Administration.Store.PredicateChange" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ChangeSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PredicateChange">
+              <PropertyRef Name="ChangeSetId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PredicateChangeIsCausedByOperation">
+          <End Role="Operation" Type="Zentity.Administration.Store.Operation" Multiplicity="1" />
+          <End Role="PredicateChange" Type="Zentity.Administration.Store.PredicateChange" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Operation">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PredicateChange">
+              <PropertyRef Name="OperationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PropertyChangeBelongsToChangeSet">
+          <End Role="ChangeSet" Type="Zentity.Administration.Store.ChangeSet" Multiplicity="1" />
+          <End Role="PropertyChange" Type="Zentity.Administration.Store.PropertyChange" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ChangeSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PropertyChange">
+              <PropertyRef Name="ChangeSetId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PropertyChangeIsCausedByOperation">
+          <End Role="Operation" Type="Zentity.Administration.Store.Operation" Multiplicity="1" />
+          <End Role="PropertyChange" Type="Zentity.Administration.Store.PropertyChange" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Operation">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PropertyChange">
+              <PropertyRef Name="OperationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RelationshipChangeBelongsToChangeSet">
+          <End Role="ChangeSet" Type="Zentity.Administration.Store.ChangeSet" Multiplicity="1" />
+          <End Role="RelationshipChange" Type="Zentity.Administration.Store.RelationshipChange" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ChangeSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RelationshipChange">
+              <PropertyRef Name="ChangeSetId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RelationshipChangeIsCausedByOperation">
+          <End Role="Operation" Type="Zentity.Administration.Store.Operation" Multiplicity="1" />
+          <End Role="RelationshipChange" Type="Zentity.Administration.Store.RelationshipChange" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Operation">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RelationshipChange">
+              <PropertyRef Name="OperationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RelationshipPropertyChangeBelongsToChangeSet">
+          <End Role="ChangeSet" Type="Zentity.Administration.Store.ChangeSet" Multiplicity="1" />
+          <End Role="RelationshipPropertyChange" Type="Zentity.Administration.Store.RelationshipPropertyChange" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ChangeSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RelationshipPropertyChange">
+              <PropertyRef Name="ChangeSetId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RelationshipPropertyChangeIsCausedByOperation">
+          <End Role="Operation" Type="Zentity.Administration.Store.Operation" Multiplicity="1" />
+          <End Role="RelationshipPropertyChange" Type="Zentity.Administration.Store.RelationshipPropertyChange" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Operation">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RelationshipPropertyChange">
+              <PropertyRef Name="OperationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ResourceChangeBelongsToChangeSet">
+          <End Role="ChangeSet" Type="Zentity.Administration.Store.ChangeSet" Multiplicity="1" />
+          <End Role="ResourceChange" Type="Zentity.Administration.Store.ResourceChange" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ChangeSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ResourceChange">
+              <PropertyRef Name="ChangeSetId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ResourceChangeIsCausedByOperation">
+          <End Role="Operation" Type="Zentity.Administration.Store.Operation" Multiplicity="1" />
+          <End Role="ResourceChange" Type="Zentity.Administration.Store.ResourceChange" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Operation">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ResourceChange">
+              <PropertyRef Name="OperationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PredicatePropertyChangeBelongsToChangeSet">
+          <End Role="ChangeSet" Type="Zentity.Administration.Store.ChangeSet" Multiplicity="1" />
+          <End Role="PredicatePropertyChange" Type="Zentity.Administration.Store.PredicatePropertyChange" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ChangeSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PredicatePropertyChange">
+              <PropertyRef Name="ChangeSetId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PredicatePropertyChangeIsCausedByOperation">
+          <End Role="Operation" Type="Zentity.Administration.Store.Operation" Multiplicity="1" />
+          <End Role="PredicatePropertyChange" Type="Zentity.Administration.Store.PredicatePropertyChange" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Operation">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PredicatePropertyChange">
+              <PropertyRef Name="OperationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ResourcePropertyChangeBelongsToChangeSet">
+          <End Role="ChangeSet" Type="Zentity.Administration.Store.ChangeSet" Multiplicity="1" />
+          <End Role="ResourcePropertyChange" Type="Zentity.Administration.Store.ResourcePropertyChange" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ChangeSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ResourcePropertyChange">
+              <PropertyRef Name="ChangeSetId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ResourcePropertyChangeIsCausedByOperation">
+          <End Role="Operation" Type="Zentity.Administration.Store.Operation" Multiplicity="1" />
+          <End Role="ResourcePropertyChange" Type="Zentity.Administration.Store.ResourcePropertyChange" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Operation">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ResourcePropertyChange">
+              <PropertyRef Name="OperationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ResourceTypeChangeBelongsToChangeSet">
+          <End Role="ChangeSet" Type="Zentity.Administration.Store.ChangeSet" Multiplicity="1" />
+          <End Role="ResourceTypeChange" Type="Zentity.Administration.Store.ResourceTypeChange" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ChangeSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ResourceTypeChange">
+              <PropertyRef Name="ChangeSetId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ResourceTypeChangeIsCausedByOperation">
+          <End Role="Operation" Type="Zentity.Administration.Store.Operation" Multiplicity="1" />
+          <End Role="ResourceTypeChange" Type="Zentity.Administration.Store.ResourceTypeChange" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Operation">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ResourceTypeChange">
+              <PropertyRef Name="OperationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ScalarPropertyChangeBelongsToChangeSet">
+          <End Role="ChangeSet" Type="Zentity.Administration.Store.ChangeSet" Multiplicity="1" />
+          <End Role="ScalarPropertyChange" Type="Zentity.Administration.Store.ScalarPropertyChange" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ChangeSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ScalarPropertyChange">
+              <PropertyRef Name="ChangeSetId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ScalarPropertyChangeIsCausedByOperation">
+          <End Role="Operation" Type="Zentity.Administration.Store.Operation" Multiplicity="1" />
+          <End Role="ScalarPropertyChange" Type="Zentity.Administration.Store.ScalarPropertyChange" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Operation">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ScalarPropertyChange">
+              <PropertyRef Name="OperationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="EnableChangeHistory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Administration">
+          <Parameter Name="ChangeHistoryFilePath" Type="nvarchar" Mode="In" MaxLength="512" />
+        </Function>
+        <Function Name="DisableChangeHistory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Administration">
+        </Function>
+        <Function Name="EnableFullTextSearch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Administration">
+          <Parameter Name="FullTextCatalogFilePath" Type="nvarchar" Mode="In" MaxLength="512" />
+        </Function>
+        <Function Name="DisableFullTextSearch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Administration">
+        </Function>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Zentity.Administration" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="AdministrationContext">
+          <EntitySet Name="AssociationChanges" EntityType="Zentity.Administration.AssociationChange" />
+          <EntitySet Name="ChangeSets" EntityType="Zentity.Administration.ChangeSet" />
+          <EntitySet Name="DataModelModuleChanges" EntityType="Zentity.Administration.DataModelModuleChange" />
+          <EntitySet Name="NavigationPropertyChanges" EntityType="Zentity.Administration.NavigationPropertyChange" />
+          <EntitySet Name="Operations" EntityType="Zentity.Administration.Operation" />
+          <EntitySet Name="PredicateChanges" EntityType="Zentity.Administration.PredicateChange" />
+          <EntitySet Name="PropertyChanges" EntityType="Zentity.Administration.PropertyChange" />
+          <EntitySet Name="RelationshipChanges" EntityType="Zentity.Administration.RelationshipChange" />
+          <EntitySet Name="RelationshipPropertyChanges" EntityType="Zentity.Administration.RelationshipPropertyChange" />
+          <EntitySet Name="ResourceChanges" EntityType="Zentity.Administration.ResourceChange" />
+          <EntitySet Name="PredicatePropertyChanges" EntityType="Zentity.Administration.PredicatePropertyChange" />
+          <EntitySet Name="ResourcePropertyChanges" EntityType="Zentity.Administration.ResourcePropertyChange" />
+          <EntitySet Name="ResourceTypeChanges" EntityType="Zentity.Administration.ResourceTypeChange" />
+          <EntitySet Name="ScalarPropertyChanges" EntityType="Zentity.Administration.ScalarPropertyChange" />
+          <AssociationSet Name="AssociationChangeBelongsToChangeSet" Association="Zentity.Administration.AssociationChangeBelongsToChangeSet">
+            <End Role="ChangeSet" EntitySet="ChangeSets" />
+            <End Role="AssociationChange" EntitySet="AssociationChanges" />
+          </AssociationSet>
+          <AssociationSet Name="AssociationChangeIsCausedByOperation" Association="Zentity.Administration.AssociationChangeIsCausedByOperation">
+            <End Role="Operation" EntitySet="Operations" />
+            <End Role="AssociationChange" EntitySet="AssociationChanges" />
+          </AssociationSet>
+          <AssociationSet Name="DataModelModuleChangeBelongsToChangeSet" Association="Zentity.Administration.DataModelModuleChangeBelongsToChangeSet">
+            <End Role="ChangeSet" EntitySet="ChangeSets" />
+            <End Role="DataModelModuleChange" EntitySet="DataModelModuleChanges" />
+          </AssociationSet>
+          <AssociationSet Name="NavigationPropertyChangeBelongsToChangeSet" Association="Zentity.Administration.NavigationPropertyChangeBelongsToChangeSet">
+            <End Role="ChangeSet" EntitySet="ChangeSets" />
+            <End Role="NavigationPropertyChange" EntitySet="NavigationPropertyChanges" />
+          </AssociationSet>
+          <AssociationSet Name="PredicateChangeBelongsToChangeSet" Association="Zentity.Administration.PredicateChangeBelongsToChangeSet">
+            <End Role="ChangeSet" EntitySet="ChangeSets" />
+            <End Role="PredicateChange" EntitySet="PredicateChanges" />
+          </AssociationSet>
+          <AssociationSet Name="PropertyChangeBelongsToChangeSet" Association="Zentity.Administration.PropertyChangeBelongsToChangeSet">
+            <End Role="ChangeSet" EntitySet="ChangeSets" />
+            <End Role="PropertyChange" EntitySet="PropertyChanges" />
+          </AssociationSet>
+          <AssociationSet Name="RelationshipChangeBelongsToChangeSet" Association="Zentity.Administration.RelationshipChangeBelongsToChangeSet">
+            <End Role="ChangeSet" EntitySet="ChangeSets" />
+            <End Role="RelationshipChange" EntitySet="RelationshipChanges" />
+          </AssociationSet>
+          <AssociationSet Name="RelationshipPropertyChangeBelongsToChangeSet" Association="Zentity.Administration.RelationshipPropertyChangeBelongsToChangeSet">
+            <End Role="ChangeSet" EntitySet="ChangeSets" />
+            <End Role="RelationshipPropertyChange" EntitySet="RelationshipPropertyChanges" />
+          </AssociationSet>
+          <AssociationSet Name="ResourceChangeBelongsToChangeSet" Association="Zentity.Administration.ResourceChangeBelongsToChangeSet">
+            <End Role="ChangeSet" EntitySet="ChangeSets" />
+            <End Role="ResourceChange" EntitySet="ResourceChanges" />
+          </AssociationSet>
+          <AssociationSet Name="ResourcePropertyChangeBelongsToChangeSet" Association="Zentity.Administration.ResourcePropertyChangeBelongsToChangeSet">
+            <End Role="ChangeSet" EntitySet="ChangeSets" />
+            <End Role="ResourcePropertyChange" EntitySet="ResourcePropertyChanges" />
+          </AssociationSet>
+          <AssociationSet Name="PredicatePropertyChangeBelongsToChangeSet" Association="Zentity.Administration.PredicatePropertyChangeBelongsToChangeSet">
+            <End Role="ChangeSet" EntitySet="ChangeSets" />
+            <End Role="PredicatePropertyChange" EntitySet="PredicatePropertyChanges" />
+          </AssociationSet>
+          <AssociationSet Name="ResourceTypeChangeBelongsToChangeSet" Association="Zentity.Administration.ResourceTypeChangeBelongsToChangeSet">
+            <End Role="ChangeSet" EntitySet="ChangeSets" />
+            <End Role="ResourceTypeChange" EntitySet="ResourceTypeChanges" />
+          </AssociationSet>
+          <AssociationSet Name="ScalarPropertyChangeBelongsToChangeSet" Association="Zentity.Administration.ScalarPropertyChangeBelongsToChangeSet">
+            <End Role="ChangeSet" EntitySet="ChangeSets" />
+            <End Role="ScalarPropertyChange" EntitySet="ScalarPropertyChanges" />
+          </AssociationSet>
+          <AssociationSet Name="DataModelModuleChangeIsCausedByOperation" Association="Zentity.Administration.DataModelModuleChangeIsCausedByOperation">
+            <End Role="Operation" EntitySet="Operations" />
+            <End Role="DataModelModuleChange" EntitySet="DataModelModuleChanges" />
+          </AssociationSet>
+          <AssociationSet Name="NavigationPropertyChangeIsCausedByOperation" Association="Zentity.Administration.NavigationPropertyChangeIsCausedByOperation">
+            <End Role="Operation" EntitySet="Operations" />
+            <End Role="NavigationPropertyChange" EntitySet="NavigationPropertyChanges" />
+          </AssociationSet>
+          <AssociationSet Name="PredicateChangeIsCausedByOperation" Association="Zentity.Administration.PredicateChangeIsCausedByOperation">
+            <End Role="Operation" EntitySet="Operations" />
+            <End Role="PredicateChange" EntitySet="PredicateChanges" />
+          </AssociationSet>
+          <AssociationSet Name="PropertyChangeIsCausedByOperation" Association="Zentity.Administration.PropertyChangeIsCausedByOperation">
+            <End Role="Operation" EntitySet="Operations" />
+            <End Role="PropertyChange" EntitySet="PropertyChanges" />
+          </AssociationSet>
+          <AssociationSet Name="RelationshipChangeIsCausedByOperation" Association="Zentity.Administration.RelationshipChangeIsCausedByOperation">
+            <End Role="Operation" EntitySet="Operations" />
+            <End Role="RelationshipChange" EntitySet="RelationshipChanges" />
+          </AssociationSet>
+          <AssociationSet Name="RelationshipPropertyChangeIsCausedByOperation" Association="Zentity.Administration.RelationshipPropertyChangeIsCausedByOperation">
+            <End Role="Operation" EntitySet="Operations" />
+            <End Role="RelationshipPropertyChange" EntitySet="RelationshipPropertyChanges" />
+          </AssociationSet>
+          <AssociationSet Name="ResourceChangeIsCausedByOperation" Association="Zentity.Administration.ResourceChangeIsCausedByOperation">
+            <End Role="Operation" EntitySet="Operations" />
+            <End Role="ResourceChange" EntitySet="ResourceChanges" />
+          </AssociationSet>
+          <AssociationSet Name="ResourcePropertyChangeIsCausedByOperation" Association="Zentity.Administration.ResourcePropertyChangeIsCausedByOperation">
+            <End Role="Operation" EntitySet="Operations" />
+            <End Role="ResourcePropertyChange" EntitySet="ResourcePropertyChanges" />
+          </AssociationSet>
+          <AssociationSet Name="PredicatePropertyChangeIsCausedByOperation" Association="Zentity.Administration.PredicatePropertyChangeIsCausedByOperation">
+            <End Role="Operation" EntitySet="Operations" />
+            <End Role="PredicatePropertyChange" EntitySet="PredicatePropertyChanges" />
+          </AssociationSet>
+          <AssociationSet Name="ResourceTypeChangeIsCausedByOperation" Association="Zentity.Administration.ResourceTypeChangeIsCausedByOperation">
+            <End Role="Operation" EntitySet="Operations" />
+            <End Role="ResourceTypeChange" EntitySet="ResourceTypeChanges" />
+          </AssociationSet>
+          <AssociationSet Name="ScalarPropertyChangeIsCausedByOperation" Association="Zentity.Administration.ScalarPropertyChangeIsCausedByOperation">
+            <End Role="Operation" EntitySet="Operations" />
+            <End Role="ScalarPropertyChange" EntitySet="ScalarPropertyChanges" />
+          </AssociationSet>
+          <FunctionImport Name="EnableChangeHistory">
+            <Parameter Name="ChangeHistoryFilePath" Mode="In" Type="String" MaxLength="512" />
+          </FunctionImport>
+          <FunctionImport Name="DisableChangeHistory">
+          </FunctionImport>
+          <FunctionImport Name="EnableFullTextSearch">
+            <Parameter Name="FullTextCatalogFilePath" Mode="In" Type="String" MaxLength="512" />
+          </FunctionImport>
+          <FunctionImport Name="DisableFullTextSearch">
+          </FunctionImport>
+        </EntityContainer>
+        <EntityType Name="AssociationChange">
+          <Documentation>
+            <Summary>Represents a change for a Zentity.Core.Association object.</Summary>
+          </Documentation>
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property a:SetterAccess="Private" Name="Id" Type="Guid" Nullable="false" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets the Id value that uniquely identifies the association change.</Summary>
+            </Documentation>
+          </Property>
+          <Property a:SetterAccess="Private" Name="SequenceNumber" Type="String" Nullable="false" MaxLength="64" Unicode="true" FixedLength="false" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets the sequence number of this change within a changeset.</Summary>
+            </Documentation>
+          </Property>
+          <Property a:SetterAccess="Private" Name="AssociationId" Type="Guid" Nullable="false" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets the Id of association that changed.</Summary>
+            </Documentation>
+          </Property>
+          <Property a:SetterAccess="Private" Name="PreviousName" Type="String" MaxLength="100" Unicode="true" FixedLength="false" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets previous name value.</Summary>
+            </Documentation>
+          </Property>
+          <Property a:SetterAccess="Private" Name="NextName" Type="String" MaxLength="100" Unicode="true" FixedLength="false" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets next name value.</Summary>
+            </Documentation>
+          </Property>
+          <Property a:SetterAccess="Private" Name="PreviousUri" Type="String" MaxLength="1024" Unicode="true" FixedLength="false" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets previous Uri value.</Summary>
+            </Documentation>
+          </Property>
+          <Property a:SetterAccess="Private" Name="NextUri" Type="String" MaxLength="1024" Unicode="true" FixedLength="false" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets next Uri value.</Summary>
+            </Documentation>
+          </Property>
+          <Property a:SetterAccess="Private" Name="PreviousSubjectNavigationPropertyId" Type="Guid" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets previous subject navigation property Id.</Summary>
+            </Documentation>
+          </Property>
+          <Property a:SetterAccess="Private" Name="NextSubjectNavigationPropertyId" Type="Guid" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets next subject navigation property Id.</Summary>
+            </Documentation>
+          </Property>
+          <Property a:SetterAccess="Private" Name="PreviousObjectNavigationPropertyId" Type="Guid" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets previous object navigation property Id.</Summary>
+            </Documentation>
+          </Property>
+          <Property a:SetterAccess="Private" Name="NextObjectNavigationPropertyId" Type="Guid" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets next object navigation property Id.</Summary>
+            </Documentation>
+          </Property>
+          <Property a:SetterAccess="Private" Name="PreviousPredicateId" Type="Guid" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets previous predicate Id.</Summary>
+            </Documentation>
+          </Property>
+          <Property a:SetterAccess="Private" Name="NextPredicateId" Type="Guid" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets next predicate Id.</Summary>
+            </Documentation>
+          </Property>
+          <Property a:SetterAccess="Private" Name="PreviousSubjectMultiplicity" Type="String" MaxLength="32" Unicode="true" FixedLength="false" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets previous subject multiplicity.</Summary>
+            </Documentation>
+          </Property>
+          <Property a:SetterAccess="Private" Name="NextSubjectMultiplicity" Type="String" MaxLength="32" Unicode="true" FixedLength="false" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets next subject multiplicity.</Summary>
+            </Documentation>
+          </Property>
+          <Property a:SetterAccess="Private" Name="PreviousObjectMultiplicity" Type="String" MaxLength="32" Unicode="true" FixedLength="false" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets previous object multiplicity.</Summary>
+            </Documentation>
+          </Property>
+          <Property a:SetterAccess="Private" Name="NextObjectMultiplicity" Type="String" MaxLength="32" Unicode="true" FixedLength="false" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets next object multiplicity.</Summary>
+            </Documentation>
+          </Property>
+          <NavigationProperty a:SetterAccess="Private" Name="ChangeSet" Relationship="Zentity.Administration.AssociationChangeBelongsToChangeSet" FromRole="AssociationChange" ToRole="ChangeSet" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets the changeset for the change.</Summary>
+            </Documentation>
+          </NavigationProperty>
+          <NavigationProperty a:SetterAccess="Private" Name="Operation" Relationship="Zentity.Administration.AssociationChangeIsCausedByOperation" FromRole="AssociationChange" ToRole="Operation" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets the type of change.</Summary>
+            </Documentation>
+          </NavigationProperty>
+        </EntityType>
+        <EntityType Name="ChangeSet">
+          <Documentation>
+            <Summary>Represents a change set for Zentity entities.</Summary>
+          </Documentation>
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property a:SetterAccess="Private" Name="Id" Type="String" Nullable="false" MaxLength="64" Unicode="true" FixedLength="false" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets the Id of this changeset.</Summary>
+            </Documentation>
+          </Property>
+          <Property a:SetterAccess="Private" Name="DateCreated" Type="DateTime" Nullable="false" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets created date.</Summary>
+            </Documentation>
+          </Property>
+          <NavigationProperty a:SetterAccess="Private" Name="AssociationChanges" Relationship="Zentity.Administration.AssociationChangeBelongsToChangeSet" FromRole="ChangeSet" ToRole="AssociationChange" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets all association changes from this change set.</Summary>
+            </Documentation>
+          </NavigationProperty>
+          <NavigationProperty a:SetterAccess="Private" Name="DataModelModuleChanges" Relationship="Zentity.Administration.DataModelModuleChangeBelongsToChangeSet" FromRole="ChangeSet" ToRole="DataModelModuleChange" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets all module changes from this change set.</Summary>
+            </Documentation>
+          </NavigationProperty>
+          <NavigationProperty a:SetterAccess="Private" Name="NavigationPropertyChanges" Relationship="Zentity.Administration.NavigationPropertyChangeBelongsToChangeSet" FromRole="ChangeSet" ToRole="NavigationPropertyChange" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets all navigation property changes from this change set.</Summary>
+            </Documentation>
+          </NavigationProperty>
+          <NavigationProperty a:SetterAccess="Private" Name="PredicateChanges" Relationship="Zentity.Administration.PredicateChangeBelongsToChangeSet" FromRole="ChangeSet" ToRole="PredicateChange" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets all predicate changes from this change set.</Summary>
+            </Documentation>
+          </NavigationProperty>
+          <NavigationProperty a:SetterAccess="Private" Name="PredicatePropertyChanges" Relationship="Zentity.Administration.PredicatePropertyChangeBelongsToChangeSet" FromRole="ChangeSet" ToRole="PredicatePropertyChange" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets all predicate property changes from this change set.</Summary>
+            </Documentation>
+          </NavigationProperty>
+          <NavigationProperty a:SetterAccess="Private" Name="PropertyChanges" Relationship="Zentity.Administration.PropertyChangeBelongsToChangeSet" FromRole="ChangeSet" ToRole="PropertyChange" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets all property changes from this change set.</Summary>
+            </Documentation>
+          </NavigationProperty>
+          <NavigationProperty a:SetterAccess="Private" Name="RelationshipChanges" Relationship="Zentity.Administration.RelationshipChangeBelongsToChangeSet" FromRole="ChangeSet" ToRole="RelationshipChange" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets all relationship changes from this change set.</Summary>
+            </Documentation>
+          </NavigationProperty>
+          <NavigationProperty a:SetterAccess="Private" Name="RelationshipPropertyChanges" Relationship="Zentity.Administration.RelationshipPropertyChangeBelongsToChangeSet" FromRole="ChangeSet" ToRole="RelationshipPropertyChange" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets all relationship property changes from this change set.</Summary>
+            </Documentation>
+          </NavigationProperty>
+          <NavigationProperty a:SetterAccess="Private" Name="ResourceChanges" Relationship="Zentity.Administration.ResourceChangeBelongsToChangeSet" FromRole="ChangeSet" ToRole="ResourceChange" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets all resource changes from this change set.</Summary>
+            </Documentation>
+          </NavigationProperty>
+          <NavigationProperty a:SetterAccess="Private" Name="ResourcePropertyChanges" Relationship="Zentity.Administration.ResourcePropertyChangeBelongsToChangeSet" FromRole="ChangeSet" ToRole="ResourcePropertyChange" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets all resource property changes from this change set.</Summary>
+            </Documentation>
+          </NavigationProperty>
+          <NavigationProperty a:SetterAccess="Private" Name="ResourceTypeChanges" Relationship="Zentity.Administration.ResourceTypeChangeBelongsToChangeSet" FromRole="ChangeSet" ToRole="ResourceTypeChange" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets all resource type changes from this change set.</Summary>
+            </Documentation>
+          </NavigationProperty>
+          <NavigationProperty a:SetterAccess="Private" Name="ScalarPropertyChanges" Relationship="Zentity.Administration.ScalarPropertyChangeBelongsToChangeSet" FromRole="ChangeSet" ToRole="ScalarPropertyChange" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets all scalar property changes from this change set.</Summary>
+            </Documentation>
+          </NavigationProperty>
+        </EntityType>
+        <EntityType Name="DataModelModuleChange">
+          <Documentation>
+            <Summary> Represents a change for a Zentity.Core.DataModelModule object.</Summary>
+          </Documentation>
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property a:SetterAccess="Private" Name="Id" Type="Guid" Nullable="false" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets the Id value that uniquely identifies the data model module change.</Summary>
+            </Documentation>
+          </Property>
+          <Property a:SetterAccess="Private" Name="SequenceNumber" Type="String" Nullable="false" MaxLength="64" Unicode="true" FixedLength="false" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets the sequence number of this change within a changeset. </Summary>
+            </Documentation>
+          </Property>
+          <Property a:SetterAccess="Private" Name="DataModelModuleId" Type="Guid" Nullable="false" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets the Id of data model module that changed. </Summary>
+            </Documentation>
+          </Property>
+          <Property a:SetterAccess="Private" Name="PreviousNamespace" Type="String" MaxLength="150" Unicode="true" FixedLength="false" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets previous namespace value. </Summary>
+            </Documentation>
+          </Property>
+          <Property a:SetterAccess="Private" Name="NextNamespace" Type="String" MaxLength="150" Unicode="true" FixedLength="false" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets next namespace value. </Summary>
+            </Documentation>
+          </Property>
+          <Property a:SetterAccess="Private" Name="PreviousUri" Type="String" MaxLength="1024" Unicode="true" FixedLength="false" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets previous Uri value. </Summary>
+            </Documentation>
+          </Property>
+          <Property a:SetterAccess="Private" Name="NextUri" Type="String" MaxLength="1024" Unicode="true" FixedLength="false" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets next Uri value. </Summary>
+            </Documentation>
+          </Property>
+          <Property a:SetterAccess="Private" Name="PreviousDescription" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets previous description value. </Summary>
+            </Documentation>
+          </Property>
+          <Property a:SetterAccess="Private" Name="NextDescription" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets next description value. </Summary>
+            </Documentation>
+          </Property>
+          <Property a:SetterAccess="Private" Name="IsMsShipped" Type="Boolean" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets IsMsShipped value. </Summary>
+            </Documentation>
+          </Property>
+          <NavigationProperty a:SetterAccess="Private" Name="ChangeSet" Relationship="Zentity.Administration.DataModelModuleChangeBelongsToChangeSet" FromRole="DataModelModuleChange" ToRole="ChangeSet" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets the changeset for the change. </Summary>
+            </Documentation>
+          </NavigationProperty>
+          <NavigationProperty a:SetterAccess="Private" Name="Operation" Relationship="Zentity.Administration.DataModelModuleChangeIsCausedByOperation" FromRole="DataModelModuleChange" ToRole="Operation" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets the type of change. </Summary>
+            </Documentation>
+          </NavigationProperty>
+        </EntityType>
+        <EntityType Name="NavigationPropertyChange">
+          <Documentation>
+            <Summary>Represents a change for a Zentity.Core.NavigationProperty object.</Summary>
+          </Documentation>
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property a:SetterAccess="Private" Name="Id" Type="Guid" Nullable="false" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets the Id value that uniquely identifies the navigation property change.</Summary>
+            </Documentation>
+          </Property>
+          <Property a:SetterAccess="Private" Name="SequenceNumber" Type="String" Nullable="false" MaxLength="64" Unicode="true" FixedLength="false" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets the sequence number of this change within a changeset. </Summary>
+            </Documentation>
+          </Property>
+          <Property a:SetterAccess="Private" Name="NavigationPropertyId" Type="Guid" Nullable="false" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets the Id of the navigation property that has changed.</Summary>
+            </Documentation>
+          </Property>
+          <Property a:SetterAccess="Private" Name="PreviousResourceTypeId" Type="Guid" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets the Id of previous resource type hosting this navigation property.</Summary>
+            </Documentation>
+          </Property>
+          <Property a:SetterAccess="Private" Name="NextResourceTypeId" Type="Guid" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets the Id of next resource type hosting this navigation property.</Summary>
+            </Documentation>
+          </Property>
+          <Property a:SetterAccess="Private" Name="PreviousName" Type="String" MaxLength="100" Unicode="true" FixedLength="false" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets previous name value.</Summary>
+            </Documentation>
+          </Property>
+          <Property a:SetterAccess="Private" Name="NextName" Type="String" MaxLength="100" Unicode="true" FixedLength="false" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets next name value.</Summary>
+            </Documentation>
+          </Property>
+          <Property a:SetterAccess="Private" Name="PreviousUri" Type="String" MaxLength="1024" Unicode="true" FixedLength="false" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets previous Uri.</Summary>
+            </Documentation>
+          </Property>
+          <Property a:SetterAccess="Private" Name="NextUri" Type="String" MaxLength="1024" Unicode="true" FixedLength="false" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets next Uri.</Summary>
+            </Documentation>
+          </Property>
+          <Property a:SetterAccess="Private" Name="PreviousDescription" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets previous description.</Summary>
+            </Documentation>
+          </Property>
+          <Property a:SetterAccess="Private" Name="NextDescription" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets next description.</Summary>
+            </Documentation>
+          </Property>
+          <NavigationProperty a:SetterAccess="Private" Name="ChangeSet" Relationship="Zentity.Administration.NavigationPropertyChangeBelongsToChangeSet" FromRole="NavigationPropertyChange" ToRole="ChangeSet" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets the changeset for the change. </Summary>
+            </Documentation>
+          </NavigationProperty>
+          <NavigationProperty a:SetterAccess="Private" Name="Operation" Relationship="Zentity.Administration.NavigationPropertyChangeIsCausedByOperation" FromRole="NavigationPropertyChange" ToRole="Operation" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets the type of change. </Summary>
+            </Documentation>
+          </NavigationProperty>
+        </EntityType>
+        <EntityType Name="Operation">
+          <Documentation>
+            <Summary>Represents the type of change. For example, add, delete, update etc.</Summary>
+          </Documentation>
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property a:SetterAccess="Private" Name="Id" Type="Int32" Nullable="false" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets the Id of operation.</Summary>
+            </Documentation>
+          </Property>
+          <Property a:SetterAccess="Private" Name="Name" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets the name of operation.</Summary>
+            </Documentation>
+          </Property>
+          <Property a:SetterAccess="Private" Name="Description" Type="String" MaxLength="4000" Unicode="true" FixedLength="false" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets the description of operation.</Summary>
+            </Documentation>
+          </Property>
+          <NavigationProperty a:SetterAccess="Private" Name="AssociationChanges" Relationship="Zentity.Administration.AssociationChangeIsCausedByOperation" FromRole="Operation" ToRole="AssociationChange" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets all association changes for this operation.</Summary>
+            </Documentation>
+          </NavigationProperty>
+          <NavigationProperty a:SetterAccess="Private" Name="DataModelModuleChanges" Relationship="Zentity.Administration.DataModelModuleChangeIsCausedByOperation" FromRole="Operation" ToRole="DataModelModuleChange" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets all data model module changes for this operation.</Summary>
+            </Documentation>
+          </NavigationProperty>
+          <NavigationProperty a:SetterAccess="Private" Name="NavigationPropertyChanges" Relationship="Zentity.Administration.NavigationPropertyChangeIsCausedByOperation" FromRole="Operation" ToRole="NavigationPropertyChange" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets all navigation property changes for this operation.</Summary>
+            </Documentation>
+          </NavigationProperty>
+          <NavigationProperty a:SetterAccess="Private" Name="PredicateChanges" Relationship="Zentity.Administration.PredicateChangeIsCausedByOperation" FromRole="Operation" ToRole="PredicateChange" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets all predicate changes for this operation.</Summary>
+            </Documentation>
+          </NavigationProperty>
+          <NavigationProperty a:SetterAccess="Private" Name="PredicatePropertyChanges" Relationship="Zentity.Administration.PredicatePropertyChangeIsCausedByOperation" FromRole="Operation" ToRole="PredicatePropertyChange" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets all predicate property changes for this operation.</Summary>
+            </Documentation>
+          </NavigationProperty>
+          <NavigationProperty a:SetterAccess="Private" Name="PropertyChanges" Relationship="Zentity.Administration.PropertyChangeIsCausedByOperation" FromRole="Operation" ToRole="PropertyChange" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets all property changes for this operation.</Summary>
+            </Documentation>
+          </NavigationProperty>
+          <NavigationProperty a:SetterAccess="Private" Name="RelationshipChanges" Relationship="Zentity.Administration.RelationshipChangeIsCausedByOperation" FromRole="Operation" ToRole="RelationshipChange" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets all relationship changes for this operation.</Summary>
+            </Documentation>
+          </NavigationProperty>
+          <NavigationProperty a:SetterAccess="Private" Name="RelationshipPropertyChanges" Relationship="Zentity.Administration.RelationshipPropertyChangeIsCausedByOperation" FromRole="Operation" ToRole="RelationshipPropertyChange" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets all relationship property changes for this operation.</Summary>
+            </Documentation>
+          </NavigationProperty>
+          <NavigationProperty a:SetterAccess="Private" Name="ResourceChanges" Relationship="Zentity.Administration.ResourceChangeIsCausedByOperation" FromRole="Operation" ToRole="ResourceChange" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets all resource changes for this operation.</Summary>
+            </Documentation>
+          </NavigationProperty>
+          <NavigationProperty a:SetterAccess="Private" Name="ResourcePropertyChanges" Relationship="Zentity.Administration.ResourcePropertyChangeIsCausedByOperation" FromRole="Operation" ToRole="ResourcePropertyChange" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets all resource property changes for this operation.</Summary>
+            </Documentation>
+          </NavigationProperty>
+          <NavigationProperty a:SetterAccess="Private" Name="ResourceTypeChanges" Relationship="Zentity.Administration.ResourceTypeChangeIsCausedByOperation" FromRole="Operation" ToRole="ResourceTypeChange" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets all resource type changes for this operation.</Summary>
+            </Documentation>
+          </NavigationProperty>
+          <NavigationProperty a:SetterAccess="Private" Name="ScalarPropertyChanges" Relationship="Zentity.Administration.ScalarPropertyChangeIsCausedByOperation" FromRole="Operation" ToRole="ScalarPropertyChange" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets all scalar property changes for this operation.</Summary>
+            </Documentation>
+          </NavigationProperty>
+        </EntityType>
+        <EntityType Name="PredicateChange">
+          <Documentation>
+            <Summary>Represents a change for a Zentity.Core.Predicate object.</Summary>
+          </Documentation>
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property a:SetterAccess="Private" Name="Id" Type="Guid" Nullable="false" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets the Id value that uniquely identifies the predicate change.</Summary>
+            </Documentation>
+          </Property>
+          <Property a:SetterAccess="Private" Name="SequenceNumber" Type="String" Nullable="false" MaxLength="64" Unicode="true" FixedLength="false" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets the sequence number of this change within a changeset. </Summary>
+            </Documentation>
+          </Property>
+          <Property a:SetterAccess="Private" Name="PredicateId" Type="Guid" Nullable="false" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets the Id of the predicate that has changed.</Summary>
+            </Documentation>
+          </Property>
+          <Property a:SetterAccess="Private" Name="PreviousName" Type="String" MaxLength="128" Unicode="true" FixedLength="false" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets previous name value. </Summary>
+            </Documentation>
+          </Property>
+          <Property a:SetterAccess="Private" Name="NextName" Type="String" MaxLength="128" Unicode="true" FixedLength="false" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets next name value. </Summary>
+            </Documentation>
+          </Property>
+          <Property a:SetterAccess="Private" Name="PreviousUri" Type="String" MaxLength="1024" Unicode="true" FixedLength="false" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets previous Uri value. </Summary>
+            </Documentation>
+          </Property>
+          <Property a:SetterAccess="Private" Name="NextUri" Type="String" MaxLength="1024" Unicode="true" FixedLength="false" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets next Uri value. </Summary>
+            </Documentation>
+          </Property>
+          <NavigationProperty a:SetterAccess="Private" Name="ChangeSet" Relationship="Zentity.Administration.PredicateChangeBelongsToChangeSet" FromRole="PredicateChange" ToRole="ChangeSet" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets the changeset for the change. </Summary>
+            </Documentation>
+          </NavigationProperty>
+          <NavigationProperty a:SetterAccess="Private" Name="Operation" Relationship="Zentity.Administration.PredicateChangeIsCausedByOperation" FromRole="PredicateChange" ToRole="Operation" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets the type of change. </Summary>
+            </Documentation>
+          </NavigationProperty>
+        </EntityType>
+        <EntityType Name="PropertyChange">
+          <Documentation>
+            <Summary>Represents a change for a Zentity.Core.Property object. </Summary>
+          </Documentation>
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property a:SetterAccess="Private" Name="Id" Type="Guid" Nullable="false" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets the Id value that uniquely identifies the property change.</Summary>
+            </Documentation>
+          </Property>
+          <Property a:SetterAccess="Private" Name="SequenceNumber" Type="String" Nullable="false" MaxLength="64" Unicode="true" FixedLength="false" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets the sequence number of this change within a changeset. </Summary>
+            </Documentation>
+          </Property>
+          <Property a:SetterAccess="Private" Name="PropertyId" Type="Guid" Nullable="false" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets the Id of the property that has changed.</Summary>
+            </Documentation>
+          </Property>
+          <Property a:SetterAccess="Private" Name="PreviousName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets previous name value. </Summary>
+            </Documentation>
+          </Property>
+          <Property a:SetterAccess="Private" Name="NextName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets next name value. </Summary>
+            </Documentation>
+          </Property>
+          <Property a:SetterAccess="Private" Name="PreviousUri" Type="String" MaxLength="1024" Unicode="true" FixedLength="false" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets previous Uri value. </Summary>
+            </Documentation>
+          </Property>
+          <Property a:SetterAccess="Private" Name="NextUri" Type="String" MaxLength="1024" Unicode="true" FixedLength="false" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets next Uri value. </Summary>
+            </Documentation>
+          </Property>
+          <NavigationProperty a:SetterAccess="Private" Name="ChangeSet" Relationship="Zentity.Administration.PropertyChangeBelongsToChangeSet" FromRole="PropertyChange" ToRole="ChangeSet" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets the changeset for the change.</Summary>
+            </Documentation>
+          </NavigationProperty>
+          <NavigationProperty a:SetterAccess="Private" Name="Operation" Relationship="Zentity.Administration.PropertyChangeIsCausedByOperation" FromRole="PropertyChange" ToRole="Operation" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets the type of change. </Summary>
+            </Documentation>
+          </NavigationProperty>
+        </EntityType>
+        <EntityType Name="RelationshipChange">
+          <Documentation>
+            <Summary>Represents a change for a Zentity.Core.Relationship object.</Summary>
+          </Documentation>
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property a:SetterAccess="Private" Name="Id" Type="Guid" Nullable="false" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets the Id value that uniquely identifies the relationship change.</Summary>
+            </Documentation>
+          </Property>
+          <Property a:SetterAccess="Private" Name="SequenceNumber" Type="String" Nullable="false" MaxLength="64" Unicode="true" FixedLength="false" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets the sequence number of this change within a changeset. </Summary>
+            </Documentation>
+          </Property>
+          <Property a:SetterAccess="Private" Name="RelationshipId" Type="Guid" Nullable="false" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets the Id of the relationship that has changed.</Summary>
+            </Documentation>
+          </Property>
+          <Property a:SetterAccess="Private" Name="PreviousSubjectResourceId" Type="Guid" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Previous subject resource Id.</Summary>
+            </Documentation>
+          </Property>
+          <Property a:SetterAccess="Private" Name="NextSubjectResourceId" Type="Guid" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Next subject resource Id.</Summary>
+            </Documentation>
+          </Property>
+          <Property a:SetterAccess="Private" Name="PreviousObjectResourceId" Type="Guid" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Previous object resource Id.</Summary>
+            </Documentation>
+          </Property>
+          <Property a:SetterAccess="Private" Name="NextObjectResourceId" Type="Guid" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Next object resource Id.</Summary>
+            </Documentation>
+          </Property>
+          <Property a:SetterAccess="Private" Name="PreviousPredicateId" Type="Guid" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Previous predicate Id.</Summary>
+            </Documentation>
+          </Property>
+          <Property a:SetterAccess="Private" Name="NextPredicateId" Type="Guid" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Next predicate Id.</Summary>
+            </Documentation>
+          </Property>
+          <Property a:SetterAccess="Private" Name="PreviousOrdinalPosition" Type="Int32" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Previous ordinal position.</Summary>
+            </Documentation>
+          </Property>
+          <Property a:SetterAccess="Private" Name="NextOrdinalPosition" Type="Int32" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Next ordinal position.</Summary>
+            </Documentation>
+          </Property>
+          <Property a:SetterAccess="Private" Name="PreviousDateAdded" Type="DateTime" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Previous date added.</Summary>
+            </Documentation>
+          </Property>
+          <Property a:SetterAccess="Private" Name="NextDateAdded" Type="DateTime" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Next date added.</Summary>
+            </Documentation>
+          </Property>
+          <NavigationProperty a:SetterAccess="Private" Name="ChangeSet" Relationship="Zentity.Administration.RelationshipChangeBelongsToChangeSet" FromRole="RelationshipChange" ToRole="ChangeSet" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets the changeset for the change. </Summary>
+            </Documentation>
+          </NavigationProperty>
+          <NavigationProperty a:SetterAccess="Private" Name="Operation" Relationship="Zentity.Administration.RelationshipChangeIsCausedByOperation" FromRole="RelationshipChange" ToRole="Operation" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets the type of change. </Summary>
+            </Documentation>
+          </NavigationProperty>
+        </EntityType>
+        <EntityType Name="RelationshipPropertyChange">
+          <Documentation>
+            <Summary>Represents a change for a Zentity.Core.RelationshipProperty object. </Summary>
+          </Documentation>
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property a:SetterAccess="Private" Name="Id" Type="Guid" Nullable="false" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets the Id value that uniquely identifies the relationship property change.</Summary>
+            </Documentation>
+          </Property>
+          <Property a:SetterAccess="Private" Name="SequenceNumber" Type="String" Nullable="false" MaxLength="64" Unicode="true" FixedLength="false" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets the sequence number of this change within a changeset. </Summary>
+            </Documentation>
+          </Property>
+          <Property a:SetterAccess="Private" Name="RelationshipPropertyId" Type="Guid" Nullable="false" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets the Id of relationship property that has changed.</Summary>
+            </Documentation>
+          </Property>
+          <Property a:SetterAccess="Private" Name="PreviousTripletId" Type="Guid" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets previous triple Id.</Summary>
+            </Documentation>
+          </Property>
+          <Property a:SetterAccess="Private" Name="NextTripletId" Type="Guid" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets next triple Id.</Summary>
+            </Documentation>
+          </Property>
+          <Property a:SetterAccess="Private" Name="PreviousPropertyId" Type="Guid" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets previous property Id.</Summary>
+            </Documentation>
+          </Property>
+          <Property a:SetterAccess="Private" Name="NextPropertyId" Type="Guid" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets next property Id.</Summary>
+            </Documentation>
+          </Property>
+          <Property a:SetterAccess="Private" Name="PreviousValue" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets previous value.</Summary>
+            </Documentation>
+          </Property>
+          <Property a:SetterAccess="Private" Name="NextValue" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets next value.</Summary>
+            </Documentation>
+          </Property>
+          <NavigationProperty a:SetterAccess="Private" Name="ChangeSet" Relationship="Zentity.Administration.RelationshipPropertyChangeBelongsToChangeSet" FromRole="RelationshipPropertyChange" ToRole="ChangeSet" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets the changeset for the change. </Summary>
+            </Documentation>
+          </NavigationProperty>
+          <NavigationProperty a:SetterAccess="Private" Name="Operation" Relationship="Zentity.Administration.RelationshipPropertyChangeIsCausedByOperation" FromRole="RelationshipPropertyChange" ToRole="Operation" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets the type of change. </Summary>
+            </Documentation>
+          </NavigationProperty>
+        </EntityType>
+        <EntityType Name="ResourceChange">
+          <Documentation>
+            <Summary>Represents a change for a Zentity.Core.Resource object. </Summary>
+          </Documentation>
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property a:SetterAccess="Private" Name="Id" Type="Guid" Nullable="false" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets the Id value that uniquely identifies the resource change.</Summary>
+            </Documentation>
+          </Property>
+          <Property a:SetterAccess="Private" Name="SequenceNumber" Type="String" Nullable="false" MaxLength="64" Unicode="true" FixedLength="false" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets the sequence number of this change within a changeset. </Summary>
+            </Documentation>
+          </Property>
+          <Property a:SetterAccess="Private" Name="ResourceId" Type="Guid" Nullable="false" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets the Id of the resource that has changed.</Summary>
+            </Documentation>
+          </Property>
+          <Property a:SetterAccess="Private" Name="ResourceTypeId" Type="Guid" Nullable="false" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets resource type Id. </Summary>
+            </Documentation>
+          </Property>
+          <Property a:SetterAccess="Private" Name="ResourceTypeFullName" Type="String" Nullable="false" MaxLength="512" Unicode="true" FixedLength="false" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets resource type full name.</Summary>
+            </Documentation>
+          </Property>
+          <Property a:SetterAccess="Private" Name="PropertyChanges" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets an xml having the previous and next values of all the properties of this resource.</Summary>
+            </Documentation>
+          </Property>
+          <NavigationProperty a:SetterAccess="Private" Name="ChangeSet" Relationship="Zentity.Administration.ResourceChangeBelongsToChangeSet" FromRole="ResourceChange" ToRole="ChangeSet" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets the changeset for the change. </Summary>
+            </Documentation>
+          </NavigationProperty>
+          <NavigationProperty a:SetterAccess="Private" Name="Operation" Relationship="Zentity.Administration.ResourceChangeIsCausedByOperation" FromRole="ResourceChange" ToRole="Operation" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets the type of change. </Summary>
+            </Documentation>
+          </NavigationProperty>
+        </EntityType>
+        <EntityType Name="ResourcePropertyChange">
+          <Documentation>
+            <Summary>Represents a change for a Zentity.Core.ResourceProperty object. </Summary>
+          </Documentation>
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property a:SetterAccess="Private" Name="Id" Type="Guid" Nullable="false" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets the Id value that uniquely identifies the resource property change.</Summary>
+            </Documentation>
+          </Property>
+          <Property a:SetterAccess="Private" Name="SequenceNumber" Type="String" Nullable="false" MaxLength="64" Unicode="true" FixedLength="false" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets the sequence number of this change within a changeset. </Summary>
+            </Documentation>
+          </Property>
+          <Property a:SetterAccess="Private" Name="ResourcePropertyId" Type="Guid" Nullable="false" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets the Id of the resource property that has changed.</Summary>
+            </Documentation>
+          </Property>
+          <Property a:SetterAccess="Private" Name="PreviousResourceId" Type="Guid" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets previous resource Id. </Summary>
+            </Documentation>
+          </Property>
+          <Property a:SetterAccess="Private" Name="NextResourceId" Type="Guid" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets next resource Id. </Summary>
+            </Documentation>
+          </Property>
+          <Property a:SetterAccess="Private" Name="PreviousPropertyId" Type="Guid" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets previous property Id. </Summary>
+            </Documentation>
+          </Property>
+          <Property a:SetterAccess="Private" Name="NextPropertyId" Type="Guid" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets next property Id. </Summary>
+            </Documentation>
+          </Property>
+          <Property a:SetterAccess="Private" Name="PreviousValue" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets previous value. </Summary>
+            </Documentation>
+          </Property>
+          <Property a:SetterAccess="Private" Name="NextValue" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets next value. </Summary>
+            </Documentation>
+          </Property>
+          <NavigationProperty a:SetterAccess="Private" Name="ChangeSet" Relationship="Zentity.Administration.ResourcePropertyChangeBelongsToChangeSet" FromRole="ResourcePropertyChange" ToRole="ChangeSet" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets the changeset for the change. </Summary>
+            </Documentation>
+          </NavigationProperty>
+          <NavigationProperty a:SetterAccess="Private" Name="Operation" Relationship="Zentity.Administration.ResourcePropertyChangeIsCausedByOperation" FromRole="ResourcePropertyChange" ToRole="Operation" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets the type of change. </Summary>
+            </Documentation>
+          </NavigationProperty>
+        </EntityType>
+        <EntityType Name="PredicatePropertyChange">
+          <Documentation>
+            <Summary>Represents a change for a Zentity.Core.PredicateProperty object. </Summary>
+          </Documentation>
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property a:SetterAccess="Private" Name="Id" Type="Guid" Nullable="false" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets the Id value that uniquely identifies the predicate property change.</Summary>
+            </Documentation>
+          </Property>
+          <Property a:SetterAccess="Private" Name="SequenceNumber" Type="String" Nullable="false" MaxLength="64" Unicode="true" FixedLength="false" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets the sequence number of this change within a changeset. </Summary>
+            </Documentation>
+          </Property>
+          <Property a:SetterAccess="Private" Name="PredicatePropertyId" Type="Guid" Nullable="false" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets the Id of predicate property that has changed.</Summary>
+            </Documentation>
+          </Property>
+          <Property a:SetterAccess="Private" Name="PreviousPredicateId" Type="Guid" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets previous predicate Id. </Summary>
+            </Documentation>
+          </Property>
+          <Property a:SetterAccess="Private" Name="NextPredicateId" Type="Guid" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets next predicate Id. </Summary>
+            </Documentation>
+          </Property>
+          <Property a:SetterAccess="Private" Name="PreviousPropertyId" Type="Guid" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets previous property Id. </Summary>
+            </Documentation>
+          </Property>
+          <Property a:SetterAccess="Private" Name="NextPropertyId" Type="Guid" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets next property Id. </Summary>
+            </Documentation>
+          </Property>
+          <Property a:SetterAccess="Private" Name="PreviousValue" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets previous value. </Summary>
+            </Documentation>
+          </Property>
+          <Property a:SetterAccess="Private" Name="NextValue" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets next value. </Summary>
+            </Documentation>
+          </Property>
+          <NavigationProperty a:SetterAccess="Private" Name="ChangeSet" Relationship="Zentity.Administration.PredicatePropertyChangeBelongsToChangeSet" FromRole="PredicatePropertyChange" ToRole="ChangeSet" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets the changeset for the change. </Summary>
+            </Documentation>
+          </NavigationProperty>
+          <NavigationProperty a:SetterAccess="Private" Name="Operation" Relationship="Zentity.Administration.PredicatePropertyChangeIsCausedByOperation" FromRole="PredicatePropertyChange" ToRole="Operation" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets the type of change. </Summary>
+            </Documentation>
+          </NavigationProperty>
+        </EntityType>
+        <EntityType Name="ResourceTypeChange">
+          <Documentation>
+            <Summary>Represents a change for a Zentity.Core.ResourceType object. </Summary>
+          </Documentation>
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property a:SetterAccess="Private" Name="Id" Type="Guid" Nullable="false" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets the Id value that uniquely identifies the resource type change.</Summary>
+            </Documentation>
+          </Property>
+          <Property a:SetterAccess="Private" Name="SequenceNumber" Type="String" Nullable="false" MaxLength="64" Unicode="true" FixedLength="false" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets the sequence number of this change within a changeset. </Summary>
+            </Documentation>
+          </Property>
+          <Property a:SetterAccess="Private" Name="ResourceTypeId" Type="Guid" Nullable="false" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets the Id of the resource type that has changed.</Summary>
+            </Documentation>
+          </Property>
+          <Property a:SetterAccess="Private" Name="PreviousDataModelModuleId" Type="Guid" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets the previous data model module Id.</Summary>
+            </Documentation>
+          </Property>
+          <Property a:SetterAccess="Private" Name="NextDataModelModuleId" Type="Guid" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets the next data model module Id.</Summary>
+            </Documentation>
+          </Property>
+          <Property a:SetterAccess="Private" Name="PreviousBaseTypeId" Type="Guid" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets the previous base resource type Id.</Summary>
+            </Documentation>
+          </Property>
+          <Property a:SetterAccess="Private" Name="NextBaseTypeId" Type="Guid" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets the next resource type Id.</Summary>
+            </Documentation>
+          </Property>
+          <Property a:SetterAccess="Private" Name="PreviousName" Type="String" MaxLength="100" Unicode="true" FixedLength="false" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets previous name.</Summary>
+            </Documentation>
+          </Property>
+          <Property a:SetterAccess="Private" Name="NextName" Type="String" MaxLength="100" Unicode="true" FixedLength="false" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets next name.</Summary>
+            </Documentation>
+          </Property>
+          <Property a:SetterAccess="Private" Name="PreviousUri" Type="String" MaxLength="1024" Unicode="true" FixedLength="false" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets previous uri.</Summary>
+            </Documentation>
+          </Property>
+          <Property a:SetterAccess="Private" Name="NextUri" Type="String" MaxLength="1024" Unicode="true" FixedLength="false" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets next uri.</Summary>
+            </Documentation>
+          </Property>
+          <Property a:SetterAccess="Private" Name="PreviousDescription" Type="String" MaxLength="4000" Unicode="true" FixedLength="false" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets previous description.</Summary>
+            </Documentation>
+          </Property>
+          <Property a:SetterAccess="Private" Name="NextDescription" Type="String" MaxLength="4000" Unicode="true" FixedLength="false" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets next description.</Summary>
+            </Documentation>
+          </Property>
+          <NavigationProperty a:SetterAccess="Private" Name="ChangeSet" Relationship="Zentity.Administration.ResourceTypeChangeBelongsToChangeSet" FromRole="ResourceTypeChange" ToRole="ChangeSet" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets the changeset for the change. </Summary>
+            </Documentation>
+          </NavigationProperty>
+          <NavigationProperty a:SetterAccess="Private" Name="Operation" Relationship="Zentity.Administration.ResourceTypeChangeIsCausedByOperation" FromRole="ResourceTypeChange" ToRole="Operation" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets the type of change. </Summary>
+            </Documentation>
+          </NavigationProperty>
+        </EntityType>
+        <EntityType Name="ScalarPropertyChange">
+          <Documentation>
+            <Summary>Represents a change for a Zentity.Core.ScalarProperty object.</Summary>
+          </Documentation>
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property a:SetterAccess="Private" Name="Id" Type="Guid" Nullable="false" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets the Id value that uniquely identifies the scalar property change.</Summary>
+            </Documentation>
+          </Property>
+          <Property a:SetterAccess="Private" Name="SequenceNumber" Type="String" Nullable="false" MaxLength="64" Unicode="true" FixedLength="false" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets the sequence number of this change within a changeset. </Summary>
+            </Documentation>
+          </Property>
+          <Property a:SetterAccess="Private" Name="ScalarPropertyId" Type="Guid" Nullable="false" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets the Id of the scalar property that has changed.</Summary>
+            </Documentation>
+          </Property>
+          <Property a:SetterAccess="Private" Name="PreviousResourceTypeId" Type="Guid" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets previous resource type Id.</Summary>
+            </Documentation>
+          </Property>
+          <Property a:SetterAccess="Private" Name="NextResourceTypeId" Type="Guid" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets next resource type Id.</Summary>
+            </Documentation>
+          </Property>
+          <Property a:SetterAccess="Private" Name="PreviousName" Type="String" MaxLength="100" Unicode="true" FixedLength="false" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets previous name.</Summary>
+            </Documentation>
+          </Property>
+          <Property a:SetterAccess="Private" Name="NextName" Type="String" MaxLength="100" Unicode="true" FixedLength="false" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets next name.</Summary>
+            </Documentation>
+          </Property>
+          <Property a:SetterAccess="Private" Name="PreviousUri" Type="String" MaxLength="1024" Unicode="true" FixedLength="false" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets previous uri.</Summary>
+            </Documentation>
+          </Property>
+          <Property a:SetterAccess="Private" Name="NextUri" Type="String" MaxLength="1024" Unicode="true" FixedLength="false" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets next uri.</Summary>
+            </Documentation>
+          </Property>
+          <Property a:SetterAccess="Private" Name="PreviousDescription" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets previous description.</Summary>
+            </Documentation>
+          </Property>
+          <Property a:SetterAccess="Private" Name="NextDescription" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets next description.</Summary>
+            </Documentation>
+          </Property>
+          <Property a:SetterAccess="Private" Name="PreviousDataType" Type="String" MaxLength="100" Unicode="true" FixedLength="false" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets previous data type.</Summary>
+            </Documentation>
+          </Property>
+          <Property a:SetterAccess="Private" Name="NextDataType" Type="String" MaxLength="100" Unicode="true" FixedLength="false" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets next data type.</Summary>
+            </Documentation>
+          </Property>
+          <Property a:SetterAccess="Private" Name="PreviousNullable" Type="Boolean" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets previous nullable.</Summary>
+            </Documentation>
+          </Property>
+          <Property a:SetterAccess="Private" Name="NextNullable" Type="Boolean" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets next nullable.</Summary>
+            </Documentation>
+          </Property>
+          <Property a:SetterAccess="Private" Name="PreviousMaxLength" Type="Int32" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets previous max length.</Summary>
+            </Documentation>
+          </Property>
+          <Property a:SetterAccess="Private" Name="NextMaxLength" Type="Int32" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets next max length.</Summary>
+            </Documentation>
+          </Property>
+          <Property a:SetterAccess="Private" Name="PreviousScale" Type="Int32" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets previous scale.</Summary>
+            </Documentation>
+          </Property>
+          <Property a:SetterAccess="Private" Name="NextScale" Type="Int32" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets next scale.</Summary>
+            </Documentation>
+          </Property>
+          <Property a:SetterAccess="Private" Name="PreviousPrecision" Type="Int32" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets previous precision.</Summary>
+            </Documentation>
+          </Property>
+          <Property a:SetterAccess="Private" Name="NextPrecision" Type="Int32" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets next precision.</Summary>
+            </Documentation>
+          </Property>
+          <NavigationProperty a:SetterAccess="Private" Name="ChangeSet" Relationship="Zentity.Administration.ScalarPropertyChangeBelongsToChangeSet" FromRole="ScalarPropertyChange" ToRole="ChangeSet" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets the changeset for the change. </Summary>
+            </Documentation>
+          </NavigationProperty>
+          <NavigationProperty a:SetterAccess="Private" Name="Operation" Relationship="Zentity.Administration.ScalarPropertyChangeIsCausedByOperation" FromRole="ScalarPropertyChange" ToRole="Operation" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+            <Documentation>
+              <Summary>Gets the type of change. </Summary>
+            </Documentation>
+          </NavigationProperty>
+        </EntityType>
+        <Association Name="AssociationChangeBelongsToChangeSet">
+          <End Role="ChangeSet" Type="Zentity.Administration.ChangeSet" Multiplicity="1" />
+          <End Role="AssociationChange" Type="Zentity.Administration.AssociationChange" Multiplicity="*" />
+        </Association>
+        <Association Name="AssociationChangeIsCausedByOperation">
+          <End Role="Operation" Type="Zentity.Administration.Operation" Multiplicity="1" />
+          <End Role="AssociationChange" Type="Zentity.Administration.AssociationChange" Multiplicity="*" />
+        </Association>
+        <Association Name="DataModelModuleChangeBelongsToChangeSet">
+          <End Role="ChangeSet" Type="Zentity.Administration.ChangeSet" Multiplicity="1" />
+          <End Role="DataModelModuleChange" Type="Zentity.Administration.DataModelModuleChange" Multiplicity="*" />
+        </Association>
+        <Association Name="NavigationPropertyChangeBelongsToChangeSet">
+          <End Role="ChangeSet" Type="Zentity.Administration.ChangeSet" Multiplicity="1" />
+          <End Role="NavigationPropertyChange" Type="Zentity.Administration.NavigationPropertyChange" Multiplicity="*" />
+        </Association>
+        <Association Name="PredicateChangeBelongsToChangeSet">
+          <End Role="ChangeSet" Type="Zentity.Administration.ChangeSet" Multiplicity="1" />
+          <End Role="PredicateChange" Type="Zentity.Administration.PredicateChange" Multiplicity="*" />
+        </Association>
+        <Association Name="PropertyChangeBelongsToChangeSet">
+          <End Role="ChangeSet" Type="Zentity.Administration.ChangeSet" Multiplicity="1" />
+          <End Role="PropertyChange" Type="Zentity.Administration.PropertyChange" Multiplicity="*" />
+        </Association>
+        <Association Name="RelationshipChangeBelongsToChangeSet">
+          <End Role="ChangeSet" Type="Zentity.Administration.ChangeSet" Multiplicity="1" />
+          <End Role="RelationshipChange" Type="Zentity.Administration.RelationshipChange" Multiplicity="*" />
+        </Association>
+        <Association Name="RelationshipPropertyChangeBelongsToChangeSet">
+          <End Role="ChangeSet" Type="Zentity.Administration.ChangeSet" Multiplicity="1" />
+          <End Role="RelationshipPropertyChange" Type="Zentity.Administration.RelationshipPropertyChange" Multiplicity="*" />
+        </Association>
+        <Association Name="ResourceChangeBelongsToChangeSet">
+          <End Role="ChangeSet" Type="Zentity.Administration.ChangeSet" Multiplicity="1" />
+          <End Role="ResourceChange" Type="Zentity.Administration.ResourceChange" Multiplicity="*" />
+        </Association>
+        <Association Name="ResourcePropertyChangeBelongsToChangeSet">
+          <End Role="ChangeSet" Type="Zentity.Administration.ChangeSet" Multiplicity="1" />
+          <End Role="ResourcePropertyChange" Type="Zentity.Administration.ResourcePropertyChange" Multiplicity="*" />
+        </Association>
+        <Association Name="PredicatePropertyChangeBelongsToChangeSet">
+          <End Role="ChangeSet" Type="Zentity.Administration.ChangeSet" Multiplicity="1" />
+          <End Role="PredicatePropertyChange" Type="Zentity.Administration.PredicatePropertyChange" Multiplicity="*" />
+        </Association>
+        <Association Name="ResourceTypeChangeBelongsToChangeSet">
+          <End Role="ChangeSet" Type="Zentity.Administration.ChangeSet" Multiplicity="1" />
+          <End Role="ResourceTypeChange" Type="Zentity.Administration.ResourceTypeChange" Multiplicity="*" />
+        </Association>
+        <Association Name="ScalarPropertyChangeBelongsToChangeSet">
+          <End Role="ChangeSet" Type="Zentity.Administration.ChangeSet" Multiplicity="1" />
+          <End Role="ScalarPropertyChange" Type="Zentity.Administration.ScalarPropertyChange" Multiplicity="*" />
+        </Association>
+        <Association Name="DataModelModuleChangeIsCausedByOperation">
+          <End Role="Operation" Type="Zentity.Administration.Operation" Multiplicity="1" />
+          <End Role="DataModelModuleChange" Type="Zentity.Administration.DataModelModuleChange" Multiplicity="*" />
+        </Association>
+        <Association Name="NavigationPropertyChangeIsCausedByOperation">
+          <End Role="Operation" Type="Zentity.Administration.Operation" Multiplicity="1" />
+          <End Role="NavigationPropertyChange" Type="Zentity.Administration.NavigationPropertyChange" Multiplicity="*" />
+        </Association>
+        <Association Name="PredicateChangeIsCausedByOperation">
+          <End Role="Operation" Type="Zentity.Administration.Operation" Multiplicity="1" />
+          <End Role="PredicateChange" Type="Zentity.Administration.PredicateChange" Multiplicity="*" />
+        </Association>
+        <Association Name="PropertyChangeIsCausedByOperation">
+          <End Role="Operation" Type="Zentity.Administration.Operation" Multiplicity="1" />
+          <End Role="PropertyChange" Type="Zentity.Administration.PropertyChange" Multiplicity="*" />
+        </Association>
+        <Association Name="RelationshipChangeIsCausedByOperation">
+          <End Role="Operation" Type="Zentity.Administration.Operation" Multiplicity="1" />
+          <End Role="RelationshipChange" Type="Zentity.Administration.RelationshipChange" Multiplicity="*" />
+        </Association>
+        <Association Name="RelationshipPropertyChangeIsCausedByOperation">
+          <End Role="Operation" Type="Zentity.Administration.Operation" Multiplicity="1" />
+          <End Role="RelationshipPropertyChange" Type="Zentity.Administration.RelationshipPropertyChange" Multiplicity="*" />
+        </Association>
+        <Association Name="ResourceChangeIsCausedByOperation">
+          <End Role="Operation" Type="Zentity.Administration.Operation" Multiplicity="1" />
+          <End Role="ResourceChange" Type="Zentity.Administration.ResourceChange" Multiplicity="*" />
+        </Association>
+        <Association Name="ResourcePropertyChangeIsCausedByOperation">
+          <End Role="Operation" Type="Zentity.Administration.Operation" Multiplicity="1" />
+          <End Role="ResourcePropertyChange" Type="Zentity.Administration.ResourcePropertyChange" Multiplicity="*" />
+        </Association>
+        <Association Name="PredicatePropertyChangeIsCausedByOperation">
+          <End Role="Operation" Type="Zentity.Administration.Operation" Multiplicity="1" />
+          <End Role="PredicatePropertyChange" Type="Zentity.Administration.PredicatePropertyChange" Multiplicity="*" />
+        </Association>
+        <Association Name="ResourceTypeChangeIsCausedByOperation">
+          <End Role="Operation" Type="Zentity.Administration.Operation" Multiplicity="1" />
+          <End Role="ResourceTypeChange" Type="Zentity.Administration.ResourceTypeChange" Multiplicity="*" />
+        </Association>
+        <Association Name="ScalarPropertyChangeIsCausedByOperation">
+          <End Role="Operation" Type="Zentity.Administration.Operation" Multiplicity="1" />
+          <End Role="ScalarPropertyChange" Type="Zentity.Administration.ScalarPropertyChange" Multiplicity="*" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Administration" CdmEntityContainer="AdministrationContext">
+          <EntitySetMapping Name="AssociationChanges">
+            <EntityTypeMapping TypeName="IsTypeOf(Zentity.Administration.AssociationChange)">
+              <MappingFragment StoreEntitySet="AssociationChange">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="SequenceNumber" ColumnName="SequenceNumber" />
+                <ScalarProperty Name="AssociationId" ColumnName="AssociationId" />
+                <ScalarProperty Name="PreviousName" ColumnName="PreviousName" />
+                <ScalarProperty Name="NextName" ColumnName="NextName" />
+                <ScalarProperty Name="PreviousUri" ColumnName="PreviousUri" />
+                <ScalarProperty Name="NextUri" ColumnName="NextUri" />
+                <ScalarProperty Name="PreviousSubjectNavigationPropertyId" ColumnName="PreviousSubjectNavigationPropertyId" />
+                <ScalarProperty Name="NextSubjectNavigationPropertyId" ColumnName="NextSubjectNavigationPropertyId" />
+                <ScalarProperty Name="PreviousObjectNavigationPropertyId" ColumnName="PreviousObjectNavigationPropertyId" />
+                <ScalarProperty Name="NextObjectNavigationPropertyId" ColumnName="NextObjectNavigationPropertyId" />
+                <ScalarProperty Name="PreviousPredicateId" ColumnName="PreviousPredicateId" />
+                <ScalarProperty Name="NextPredicateId" ColumnName="NextPredicateId" />
+                <ScalarProperty Name="PreviousSubjectMultiplicity" ColumnName="PreviousSubjectMultiplicity" />
+                <ScalarProperty Name="NextSubjectMultiplicity" ColumnName="NextSubjectMultiplicity" />
+                <ScalarProperty Name="PreviousObjectMultiplicity" ColumnName="PreviousObjectMultiplicity" />
+                <ScalarProperty Name="NextObjectMultiplicity" ColumnName="NextObjectMultiplicity" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ChangeSets">
+            <EntityTypeMapping TypeName="IsTypeOf(Zentity.Administration.ChangeSet)">
+              <MappingFragment StoreEntitySet="ChangeSet">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DataModelModuleChanges">
+            <EntityTypeMapping TypeName="IsTypeOf(Zentity.Administration.DataModelModuleChange)">
+              <MappingFragment StoreEntitySet="DataModelModuleChange">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="SequenceNumber" ColumnName="SequenceNumber" />
+                <ScalarProperty Name="DataModelModuleId" ColumnName="DataModelModuleId" />
+                <ScalarProperty Name="PreviousNamespace" ColumnName="PreviousNamespace" />
+                <ScalarProperty Name="NextNamespace" ColumnName="NextNamespace" />
+                <ScalarProperty Name="PreviousUri" ColumnName="PreviousUri" />
+                <ScalarProperty Name="NextUri" ColumnName="NextUri" />
+                <ScalarProperty Name="PreviousDescription" ColumnName="PreviousDescription" />
+                <ScalarProperty Name="NextDescription" ColumnName="NextDescription" />
+                <ScalarProperty Name="IsMsShipped" ColumnName="IsMsShipped" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NavigationPropertyChanges">
+            <EntityTypeMapping TypeName="IsTypeOf(Zentity.Administration.NavigationPropertyChange)">
+              <MappingFragment StoreEntitySet="NavigationPropertyChange">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="SequenceNumber" ColumnName="SequenceNumber" />
+                <ScalarProperty Name="NavigationPropertyId" ColumnName="NavigationPropertyId" />
+                <ScalarProperty Name="PreviousResourceTypeId" ColumnName="PreviousResourceTypeId" />
+                <ScalarProperty Name="NextResourceTypeId" ColumnName="NextResourceTypeId" />
+                <ScalarProperty Name="PreviousName" ColumnName="PreviousName" />
+                <ScalarProperty Name="NextName" ColumnName="NextName" />
+                <ScalarProperty Name="PreviousUri" ColumnName="PreviousUri" />
+                <ScalarProperty Name="NextUri" ColumnName="NextUri" />
+                <ScalarProperty Name="PreviousDescription" ColumnName="PreviousDescription" />
+                <ScalarProperty Name="NextDescription" ColumnName="NextDescription" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Operations">
+            <EntityTypeMapping TypeName="IsTypeOf(Zentity.Administration.Operation)">
+              <MappingFragment StoreEntitySet="Operation">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PredicateChanges">
+            <EntityTypeMapping TypeName="IsTypeOf(Zentity.Administration.PredicateChange)">
+              <MappingFragment StoreEntitySet="PredicateChange">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="SequenceNumber" ColumnName="SequenceNumber" />
+                <ScalarProperty Name="PredicateId" ColumnName="PredicateId" />
+                <ScalarProperty Name="PreviousName" ColumnName="PreviousName" />
+                <ScalarProperty Name="NextName" ColumnName="NextName" />
+                <ScalarProperty Name="PreviousUri" ColumnName="PreviousUri" />
+                <ScalarProperty Name="NextUri" ColumnName="NextUri" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PropertyChanges">
+            <EntityTypeMapping TypeName="IsTypeOf(Zentity.Administration.PropertyChange)">
+              <MappingFragment StoreEntitySet="PropertyChange">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="SequenceNumber" ColumnName="SequenceNumber" />
+                <ScalarProperty Name="PropertyId" ColumnName="PropertyId" />
+                <ScalarProperty Name="PreviousName" ColumnName="PreviousName" />
+                <ScalarProperty Name="NextName" ColumnName="NextName" />
+                <ScalarProperty Name="PreviousUri" ColumnName="PreviousUri" />
+                <ScalarProperty Name="NextUri" ColumnName="NextUri" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RelationshipChanges">
+            <EntityTypeMapping TypeName="IsTypeOf(Zentity.Administration.RelationshipChange)">
+              <MappingFragment StoreEntitySet="RelationshipChange">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="SequenceNumber" ColumnName="SequenceNumber" />
+                <ScalarProperty Name="RelationshipId" ColumnName="RelationshipId" />
+                <ScalarProperty Name="PreviousSubjectResourceId" ColumnName="PreviousSubjectResourceId" />
+                <ScalarProperty Name="NextSubjectResourceId" ColumnName="NextSubjectResourceId" />
+                <ScalarProperty Name="PreviousObjectResourceId" ColumnName="PreviousObjectResourceId" />
+                <ScalarProperty Name="NextObjectResourceId" ColumnName="NextObjectResourceId" />
+                <ScalarProperty Name="PreviousPredicateId" ColumnName="PreviousPredicateId" />
+                <ScalarProperty Name="NextPredicateId" ColumnName="NextPredicateId" />
+                <ScalarProperty Name="PreviousOrdinalPosition" ColumnName="PreviousOrdinalPosition" />
+                <ScalarProperty Name="NextOrdinalPosition" ColumnName="NextOrdinalPosition" />
+                <ScalarProperty Name="PreviousDateAdded" ColumnName="PreviousDateAdded" />
+                <ScalarProperty Name="NextDateAdded" ColumnName="NextDateAdded" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RelationshipPropertyChanges">
+            <EntityTypeMapping TypeName="IsTypeOf(Zentity.Administration.RelationshipPropertyChange)">
+              <MappingFragment StoreEntitySet="RelationshipPropertyChange">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="SequenceNumber" ColumnName="SequenceNumber" />
+                <ScalarProperty Name="RelationshipPropertyId" ColumnName="RelationshipPropertyId" />
+                <ScalarProperty Name="PreviousTripletId" ColumnName="PreviousTripletId" />
+                <ScalarProperty Name="NextTripletId" ColumnName="NextTripletId" />
+                <ScalarProperty Name="PreviousPropertyId" ColumnName="PreviousPropertyId" />
+                <ScalarProperty Name="NextPropertyId" ColumnName="NextPropertyId" />
+                <ScalarProperty Name="PreviousValue" ColumnName="PreviousValue" />
+                <ScalarProperty Name="NextValue" ColumnName="NextValue" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ResourceChanges">
+            <EntityTypeMapping TypeName="IsTypeOf(Zentity.Administration.ResourceChange)">
+              <MappingFragment StoreEntitySet="ResourceChange">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="SequenceNumber" ColumnName="SequenceNumber" />
+                <ScalarProperty Name="ResourceId" ColumnName="ResourceId" />
+                <ScalarProperty Name="ResourceTypeId" ColumnName="ResourceTypeId" />
+                <ScalarProperty Name="ResourceTypeFullName" ColumnName="ResourceTypeFullName" />
+                <ScalarProperty Name="PropertyChanges" ColumnName="PropertyChanges" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ResourcePropertyChanges">
+            <EntityTypeMapping TypeName="IsTypeOf(Zentity.Administration.ResourcePropertyChange)">
+              <MappingFragment StoreEntitySet="ResourcePropertyChange">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="SequenceNumber" ColumnName="SequenceNumber" />
+                <ScalarProperty Name="ResourcePropertyId" ColumnName="ResourcePropertyId" />
+                <ScalarProperty Name="PreviousResourceId" ColumnName="PreviousResourceId" />
+                <ScalarProperty Name="NextResourceId" ColumnName="NextResourceId" />
+                <ScalarProperty Name="PreviousPropertyId" ColumnName="PreviousPropertyId" />
+                <ScalarProperty Name="NextPropertyId" ColumnName="NextPropertyId" />
+                <ScalarProperty Name="PreviousValue" ColumnName="PreviousValue" />
+                <ScalarProperty Name="NextValue" ColumnName="NextValue" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PredicatePropertyChanges">
+            <EntityTypeMapping TypeName="IsTypeOf(Zentity.Administration.PredicatePropertyChange)">
+              <MappingFragment StoreEntitySet="PredicatePropertyChange">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="SequenceNumber" ColumnName="SequenceNumber" />
+                <ScalarProperty Name="PredicatePropertyId" ColumnName="PredicatePropertyId" />
+                <ScalarProperty Name="PreviousPredicateId" ColumnName="PreviousPredicateId" />
+                <ScalarProperty Name="NextPredicateId" ColumnName="NextPredicateId" />
+                <ScalarProperty Name="PreviousPropertyId" ColumnName="PreviousPropertyId" />
+                <ScalarProperty Name="NextPropertyId" ColumnName="NextPropertyId" />
+                <ScalarProperty Name="PreviousValue" ColumnName="PreviousValue" />
+                <ScalarProperty Name="NextValue" ColumnName="NextValue" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ResourceTypeChanges">
+            <EntityTypeMapping TypeName="IsTypeOf(Zentity.Administration.ResourceTypeChange)">
+              <MappingFragment StoreEntitySet="ResourceTypeChange">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="SequenceNumber" ColumnName="SequenceNumber" />
+                <ScalarProperty Name="ResourceTypeId" ColumnName="ResourceTypeId" />
+                <ScalarProperty Name="PreviousDataModelModuleId" ColumnName="PreviousDataModelModuleId" />
+                <ScalarProperty Name="NextDataModelModuleId" ColumnName="NextDataModelModuleId" />
+                <ScalarProperty Name="PreviousBaseTypeId" ColumnName="PreviousBaseTypeId" />
+                <ScalarProperty Name="NextBaseTypeId" ColumnName="NextBaseTypeId" />
+                <ScalarProperty Name="PreviousName" ColumnName="PreviousName" />
+                <ScalarProperty Name="NextName" ColumnName="NextName" />
+                <ScalarProperty Name="PreviousUri" ColumnName="PreviousUri" />
+                <ScalarProperty Name="NextUri" ColumnName="NextUri" />
+                <ScalarProperty Name="PreviousDescription" ColumnName="PreviousDescription" />
+                <ScalarProperty Name="NextDescription" ColumnName="NextDescription" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ScalarPropertyChanges">
+            <EntityTypeMapping TypeName="IsTypeOf(Zentity.Administration.ScalarPropertyChange)">
+              <MappingFragment StoreEntitySet="ScalarPropertyChange">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="SequenceNumber" ColumnName="SequenceNumber" />
+                <ScalarProperty Name="ScalarPropertyId" ColumnName="ScalarPropertyId" />
+                <ScalarProperty Name="PreviousResourceTypeId" ColumnName="PreviousResourceTypeId" />
+                <ScalarProperty Name="NextResourceTypeId" ColumnName="NextResourceTypeId" />
+                <ScalarProperty Name="PreviousName" ColumnName="PreviousName" />
+                <ScalarProperty Name="NextName" ColumnName="NextName" />
+                <ScalarProperty Name="PreviousUri" ColumnName="PreviousUri" />
+                <ScalarProperty Name="NextUri" ColumnName="NextUri" />
+                <ScalarProperty Name="PreviousDescription" ColumnName="PreviousDescription" />
+                <ScalarProperty Name="NextDescription" ColumnName="NextDescription" />
+                <ScalarProperty Name="PreviousDataType" ColumnName="PreviousDataType" />
+                <ScalarProperty Name="NextDataType" ColumnName="NextDataType" />
+                <ScalarProperty Name="PreviousNullable" ColumnName="PreviousNullable" />
+                <ScalarProperty Name="NextNullable" ColumnName="NextNullable" />
+                <ScalarProperty Name="PreviousMaxLength" ColumnName="PreviousMaxLength" />
+                <ScalarProperty Name="NextMaxLength" ColumnName="NextMaxLength" />
+                <ScalarProperty Name="PreviousScale" ColumnName="PreviousScale" />
+                <ScalarProperty Name="NextScale" ColumnName="NextScale" />
+                <ScalarProperty Name="PreviousPrecision" ColumnName="PreviousPrecision" />
+                <ScalarProperty Name="NextPrecision" ColumnName="NextPrecision" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="AssociationChangeBelongsToChangeSet" TypeName="Zentity.Administration.AssociationChangeBelongsToChangeSet" StoreEntitySet="AssociationChange">
+            <EndProperty Name="ChangeSet">
+              <ScalarProperty Name="Id" ColumnName="ChangeSetId" />
+            </EndProperty>
+            <EndProperty Name="AssociationChange">
+              <ScalarProperty Name="Id" ColumnName="Id" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="AssociationChangeIsCausedByOperation" TypeName="Zentity.Administration.AssociationChangeIsCausedByOperation" StoreEntitySet="AssociationChange">
+            <EndProperty Name="Operation">
+              <ScalarProperty Name="Id" ColumnName="OperationId" />
+            </EndProperty>
+            <EndProperty Name="AssociationChange">
+              <ScalarProperty Name="Id" ColumnName="Id" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="DataModelModuleChangeBelongsToChangeSet" TypeName="Zentity.Administration.DataModelModuleChangeBelongsToChangeSet" StoreEntitySet="DataModelModuleChange">
+            <EndProperty Name="ChangeSet">
+              <ScalarProperty Name="Id" ColumnName="ChangeSetId" />
+            </EndProperty>
+            <EndProperty Name="DataModelModuleChange">
+              <ScalarProperty Name="Id" ColumnName="Id" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="NavigationPropertyChangeBelongsToChangeSet" TypeName="Zentity.Administration.NavigationPropertyChangeBelongsToChangeSet" StoreEntitySet="NavigationPropertyChange">
+            <EndProperty Name="ChangeSet">
+              <ScalarProperty Name="Id" ColumnName="ChangeSetId" />
+            </EndProperty>
+            <EndProperty Name="NavigationPropertyChange">
+              <ScalarProperty Name="Id" ColumnName="Id" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="PredicateChangeBelongsToChangeSet" TypeName="Zentity.Administration.PredicateChangeBelongsToChangeSet" StoreEntitySet="PredicateChange">
+            <EndProperty Name="ChangeSet">
+              <ScalarProperty Name="Id" ColumnName="ChangeSetId" />
+            </EndProperty>
+            <EndProperty Name="PredicateChange">
+              <ScalarProperty Name="Id" ColumnName="Id" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="PropertyChangeBelongsToChangeSet" TypeName="Zentity.Administration.PropertyChangeBelongsToChangeSet" StoreEntitySet="PropertyChange">
+            <EndProperty Name="ChangeSet">
+              <ScalarProperty Name="Id" ColumnName="ChangeSetId" />
+            </EndProperty>
+            <EndProperty Name="PropertyChange">
+              <ScalarProperty Name="Id" ColumnName="Id" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="RelationshipChangeBelongsToChangeSet" TypeName="Zentity.Administration.RelationshipChangeBelongsToChangeSet" StoreEntitySet="RelationshipChange">
+            <EndProperty Name="ChangeSet">
+              <ScalarProperty Name="Id" ColumnName="ChangeSetId" />
+            </EndProperty>
+            <EndProperty Name="RelationshipChange">
+              <ScalarProperty Name="Id" ColumnName="Id" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="RelationshipPropertyChangeBelongsToChangeSet" TypeName="Zentity.Administration.RelationshipPropertyChangeBelongsToChangeSet" StoreEntitySet="RelationshipPropertyChange">
+            <EndProperty Name="ChangeSet">
+              <ScalarProperty Name="Id" ColumnName="ChangeSetId" />
+            </EndProperty>
+            <EndProperty Name="RelationshipPropertyChange">
+              <ScalarProperty Name="Id" ColumnName="Id" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="ResourceChangeBelongsToChangeSet" TypeName="Zentity.Administration.ResourceChangeBelongsToChangeSet" StoreEntitySet="ResourceChange">
+            <EndProperty Name="ChangeSet">
+              <ScalarProperty Name="Id" ColumnName="ChangeSetId" />
+            </EndProperty>
+            <EndProperty Name="ResourceChange">
+              <ScalarProperty Name="Id" ColumnName="Id" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="ResourcePropertyChangeBelongsToChangeSet" TypeName="Zentity.Administration.ResourcePropertyChangeBelongsToChangeSet" StoreEntitySet="ResourcePropertyChange">
+            <EndProperty Name="ChangeSet">
+              <ScalarProperty Name="Id" ColumnName="ChangeSetId" />
+            </EndProperty>
+            <EndProperty Name="ResourcePropertyChange">
+              <ScalarProperty Name="Id" ColumnName="Id" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="PredicatePropertyChangeBelongsToChangeSet" TypeName="Zentity.Administration.PredicatePropertyChangeBelongsToChangeSet" StoreEntitySet="PredicatePropertyChange">
+            <EndProperty Name="ChangeSet">
+              <ScalarProperty Name="Id" ColumnName="ChangeSetId" />
+            </EndProperty>
+            <EndProperty Name="PredicatePropertyChange">
+              <ScalarProperty Name="Id" ColumnName="Id" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="PredicatePropertyChangeIsCausedByOperation" TypeName="Zentity.Administration.PredicatePropertyChangeIsCausedByOperation" StoreEntitySet="PredicatePropertyChange">
+            <EndProperty Name="Operation">
+              <ScalarProperty Name="Id" ColumnName="OperationId" />
+            </EndProperty>
+            <EndProperty Name="PredicatePropertyChange">
+              <ScalarProperty Name="Id" ColumnName="Id" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="ResourceTypeChangeBelongsToChangeSet" TypeName="Zentity.Administration.ResourceTypeChangeBelongsToChangeSet" StoreEntitySet="ResourceTypeChange">
+            <EndProperty Name="ChangeSet">
+              <ScalarProperty Name="Id" ColumnName="ChangeSetId" />
+            </EndProperty>
+            <EndProperty Name="ResourceTypeChange">
+              <ScalarProperty Name="Id" ColumnName="Id" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="ScalarPropertyChangeBelongsToChangeSet" TypeName="Zentity.Administration.ScalarPropertyChangeBelongsToChangeSet" StoreEntitySet="ScalarPropertyChange">
+            <EndProperty Name="ChangeSet">
+              <ScalarProperty Name="Id" ColumnName="ChangeSetId" />
+            </EndProperty>
+            <EndProperty Name="ScalarPropertyChange">
+              <ScalarProperty Name="Id" ColumnName="Id" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="DataModelModuleChangeIsCausedByOperation" TypeName="Zentity.Administration.DataModelModuleChangeIsCausedByOperation" StoreEntitySet="DataModelModuleChange">
+            <EndProperty Name="Operation">
+              <ScalarProperty Name="Id" ColumnName="OperationId" />
+            </EndProperty>
+            <EndProperty Name="DataModelModuleChange">
+              <ScalarProperty Name="Id" ColumnName="Id" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="NavigationPropertyChangeIsCausedByOperation" TypeName="Zentity.Administration.NavigationPropertyChangeIsCausedByOperation" StoreEntitySet="NavigationPropertyChange">
+            <EndProperty Name="Operation">
+              <ScalarProperty Name="Id" ColumnName="OperationId" />
+            </EndProperty>
+            <EndProperty Name="NavigationPropertyChange">
+              <ScalarProperty Name="Id" ColumnName="Id" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="PredicateChangeIsCausedByOperation" TypeName="Zentity.Administration.PredicateChangeIsCausedByOperation" StoreEntitySet="PredicateChange">
+            <EndProperty Name="Operation">
+              <ScalarProperty Name="Id" ColumnName="OperationId" />
+            </EndProperty>
+            <EndProperty Name="PredicateChange">
+              <ScalarProperty Name="Id" ColumnName="Id" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="PropertyChangeIsCausedByOperation" TypeName="Zentity.Administration.PropertyChangeIsCausedByOperation" StoreEntitySet="PropertyChange">
+            <EndProperty Name="Operation">
+              <ScalarProperty Name="Id" ColumnName="OperationId" />
+            </EndProperty>
+            <EndProperty Name="PropertyChange">
+              <ScalarProperty Name="Id" ColumnName="Id" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="RelationshipChangeIsCausedByOperation" TypeName="Zentity.Administration.RelationshipChangeIsCausedByOperation" StoreEntitySet="RelationshipChange">
+            <EndProperty Name="Operation">
+              <ScalarProperty Name="Id" ColumnName="OperationId" />
+            </EndProperty>
+            <EndProperty Name="RelationshipChange">
+              <ScalarProperty Name="Id" ColumnName="Id" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="RelationshipPropertyChangeIsCausedByOperation" TypeName="Zentity.Administration.RelationshipPropertyChangeIsCausedByOperation" StoreEntitySet="RelationshipPropertyChange">
+            <EndProperty Name="Operation">
+              <ScalarProperty Name="Id" ColumnName="OperationId" />
+            </EndProperty>
+            <EndProperty Name="RelationshipPropertyChange">
+              <ScalarProperty Name="Id" ColumnName="Id" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="ResourceChangeIsCausedByOperation" TypeName="Zentity.Administration.ResourceChangeIsCausedByOperation" StoreEntitySet="ResourceChange">
+            <EndProperty Name="Operation">
+              <ScalarProperty Name="Id" ColumnName="OperationId" />
+            </EndProperty>
+            <EndProperty Name="ResourceChange">
+              <ScalarProperty Name="Id" ColumnName="Id" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="ResourcePropertyChangeIsCausedByOperation" TypeName="Zentity.Administration.ResourcePropertyChangeIsCausedByOperation" StoreEntitySet="ResourcePropertyChange">
+            <EndProperty Name="Operation">
+              <ScalarProperty Name="Id" ColumnName="OperationId" />
+            </EndProperty>
+            <EndProperty Name="ResourcePropertyChange">
+              <ScalarProperty Name="Id" ColumnName="Id" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="ResourceTypeChangeIsCausedByOperation" TypeName="Zentity.Administration.ResourceTypeChangeIsCausedByOperation" StoreEntitySet="ResourceTypeChange">
+            <EndProperty Name="Operation">
+              <ScalarProperty Name="Id" ColumnName="OperationId" />
+            </EndProperty>
+            <EndProperty Name="ResourceTypeChange">
+              <ScalarProperty Name="Id" ColumnName="Id" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="ScalarPropertyChangeIsCausedByOperation" TypeName="Zentity.Administration.ScalarPropertyChangeIsCausedByOperation" StoreEntitySet="ScalarPropertyChange">
+            <EndProperty Name="Operation">
+              <ScalarProperty Name="Id" ColumnName="OperationId" />
+            </EndProperty>
+            <EndProperty Name="ScalarPropertyChange">
+              <ScalarProperty Name="Id" ColumnName="Id" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <FunctionImportMapping FunctionImportName="EnableChangeHistory" FunctionName="Zentity.Administration.Store.EnableChangeHistory" />
+          <FunctionImportMapping FunctionImportName="DisableChangeHistory" FunctionName="Zentity.Administration.Store.DisableChangeHistory" />
+          <FunctionImportMapping FunctionImportName="EnableFullTextSearch" FunctionName="Zentity.Administration.Store.EnableFullTextSearch" />
+          <FunctionImportMapping FunctionImportName="DisableFullTextSearch" FunctionName="Zentity.Administration.Store.DisableFullTextSearch" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer>
+    <edmx:Connection>
+      <DesignerInfoPropertySet xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <edmx:Diagram Name="AdministrationDataModel">
+        <edmx:EntityTypeShape EntityType="Zentity.Administration.AssociationChange" Width="1.5" PointX="3" PointY="26.25" Height="4.6725065104166674" IsExpanded="true" />
+        <edmx:EntityTypeShape EntityType="Zentity.Administration.ChangeSet" Width="1.5" PointX="3.75" PointY="16.75" Height="3.7109993489583317" IsExpanded="true" />
+        <edmx:EntityTypeShape EntityType="Zentity.Administration.DataModelModuleChange" Width="1.5" PointX="6" PointY="26.875" Height="3.326396484374996" IsExpanded="true" />
+        <edmx:EntityTypeShape EntityType="Zentity.Administration.NavigationPropertyChange" Width="1.5" PointX="3" PointY="21.875" Height="3.5186979166666674" IsExpanded="true" />
+        <edmx:EntityTypeShape EntityType="Zentity.Administration.Operation" Width="1.5" PointX="0.75" PointY="26.625" Height="3.903300781249996" IsExpanded="true" />
+        <edmx:EntityTypeShape EntityType="Zentity.Administration.PredicateChange" Width="1.5" PointX="6" PointY="23.25" Height="2.749492187499996" IsExpanded="true" />
+        <edmx:EntityTypeShape EntityType="Zentity.Administration.PropertyChange" Width="1.5" PointX="6" PointY="31.25" Height="2.749492187499996" IsExpanded="true" />
+        <edmx:EntityTypeShape EntityType="Zentity.Administration.RelationshipChange" Width="1.5" PointX="3" PointY="32.625" Height="3.903300781249996" IsExpanded="true" />
+        <edmx:EntityTypeShape EntityType="Zentity.Administration.RelationshipPropertyChange" Width="1.5" PointX="9" PointY="27" Height="3.1340950520833317" IsExpanded="true" />
+        <edmx:EntityTypeShape EntityType="Zentity.Administration.ResourceChange" Width="1.5" PointX="9" PointY="23.25" Height="2.5571907552083388" IsExpanded="true" />
+        <edmx:EntityTypeShape EntityType="Zentity.Administration.ResourcePropertyChange" Width="1.5" PointX="9" PointY="31" Height="3.1340950520833353" IsExpanded="true" />
+        <edmx:EntityTypeShape EntityType="Zentity.Administration.PredicatePropertyChange" Width="1.5" PointX="6" PointY="19" Height="3.1340950520833317" IsExpanded="true" />
+        <edmx:EntityTypeShape EntityType="Zentity.Administration.ResourceTypeChange" Width="1.5" PointX="9" PointY="18.625" Height="3.903300781249996" IsExpanded="true" />
+        <edmx:EntityTypeShape EntityType="Zentity.Administration.ScalarPropertyChange" Width="1.5" PointX="6" PointY="34.875" Height="5.4417122395833388" IsExpanded="true" />
+        <edmx:AssociationConnector Association="Zentity.Administration.AssociationChangeBelongsToChangeSet" ManuallyRouted="false">
+          <edmx:ConnectorPoint PointX="4.8750005000000005" PointY="20.460999348958332" />
+          <edmx:ConnectorPoint PointX="4.8750005000000005" PointY="28.586253255208334" />
+          <edmx:ConnectorPoint PointX="4.8020835833333333" PointY="28.586253255208334" />
+          <edmx:ConnectorPoint PointX="4.6354169166666672" PointY="28.586253255208334" />
+          <edmx:ConnectorPoint PointX="4.5" PointY="28.586253255208334" />
+        </edmx:AssociationConnector>
+        <edmx:AssociationConnector Association="Zentity.Administration.AssociationChangeIsCausedByOperation" ManuallyRouted="false">
+          <edmx:ConnectorPoint PointX="2.25" PointY="28.576650390624998" />
+          <edmx:ConnectorPoint PointX="2.4166666666666665" PointY="28.576650390624998" />
+          <edmx:ConnectorPoint PointX="2.5833333333333335" PointY="28.576650390624998" />
+          <edmx:ConnectorPoint PointX="3" PointY="28.576650390624998" />
+        </edmx:AssociationConnector>
+        <edmx:AssociationConnector Association="Zentity.Administration.DataModelModuleChangeBelongsToChangeSet" ManuallyRouted="false">
+          <edmx:ConnectorPoint PointX="5.25" PointY="20.454075272035254" />
+          <edmx:ConnectorPoint PointX="5.65625" PointY="20.860325272035254" />
+          <edmx:ConnectorPoint PointX="5.65625" PointY="28.538198242187498" />
+          <edmx:ConnectorPoint PointX="6" PointY="28.538198242187498" />
+        </edmx:AssociationConnector>
+        <edmx:AssociationConnector Association="Zentity.Administration.NavigationPropertyChangeBelongsToChangeSet" ManuallyRouted="false">
+          <edmx:ConnectorPoint PointX="4.125" PointY="20.460999348958332" />
+          <edmx:ConnectorPoint PointX="4.125" PointY="21.875" />
+        </edmx:AssociationConnector>
+        <edmx:AssociationConnector Association="Zentity.Administration.PredicateChangeBelongsToChangeSet" ManuallyRouted="false">
+          <edmx:ConnectorPoint PointX="4.68749775" PointY="20.460999348958332" />
+          <edmx:ConnectorPoint PointX="4.68749775" PointY="25.727845052083332" />
+          <edmx:ConnectorPoint PointX="4.7916671666666675" PointY="25.727845052083332" />
+          <edmx:ConnectorPoint PointX="5.2708359583333335" PointY="25.727845052083332" />
+          <edmx:ConnectorPoint PointX="5.572916666666667" PointY="25.727845052083332" />
+          <edmx:ConnectorPoint PointX="5.833333333333333" PointY="25.727845052083332" />
+          <edmx:ConnectorPoint PointX="6" PointY="25.727845052083332" />
+        </edmx:AssociationConnector>
+        <edmx:AssociationConnector Association="Zentity.Administration.PropertyChangeBelongsToChangeSet" ManuallyRouted="false">
+          <edmx:ConnectorPoint PointX="5.06250025" PointY="20.460999348958332" />
+          <edmx:ConnectorPoint PointX="5.06250025" PointY="31.90625" />
+          <edmx:ConnectorPoint PointX="6" PointY="31.90625" />
+        </edmx:AssociationConnector>
+        <edmx:AssociationConnector Association="Zentity.Administration.RelationshipChangeBelongsToChangeSet" ManuallyRouted="false">
+          <edmx:ConnectorPoint PointX="4.71875025" PointY="20.460999348958332" />
+          <edmx:ConnectorPoint PointX="4.71875025" PointY="34.576650390625" />
+          <edmx:ConnectorPoint PointX="4.5" PointY="34.576650390625" />
+        </edmx:AssociationConnector>
+        <edmx:AssociationConnector Association="Zentity.Administration.RelationshipPropertyChangeBelongsToChangeSet" ManuallyRouted="false">
+          <edmx:ConnectorPoint PointX="5.25" PointY="17.8437505" />
+          <edmx:ConnectorPoint PointX="8.75" PointY="17.8437505" />
+          <edmx:ConnectorPoint PointX="8.75" PointY="26.625" />
+          <edmx:ConnectorPoint PointX="9.2604146666666658" PointY="26.625" />
+          <edmx:ConnectorPoint PointX="9.4270813333333336" PointY="26.625" />
+          <edmx:ConnectorPoint PointX="9.75" PointY="26.625" />
+          <edmx:ConnectorPoint PointX="9.75" PointY="27" />
+        </edmx:AssociationConnector>
+        <edmx:AssociationConnector Association="Zentity.Administration.ResourceChangeBelongsToChangeSet" ManuallyRouted="false">
+          <edmx:ConnectorPoint PointX="5.25" PointY="20.435613733573714" />
+          <edmx:ConnectorPoint PointX="5.875" PointY="21.060613733573714" />
+          <edmx:ConnectorPoint PointX="5.875" PointY="22.875" />
+          <edmx:ConnectorPoint PointX="8.625" PointY="22.875" />
+          <edmx:ConnectorPoint PointX="8.6910744349011217" PointY="22.941074434901122" />
+          <edmx:ConnectorPoint PointX="8.8089255650988783" PointY="23.058925565098878" />
+          <edmx:ConnectorPoint PointX="9" PointY="23.25" />
+        </edmx:AssociationConnector>
+        <edmx:AssociationConnector Association="Zentity.Administration.ResourcePropertyChangeBelongsToChangeSet" ManuallyRouted="false">
+          <edmx:ConnectorPoint PointX="5.1875026250000005" PointY="20.460999348958332" />
+          <edmx:ConnectorPoint PointX="5.1875026250000005" PointY="31.09375" />
+          <edmx:ConnectorPoint PointX="9" PointY="31.09375" />
+        </edmx:AssociationConnector>
+        <edmx:AssociationConnector Association="Zentity.Administration.PredicatePropertyChangeBelongsToChangeSet" ManuallyRouted="false">
+          <edmx:ConnectorPoint PointX="5.25" PointY="19.686554366786858" />
+          <edmx:ConnectorPoint PointX="6" PointY="19.686554366786858" />
+        </edmx:AssociationConnector>
+        <edmx:AssociationConnector Association="Zentity.Administration.ResourceTypeChangeBelongsToChangeSet" ManuallyRouted="false">
+          <edmx:ConnectorPoint PointX="5.25" PointY="18.78125" />
+          <edmx:ConnectorPoint PointX="8.6666666666666661" PointY="18.78125" />
+          <edmx:ConnectorPoint PointX="8.8333333333333339" PointY="18.78125" />
+          <edmx:ConnectorPoint PointX="9" PointY="18.78125" />
+        </edmx:AssociationConnector>
+        <edmx:AssociationConnector Association="Zentity.Administration.ScalarPropertyChangeBelongsToChangeSet" ManuallyRouted="false">
+          <edmx:ConnectorPoint PointX="5.03124775" PointY="20.460999348958332" />
+          <edmx:ConnectorPoint PointX="5.03124775" PointY="38.453756510416667" />
+          <edmx:ConnectorPoint PointX="6" PointY="38.453756510416667" />
+        </edmx:AssociationConnector>
+        <edmx:AssociationConnector Association="Zentity.Administration.DataModelModuleChangeIsCausedByOperation" ManuallyRouted="false">
+          <edmx:ConnectorPoint PointX="1.5" PointY="26.625" />
+          <edmx:ConnectorPoint PointX="1.5" PointY="26" />
+          <edmx:ConnectorPoint PointX="1.8229191666666667" PointY="26" />
+          <edmx:ConnectorPoint PointX="1.9895858333333332" PointY="26" />
+          <edmx:ConnectorPoint PointX="2.0260454166666664" PointY="26" />
+          <edmx:ConnectorPoint PointX="2.1927120833333333" PointY="26" />
+          <edmx:ConnectorPoint PointX="4.6354169166666672" PointY="25.999999999999996" />
+          <edmx:ConnectorPoint PointX="5.2708359583333326" PointY="26" />
+          <edmx:ConnectorPoint PointX="5.5" PointY="26" />
+          <edmx:ConnectorPoint PointX="5.5" PointY="27.675347121093751" />
+          <edmx:ConnectorPoint PointX="5.572916666666667" PointY="27.675347121093751" />
+          <edmx:ConnectorPoint PointX="5.739583333333333" PointY="27.675347121093751" />
+          <edmx:ConnectorPoint PointX="6" PointY="27.675347121093751" />
+        </edmx:AssociationConnector>
+        <edmx:AssociationConnector Association="Zentity.Administration.NavigationPropertyChangeIsCausedByOperation" ManuallyRouted="false">
+          <edmx:ConnectorPoint PointX="1.9062525" PointY="26.625" />
+          <edmx:ConnectorPoint PointX="1.9062525" PointY="23.634348958333334" />
+          <edmx:ConnectorPoint PointX="2.0260454166666664" PointY="23.634348958333334" />
+          <edmx:ConnectorPoint PointX="2.1927120833333333" PointY="23.634348958333334" />
+          <edmx:ConnectorPoint PointX="3" PointY="23.634348958333334" />
+        </edmx:AssociationConnector>
+        <edmx:AssociationConnector Association="Zentity.Administration.PredicateChangeIsCausedByOperation" ManuallyRouted="false">
+          <edmx:ConnectorPoint PointX="1.0937475" PointY="26.625" />
+          <edmx:ConnectorPoint PointX="1.0937475" PointY="25.894921119791665" />
+          <edmx:ConnectorPoint PointX="1.8229191666666667" PointY="25.894921119791665" />
+          <edmx:ConnectorPoint PointX="1.9895858333333332" PointY="25.894921119791665" />
+          <edmx:ConnectorPoint PointX="2.0260454166666664" PointY="25.894921119791665" />
+          <edmx:ConnectorPoint PointX="2.1927120833333333" PointY="25.894921119791665" />
+          <edmx:ConnectorPoint PointX="4.6354169166666672" PointY="25.894921119791661" />
+          <edmx:ConnectorPoint PointX="5.2708359583333326" PointY="25.894921119791665" />
+          <edmx:ConnectorPoint PointX="5.572916666666667" PointY="25.894921119791665" />
+          <edmx:ConnectorPoint PointX="5.833333333333333" PointY="25.894921119791665" />
+          <edmx:ConnectorPoint PointX="6" PointY="25.894921119791665" />
+        </edmx:AssociationConnector>
+        <edmx:AssociationConnector Association="Zentity.Administration.PropertyChangeIsCausedByOperation" ManuallyRouted="false">
+          <edmx:ConnectorPoint PointX="1.5" PointY="30.528300781249996" />
+          <edmx:ConnectorPoint PointX="1.5" PointY="31.5468725" />
+          <edmx:ConnectorPoint PointX="1.8229191666666667" PointY="31.5468725" />
+          <edmx:ConnectorPoint PointX="1.9895858333333332" PointY="31.5468725" />
+          <edmx:ConnectorPoint PointX="2.0260454166666664" PointY="31.5468725" />
+          <edmx:ConnectorPoint PointX="2.1927120833333333" PointY="31.5468725" />
+          <edmx:ConnectorPoint PointX="4.6354169166666672" PointY="31.5468725" />
+          <edmx:ConnectorPoint PointX="4.8020835833333333" PointY="31.5468725" />
+          <edmx:ConnectorPoint PointX="4.9479144166666673" PointY="31.5468725" />
+          <edmx:ConnectorPoint PointX="5.1458335833333342" PointY="31.5468725" />
+          <edmx:ConnectorPoint PointX="6" PointY="31.5468725" />
+        </edmx:AssociationConnector>
+        <edmx:AssociationConnector Association="Zentity.Administration.RelationshipChangeIsCausedByOperation" ManuallyRouted="false">
+          <edmx:ConnectorPoint PointX="1.9062525" PointY="30.528300781249996" />
+          <edmx:ConnectorPoint PointX="1.9062525" PointY="34.576650390625" />
+          <edmx:ConnectorPoint PointX="2.0260454166666664" PointY="34.576650390625" />
+          <edmx:ConnectorPoint PointX="2.1927120833333333" PointY="34.576650390625" />
+          <edmx:ConnectorPoint PointX="3" PointY="34.576650390625" />
+        </edmx:AssociationConnector>
+        <edmx:AssociationConnector Association="Zentity.Administration.RelationshipPropertyChangeIsCausedByOperation" ManuallyRouted="false">
+          <edmx:ConnectorPoint PointX="2.25" PointY="27.5695731953125" />
+          <edmx:ConnectorPoint PointX="2.4166666666666665" PointY="27.5695731953125" />
+          <edmx:ConnectorPoint PointX="2.5833333333333335" PointY="27.5695731953125" />
+          <edmx:ConnectorPoint PointX="2.75" PointY="27.5695731953125" />
+          <edmx:ConnectorPoint PointX="2.75" PointY="26.125" />
+          <edmx:ConnectorPoint PointX="4.6354169166666672" PointY="26.124999999999996" />
+          <edmx:ConnectorPoint PointX="5.2708359583333326" PointY="26.125" />
+          <edmx:ConnectorPoint PointX="5.416666666666667" PointY="26.125" />
+          <edmx:ConnectorPoint PointX="5.739583333333333" PointY="26.125" />
+          <edmx:ConnectorPoint PointX="5.875" PointY="26.125" />
+          <edmx:ConnectorPoint PointX="5.875" PointY="26.375" />
+          <edmx:ConnectorPoint PointX="8.6666666666666661" PointY="26.375" />
+          <edmx:ConnectorPoint PointX="8.8333333333333339" PointY="26.375" />
+          <edmx:ConnectorPoint PointX="9.343748" PointY="26.375" />
+          <edmx:ConnectorPoint PointX="9.343748" PointY="27" />
+        </edmx:AssociationConnector>
+        <edmx:AssociationConnector Association="Zentity.Administration.ResourceChangeIsCausedByOperation" ManuallyRouted="false">
+          <edmx:ConnectorPoint PointX="2.25" PointY="29.583727585937496" />
+          <edmx:ConnectorPoint PointX="2.5" PointY="29.583727585937496" />
+          <edmx:ConnectorPoint PointX="2.5" PointY="26.0625" />
+          <edmx:ConnectorPoint PointX="4.6354169166666672" PointY="26.062499999999996" />
+          <edmx:ConnectorPoint PointX="5.2708359583333326" PointY="26.0625" />
+          <edmx:ConnectorPoint PointX="5.375" PointY="26.0625" />
+          <edmx:ConnectorPoint PointX="5.375" PointY="26.75" />
+          <edmx:ConnectorPoint PointX="5.416666666666667" PointY="26.75" />
+          <edmx:ConnectorPoint PointX="5.739583333333333" PointY="26.75" />
+          <edmx:ConnectorPoint PointX="9.2604146666666658" PointY="26.75" />
+          <edmx:ConnectorPoint PointX="9.4270813333333336" PointY="26.75" />
+          <edmx:ConnectorPoint PointX="9.6666666666666661" PointY="26.75" />
+          <edmx:ConnectorPoint PointX="9.8333333333333339" PointY="26.75" />
+          <edmx:ConnectorPoint PointX="10.124999500000001" PointY="26.75" />
+          <edmx:ConnectorPoint PointX="10.124999500000001" PointY="25.807190755208339" />
+        </edmx:AssociationConnector>
+        <edmx:AssociationConnector Association="Zentity.Administration.ResourcePropertyChangeIsCausedByOperation" ManuallyRouted="false">
+          <edmx:ConnectorPoint PointX="1.0937475" PointY="30.528300781249996" />
+          <edmx:ConnectorPoint PointX="1.0937475" PointY="31.0624975" />
+          <edmx:ConnectorPoint PointX="1.4166666666666667" PointY="31.0624975" />
+          <edmx:ConnectorPoint PointX="1.5833333333333333" PointY="31.0624975" />
+          <edmx:ConnectorPoint PointX="1.8229191666666667" PointY="31.0624975" />
+          <edmx:ConnectorPoint PointX="1.9895858333333332" PointY="31.0624975" />
+          <edmx:ConnectorPoint PointX="2.0260454166666664" PointY="31.0624975" />
+          <edmx:ConnectorPoint PointX="2.1927120833333333" PointY="31.0624975" />
+          <edmx:ConnectorPoint PointX="4.6354169166666672" PointY="31.0624975" />
+          <edmx:ConnectorPoint PointX="4.8020835833333333" PointY="31.0624975" />
+          <edmx:ConnectorPoint PointX="4.9479144166666673" PointY="31.0624975" />
+          <edmx:ConnectorPoint PointX="5.1458335833333342" PointY="31.0624975" />
+          <edmx:ConnectorPoint PointX="9" PointY="31.0624975" />
+        </edmx:AssociationConnector>
+        <edmx:AssociationConnector Association="Zentity.Administration.PredicatePropertyChangeIsCausedByOperation" ManuallyRouted="false">
+          <edmx:ConnectorPoint PointX="2.10937875" PointY="26.625" />
+          <edmx:ConnectorPoint PointX="2.10937875" PointY="21.167999674479166" />
+          <edmx:ConnectorPoint PointX="4.041666666666667" PointY="21.167999674479166" />
+          <edmx:ConnectorPoint PointX="4.208333333333333" PointY="21.167999674479166" />
+          <edmx:ConnectorPoint PointX="4.6041644166666673" PointY="21.167999674479162" />
+          <edmx:ConnectorPoint PointX="5.2708359583333335" PointY="21.167999674479166" />
+          <edmx:ConnectorPoint PointX="5.572916666666667" PointY="21.167999674479166" />
+          <edmx:ConnectorPoint PointX="5.739583333333333" PointY="21.167999674479166" />
+          <edmx:ConnectorPoint PointX="5.791666666666667" PointY="21.167999674479166" />
+          <edmx:ConnectorPoint PointX="5.958333333333333" PointY="21.167999674479166" />
+          <edmx:ConnectorPoint PointX="6" PointY="21.167999674479166" />
+        </edmx:AssociationConnector>
+        <edmx:AssociationConnector Association="Zentity.Administration.ResourceTypeChangeIsCausedByOperation" ManuallyRouted="false">
+          <edmx:ConnectorPoint PointX="2.25" PointY="27.066034597656248" />
+          <edmx:ConnectorPoint PointX="2.4166666666666665" PointY="27.066034597656248" />
+          <edmx:ConnectorPoint PointX="2.5833333333333335" PointY="27.066034597656248" />
+          <edmx:ConnectorPoint PointX="2.6666666666666665" PointY="27.066034597656248" />
+          <edmx:ConnectorPoint PointX="2.8333333333333335" PointY="27.066034597656248" />
+          <edmx:ConnectorPoint PointX="2.875" PointY="27.066034597656248" />
+          <edmx:ConnectorPoint PointX="2.875" PointY="26.1875" />
+          <edmx:ConnectorPoint PointX="4.6354169166666672" PointY="26.187499999999996" />
+          <edmx:ConnectorPoint PointX="5.2708359583333326" PointY="26.1875" />
+          <edmx:ConnectorPoint PointX="5.291666666666667" PointY="26.1875" />
+          <edmx:ConnectorPoint PointX="5.739583333333333" PointY="26.1875" />
+          <edmx:ConnectorPoint PointX="5.75" PointY="26.1875" />
+          <edmx:ConnectorPoint PointX="5.75" PointY="23.028300781249996" />
+          <edmx:ConnectorPoint PointX="8.6666666666666661" PointY="23.028300781249996" />
+          <edmx:ConnectorPoint PointX="8.86163411458333" PointY="23.028300781249996" />
+          <edmx:ConnectorPoint PointX="9.75" PointY="23.028300781249996" />
+          <edmx:ConnectorPoint PointX="9.75" PointY="22.528300781249996" />
+        </edmx:AssociationConnector>
+        <edmx:AssociationConnector Association="Zentity.Administration.ScalarPropertyChangeIsCausedByOperation" ManuallyRouted="false">
+          <edmx:ConnectorPoint PointX="2.10937875" PointY="30.528300781249996" />
+          <edmx:ConnectorPoint PointX="2.10937875" PointY="37.491026145833338" />
+          <edmx:ConnectorPoint PointX="4.9479144166666673" PointY="37.491026145833338" />
+          <edmx:ConnectorPoint PointX="5.1145810833333334" PointY="37.491026145833338" />
+          <edmx:ConnectorPoint PointX="6" PointY="37.491026145833338" />
+        </edmx:AssociationConnector>
+      </edmx:Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

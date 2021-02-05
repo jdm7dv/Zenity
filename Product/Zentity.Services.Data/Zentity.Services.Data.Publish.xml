@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<publishData>
+  <publishProfile publishUrl="C:\DataService" deleteExistingFiles="True" ftpAnonymousLogin="False" ftpPassiveMode="True" msdeploySite="" msdeploySiteID="" msdeployRemoteSitePhysicalPath="" msdeployAllowUntrustedCertificate="False" msdeploySkipExtraFilesOnServer="True" msdeployMarkAsApp="False" profileName="Profile1" publishMethod="FileSystem" replaceMatchingFiles="False" userName="" savePWD="False" userPWD="" SelectedForPublish="True">
+    <file relUrl="Web.config" publishTime="10/09/2010 15:06:16" />
+    <file relUrl="bin/Microsoft.Practices.EnterpriseLibrary.Common.dll" publishTime="10/06/2010 14:57:07" />
+    <file relUrl="bin/Microsoft.Practices.ServiceLocation.dll" publishTime="10/06/2010 14:57:05" />
+    <file relUrl="bin/Zentity.Services.Data.dll" publishTime="10/09/2010 15:00:49" />
+    <file relUrl="bin/Zentity.Rdf.pdb" publishTime="10/09/2010 15:00:40" />
+    <file relUrl="bin/Zentity.Rdf.xml" publishTime="10/09/2010 15:00:40" />
+    <file relUrl="bin/Microsoft.Practices.EnterpriseLibrary.Logging.dll" publishTime="10/06/2010 14:57:07" />
+    <file relUrl="bin/Microsoft.Practices.Unity.dll" publishTime="10/06/2010 14:57:06" />
+    <file relUrl="bin/Zentity.Services.Data.pdb" publishTime="10/09/2010 15:00:49" />
+    <file relUrl="ZentityDataService.svc" publishTime="06/16/2010 11:02:54" />
+    <file relUrl="bin/Microsoft.Practices.Unity.Interception.dll" publishTime="10/06/2010 14:57:09" />
+    <file relUrl="bin/Zentity.Core.xml" publishTime="10/09/2010 15:00:44" />
+    <file relUrl="bin/Zentity.Core.dll" publishTime="10/09/2010 15:00:44" />
+    <file relUrl="bin/Zentity.Core.pdb" publishTime="10/09/2010 15:00:44" />
+    <file relUrl="bin/Zentity.Rdf.dll" publishTime="10/09/2010 15:00:40" />
+  </publishProfile>
+</publishData>

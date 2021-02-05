@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Database Name="Zentity" Class="ZentityAdministrationDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Table Name="Administration.ChangeMessageRecovery" Member="ChangeMessageRecoveries">
+    <Type Name="ChangeMessageRecovery">
+      <Column Name="Id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ResourceId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="ResourceTypeId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="DataModelNamespace" Type="System.String" DbType="NVarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="ResourceTypeName" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="ChangeType" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="DateAdded" Type="System.DateTime" DbType="DateTime2" CanBeNull="true" />
+      <Column Name="DateModified" Type="System.DateTime" DbType="DateTime2" CanBeNull="true" />
+      <Column Name="DateTimeStamp" AutoSync="Never" Type="System.DateTime" DbType="DateTime2 NOT NULL" IsDbGenerated="true" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="Administration.MessageQueueRecovery" Member="MessageQueueRecoveries">
+    <Type Name="MessageQueueRecovery">
+      <Column Name="Id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="DateTimeStamp" AutoSync="Never" Type="System.DateTime" DbType="DateTime2 NOT NULL" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="RawMessage" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>

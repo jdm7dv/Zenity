@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+  <SecurityConfigSettings>
+    <Predicates>
+      <SecurityPredicates>
+        <add Name="Create"
+             Priority="0"
+             Uri="urn:zentity/module/zentity-authorization/predicate/has-create-access"
+             InversePredicateUri="urn:zentity/module/zentity-authorization/predicate/deny-create-access"/>
+        <add Name="Read"
+             Priority="4"
+             Uri="urn:zentity/module/zentity-authorization/predicate/has-read-access"
+             InversePredicateUri="urn:zentity/module/zentity-authorization/predicate/deny-read-access"/>
+        <add Name="Update"
+             Priority="3"
+             Uri="urn:zentity/module/zentity-authorization/predicate/has-update-access"
+             InversePredicateUri="urn:zentity/module/zentity-authorization/predicate/deny-update-access"/>
+        <add Name="Delete"
+             Priority="2"
+             Uri="urn:zentity/module/zentity-authorization/predicate/has-delete-access"
+             InversePredicateUri="urn:zentity/module/zentity-authorization/predicate/deny-delete-access"/>
+        <add Name="Owner"
+             Priority="1"
+             Uri="urn:zentity/module/zentity-authorization/predicate/is-owner-of"
+             InversePredicateUri="urn:zentity/module/zentity-authorization/predicate/deny-ownership-of"/>
+      </SecurityPredicates>
+    </Predicates>
+    <appSettings>
+      <add key="AdminGroupName" value="Administrators"/>
+      <add key="AdminUserName" value="Administrator"/>
+      <add key="GuestUserName" value="Guest"/>
+      <add key="AllUsersGroupName" value="AllUsers"/>
+      <add key="MemberOfUri" value="urn:zentity/module/zentity-authorization/association/identity-belongs-to-groups"/>
+    </appSettings>
+  </SecurityConfigSettings>
+</configuration>

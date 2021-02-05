@@ -1,0 +1,165 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{1005BEC2-5CE9-4734-908D-2328AED6C60F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Zentity.Rdf</RootNamespace>
+    <AssemblyName>Zentity.Rdf</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <SignAssembly>false</SignAssembly>
+    <AssemblyOriginatorKeyFile>..\..\StrongNameKey\35MSSharedLib1024.snk</AssemblyOriginatorKeyFile>
+    <DelaySign>false</DelaySign>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+    <DocumentationFile>bin\Debug\Zentity.Rdf.XML</DocumentationFile>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Release\Zentity.Rdf.XML</DocumentationFile>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Concepts\BlankNode.cs" />
+    <Compile Include="Concepts\Graph.cs" />
+    <Compile Include="Concepts\Node.cs" />
+    <Compile Include="Concepts\Subject.cs" />
+    <Compile Include="Concepts\Literal.cs" />
+    <Compile Include="Concepts\PlainLiteral.cs" />
+    <Compile Include="Concepts\RDFUriReference.cs" />
+    <Compile Include="Concepts\Triple.cs" />
+    <Compile Include="Concepts\TypedLiteral.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Constants.cs" />
+    <Compile Include="Xml\EventAttribute.cs" />
+    <Compile Include="Xml\EventElement.cs" />
+    <Compile Include="Xml\Production.cs" />
+    <Compile Include="Xml\ProductionAboutAttribute.cs" />
+    <Compile Include="Xml\ProductionDataTypeAttribute.cs" />
+    <Compile Include="Xml\ProductionDoc.cs" />
+    <Compile Include="Xml\ProductionEmptyPropertyElement.cs" />
+    <Compile Include="Xml\ProductionIdAttribute.cs" />
+    <Compile Include="Xml\ProductionLiteral.cs" />
+    <Compile Include="Xml\ProductionLiteralPropertyElement.cs" />
+    <Compile Include="Xml\ProductionNodeElement.cs" />
+    <Compile Include="Xml\ProductionNodeElementList.cs" />
+    <Compile Include="Xml\ProductionNodeElementUris.cs" />
+    <Compile Include="Xml\ProductionNodeIdAttribute.cs" />
+    <Compile Include="Xml\ProductionParseCollection.cs" />
+    <Compile Include="Xml\ProductionParseLiteral.cs" />
+    <Compile Include="Xml\ProductionParseOther.cs" />
+    <Compile Include="Xml\ProductionParseResource.cs" />
+    <Compile Include="Xml\ProductionParseTypeCollectionPropertyElement.cs" />
+    <Compile Include="Xml\ProductionParseTypeLiteralPropertyElement.cs" />
+    <Compile Include="Xml\ProductionParseTypeOtherPropertyElement.cs" />
+    <Compile Include="Xml\ProductionParseTypeResourcePropertyElement.cs" />
+    <Compile Include="Xml\ProductionPropertyAttribute.cs" />
+    <Compile Include="Xml\ProductionPropertyAttributeUris.cs" />
+    <Compile Include="Xml\ProductionPropertyElement.cs" />
+    <Compile Include="Xml\ProductionPropertyElementList.cs" />
+    <Compile Include="Xml\ProductionPropertyElementUris.cs" />
+    <Compile Include="Xml\ProductionRdf.cs" />
+    <Compile Include="Xml\ProductionRdfId.cs" />
+    <Compile Include="Xml\ProductionResourceAttribute.cs" />
+    <Compile Include="Xml\ProductionResourcePropertyElement.cs" />
+    <Compile Include="Xml\RdfXmlParser.cs" />
+    <Compile Include="Xml\RdfXmlParserException.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<Include xmlns="http://schemas.microsoft.com/wix/2006/wi">
+
+  <!--Processor architecture check-->
+  <?if $(var.Platform) = "Intel" ?>
+  <?define Win64 = "no"?>
+  <?elseif $(var.Platform) = "x64"?>
+  <?define Win64 = "yes"?>
+  <?elseif $(var.Platform) = "Intel64"?>
+  <?define Win64 = "yes"?>
+  <?endif?>
+
+  <!--Installer Constants-->
+  <?define UpgradeCode="{3079E8F4-C478-4616-A64A-5A24FBADD47C}" ?>
+
+  <!--Properties that need to change between versions-->
+  <?define ProductCode="{49c48cc7-fec6-4dbd-a3c5-2a7a8ecdd74c}" ?>
+  <?define ProductVersion="2.0.0.0" ?>
+  <?define PackageCode="*" ?>
+
+  <!--Installer Product details-->
+  <?define ProductManufacturer="Microsoft Research" ?>
+  <?define ProductName="Zentity 2.0"?>
+  <?define ProductWebAppName="Zentity"?>
+  <?define ProductDescription="Zentity 2.0"?>
+  <?define ProductComments="Zentity 2.0"?>
+
+  <!-- Zentity variables -->
+  <!-- MSBUILD will be defined when the build is run. 
+     BUILDINSTALLERLOCALLY is created by the build tool to build installer locally.
+     If both MSBUILD and BUILDINSTALLERLOCALLY variables are not defined, the following variables are created 
+     else the msbuild.exe or the tool will create them. -->
+  <?ifndef MSBUILD ?>
+  <?ifndef BUILDINSTALLERLOCALLY ?>
+  <?define ZENTITYCORE="C:\Binaries\Builds\Latest"?>  
+  <?define ZENTITYPLATFORM="C:\Binaries\Builds\Latest"?>
+  <?endif ?>
+  <?endif ?>
+  <?define SOLUTIONDIR="..\"?>
+  <!-- UpdateBuildNumber task updates the value of this variable to solution root of running build. -->
+  <?define ZENTITYSOLUTIONROOT="..\..\..\Build_Target\Server"?>
+  <?define ZENTITYCORE="$(var.ZENTITYSOLUTIONROOT)\Zentity.Services"?>
+  <?define ZENTITYPLATFORM="$(var.ZENTITYSOLUTIONROOT)\Zentity.Services"?>
+  <?define ZENTITYBITMAPS="$(var.ZENTITYSOLUTIONROOT)\Product\Installer\Bitmaps"?>
+  <?define ZENTITYEXTERNALDEPENDENCIES="$(var.ZENTITYSOLUTIONROOT)\External Libraries"?>
+  <?define ZENTITYINSTALLER="$(var.ZENTITYSOLUTIONROOT)\Product\Installer"?>
+  <?define ZENTITYINSTALLERFILES="$(var.ZENTITYINSTALLER)\Files"?>
+  <?define ZENTITYCOREDBSCRIPT="$(var.ZENTITYSOLUTIONROOT)\Test\Zentity.Core.UnitTest\Zentity.Core.UnitTest\Resources"?>
+  <?define ZENTITYWEBUI="$(var.ZENTITYSOLUTIONROOT)\Zentity.Web.UI"?>
+  <?define ZENTITYPLATFORMDBSCRIPTS="$(var.ZENTITYSOLUTIONROOT)\Product\Zentity.Services\Zentity.Platform\Scripts"?>
+  <?define ZENTITYSYNDICATION="$(var.ZENTITYSOLUTIONROOT)\Zentity.Services\WebHost\Syndication"?>
+  <?define ZENTITYOAIPMH="$(var.ZENTITYSOLUTIONROOT)\Zentity.Services\WebHost\OaiPmh"?>
+  <?define ZENTITYATOMPUB="$(var.ZENTITYSOLUTIONROOT)\Zentity.Services\WebHost\AtomPub"?>
+  <?define ZENTITYOAIORE="$(var.ZENTITYSOLUTIONROOT)\Zentity.Services\WebHost\OAIORE"?>
+  <?define ZENTITYAUTHENTICATIONSCRIPT="$(var.ZENTITYSOLUTIONROOT)\Product\Zentity.Security\Zentity.Security.AuthenticationProvider\Database script"?>
+  <?define ZENTITYAUTHORIZATIONSCRIPT="$(var.ZENTITYSOLUTIONROOT)\Product\Zentity.Security\Zentity.Security.Authorization"?>
+  <?define ZENTITYAUTHORIZATIONHELPERSCRIPT="$(var.ZENTITYSOLUTIONROOT)\Product\Zentity.Security\Zentity.Security.AuthorizationHelper\DatabaseScript"?>
+  <?define ZENTITYPLATFORMSEARCHCONFIG="$(var.ZENTITYSOLUTIONROOT)\Zentity.Services\Zentity.Platform\SearchEngine\Tokens"?>
+  <?define ZENTITYDOCUMENTS="$(var.ZENTITYSOLUTIONROOT)\Documentation"?>
+  <?define ZENTITYPIVOTNOTIFICATION="$(var.ZENTITYSOLUTIONROOT)\Pivot.Services\Notification"?>
+  <?define ZENTITYPIVOTPUBLISHING="$(var.ZENTITYSOLUTIONROOT)\Pivot.Services\Publishing"?>
+  <?define ZENTITYODATA="$(var.ZENTITYSOLUTIONROOT)\Zentity.OData.Translator"?>
+  <?define ZENTITYVISUALEXPLORER="$(var.ZENTITYSOLUTIONROOT)\Zentity.Visual.Explorer"?>
+  <?define ZENTITYDATASERVICE="$(var.ZENTITYSOLUTIONROOT)\Zentity.Data.Service"?>
+  <?define ZENTITYSCRIPTS="$(var.ZENTITYSOLUTIONROOT)\Database Scripts"?>
+  
+</Include>

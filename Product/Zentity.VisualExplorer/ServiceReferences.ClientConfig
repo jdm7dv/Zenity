@@ -1,0 +1,18 @@
+﻿<configuration>
+    <system.serviceModel>
+        <bindings>
+            <basicHttpBinding>
+                <binding name="BasicHttpBinding_IVisualExplorerService" closeTimeout="00:05:00"
+                    openTimeout="00:05:00" receiveTimeout="00:05:00" sendTimeout="00:05:00"
+                    maxBufferSize="2147483647" maxReceivedMessageSize="2147483647">
+                    <security mode="None" />
+                </binding>
+            </basicHttpBinding>
+        </bindings>
+        <client>
+            <endpoint address="http://localhost:9090/VisualExplorer/services/VisualExplorer.svc"
+                binding="basicHttpBinding" bindingConfiguration="BasicHttpBinding_IVisualExplorerService"
+                contract="VisualExplorerService.IVisualExplorerService" name="BasicHttpBinding_IVisualExplorerService" />
+        </client>
+    </system.serviceModel>
+</configuration>
